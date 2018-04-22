@@ -6,3 +6,40 @@ colors:
 #95DF30 - OLIVE GREEN
 #FC7700 - ORANGE
 */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.nav_list {
+    margin-top: 0px;
+    width: 100%;
+    position: fixed;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    background-color: #00753F;
+}
+
+.nav_list > li {
+    border-radius: 10px;
+    list-style: none;
+    background-color: #EDEFEF;
+    width: 100px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+}
+
+.nav_list > li:hover {
+    border-radius: 10px;
+    list-style: none;
+    background-color: #FC7700;
+    width: 100px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+}
