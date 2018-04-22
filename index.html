@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
 <!--szkielet-->
@@ -11,7 +12,19 @@
 <div class="functionality">
     <div class="more"></div>
 </div>
-<div class="form"></div>
+
+<div id="form">
+    <form action="#" class="form">
+        <p></p>
+        <label for="name">Imię</label>
+        <input type="text" id="name" pattern="^[A-Za-z]{2,25}">
+        <label for="email">E-mail: </label>
+        <input type="email" id="email">
+        <button type="submit">Wyślij</button>
+        <p></p>
+    </form>
+</div>
+
 <div class="about"></div>
 <footer></footer>
 

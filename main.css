@@ -6,3 +6,29 @@ colors:
 #95DF30 - OLIVE GREEN
 #FC7700 - ORANGE
 */
+
+
+
+form {
+    max-width: 400px;
+    background-color: #95DF30;
+}
+
+.form {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+label {
+    width: 100%;
+    text-align: center;
+}
+
+input {
+    width: 100%;
+    height: 2em;
+}
+
+button {
+    margin: 0 auto;
+}
