@@ -11,35 +11,68 @@ colors:
     padding: 0;
 }
 
-.nav_list {
-    margin-top: 0px;
-    width: 100%;
-    position: fixed;
-    border-radius: 10px;
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-evenly;
-    background-color: #00753F;
-}
 
+.nav_bar {
+    width: 100%;
+    margin: auto;
+    height: 60px;
+    position: fixed;
+    display: flex;
+    justify-content: start;
+    background-image: linear-gradient(to top, #c1dfc4 0%, #deecdd 100%);
+    box-shadow: 6px 6px 25px -5px rgba(61,97,74,1);
+}
+.nav_list{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 70px;
+}
 .nav_list > li {
-    border-radius: 10px;
+    background-image: linear-gradient(to top, lightgrey 0%, lightgrey 1%, #e0e0e0 26%, #efefef 48%, #d9d9d9 75%, #bcbcbc 100%);
+    box-shadow: 1px 1px 10px -4px rgba(0,0,0,1);
+    border: 1px solid #8aab95;
+    border-radius: 7px;
     list-style: none;
-    background-color: #EDEFEF;
-    width: 100px;
+    width: 110px;
     margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    font-family: 'Vollkorn', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: #b72f2f;
+
     text-align: center;
-    line-height: 75px;
-    font-size: 30px;
 }
 
 .nav_list > li:hover {
-    border-radius: 10px;
+    background-image: linear-gradient(to top, lightgrey 0%, lightgrey 1%, #e0e0e0 26%, #efefef 48%, #d9d9d9 75%, #bcbcbc 100%);
+    box-shadow: 1px 1px 10px -4px rgba(0,0,0,1);
+    border: 1px solid #8aab95;
+    border-radius: 7px;
+    border-bottom: 3px solid rgb(124, 48, 181);
     list-style: none;
-    background-color: #FC7700;
-    width: 100px;
+    width: 110px;
     margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    font-family: 'Vollkorn', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: rgb(124, 48, 181);
     text-align: center;
-    line-height: 75px;
-    font-size: 30px;
+}
+.nav_bar .logo{
+    margin: auto 20px;
+    background-image: url(logo.gif);
+    height: 55px;
+    background-position: center;
+    width: 64px;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
