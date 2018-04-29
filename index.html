@@ -18,7 +18,7 @@
         <h2>Napisz do nas</h2>
         <p>Skontaktuj się z nami a w odpowiedzi zwrotnej zostanie wysłany mail z informacją o premierze. Twoje dane nie
             zostaną wykorzystane w żadnym innym celu.</p>
-        <input type="text" placeholder="Twoje imię..." required>
+        <input type="text" placeholder="Twoje imię..." required pattern="[A-Za-z]{2,30}" title="Dopuszczalne tylko litery - od 2 do 30 znaków">
         <input type="email" placeholder="Twój Email..." required>
         <textarea cols="20" rows="20" placeholder="Twoja wiadomość..."></textarea>
         <input type="submit" value="Wyślij">
