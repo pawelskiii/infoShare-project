@@ -74,10 +74,10 @@ body {
 }
 .nav_bar .logo{
     margin: auto 20px;
-    background-image: url(logo.gif);
+    background-image: url(logo.png);
     height: 55px;
     background-position: center;
-    width: 64px;
+    width: auto;
     background-repeat: no-repeat;
     background-size: cover;
 }
