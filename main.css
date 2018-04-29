@@ -6,11 +6,16 @@ colors:
 #95DF30 - OLIVE GREEN
 #FC7700 - ORANGE
 */
-* {
+
+/* ############### global ############### */
+
+body {
+    color: #00753F;
     margin: 0;
     padding: 0;
 }
 
+/* ############### navigation ############### */
 
 .nav_bar {
     width: 100%;
@@ -76,3 +81,66 @@ colors:
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+/* ############### introduction ############### */
+
+
+
+/* ############### functionality ############### */
+
+
+
+/* ############### form ############### */
+
+.contact-items {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.contact-items h2 {
+    color: #g8g8g8;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.contact-items p {
+    text-align: center;
+    font-size: .8rem;
+    width: 50%;
+    margin-top: 0;
+}
+.contact-items input[type="text"]{
+    border-radius: 10px;
+    margin-bottom: 15px;
+    padding: 15px;
+    width: 50%;
+}
+
+.contact-items input[type="text"]:focus {
+    background-color: cornsilk;
+}
+
+.contact-items textarea {
+    border-radius: 10px;
+    height: 50px;
+    width: 50%;
+    padding: 15px;
+}
+
+.contact-items textarea:focus {
+    background-color: cornsilk;
+}
+
+.contact-items input[type="submit"] {
+    margin: 15px;
+    height: 50px;
+    border: 0;
+    background-color: #FC7700;
+    text-transform: uppercase;
+    color: #EDEFEF;
+    padding: 10px 30px;
+    border-radius: 10px;
+}
+
+/* ############### about ############### */
