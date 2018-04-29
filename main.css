@@ -7,10 +7,21 @@ colors:
 #FC7700 - ORANGE
 */
 
+/* ############### global ############### */
+
 body {
     color: #00753F;
 }
 
+/* ############### introduction ############### */
+
+
+
+/* ############### functionality ############### */
+
+
+
+/* ############### form ############### */
 
 .contact-items {
     display: flex;
@@ -62,3 +73,5 @@ body {
     padding: 10px 30px;
     border-radius: 10px;
 }
+
+/* ############### about ############### */
