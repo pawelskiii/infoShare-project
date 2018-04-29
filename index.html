@@ -13,15 +13,15 @@
     <div class="more"></div>
 </div>
 
-<div id="form">
-    <form action="#" class="form">
-        <p></p>
-        <label for="name">Imię</label>
-        <input type="text" id="name" pattern="^[A-Za-z]{2,25}">
-        <label for="email">E-mail: </label>
-        <input type="email" id="email">
-        <button type="submit">Wyślij</button>
-        <p></p>
+<div id="form" class="contact-container">
+    <form class="contact-items" action="mailto:zmyslonymailnikttakiegoniema@gmail.com" method="post">
+        <h2>Napisz do nas</h2>
+        <p>Skontaktuj się z nami a w odpowiedzi zwrotnej zostanie wysłany mail z informacją o premierze. Twoje dane nie
+            zostaną wykorzystane w żadnym innym celu.</p>
+        <input type="text" placeholder="Twoje imię..." required>
+        <input type="text" placeholder="Twój Email..." required>
+        <textarea cols="20" rows="20" placeholder="Twoja wiadomość..."></textarea>
+        <input type="submit" value="Wyślij">
     </form>
 </div>
 

@@ -7,28 +7,58 @@ colors:
 #FC7700 - ORANGE
 */
 
-
-
-form {
-    max-width: 400px;
-    background-color: #95DF30;
+body {
+    color: #00753F;
 }
 
-.form {
+
+.contact-items {
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;
 }
 
-label {
-    width: 100%;
+.contact-items h2 {
+    color: #g8g8g8;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.contact-items p {
     text-align: center;
+    font-size: .8rem;
+    width: 50%;
+    margin-top: 0;
+}
+.contact-items input[type="text"]{
+    border-radius: 10px;
+    margin-bottom: 15px;
+    padding: 15px;
+    width: 50%;
 }
 
-input {
-    width: 100%;
-    height: 2em;
+.contact-items input[type="text"]:focus {
+    background-color: cornsilk;
 }
 
-button {
-    margin: 0 auto;
+.contact-items textarea {
+    border-radius: 10px;
+    height: 50px;
+    width: 50%;
+    padding: 15px;
+}
+
+.contact-items textarea:focus {
+    background-color: cornsilk;
+}
+
+.contact-items input[type="submit"] {
+    margin: 15px;
+    height: 50px;
+    border: 0;
+    background-color: #FC7700;
+    text-transform: uppercase;
+    color: #EDEFEF;
+    padding: 10px 30px;
+    border-radius: 10px;
 }
