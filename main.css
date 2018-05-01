@@ -23,61 +23,50 @@ body {
     height: 60px;
     position: fixed;
     display: flex;
-    justify-content: start;
-    background-image: linear-gradient(to top, #c1dfc4 0%, #deecdd 100%);
-    box-shadow: 6px 6px 25px -5px rgba(61,97,74,1);
+    justify-content: space-between;
 }
 .nav_list{
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-left: 70px;
+    margin: auto 70px;
+}
+ul .nav_list{
+        margin-right: 20px;
 }
 .nav_list > li {
-    background-image: linear-gradient(to top, lightgrey 0%, lightgrey 1%, #e0e0e0 26%, #efefef 48%, #d9d9d9 75%, #bcbcbc 100%);
-    box-shadow: 1px 1px 10px -4px rgba(0,0,0,1);
-    border: 1px solid #8aab95;
-    border-radius: 7px;
     list-style: none;
-    width: 110px;
-    margin: 10px;
+    width: auto;
+    margin:15px;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 45px;
+    height: 20px;
     font-family: 'Vollkorn', serif;
-    font-style: italic;
-    font-size: 16px;
-    color: #b72f2f;
-
+    font-size: 18px;
+    color: #FC7700;
     text-align: center;
 }
 
 .nav_list > li:hover {
-    background-image: linear-gradient(to top, lightgrey 0%, lightgrey 1%, #e0e0e0 26%, #efefef 48%, #d9d9d9 75%, #bcbcbc 100%);
-    box-shadow: 1px 1px 10px -4px rgba(0,0,0,1);
-    border: 1px solid #8aab95;
-    border-radius: 7px;
-    border-bottom: 3px solid rgb(124, 48, 181);
     list-style: none;
-    width: 110px;
-    margin: 10px;
+    width: auto;
+    margin:15px;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 45px;
+    height: 20px;
     font-family: 'Vollkorn', serif;
-    font-style: italic;
-    font-size: 16px;
-    color: rgb(124, 48, 181);
+    font-size: 18px;
+    color: #00753F;
+    border-bottom: 2px solid #00753F;
     text-align: center;
 }
 .nav_bar .logo{
     margin: auto 20px;
     background-image: url(logo.png);
-    height: 55px;
+    height: 53px;
     background-position: center;
-    width: auto;
+    width: 136px;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -94,6 +83,7 @@ body {
 
 .contact-items {
     display: flex;
+    padding-top: 50px;
     align-items: center;
     flex-direction: column;
 }
