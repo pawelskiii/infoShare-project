@@ -78,7 +78,29 @@ ul .nav_list{
 
 /* ############### functionality ############### */
 
+.func-container {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 60px;
+}
 
+.func-column-container {
+    height: 900px;
+    display: flex;
+    flex-direction: row;
+}
+
+.func-column {
+    width: 25%;
+}
+
+.func-column:nth-child(even) {
+    background: #FC7700;
+}
+
+.func-column:nth-child(odd) {
+    background: #017601;
+}
 
 /* ############### form ############### */
 
