@@ -13,6 +13,7 @@ body {
     color: #00753F;
     margin: 0;
     padding: 0;
+
 }
 
 /* ############### navigation ############### */
@@ -81,62 +82,115 @@ ul .nav_list{
 
 /* ############### form ############### */
 
-.contact-items {
+.contact-container {
+    width: 600px;
+    height: 800px;
+    margin: 0 auto;
+}
+
+.contact-title {
+    width: 100%;
+    text-align: center;
+    padding-top: 60px; /*póki nie ma reszty strony*/
+}
+
+.contact-header {
+    text-transform: uppercase;
+    text-decoration: underline;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.contact-text {
+    font-size: 14px;
+    max-width: 480px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+.contact-columns {
+    width: 100%;
     display: flex;
-    padding-top: 50px;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.contact-form {
+    width: 60%;
+    display: flex;
     flex-direction: column;
 }
 
-.contact-items h2 {
-    color: #g8g8g8;
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
-.contact-items p {
-    text-align: center;
-    font-size: .8rem;
-    width: 50%;
-    margin-top: 0;
-}
-.contact-items input[type="text"]{
-    border-radius: 10px;
+.contact-form input, .contact-form textarea {
+    padding: 15px;
+    background: #017601;
+    border: none;
+    opacity: .7;
     margin-bottom: 15px;
-    padding: 15px;
-    width: 50%;
-}
-.contact-items input[type="email"]{
-    border-radius: 10px;
-    margin-bottom: 15px;
-    padding: 15px;
-    width: 50%;
+    color: #FFF;
+    font-size: 1rem;
+    font-family: inherit;
 }
 
-.contact-items input[type="text"]:focus {
-    background-color: cornsilk;
+.contact-form textarea {
+    resize: none;
 }
 
-.contact-items textarea {
-    border-radius: 10px;
-    height: 50px;
-    width: 50%;
-    padding: 15px;
+.contact-input::placeholder {
+    color: #FFF;
 }
 
-.contact-items textarea:focus {
-    background-color: cornsilk;
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form button:focus
+{
+    opacity: 1;
+    outline: none;
+    font-weight: 900;
+    box-shadow: 0 20px 40px rgba(1, 118, 1, 0.4);
 }
 
-.contact-items input[type="submit"] {
-    margin: 15px;
-    height: 50px;
-    border: 0;
-    background-color: #FC7700;
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+.section-contact .section-contact-action {
     text-transform: uppercase;
-    color: #EDEFEF;
-    padding: 10px 30px;
-    border-radius: 10px;
+    font-weight: 300;
+    font-size: 20px;
+    height: 55px;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    width: 170px;
+    border: none;
+    background: #017601; /*#7FE93A  96DB3C*/
+    color: white;
+    box-shadow: 0 20px 40px rgba(1, 118, 1, 0.4);
+}
+
+.contact-address {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    background: url(https://cdn.pixabay.com/photo/2016/08/13/01/54/apple-1590131_960_720.png) no-repeat bottom;
+    background-size: contain;
+}
+
+.section-contact .contact-address-text p:first-child {
+    margin: 0;
+    font-weight: 650;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+.section-contact .contact-address-text p:last-child {
+    margin-top: 0;
+    font-size: 13px;
 }
 
 /* ############### about ############### */
