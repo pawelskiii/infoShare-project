@@ -29,7 +29,6 @@ font-family: 'Fredericka the Great', cursive;
 body {
     color: rgba(0, 20, 1, 0.9);
     background: url(img/dust_scratches.png);
-    width: 75%;
     margin: 0 auto;
     padding: 0;
     font-family: 'Raleway', sans-serif;
@@ -38,7 +37,8 @@ body {
 /* ############### navigation ############### */
 
 .nav_bar {
-    width: 75%;
+    z-index: 1;
+    width: 100%;
     margin: auto;
     height: 60px;
     position: fixed;
@@ -69,7 +69,6 @@ body {
     font-style: italic;
     font-size: 16px;
     color: #b72f2f;
-
     text-align: center;
 }
 
@@ -113,6 +112,13 @@ body {
     /*display: flex;*/
     /*flex-direction: row-reverse;*/
     /*align-items: center;*/
+}
+
+.introduction__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /* ############### functionality ############### */

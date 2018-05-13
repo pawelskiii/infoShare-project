@@ -13,7 +13,9 @@
 <body>
 <!--szkielet-->
 <nav class="nav_bar">
-    <a href="https://www.w3schools.com"><div class="logo"></div></a>
+    <a href="https://www.w3schools.com">
+        <div class="logo"></div>
+    </a>
     <ul class="nav_list">
         <li>Introduction</li>
         <li>Functionality</li>
@@ -21,9 +23,16 @@
         <li>About</li>
     </ul>
 </nav>
+
 <div class="introduction">
-    <div class="introduction__container"></div>
+    <div class="introduction__container">
+        <div class="introduction__content">
+            <h1>ELO</h1>
+        </div>
+    </div>
+
 </div>
+
 <div class="functionality">
     <div class="more"></div>
 </div>
@@ -33,7 +42,8 @@
         <h2>Napisz do nas</h2>
         <p>Skontaktuj się z nami a w odpowiedzi zwrotnej zostanie wysłany mail z informacją o premierze. Twoje dane nie
             zostaną wykorzystane w żadnym innym celu.</p>
-        <input type="text" placeholder="Twoje imię..." required pattern="[A-Za-z]{2,30}" title="Dopuszczalne tylko litery - od 2 do 30 znaków">
+        <input type="text" placeholder="Twoje imię..." required pattern="[A-Za-z]{2,30}"
+               title="Dopuszczalne tylko litery - od 2 do 30 znaków">
         <input type="email" placeholder="Twój Email..." required>
         <textarea cols="20" rows="20" placeholder="Twoja wiadomość..."></textarea>
         <input type="submit" value="Wyślij">
@@ -42,6 +52,7 @@
 
 <div class="about"></div>
 <footer></footer>
+
 
 </body>
 </html>
