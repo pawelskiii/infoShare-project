@@ -11,11 +11,9 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,800" rel="stylesheet">
 </head>
 <body>
-<!--szkielet-->
+
 <nav class="nav_bar">
-    <a href="https://www.w3schools.com">
-        <div class="logo"></div>
-    </a>
+    <div class="logo"></div>
     <ul class="nav_list">
         <li>Introduction</li>
         <li>Functionality</li>
@@ -37,22 +35,125 @@
     <div class="more"></div>
 </div>
 
-<div id="form" class="contact-container">
-    <form class="contact-items" action="#" method="post">
-        <h2>Napisz do nas</h2>
-        <p>Skontaktuj się z nami a w odpowiedzi zwrotnej zostanie wysłany mail z informacją o premierze. Twoje dane nie
-            zostaną wykorzystane w żadnym innym celu.</p>
-        <input type="text" placeholder="Twoje imię..." required pattern="[A-Za-z]{2,30}"
-               title="Dopuszczalne tylko litery - od 2 do 30 znaków">
-        <input type="email" placeholder="Twój Email..." required>
-        <textarea cols="20" rows="20" placeholder="Twoja wiadomość..."></textarea>
-        <input type="submit" value="Wyślij">
-    </form>
+<div id="contact" class="section-contact">
+    <div class="contact-container">
+        <div class="contact-title">
+            <h2 class="contact-header">Napisz do nas</h2>
+            <p class="contact-text">Skontaktuj się z nami a w odpowiedzi zwrotnej zostanie wysłany mail z
+                informacją o premierze. Twoje dane nie
+                zostaną wykorzystane w żadnym innym celu.</p>
+        </div>
+        <div class="contact-columns">
+            <div class="contact-form">
+                <input type="text" class="contact-input" placeholder="Twoje imię..."  required pattern="[A-Za-z]{2,30}" title="Dopuszczalne tylko litery - od 2 do 30 znaków">
+                <input type="email" class="contact-input" placeholder="Twój e-mail...." required>
+                <input type="number" class="contact-input" placeholder="Twój numer telefonu...">
+                <textarea cols="30" rows="5" class="contact-input" placeholder="Twoja wiadomość..."></textarea>
+                <button class="section-contact-action">
+                    Wyślij
+                </button>
+            </div>
+            <div class="contact-address">
+                <div class="contact-address-text">
+                    <p>Adres:</p>
+                    <p>Bud-Feel<br>ul. Grunwaldzka 472A<br>80-309 Gdańsk</p>
+                </div>
+                <div class="contact-address-text">
+                    <p>E-mail:</p>
+                    <p>bud-feel@infoshare.com</p>
+                </div>
+                <div class="contact-address-text">
+                    <p>Numer telefonu:</p>
+                    <p>+012 345 6789</p>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="about"></div>
-<footer></footer>
+<!-- about-->
 
+<div class="about">
+    <h1 class="about-title">O nas</h1>
+        <div id="about" class="about-container">
+            <div id="pawel">
+                <a><img src="marta (copy).jpg" class="about-image" alt="photo" /></a>
+                <div class="about-text-main">
+                    <div class="about-title2">
+                        <h2>Paweł Racki</h2>
+                    </div>
+                    <div class="about-text">
+                        <p>cos tam o nas.cos tam o nas cos tam o nas cos tam o nas cos tam o nas cos tam o nas cos
+                            tam o nas.cos tam o nas </p>
+                        <p>Więcej o mnie: </p>
+                        <div class="about-icons">
+                            <a  href="https://......."><img class="about-icons2" src="stronka.png" alt="www"></a>
+                            <a  href="https://github.com/Martagda"><img class="about-icons2" src="GitHub-Mark-64px.png" alt="github"></a>
+                            <a  href="linked"><img class="about-icons2" src="in.png" alt="in"></a>
+                            <a  href="mailto:burzka@gmail.com"><img class="about-icons2" src="mail.png" alt="e-mail"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="patryk">
+                <a><img src="marta (another copy).jpg" class="about-image" alt="photo" /></a>
+                <div class="about-text-main">
+                    <div class="about-title2">
+                        <h2>Patryk Fijałkowski</h2>
+                    </div>
+                    <div class="about-text">
+                        <p>cos tam o nas.cos tam o nas cos tam o nas cos tam o nas cos tam o nas cos tam o nas cos
+                            tam o nas.cos tam o nas </p>
+                        <p>Więcej o mnie: </p>
+                        <div class="about-icons">
+                            <a  href="https://......."><img class="about-icons2" src="stronka.png" alt="www"></a>
+                            <a  href="https://github.com/Martagda"><img class="about-icons2" src="GitHub-Mark-64px.png" alt="github"></a>
+                            <a  href="linked"><img class="about-icons2" src="in.png" alt="in"></a>
+                            <a  href="mailto:burzka@gmail.com"><img class="about-icons2" src="mail.png" alt="e-mail"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="marcin">
+                <div class="about-text-main">
+                    <div class="about-title2">
+                        <h2>Marcin Karwacki</h2>
+                    </div>
+                    <div class="about-text">
+                        <p>cos tam o nas.cos tam o nas cos tam o nas cos tam o nas cos tam o nas cos tam o nas cos
+                            tam o nas.cos tam o nas </p>
+                        <p>Więcej o mnie: </p>
+                        <div class="about-icons">
+                            <a  href="https://......."><img class="about-icons2" src="stronka.png" alt="www"></a>
+                            <a  href="https://github.com/Martagda"><img class="about-icons2" src="GitHub-Mark-64px.png" alt="github"></a>
+                            <a  href="linked"><img class="about-icons2" src="in.png" alt="in"></a>
+                            <a  href="mailto:burzka@gmail.com"><img class="about-icons2" src="mail.png" alt="e-mail"></a>
+                        </div>
+                    </div>
+                </div>
+                <a ><img src="marta (4th copy).jpg" class="about-image" alt="photo" /></a>
+            </div>
+            <div id="marta">
+                <div class="about-text-main">
+                    <div class="about-title2"">
+                        <h2>Marta Burzyńska</h2>
+                    </div >
+                     <div class="about-text">
+                         <p>cos tam o nas.cos tam o nas cos tam o nas cos tam o nas cos tam o nas cos tam o nas cos
+                             tam o nas.cos tam o nas </p>
+                         <p>Więcej o mnie: </p>
+                         <div class="about-icons">
+                             <a  href="https://......."><img class="about-icons2" src="stronka.png" alt="www"></a>
+                             <a  href="https://github.com/Martagda"><img class="about-icons2" src="GitHub-Mark-64px.png" alt="github"></a>
+                             <a  href="linked"><img class="about-icons2" src="in.png" alt="in"></a>
+                             <a  href="mailto:burzka@gmail.com"><img class="about-icons2" src="mail.png" alt="e-mail"></a>
+                         </div>
+                    </div>
+                </div>
+                <a  ><img src="marta (3rd copy).jpg" class="about-image" alt="photo" /></a>
+            </div>
+        </div>
+</div>
+<footer></footer>
 
 </body>
 </html>
