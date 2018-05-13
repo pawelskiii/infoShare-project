@@ -1,24 +1,43 @@
 /*
-colors:
-#EDEFEF - WHITE
-#00753F - DARK GREEN
-#00AD3C - GREEN
-#95DF30 - OLIVE GREEN
-#FC7700 - ORANGE
+
+COLORS:
+
+#EFF0F0 - change from #EDEFEF - WHITE / LIGHT GREY
+#096C3E - change from #00753F - DARK GREEN
+#F57D19 - change from #FC7700 - ORANGE
+rgba(0, 20, 1, 0.9); - FONT BLACK / REALLY DARK GREEN
+
+delete - #00AD3C - GREEN
+delete - #95DF30 - OLIVE GREEN
+
+
+FONTS:
+
+Raleway - NORMAL TEXT
+font-family: 'Raleway', sans-serif;
+
+Montserrat - TITLES
+font-family: 'Montserrat', sans-serif;
+
+Fredericka the Great - SPECIAL
+font-family: 'Fredericka the Great', cursive;
+
 */
 
 /* ############### global ############### */
 
 body {
-    color: #00753F;
-    margin: 0;
+    color: rgba(0, 20, 1, 0.9);
+    background: url(img/dust_scratches.png);
+    margin: 0 auto;
     padding: 0;
-
+    font-family: 'Raleway', sans-serif;
 }
 
 /* ############### navigation ############### */
 
 .nav_bar {
+    z-index: 1;
     width: 100%;
     margin: auto;
     height: 60px;
@@ -74,7 +93,23 @@ ul .nav_list{
 
 /* ############### introduction ############### */
 
+.introduction__container {
+    height: 1000px;
+    background: url(img/intoduction.jpg) no-repeat center center fixed;
+    background-size: cover;
+    /*background-origin: content-box;*/
+    /*padding: 60px;*/
+    /*display: flex;*/
+    /*flex-direction: row-reverse;*/
+    /*align-items: center;*/
+}
 
+.introduction__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
 /* ############### functionality ############### */
 
