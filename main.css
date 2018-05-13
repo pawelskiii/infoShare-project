@@ -104,6 +104,17 @@ body {
 
 /* ############### introduction ############### */
 
+.introduction__container {
+    height: 1000px;
+    background: url(img/intoduction.jpg) no-repeat center center fixed;
+    background-size: cover;
+    /*background-origin: content-box;*/
+    /*padding: 60px;*/
+    /*display: flex;*/
+    /*flex-direction: row-reverse;*/
+    /*align-items: center;*/
+}
+
 /* ############### functionality ############### */
 
 
