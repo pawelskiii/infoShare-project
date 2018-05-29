@@ -168,10 +168,6 @@ ul .nav_list {
 
 /* ############### introduction ############### */
 
-body {
-    height: 3000px;
-}
-
 .carousel-item {
     height: 1000px;
 }
@@ -214,9 +210,12 @@ body {
     top: 40%;
 }
 
- ############### functionality ###############
+/*############### functionality ###############*/
 
- ############### form ###############
+
+
+
+/*############### form ###############*/
 
 .contact-container {
 width: 600px;
