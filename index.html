@@ -2,41 +2,235 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="main.css">
     <link href="https://fonts.googleapis.com/css?family=Vollkorn" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700 subset=latin-ext" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,600,800" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 </head>
 <body>
-<!--szkielet-->
-<nav class="nav_bar">
-<div class="logo"></div>
-    <ul class="nav_list">
+<nav class="navbar .navbar-expand-sm fixed-top">
+    <div class="container col-sm-12">
+        <a class="navbar-brand col-sm-12" href="#"></a>
+       <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>-->
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav col-sm-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Introduction</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Functionality</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Form</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--
+<nav class="nav-bar">
+    <div class="nav-bar-content">
+    <div class="logo"></div>
+    <ul class="nav-list">
         <li>Introduction</li>
         <li>Functionality</li>
+        <li>About us</li>
         <li>Form</li>
-        <li>About</li>
     </ul>
-</nav>
+    </div>
+</nav>-->
+
 <div class="introduction">
+    <div id="my-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active carousel-item-1">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1 class="font-special light-rose">Chcesz</h1>
+                        <h1 class="font-special light-rose">schudnąć?</h1>
+                        <button class="main-button"><a class="text-button" href="#contact">CHANGE YOUR LIFE</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item carousel-item-2">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1 class="font-special light-rose">Nie wiesz</h1>
+                        <h1 class="font-special light-rose">od czego</h1>
+                        <h1 class="font-special light-rose">zacząć?</h1>
+                        <button class="main-button"><a class="text-button" href="#contact">CHANGE YOUR LIFE</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item carousel-item-3">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1 class="font-special light-rose">Let's do <span class="font-special2 orange">IT</span></h1>
+                        <h1 class="font-special light-rose">with <span class="font-special2 orange">US!</span></h1>
+                        <button class="main-button"><a class="text-button" href="#contact">CHANGE YOUR LIFE</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#my-carousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon-change orange" aria-hidden="true"></span>
+        </a>
+        <a class="carousel-control-next" href="#my-carousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon-change orange" aria-hidden="true"></span>
+        </a>
+    </div>
 </div>
+
 <div class="functionality">
     <div class="more"></div>
 </div>
 
-<div id="form" class="contact-container">
-    <form class="contact-items" action="#" method="post">
-        <h2>Napisz do nas</h2>
-        <p>Skontaktuj się z nami a w odpowiedzi zwrotnej zostanie wysłany mail z informacją o premierze. Twoje dane nie
-            zostaną wykorzystane w żadnym innym celu.</p>
-        <input type="text" placeholder="Twoje imię..." required pattern="[A-Za-z]{2,30}" title="Dopuszczalne tylko litery - od 2 do 30 znaków">
-        <input type="email" placeholder="Twój Email..." required>
-        <textarea cols="20" rows="20" placeholder="Twoja wiadomość..."></textarea>
-        <input type="submit" value="Wyślij">
-    </form>
-</div>
+<div id="contact" class="section-contact">
+    <div class="contact-container">
+        <div class="contact-title">
+            <h2 class="contact-header">Napisz do nas</h2>
+            <p class="contact-text">Skontaktuj się z nami a w odpowiedzi zwrotnej zostanie wysłany mail z
+                informacją o premierze. Twoje dane nie
+                zostaną wykorzystane w żadnym innym celu.</p>
+        </div>
+        <div class="contact-columns">
+            <div class="contact-form">
+                <input type="text" class="contact-input" placeholder="Twoje imię..." required pattern="[A-Za-z]{2,30}"
+                       title="Dopuszczalne tylko litery - od 2 do 30 znaków">
+                <input type="email" class="contact-input" placeholder="Twój e-mail...." required>
+                <input type="number" class="contact-input" placeholder="Twój numer telefonu...">
+                <textarea cols="30" rows="5" class="contact-input" placeholder="Twoja wiadomość..."></textarea>
+                <button class="section-contact-action">
+                    Wyślij
+                </button>
+            </div>
+            <div class="contact-address">
+                <div class="contact-address-text">
+                    <p>Adres:</p>
+                    <p>Bud-Feel<br>ul. Grunwaldzka 472A<br>80-309 Gdańsk</p>
+                </div>
+                <div class="contact-address-text">
+                    <p>E-mail:</p>
+                    <p>bud-feel@infoshare.com</p>
+                </div>
+                <div class="contact-address-text">
+                    <p>Numer telefonu:</p>
+                    <p>+012 345 6789</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<div class="about"></div>
+    <!-- about-->
+
+    <div class="about">
+        <h1 class="about-title">O nas</h1>
+        <div id="about" class="about-container">
+            <div id="pawel">
+                <a><img src="marta (copy).jpg" class="about-image" alt="photo"/></a>
+                <div class="about-text-main">
+                    <div class="about-title2">
+                        <h2>Paweł Racki</h2>
+                    </div>
+                    <div class="about-text">
+                        <p>cos tam o nas.cos tam o nas cos tam o nas cos tam o nas cos tam o nas cos tam o nas cos
+                            tam o nas.cos tam o nas </p>
+                        <p>Więcej o mnie: </p>
+                        <div class="about-icons">
+                            <a href="https://......."><img class="about-icons2" src="stronka.png" alt="www"></a>
+                            <a href="https://github.com/Martagda"><img class="about-icons2" src="GitHub-Mark-64px.png"
+                                                                       alt="github"></a>
+                            <a href="linked"><img class="about-icons2" src="in.png" alt="in"></a>
+                            <a href="mailto:burzka@gmail.com"><img class="about-icons2" src="mail.png" alt="e-mail"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="patryk">
+                <a><img src="marta (another copy).jpg" class="about-image" alt="photo"/></a>
+                <div class="about-text-main">
+                    <div class="about-title2">
+                        <h2>Patryk Fijałkowski</h2>
+                    </div>
+                    <div class="about-text">
+                        <p>cos tam o nas.cos tam o nas cos tam o nas cos tam o nas cos tam o nas cos tam o nas cos
+                            tam o nas.cos tam o nas </p>
+                        <p>Więcej o mnie: </p>
+                        <div class="about-icons">
+                            <a href="https://......."><img class="about-icons2" src="stronka.png" alt="www"></a>
+                            <a href="https://github.com/Martagda"><img class="about-icons2" src="GitHub-Mark-64px.png"
+                                                                       alt="github"></a>
+                            <a href="linked"><img class="about-icons2" src="in.png" alt="in"></a>
+                            <a href="mailto:burzka@gmail.com"><img class="about-icons2" src="mail.png" alt="e-mail"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="marcin">
+                <div class="about-text-main">
+                    <div class="about-title2">
+                        <h2>Marcin Karwacki</h2>
+                    </div>
+                    <div class="about-text">
+                        <p>cos tam o nas.cos tam o nas cos tam o nas cos tam o nas cos tam o nas cos tam o nas cos
+                            tam o nas.cos tam o nas </p>
+                        <p>Więcej o mnie: </p>
+                        <div class="about-icons">
+                            <a href="https://......."><img class="about-icons2" src="stronka.png" alt="www"></a>
+                            <a href="https://github.com/Martagda"><img class="about-icons2" src="GitHub-Mark-64px.png"
+                                                                       alt="github"></a>
+                            <a href="linked"><img class="about-icons2" src="in.png" alt="in"></a>
+                            <a href="mailto:burzka@gmail.com"><img class="about-icons2" src="mail.png" alt="e-mail"></a>
+                        </div>
+                    </div>
+                </div>
+                <a><img src="marta (4th copy).jpg" class="about-image" alt="photo"/></a>
+            </div>
+            <div id="marta">
+                <div class="about-text-main">
+                    <div class="about-title2"
+                    ">
+                    <h2>Marta Burzyńska</h2>
+                </div>
+                <div class="about-text">
+                    <p>cos tam o nas.cos tam o nas cos tam o nas cos tam o nas cos tam o nas cos tam o nas cos
+                        tam o nas.cos tam o nas </p>
+                    <p>Więcej o mnie: </p>
+                    <div class="about-icons">
+                        <a href="https://......."><img class="about-icons2" src="stronka.png" alt="www"></a>
+                        <a href="https://github.com/Martagda"><img class="about-icons2" src="GitHub-Mark-64px.png"
+                                                                   alt="github"></a>
+                        <a href="linked"><img class="about-icons2" src="in.png" alt="in"></a>
+                        <a href="mailto:burzka@gmail.com"><img class="about-icons2" src="mail.png" alt="e-mail"></a>
+                    </div>
+                </div>
+            </div>
+            <a><img src="marta (3rd copy).jpg" class="about-image" alt="photo"/></a>
+        </div>
+    </div>
+</div>
 <footer></footer>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
 
 </body>
 </html>
