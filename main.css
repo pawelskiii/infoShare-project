@@ -41,12 +41,14 @@ body {
     margin: 0 auto;
     padding: 0;
 }
-.scrolling-behavior{
-    overflow: scroll;
-    scroll-behavior: smooth;
-}
 
 .main-button {
+    text-transform: uppercase;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    font-size: 1.125rem;
+    color: #FEEDDF;
+    margin-top: 15px;
     width: 210px;
     height: 55px;
     border: none;
@@ -54,22 +56,9 @@ body {
     background: #F57D19;
 }
 
-.text-button {
-    text-transform: uppercase;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 300;
-    font-size: 1.125rem;
-    color: #FEEDDF;
-}
-
 .main-button:hover {
     opacity: 0.8;
     transition: opacity .2s ease-in-out;
-}
-
-.main-button a:hover {
-    color: #FEEDDF;
-    text-decoration: none;
 }
 
 .font-normal {
