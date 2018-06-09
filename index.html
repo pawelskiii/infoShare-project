@@ -15,44 +15,66 @@
 </head>
 <body>
 
-<nav class="nav_bar">
-    <div class="logo"></div>
-    <ul class="nav_list">
-        <li>Introduction</li>
-        <li>Functionality</li>
-        <li>Form</li>
-        <li>About</li>
-    </ul>
+<nav class="navbar fixed-top container-fluid navbar-expand-md navbar-light bg-light">
+    <div class="container col-12 col-sm-12 col-md-10 col-lg-10">
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#introduction">Wprowadzenie</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#functionality">Funkcjonalności</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">O nas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Formularz</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </nav>
 
-<div class="introduction">
+<div class="introduction" id="introduction">
     <div id="my-carousel" class="carousel slide carousel-fade" data-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active carousel-item-1">
+            <div class="carousel-item active carousel-item-1 carousel-height">
                 <div class="container">
                     <div class="carousel-caption">
                         <h1 class="font-special light-rose">Chcesz</h1>
                         <h1 class="font-special light-rose">schudnąć?</h1>
-                        <a href="#contact"><button class="main-button">CHANGE YOUR LIFE</button></a>
+                        <a href="#contact">
+                            <button class="main-button">CHANGE YOUR LIFE</button>
+                        </a>
                     </div>
                 </div>
             </div>
-            <div class="carousel-item carousel-item-2">
+            <div class="carousel-item carousel-item-2 carousel-height">
                 <div class="container">
                     <div class="carousel-caption">
                         <h1 class="font-special light-rose">Nie wiesz</h1>
                         <h1 class="font-special light-rose">od czego</h1>
                         <h1 class="font-special light-rose">zacząć?</h1>
-                        <a href="#contact"><button class="main-button">CHANGE YOUR LIFE</button></a>
+                        <a href="#contact">
+                            <button class="main-button">CHANGE YOUR LIFE</button>
+                        </a>
                     </div>
                 </div>
             </div>
-            <div class="carousel-item carousel-item-3">
+            <div class="carousel-item carousel-item-3 carousel-height">
                 <div class="container">
                     <div class="carousel-caption">
                         <h1 class="font-special light-rose">Let's do <span class="font-special2 orange">IT</span></h1>
                         <h1 class="font-special light-rose">with <span class="font-special2 orange">US!</span></h1>
-                        <a href="#contact"><button class="main-button">CHANGE YOUR LIFE</button></a>
+                        <a href="#contact">
+                            <button class="main-button">CHANGE YOUR LIFE</button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -80,34 +102,36 @@
             </div>
         </div>
         <div class="col-lg-3 col-md-12 col-sm-12  mb-4">
-            <div class="functionality-card"">
-                <img class="card-img-top" src="img/orzechy.jpg" alt="orzechy">
-                <div class="functionality-card-body">
-                    <h4 class="functionality-card-title">Dobierzesz zdrowe produkty</h4>
-                </div>
+            <div class="functionality-card"
+            ">
+            <img class="card-img-top" src="img/orzechy.jpg" alt="orzechy">
+            <div class="functionality-card-body">
+                <h4 class="functionality-card-title">Dobierzesz zdrowe produkty</h4>
             </div>
         </div>
-        <div class="col-lg-3 col-md-12 col-sm-12 mb-4">
-            <div class="functionality-card"">
-                <img class="card-img-top" src="img/sok.jpg" alt="sok">
-                <div class="functionality-card-body">
-                    <h4 class="functionality-card-title">Schudniesz</h4>
-                </div>
-            </div>
+    </div>
+    <div class="col-lg-3 col-md-12 col-sm-12 mb-4">
+        <div class="functionality-card"
+        ">
+        <img class="card-img-top" src="img/sok.jpg" alt="sok">
+        <div class="functionality-card-body">
+            <h4 class="functionality-card-title">Schudniesz</h4>
         </div>
-        <div class="col-lg-3 col-md-12 col-sm-12 mb-4">
-            <div class="functionality-card"">
-                <img class="card-img-top" src="img/losos.jpg" alt="losos">
-                <div class="functionality-card-body">
-                    <h4 class="functionality-card-title">Poczujesz sie lepiej</h4>
-                </div>
-            </div>
-        </div>
-            <button class="functionality-button btn btn-lg"><a class="functionality-text-button" href="#functionality-more">Dowiedz się więcej!</a></button>
-        </div>
+    </div>
 </div>
-
-
+<div class="col-lg-3 col-md-12 col-sm-12 mb-4">
+    <div class="functionality-card"
+    ">
+    <img class="card-img-top" src="img/losos.jpg" alt="losos">
+    <div class="functionality-card-body">
+        <h4 class="functionality-card-title">Poczujesz sie lepiej</h4>
+    </div>
+</div>
+</div>
+<button class="functionality-button btn btn-lg"><a class="functionality-text-button" href="#functionality-more">Dowiedz
+    się więcej!</a></button>
+</div>
+</div>
 <div id="contact" class="section-contact">
     <div class="contact-container">
         <div class="contact-title">
@@ -143,7 +167,6 @@
             </div>
         </div>
     </div>
-
     <!-- about-->
     <div class="about">
         <h1 class="display-3 about-header">O nas</h1>
@@ -157,11 +180,13 @@
                         <h2>Paweł Racki</h2>
                     </div>
                     <div class="about-text">
-                        <p>cos tam o nas.cos tam o nas cos tam o nas cos tam o nas cos tam o nas cos tam o nas costam o nas.cos tam o nas </p>
+                        <p>cos tam o nas.cos tam o nas cos tam o nas cos tam o nas cos tam o nas cos tam o nas costam o
+                            nas.cos tam o nas </p>
                         <p>Więcej o mnie: </p>
                         <div class="about-icons">
                             <a href="https://......."><img class="about-icons2" src="img/stronka.png" alt="www"></a>
-                            <a href="https://github.com/Martagda"><img class="about-icons2" src="img/GitHub-Mark-64px.png" alt="github"></a>
+                            <a href="https://github.com/Martagda"><img class="about-icons2"
+                                                                       src="img/GitHub-Mark-64px.png" alt="github"></a>
                             <a href="linked"><img class="about-icons2" src="img/in.png" alt="in"></a>
                             <a href="mailto:burzka@gmail.com"><img class="about-icons2" src="img/mail.png" alt="e-mail"></a>
                         </div>
@@ -175,11 +200,13 @@
                         <h2>Patryk Fijałkowski</h2>
                     </div>
                     <div class="about-text">
-                        <p>cos tam o nas.cos tam o nas cos tam o nas cos tam o nas cos tam o nas cos tam o nas costam o nas.cos tam o nas </p>
+                        <p>cos tam o nas.cos tam o nas cos tam o nas cos tam o nas cos tam o nas cos tam o nas costam o
+                            nas.cos tam o nas </p>
                         <p>Więcej o mnie: </p>
                         <div class="about-icons">
                             <a href="https://......."><img class="about-icons2" src="img/stronka.png" alt="www"></a>
-                            <a href="https://github.com/Martagda"><img class="about-icons2" src="img/GitHub-Mark-64px.png" alt="github"></a>
+                            <a href="https://github.com/Martagda"><img class="about-icons2"
+                                                                       src="img/GitHub-Mark-64px.png" alt="github"></a>
                             <a href="linked"><img class="about-icons2" src="img/in.png" alt="in"></a>
                             <a href="mailto:burzka@gmail.com"><img class="about-icons2" src="img/mail.png" alt="e-mail"></a>
                         </div>
@@ -192,29 +219,33 @@
                         <h2>Marcin Karwacki</h2>
                     </div>
                     <div class="about-text">
-                        <p>cos tam o nas.cos tam o nas cos tam o nas cos tam o nas cos tam o nas cos tam o nas costam o nas.cos tam o nas </p>
+                        <p>cos tam o nas.cos tam o nas cos tam o nas cos tam o nas cos tam o nas cos tam o nas costam o
+                            nas.cos tam o nas </p>
                         <p>Więcej o mnie: </p>
                         <div class="about-icons">
                             <a href="https://......."><img class="about-icons2" src="img/stronka.png" alt="www"></a>
-                            <a href="https://github.com/Martagda"><img class="about-icons2" src="img/GitHub-Mark-64px.png" alt="github"></a>
+                            <a href="https://github.com/Martagda"><img class="about-icons2"
+                                                                       src="img/GitHub-Mark-64px.png" alt="github"></a>
                             <a href="linked"><img class="about-icons2" src="img/in.png" alt="in"></a>
                             <a href="mailto:burzka@gmail.com"><img class="about-icons2" src="img/mail.png" alt="e-mail"></a>
                         </div>
                     </div>
                 </div>
                 <div class="about-photo col-lg-3 col-md-6 col-sm-6">
-                <a><img src="img/marta4.jpg" class="img-fluid about-image" alt="photoMK"/></a>
+                    <a><img src="img/marta4.jpg" class="img-fluid about-image" alt="photoMK"/></a>
                 </div>
                 <div class="about-text-main col-lg-3 col-md-6 col-sm-6">
                     <div class="about-title">
                         <h2>Marta Burzyńska</h2>
                     </div>
                     <div class="about-text">
-                        <p>cos tam o nas.cos tam o nas cos tam o nas cos tam o nas cos tam o nas cos tam o nas costam o nas.cos tam o nas </p>
+                        <p>cos tam o nas.cos tam o nas cos tam o nas cos tam o nas cos tam o nas cos tam o nas costam o
+                            nas.cos tam o nas </p>
                         <p>Więcej o mnie: </p>
                         <div class="about-icons">
                             <a href="https://......."><img class="about-icons2" src="img/stronka.png" alt="www"></a>
-                            <a href="https://github.com/Martagda"><img class="about-icons2" src="img/GitHub-Mark-64px.png" alt="github"></a>
+                            <a href="https://github.com/Martagda"><img class="about-icons2"
+                                                                       src="img/GitHub-Mark-64px.png" alt="github"></a>
                             <a href="linked"><img class="about-icons2" src="img/in.png" alt="in"></a>
                             <a href="mailto:burzka@gmail.com"><img class="about-icons2" src="img/mail.png" alt="e-mail"></a>
                         </div>
@@ -223,13 +254,11 @@
                 <div class="about-photo col-lg-3 col-md-6 col-sm-6">
                     <a><img src="img/marta4.jpg" class="img-fluid about-image" alt="photoMB"/></a>
                 </div>
-                </div>
-            </div>
             </div>
         </div>
     </div>
-
-
+</div>
+</div>
 <div class="functionality-more content-section" id="functionality-more">
     <div class="container">
         <header class="functionality-more-header my-4">
@@ -342,10 +371,7 @@
         </div>
     </div>
 </div>
-
-
 <footer></footer>
-
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -355,6 +381,5 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
         integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
         crossorigin="anonymous"></script>
-
 </body>
 </html>

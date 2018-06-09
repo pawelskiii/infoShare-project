@@ -2,6 +2,7 @@
 
 COLORS:
 
+
 #EFF0F0 - change from #EDEFEF - WHITE / LIGHT GREY
 #FEEDDF - change from #EDEFEF - LIGHT ROSE
 #096C3E - change from #00753F - DARK GREEN
@@ -100,68 +101,53 @@ body {
 
 /* ############### navigation ############### */
 
-.nav_bar {
+.navbar {
     z-index: 1;
-    width: 100%;
-    margin: auto;
-    height: 60px;
-    position: fixed;
-    display: flex;
-    justify-content: space-between;
+    background-color: #F4F4F4;
+    box-shadow: 0px -5px 25px 2px rgba(0, 0, 0, 0.75);
 }
 
-.nav_list {
-    display: flex;
-    align-items: center;
-    margin: auto 70px;
-}
-
-ul .nav_list {
-    margin-right: 20px;
-}
-
-.nav_list > li {
-    list-style: none;
-    width: auto;
-    margin: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 20px;
-    font-family: 'Vollkorn', serif;
-    font-size: 18px;
-    color: #FC7700;
-    text-align: center;
-}
-
-.nav_list > li:hover {
-    list-style: none;
-    width: auto;
-    margin: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 20px;
-    font-family: 'Vollkorn', serif;
-    font-size: 18px;
-    color: #00753F;
-    border-bottom: 2px solid #00753F;
-    text-align: center;
-}
-
-.nav_bar .logo {
-    margin: auto 20px;
-    background-image: url(img/logo.png);
-    height: 53px;
-    background-position: center;
-    width: 136px;
+.navbar-brand {
+    background-image: url("img/logo.png");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
+    height: 53px;
+    width: 136px;
+}
+
+.navbar-nav {
+    padding-top: 0;
+}
+
+.navbar-toggler:not(:disabled):not(.disabled) {
+    cursor: pointer;
+    margin-right: 5%;
+}
+
+.navbar-collapse {
+    flex-grow: 0 !important;
+}
+
+.nav-link {
+    justify-content: center;
+    font-family: 'Raleway', sans-serif;
+    padding: 0 1rem !important;
+    font-size: 1.4rem;
+    transition: color 0.5s ease;
+    color: #FC7700 !important;
+}
+
+.nav-link:hover {
+    justify-content: center;
+    font-family: 'Raleway', sans-serif;
+    padding: 0 1.1rem !important;
+    font-size: 1.4rem;
+    color: #00753F !important;
 }
 
 /* ############### introduction ############### */
 
-.carousel-item {
+.carousel-height {
     height: 1000px;
 }
 
@@ -214,7 +200,7 @@ ul .nav_list {
     font-family: 'Amatic SC', cursive;
     text-align: center;
     background-color: none;
-    padding-bottom:5rem;
+    padding-bottom: 5rem;
     padding-top: 5rem;
 }
 
@@ -260,114 +246,114 @@ ul .nav_list {
 /*############### form ###############*/
 
 .contact-container {
-width: 600px;
-height: 800px;
-margin: 0 auto;
+    width: 600px;
+    height: 800px;
+    margin: 0 auto;
 }
 
 .contact-title {
-width: 100%;
-text-align: center;
-padding-top: 60px; /*póki nie ma reszty strony*/
+    width: 100%;
+    text-align: center;
+    padding-top: 60px; /*póki nie ma reszty strony*/
 }
 
 .contact-header {
-text-transform: uppercase;
-text-decoration: underline;
-font-size: 2rem;
-text-align: center;
-margin-bottom: 10px;
+    text-transform: uppercase;
+    text-decoration: underline;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 .contact-text {
-font-size: 14px;
-max-width: 480px;
-margin: 0 auto;
-margin-bottom: 30px;
+    font-size: 14px;
+    max-width: 480px;
+    margin: 0 auto;
+    margin-bottom: 30px;
 }
 
 .contact-columns {
-width: 100%;
-display: flex;
-flex-direction: row;
-justify-content: space-between;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .contact-form {
-width: 60%;
-display: flex;
-flex-direction: column;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
 }
 
 .contact-form input, .contact-form textarea {
-padding: 15px;
-background: #017601;
-border: none;
-opacity: .7;
-margin-bottom: 15px;
-color: #FFF;
-font-size: 1rem;
-font-family: inherit;
+    padding: 15px;
+    background: #017601;
+    border: none;
+    opacity: .7;
+    margin-bottom: 15px;
+    color: #FFF;
+    font-size: 1rem;
+    font-family: inherit;
 }
 
 .contact-form textarea {
-resize: none;
+    resize: none;
 }
 
 .contact-input::placeholder {
-color: #FFF;
+    color: #FFF;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus,
-.contact-form button:focus
-{
-opacity: 1;
-outline: none;
-font-weight: 900;
-box-shadow: 0 20px 40px rgba(1, 118, 1, 0.4);
+.contact-form button:focus {
+    opacity: 1;
+    outline: none;
+    font-weight: 900;
+    box-shadow: 0 20px 40px rgba(1, 118, 1, 0.4);
 }
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
--webkit-appearance: none;
--moz-appearance: none;
-appearance: none;
-margin: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
 }
 
 .section-contact .section-contact-action {
-text-transform: uppercase;
-font-weight: 300;
-font-size: 20px;
-height: 55px;
-padding: 0;
-margin: 0;
-box-sizing: border-box;
-width: 170px;
-border: none;
-background: #017601; /*#7FE93A  96DB3C*/
-color: white;
-box-shadow: 0 20px 40px rgba(1, 118, 1, 0.4);
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 20px;
+    height: 55px;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    width: 170px;
+    border: none;
+    background: #017601; /*#7FE93A  96DB3C*/
+    color: white;
+    box-shadow: 0 20px 40px rgba(1, 118, 1, 0.4);
 }
 
 .contact-address {
-width: 30%;
-display: flex;
-flex-direction: column;
-background: url(https://cdn.pixabay.com/photo/2016/08/13/01/54/apple-1590131_960_720.png) no-repeat bottom;
-background-size: contain;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    background: url(https://cdn.pixabay.com/photo/2016/08/13/01/54/apple-1590131_960_720.png) no-repeat bottom;
+    background-size: contain;
 }
 
 .section-contact .contact-address-text p:first-child {
-margin: 0;
-font-weight: 650;
-text-transform: uppercase;
-font-size: 14px;
+    margin: 0;
+    font-weight: 650;
+    text-transform: uppercase;
+    font-size: 14px;
 }
+
 .section-contact .contact-address-text p:last-child {
-margin-top: 0;
-font-size: 13px;
+    margin-top: 0;
+    font-size: 13px;
 }
 
 /* ############### about ############### */
@@ -376,14 +362,14 @@ font-size: 13px;
     font-family: 'Amatic SC', cursive;
     text-align: center;
     background-color: none;
-    padding-bottom:5rem;
+    padding-bottom: 5rem;
     padding-top: 5rem;
 }
 
 .about-container {
     margin-left: 5%;
     margin-right: 5%;
-    justify-content:space-around;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -411,7 +397,7 @@ font-size: 13px;
     margin-bottom: 1rem;
     opacity: 0.5;
     background-image: linear-gradient(to top, #d5d4d0 0%, #d5d4d0 1%, #eeeeec 31%, #efeeec 75%, #e9e9e7 100%);
-    }
+}
 
 .about-image {
     width: 95%;
@@ -466,7 +452,7 @@ font-size: 13px;
     font-family: 'Amatic SC', cursive;
     text-align: center;
     background-color: none;
-    padding-bottom:5rem;
+    padding-bottom: 5rem;
     padding-top: 5rem;
 }
 
@@ -479,6 +465,7 @@ font-size: 13px;
     bottom: 0;
     z-index: 1;
 }
+
 .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4 {
     font-family: 'Amatic SC', cursive;
     font-size: 3rem;
@@ -501,7 +488,7 @@ font-size: 13px;
     line-height: 1.5rem;
 }
 
-.functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7 {
+.functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-7 {
     font-family: 'Amatic SC', cursive;
     font-size: 3rem;
     color: black;
@@ -524,14 +511,12 @@ font-size: 13px;
 }
 
 .caption-content {
-     margin-top: 3rem;
+    margin-top: 3rem;
 }
-
 
 .functionality-more-caption-1 {
     margin-left: 4.9rem;
 }
-
 
 /*############### media ###############*/
 
@@ -545,13 +530,12 @@ font-size: 13px;
         width: 45%;
     }
 
-
     .functionality-more-caption-1 {
         margin-left: 2.6rem;
     }
 
     .functinality-more-text-1 {
-        font-size: 2r.5em;
+        font-size: 2 r .5em;
         margin-top: 1.2rem;
         margin-left: 2rem;
         line-height: 2rem;
@@ -570,6 +554,7 @@ font-size: 13px;
         margin-left: 2rem;
         line-height: 2rem;
     }
+
     .functinality-more-text-5 {
         font-size: 2.5rem;
         margin-top: 1.5rem;
@@ -577,7 +562,7 @@ font-size: 13px;
         line-height: 2.2rem;
     }
 
-    .functinality-more-text-3,.functinality-more-text-6 {
+    .functinality-more-text-3, .functinality-more-text-6 {
         font-size: 2.5rem;
         margin-top: 1rem;
         margin-left: 2rem;
@@ -599,12 +584,26 @@ font-size: 13px;
     }
 }
 
-
 /*********************************************************************************/
 /*do 992 px - large*/
 /*********************************************************************************/
 
 @media (max-width: 992px) {
+
+    .navbar-brand {
+        height: 48px;
+        width: 124px;
+    }
+
+    .nav-link {
+        padding: 0 .5rem !important;
+        font-size: 1.09rem;
+    }
+
+    .nav-link:hover {
+        padding: 0 .5rem !important;
+        font-size: 1.09rem;
+    }
 
     .functionality {
         margin-right: 1%;
@@ -647,6 +646,7 @@ font-size: 13px;
         margin-left: 2rem;
         line-height: 3rem;
     }
+
     .functinality-more-text-5 {
         font-size: 4rem;
         margin-top: 1rem;
@@ -654,7 +654,7 @@ font-size: 13px;
         line-height: 5rem;
     }
 
-    .functinality-more-text-3,.functinality-more-text-6 {
+    .functinality-more-text-3, .functinality-more-text-6 {
         font-size: 4rem;
         margin-top: 1rem;
         margin-left: 2rem;
@@ -676,14 +676,13 @@ font-size: 13px;
     }
 }
 
-
 /*********************************************************************************/
 /*do 768 px - tablet*/
 /*********************************************************************************/
 
 @media (max-width: 768px) {
 
-    .carousel-item {
+    .carousel-height {
         height: 900px;
     }
 
@@ -733,6 +732,7 @@ font-size: 13px;
         margin-left: 2rem;
         line-height: 3rem;
     }
+
     .functinality-more-text-5 {
         font-size: 4rem;
         margin-top: 1rem;
@@ -740,7 +740,7 @@ font-size: 13px;
         line-height: 5rem;
     }
 
-    .functinality-more-text-3,.functinality-more-text-6 {
+    .functinality-more-text-3, .functinality-more-text-6 {
         font-size: 4rem;
         margin-top: 1rem;
         margin-left: 2rem;
@@ -763,12 +763,59 @@ font-size: 13px;
 }
 
 /*********************************************************************************/
+/*do 767 px - tablet*/
+/*********************************************************************************/
+
+@media (max-width: 767px) {
+
+    .navbar-nav {
+        margin-top: 0.5rem;
+        padding-top: 0.7rem;
+        border-top: 1px solid gray;
+    }
+
+    .nav-item:nth-child(even) {
+        background-color: #E5E5E5;
+    }
+
+    .nav-link {
+        line-height: 2.3rem;
+        font-size: 1.6rem;
+    }
+
+    .nav-link:hover {
+        line-height: 2.3rem;
+        font-size: 1.6rem;
+    }
+}
+
+/*********************************************************************************/
 /*do 576 px - smartphone*/
 /*********************************************************************************/
 
 @media (max-width: 576px) {
 
-    .carousel-item {
+    .navbar-nav {
+        margin-top: 0.5rem;
+        padding-top: 0.6rem;
+        border-top: 1px solid gray;
+    }
+
+    .nav-item:nth-child(even) {
+        background-color: #E5E5E5;
+    }
+
+    .nav-link {
+        line-height: 2.1rem;
+        font-size: 1.4rem;
+    }
+
+    .nav-link:hover {
+        line-height: 2.1rem;
+        font-size: 1.4rem;
+    }
+
+    .carousel-height {
         height: 800px;
     }
 
@@ -784,6 +831,7 @@ font-size: 13px;
     .functionality-card-title {
         font-size: 2.5rem;
     }
+
     .functionality-button {
         width: 80%;
     }
@@ -816,6 +864,7 @@ font-size: 13px;
         margin-left: 2rem;
         line-height: 1.2rem;
     }
+
     .functinality-more-text-5 {
 
         font-size: 1.8rem;
@@ -824,7 +873,7 @@ font-size: 13px;
         line-height: 1.4rem;
     }
 
-    .functinality-more-text-3,.functinality-more-text-6 {
+    .functinality-more-text-3, .functinality-more-text-6 {
         font-size: 1.8rem;
         margin-top: 1rem;
         margin-left: 2rem;
@@ -853,7 +902,32 @@ font-size: 13px;
 
 @media (max-width: 400px) {
 
-    .carousel-item {
+    .navbar-nav {
+        margin-top: 0.5rem;
+        padding-top: 0.5rem;
+        border-top: 1px solid gray;
+    }
+
+    .navbar-brand {
+        height: 40px;
+        width: 105px;
+    }
+
+    .nav-item:nth-child(even) {
+        background-color: #E5E5E5;
+    }
+
+    .nav-link {
+        line-height: 2rem;
+        font-size: 1.2rem;
+    }
+
+    .nav-link:hover {
+        line-height: 2rem;
+        font-size: 1.2rem;
+    }
+
+    .carousel-height {
         height: 700px;
     }
 
@@ -897,6 +971,7 @@ font-size: 13px;
         margin-left: 2rem;
         line-height: 1rem;
     }
+
     .functinality-more-text-5 {
 
         font-size: 1.5rem;
@@ -905,7 +980,7 @@ font-size: 13px;
         line-height: 1rem;
     }
 
-    .functinality-more-text-3,.functinality-more-text-6 {
+    .functinality-more-text-3, .functinality-more-text-6 {
         font-size: 1.5rem;
         margin-top: 1rem;
         margin-left: 2rem;
@@ -928,15 +1003,38 @@ font-size: 13px;
 
 }
 
-
-
 /*********************************************************************************/
 /*320px do 350 px - extra small smartphone*/
 /*********************************************************************************/
 
 @media (max-width: 350px) {
 
-    .carousel-item {
+    .navbar-nav {
+        margin-top: 0.5rem;
+        padding-top: 0.5rem;
+        border-top: 1px solid gray;
+    }
+
+    .navbar-brand {
+        height: 40px;
+        width: 105px;
+    }
+
+    .nav-item:nth-child(even) {
+        background-color: #E5E5E5;
+    }
+
+    .nav-link {
+        line-height: 1.9rem;
+        font-size: 1.2rem;
+    }
+
+    .nav-link:hover {
+        line-height: 1.9rem;
+        font-size: 1.2rem;
+    }
+
+    .carousel-height {
         height: 600px;
     }
 
@@ -976,6 +1074,7 @@ font-size: 13px;
         margin-left: 1.6rem;
         line-height: 0.7rem;
     }
+
     .functinality-more-text-5 {
 
         font-size: 1.5rem;
@@ -984,7 +1083,7 @@ font-size: 13px;
         line-height: 0.7rem;
     }
 
-    .functinality-more-text-3,.functinality-more-text-6 {
+    .functinality-more-text-3, .functinality-more-text-6 {
         font-size: 1.5rem;
         margin-top: 0.7rem;
         margin-left: 2rem;
@@ -1004,26 +1103,4 @@ font-size: 13px;
         margin-left: 2rem;
         line-height: 0.7rem;
     }
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
