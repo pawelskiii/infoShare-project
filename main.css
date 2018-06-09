@@ -634,7 +634,7 @@ a.phone-action:hover {
 @media (max-width: 768px) {
 
 
-    .carousel-item {
+    .carousel-height {
         height: 900px;
     }
 
@@ -672,8 +672,12 @@ a.phone-action:hover {
         padding: 0.3rem 0.3rem 0 0.3rem;
     }
 
+    .caption-content {
+        margin-top: 6rem;
+    }
+
    .functionality-more-caption-1 {
-        margin-left: 4rem;
+        margin-left: 10rem;
     }
 
     .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
@@ -862,7 +866,7 @@ a.phone-action:hover {
 
 @media (max-width: 541px) {
     .functionality-more-caption-1 {
-        margin-left: 2.1rem;
+        margin-left: 5rem;
     }
 
     .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
@@ -873,6 +877,7 @@ a.phone-action:hover {
 
     .functinality-more-text-4, .functinality-more-text-7 {
         margin: 0 0 0 2rem;
+        line-height: 2.5rem;
     }
 
     .functinality-more-text-5 {
@@ -1113,8 +1118,12 @@ a.phone-action:hover {
         height: 3.5rem;
     }
 
+    .caption-content {
+        margin-top: 2rem;
+    }
+
     .functionality-more-caption-1 {
-        margin-left: 4rem;
+        margin-left: 3rem;
     }
 
     .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
