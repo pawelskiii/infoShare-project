@@ -2,6 +2,7 @@
 
 COLORS:
 
+
 #EFF0F0 - change from #EDEFEF - WHITE / LIGHT GREY
 #FEEDDF - change from #EDEFEF - LIGHT ROSE
 #096C3E - change from #00753F - DARK GREEN
@@ -41,12 +42,14 @@ body {
     margin: 0 auto;
     padding: 0;
 }
-.scrolling-behavior{
-    overflow: scroll;
-    scroll-behavior: smooth;
-}
 
 .main-button {
+    text-transform: uppercase;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    font-size: 1.125rem;
+    color: #FEEDDF;
+    margin-top: 15px;
     width: 210px;
     height: 55px;
     border: none;
@@ -54,22 +57,9 @@ body {
     background: #F57D19;
 }
 
-.text-button {
-    text-transform: uppercase;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 300;
-    font-size: 1.125rem;
-    color: #FEEDDF;
-}
-
 .main-button:hover {
     opacity: 0.8;
     transition: opacity .2s ease-in-out;
-}
-
-.main-button a:hover {
-    color: #FEEDDF;
-    text-decoration: none;
 }
 
 .font-normal {
@@ -141,6 +131,7 @@ body {
     transition: color 0.5s ease ;
     color: #FC7700 !important;
 }
+
 .nav-link:hover {
     justify-content: center;
     font-family: 'Raleway', sans-serif;
@@ -150,7 +141,7 @@ body {
 }
 /* ############### introduction ############### */
 
-.carousel-item {
+.carousel-height {
     height: 1000px;
 }
 
@@ -202,9 +193,8 @@ body {
 .functionality-header {
     font-family: 'Amatic SC', cursive;
     text-align: center;
-    background-color: none;
-    padding-bottom:5rem;
-    padding-top: 5rem;
+    background-color: transparent;
+    padding: 5rem 0 5rem 0;
 }
 
 .functionality-card-title {
@@ -215,8 +205,8 @@ body {
 .functionality-card-body {
     opacity: 0.5;
     background-image: linear-gradient(to top, #d5d4d0 0%, #d5d4d0 1%, #eeeeec 31%, #efeeec 75%, #e9e9e7 100%);
-    padding-top: 2.5rem;
-    padding-bottom: 1.5rem;
+    padding: 2.5rem 1rem 1.5rem 1rem;
+    height: 150px;
 }
 
 .functionality-button {
@@ -225,9 +215,9 @@ body {
     border: none;
     cursor: pointer;
     background: #F57D19;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2rem;
+    margin: 2rem auto;
+    text-align: center;
+    padding-top: 0.7rem;
 }
 
 .functionality-button:hover {
@@ -241,208 +231,143 @@ body {
 }
 
 .functionality-text-button {
-    font-family: 'Montserrat', sans-serif;
     font-size: 1.8rem;
     color: #EFF0F0;
 }
 
 /*############### form ###############*/
 
-.contact-container {
-    width: 600px;
-    height: 800px;
-    margin: 0 auto;
+.contact .font-special {
+    color: #F57D19;
+    font-size: 3rem;
 }
 
-.contact-title {
-    width: 100%;
-    text-align: center;
-    padding-top: 60px; /*póki nie ma reszty strony*/
+.contact .font-special2 {
+    color: #096C3E;
 }
 
-.contact-header {
-    text-transform: uppercase;
-    text-decoration: underline;
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 10px;
+.form-group input, .form-group textarea {
+    border-radius: 0;
+    border-color: #F57D19;
+    background-color: none;
+    color: #096C3E;
 }
 
-.contact-text {
-    font-size: 14px;
-    max-width: 480px;
-    margin: 0 auto;
-    margin-bottom: 30px;
+.form-group input::placeholder, .form-group textarea::placeholder {
+    color: #F57D19;
 }
 
-.contact-columns {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.form-group input:focus,
+.form-group textarea:focus {
+    -webkit-box-shadow: 0px 0px 10px 3px rgba(245,125,25,0.75);
+    -moz-box-shadow: 0px 0px 10px 3px rgba(245, 125, 25, 0.75);
+    box-shadow: 0px 0px 10px 3px rgba(245,125,25,0.75);
+    border-color: #F57D19;
+    color: #096C3E;
 }
 
-.contact-form {
-    width: 60%;
-    display: flex;
-    flex-direction: column;
-}
-
-.contact-form input, .contact-form textarea {
-    padding: 15px;
-    background: #017601;
-    border: none;
-    opacity: .7;
-    margin-bottom: 15px;
-    color: #FFF;
-    font-size: 1rem;
-    font-family: inherit;
-}
-
-.contact-form textarea {
+.form-group textarea {
     resize: none;
 }
 
-.contact-input::placeholder {
-    color: #FFF;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus,
-.contact-form button:focus
-{
-    opacity: 1;
-    outline: none;
-    font-weight: 900;
-    box-shadow: 0 20px 40px rgba(1, 118, 1, 0.4);
-}
-
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+.form-group input[type=number]::-webkit-inner-spin-button,
+.form-group input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     margin: 0;
 }
 
-.section-contact .section-contact-action {
-    text-transform: uppercase;
-    font-weight: 300;
-    font-size: 20px;
-    height: 55px;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    width: 170px;
-    border: none;
-    background: #017601; /*#7FE93A  96DB3C*/
-    color: white;
-    box-shadow: 0 20px 40px rgba(1, 118, 1, 0.4);
+input[type=number] {
+    -moz-appearance:textfield;
 }
 
-.contact-address {
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    background: url(https://cdn.pixabay.com/photo/2016/08/13/01/54/apple-1590131_960_720.png) no-repeat bottom;
-    background-size: contain;
+.logo-button:hover {
+    background: url('img/logo.png') no-repeat center;
+    background-size: 60%;
+    border: solid 1px #F57D19;
+    -webkit-box-shadow: 0px 0px 10px 3px rgba(245,125,25,0.75);
+    -moz-box-shadow: 0px 0px 10px 3px rgba(245,125,25,0.75);
+    box-shadow: 0px 0px 10px 3px rgba(245,125,25,0.75);
+    opacity: 1;
+    color: transparent;
+    text-transform: none;
+    transition: background .25s ease-out;
 }
 
-.section-contact .contact-address-text p:first-child {
-    margin: 0;
-    font-weight: 650;
-    text-transform: uppercase;
-    font-size: 14px;
+footer {
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+    background-color: #001401;
 }
-.section-contact .contact-address-text p:last-child {
-    margin-top: 0;
-    font-size: 13px;
+
+.footer-text {
+    text-align: center;
+}
+
+.footer-text .font-special {
+    font-size: 2rem;
+}
+
+hr.light-rose {
+    border-top: 1px solid #FEEDDF;
+    width: 60%;
+    margin-top: .2rem;
+    margin-bottom: 1rem;
+}
+
+hr.dark-green {
+    border-color: #096C3E;
+    width: 100%;
+    margin: 5rem 0 2rem 0;
+}
+
+a.phone-action:hover {
+    color: #FEEDDF;
 }
 
 /* ############### about ############### */
 
+
 .about-header {
     font-family: 'Amatic SC', cursive;
     text-align: center;
-    background-color: none;
-    padding-bottom:5rem;
-    padding-top: 5rem;
+    background-color: transparent;
+    padding: 5rem 0 5rem 0;
 }
 
 .about-container {
-    margin-left: 5%;
-    margin-right: 5%;
-    justify-content:space-around;
-    align-items: center;
+    margin: auto 5% auto 5%;
 }
 
-.about-row-2 {
-    margin-top: 3%;
+.about-card-title {
+    font-family: 'Amatic SC', cursive;
+    font-size: 3rem;
 }
 
-.about-text-main {
-    width: 95%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.about-title {
-    width: 95%;
-    height: auto;
-    text-align: center;
+.about-card-body p {
     font-size: 1.5rem;
-    font-style: normal;
-    color: black;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    margin-bottom: 1rem;
+    padding-top: 1.2rem;
+}
+
+.about-card-body {
     opacity: 0.5;
     background-image: linear-gradient(to top, #d5d4d0 0%, #d5d4d0 1%, #eeeeec 31%, #efeeec 75%, #e9e9e7 100%);
-}
-
-.about-image {
-    width: 95%;
-    height: auto;
-}
-
-.about-text {
-    height: auto;
-    text-decoration: none;
-    color: black;
-    font-size: 1.2rem;
-    width: 95%;
-    text-align: left;
-    font-size: 1.5rem;
-    font-style: normal;
-    color: black;
-    margin-bottom: 0.7rem;
-    opacity: 0.5;
-    background-image: linear-gradient(to top, #d5d4d0 0%, #d5d4d0 1%, #eeeeec 31%, #efeeec 75%, #e9e9e7 100%);
-}
-
-.about-text p {
-    padding: 5%;
-    padding-bottom: 0%;
-}
-
-.about-icons {
-    width: 95%;
-    text-align: center;
-    font-size: 1.5rem;
-    font-style: normal;
-    color: black;
-    margin-top: 2rem;
-    margin-bottom: 0.7rem;
-    opacity: 0.5;
-    background-image: linear-gradient(to top, #d5d4d0 0%, #d5d4d0 1%, #eeeeec 31%, #efeeec 75%, #e9e9e7 100%);
+    padding: 3rem 1rem 1.5rem 1rem;
+    height: 400px;
 }
 
 .about-icons2 {
     width: 4rem;
     height: 4rem;
     padding: 1rem;
+}
+
+.about-card-footer img.about-icons2:hover {
+    background-color: #F57D19;
+    width: 4.5rem;
+    height: 4.5rem;
+    transition:.2s ease-in-out;
 }
 
 /*#############functionality-more########*/
@@ -454,9 +379,8 @@ input[type=number]::-webkit-outer-spin-button {
 .functionality-more-header {
     font-family: 'Amatic SC', cursive;
     text-align: center;
-    background-color: none;
-    padding-bottom:5rem;
-    padding-top: 5rem;
+    background-color: transparent;
+    padding: 5rem 0 5rem 0;
 }
 
 .functionality-more-item-1 .caption {
@@ -468,131 +392,119 @@ input[type=number]::-webkit-outer-spin-button {
     bottom: 0;
     z-index: 1;
 }
-.functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4 {
+
+.functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
+.functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7, .functinality-more-text-8 {
     font-family: 'Amatic SC', cursive;
     font-size: 3rem;
-    color: #EFF0F0;
-    margin-top: 2rem;
-    margin-left: 2rem;
+    margin: 2rem 0 0 2rem;
     text-decoration: solid;
     text-align: center;
+}
+
+.functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4 {
+    color: #EFF0F0;
     line-height: 1rem;
 }
 
-.functinality-more-text-5 {
-    font-family: 'Amatic SC', cursive;
-    font-size: 3rem;
+.functinality-more-text-5, .functinality-more-text-8 {
     color: #EFF0F0;
-    margin-top: 2rem;
-    margin-left: 2rem;
-    text-decoration: solid;
-    text-align: center;
     line-height: 1.5rem;
 }
 
 .functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7 {
-    font-family: 'Amatic SC', cursive;
-    font-size: 3rem;
-    color: black;
-    margin-top: 2rem;
-    margin-left: 2rem;
-    text-decoration: solid;
-    text-align: center;
+    color: #001401;
     line-height: 1rem;
 }
 
-.functinality-more-text-8 {
-    font-family: 'Amatic SC', cursive;
-    font-size: 3rem;
-    color: #EFF0F0;
-    margin-top: 2rem;
-    margin-left: 2rem;
-    text-decoration: solid;
-    text-align: center;
-    line-height: 1.5rem;
-}
-
 .caption-content {
-    margin-top: 3rem;
+     margin-top: 3rem;
 }
-
 
 .functionality-more-caption-1 {
     margin-left: 4.9rem;
 }
 
-
 /*############### media ###############*/
 
 /*********************************************************************************/
-/*do 1200 px - xlarge*/
+/*do 1470 px*/
 /*********************************************************************************/
 
-@media (max-width: 1200px) {
+@media (max-width: 1470px) {
+
+    .about-card-body {
+        padding: 2rem 1rem 1.2rem 1rem;
+    }
+
+    .about-card-body p {
+        padding-top: 0.5rem;
+    }
+
+    .about-icons2 {
+        width: 3rem;
+        height: 3rem;
+        padding: 0.5rem;
+    }
+
+    .about-card-footer img.about-icons2:hover {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+}
+
+/*********************************************************************************/
+/*do 1199 px - xlarge*/
+/*********************************************************************************/
+
+@media (max-width: 1199px) {
+
+    .functionality-card-body {
+        height: auto;
+    }
 
     .functionality-button {
         width: 45%;
     }
 
     .functionality-more-caption-1 {
-        margin-left: 2.6rem;
+        margin-left: 3.5rem;
     }
 
-    .functinality-more-text-1 {
-        font-size: 2r.5em;
-        margin-top: 1.2rem;
-        margin-left: 2rem;
-        line-height: 2rem;
-    }
-
-    .functinality-more-text-2 {
+    .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
+    .functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7, .functinality-more-text-8 {
         font-size: 2.5rem;
-        margin-top: 1rem;
-        margin-left: 2rem;
+    }
+    .functinality-more-text-1 {
+        margin: 1.2rem 0 0 2rem;
         line-height: 2rem;
     }
 
     .functinality-more-text-4 {
-        font-size: 2.5rem;
-        margin-top: 0rem;
-        margin-left: 2rem;
+        margin: 0 0 0 2rem;
         line-height: 2rem;
     }
+
     .functinality-more-text-5 {
-        font-size: 2.5rem;
-        margin-top: 1.5rem;
-        margin-left: 3rem;
+        margin: 1.5rem 0 0 3rem;
         line-height: 2.2rem;
     }
 
-    .functinality-more-text-3,.functinality-more-text-6 {
-        font-size: 2.5rem;
-        margin-top: 1rem;
-        margin-left: 2rem;
+    .functinality-more-text-2, .functinality-more-text-3,.functinality-more-text-6, .functinality-more-text-8 {
+        margin: 1rem 0 0 2rem;
         line-height: 2rem;
     }
 
     .functinality-more-text-7 {
-        font-size: 2.5rem;
-        margin-top: 0.4rem;
-        margin-left: 2rem;
+        margin: 0.4rem 0 0 2rem;
         line-height: 1.8rem;
     }
 
-    .functinality-more-text-8 {
-        font-size: 2.5rem;
-        margin-top: 1rem;
-        margin-left: 2rem;
-        line-height: 2rem;
-    }
-}
-
-
 /*********************************************************************************/
-/*do 992 px - large*/
+/*do 991 px - large*/
 /*********************************************************************************/
 
-@media (max-width: 992px) {
+@media (max-width: 991px) {
 
     .navbar-brand{
         height: 48px;
@@ -630,51 +542,37 @@ input[type=number]::-webkit-outer-spin-button {
         margin-left: 6.5rem;
     }
 
-    .functinality-more-text-1 {
+    .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
+    .functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7, .functinality-more-text-8 {
         font-size: 4rem;
-        margin-top: 2rem;
-        margin-left: 2rem;
+    }
+    .functinality-more-text-1 {
+        margin: 2rem 0 0 2rem;
         line-height: 4rem;
     }
 
-    .functinality-more-text-2 {
-        font-size: 4rem;
-        margin-top: 1rem;
-        margin-left: 2rem;
-        line-height: 3.8rem;
+    .functinality-more-text-4 {
+        margin: 0.4rem 0 0 2rem;
+        line-height: 4rem;
     }
 
-    .functinality-more-text-4 {
-        font-size: 4rem;
-        margin-top: 0.4rem;
-        margin-left: 2rem;
-        line-height: 3rem;
-    }
     .functinality-more-text-5 {
-        font-size: 4rem;
-        margin-top: 1rem;
-        margin-left: 3rem;
+        margin: 1rem 0 0 3rem;
         line-height: 5rem;
     }
 
-    .functinality-more-text-3,.functinality-more-text-6 {
-        font-size: 4rem;
-        margin-top: 1rem;
-        margin-left: 2rem;
+    .functinality-more-text-2, .functinality-more-text-3,.functinality-more-text-6 {
+        margin: 1rem 0 0 2rem;
         line-height: 3.8rem;
     }
 
     .functinality-more-text-7 {
-        font-size: 4rem;
-        margin-top: 0.4rem;
-        margin-left: 2rem;
+        margin: 0.4rem 0 0 2rem ;
         line-height: 3.7rem;
     }
 
     .functinality-more-text-8 {
-        font-size: 4rem;
-        margin-top: 1.4rem;
-        margin-left: 2rem;
+        margin: 1.4rem 0 0 2rem;
         line-height: 4rem;
     }
 }
@@ -745,9 +643,12 @@ input[type=number]::-webkit-outer-spin-button {
         line-height: 1.1;
     }
 
-    .functionality {
-        margin-right: 1%;
-        margin-left: 0%;
+    .form-field {
+        margin-bottom: 50px;
+    }
+
+    .functionality-card-body {
+        height: auto;
     }
 
     .functionality-card-title {
@@ -762,56 +663,73 @@ input[type=number]::-webkit-outer-spin-button {
         font-size: 1.7rem;
     }
 
-    .functionality-more-caption-1 {
-        margin-left: 6.5rem;
+    .about-title {
+        font-size: 1rem;
+        padding: 0.5rem 0 0.5rem 0;
+    }
+
+    .about-text p {
+        padding: 0.3rem 0.3rem 0 0.3rem;
+    }
+
+   .functionality-more-caption-1 {
+        margin-left: 4rem;
+    }
+
+    .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
+    .functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7, .functinality-more-text-8 {
+        font-size: 3rem;
     }
 
     .functinality-more-text-1 {
-        font-size: 4rem;
-        margin-top: 2rem;
-        margin-left: 2rem;
-        line-height: 4rem;
-    }
-
-    .functinality-more-text-2 {
-        font-size: 4rem;
-        margin-top: 1rem;
-        margin-left: 2rem;
-        line-height: 3.8rem;
+        margin: 1rem 0 0 2rem;
+        line-height: 2rem;
     }
 
     .functinality-more-text-4 {
-        font-size: 4rem;
-        margin-top: 0.4rem;
-        margin-left: 2rem;
-        line-height: 3rem;
+        margin: 0.2rem 0 0 2rem;
+        line-height: 2.4rem;
     }
     .functinality-more-text-5 {
-        font-size: 4rem;
-        margin-top: 1rem;
-        margin-left: 3rem;
-        line-height: 5rem;
+        margin: 1rem 0 0 3rem;
+        line-height: 4rem;
     }
 
-    .functinality-more-text-3,.functinality-more-text-6 {
-        font-size: 4rem;
-        margin-top: 1rem;
-        margin-left: 2rem;
-        line-height: 3.8rem;
+    .functinality-more-text-2, .functinality-more-text-3,.functinality-more-text-6, .functinality-more-text-8  {
+        margin: 1rem 0 0 2rem;
+        line-height: 3rem;
     }
 
     .functinality-more-text-7 {
-        font-size: 4rem;
-        margin-top: 0.4rem;
-        margin-left: 2rem;
-        line-height: 3.7rem;
+        margin: 0.4rem 0 0 2rem;
+        line-height: 2.4rem;
+    }
+}
+
+/*********************************************************************************/
+/*do 767 px - tablet*/
+/*********************************************************************************/
+
+@media (max-width: 767px) {
+
+    .navbar-nav {
+        margin-top: 0.5rem;
+        padding-top: 0.7rem;
+        border-top: 1px solid gray;
     }
 
-    .functinality-more-text-8 {
-        font-size: 4rem;
-        margin-top: 1.4rem;
-        margin-left: 2rem;
-        line-height: 4rem;
+    .nav-item:nth-child(even) {
+        background-color: #E5E5E5;
+    }
+
+    .nav-link {
+        line-height: 2.3rem;
+        font-size: 1.6rem;
+    }
+
+    .nav-link:hover {
+        line-height: 2.3rem;
+        font-size: 1.6rem;
     }
 }
 
@@ -841,7 +759,7 @@ input[type=number]::-webkit-outer-spin-button {
         font-size: 1.4rem;
     }
 
-    .carousel-item {
+    .carousel-height {
         height: 800px;
     }
 
@@ -852,6 +770,43 @@ input[type=number]::-webkit-outer-spin-button {
     .font-special {
         font-size: 3.75rem;
         line-height: 1;
+    }
+
+    .contact .font-special {
+        font-size: 2.75rem;
+    }
+
+    .footer-text p {
+        margin-bottom: .7rem;
+    }
+
+    .footer-text {
+        margin-top: 1.2rem;
+    }
+
+    hr.light-rose {
+        margin-top: 0;
+        margin-bottom: .7rem;
+    }
+
+    .footer-text .font-special {
+        font-size: 1.8rem;
+    }
+
+    footer {
+        padding-top: .4rem;
+    }
+
+    hr.dark-green {
+        margin: 4rem 0 1.5rem 0;
+    }
+
+    h1.display-3 {
+        font-size: 4rem;
+    }
+
+    .functionality-card-body {
+        height: auto;
     }
 
     .functionality-card-title {
@@ -865,59 +820,72 @@ input[type=number]::-webkit-outer-spin-button {
         font-size: 1.7rem;
     }
 
-    .functionality-more-caption-1 {
+   .functionality-more-caption-1 {
         margin-left: 4.2rem;
     }
 
-    .functinality-more-text-1 {
-        font-size: 1.8rem;
-        margin-top: 1rem;
-        margin-left: 2rem;
-        line-height: 1.2rem;
+    .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
+    .functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7, .functinality-more-text-8 {
+        font-size: 3rem;
+        line-height: 2rem;
     }
 
-    .functinality-more-text-2 {
-        font-size: 1.8rem;
-        margin-top: 1rem;
-        margin-left: 2rem;
-        line-height: 1.2rem;
+    .functinality-more-text-1 {
+        margin: 1rem 0 0 2rem;
     }
 
     .functinality-more-text-4 {
-        font-size: 1.8rem;
-        margin-top: 0.4rem;
-        margin-left: 2rem;
-        line-height: 1.2rem;
+        margin: 0.4rem 0 0 2rem;
     }
+
     .functinality-more-text-5 {
-
-        font-size: 1.8rem;
-        margin-top: 1rem;
-        margin-left: 2.2rem;
-        line-height: 1.4rem;
+        margin: 1rem 0 0 2.2rem;
+        line-height: 3rem;
     }
 
-    .functinality-more-text-3,.functinality-more-text-6 {
-        font-size: 1.8rem;
-        margin-top: 1rem;
-        margin-left: 2rem;
-        line-height: 1.2rem;
+    .functinality-more-text-2, .functinality-more-text-3,.functinality-more-text-6 {
+        margin: 1rem 0 0 2rem;
     }
 
     .functinality-more-text-7 {
-        font-size: 1.8rem;
-        margin-top: 0.4rem;
-        margin-left: 2rem;
-        line-height: 1.2rem;
+        margin: 0.4rem 0 0 2rem;
     }
 
     .functinality-more-text-8 {
-        font-size: 1.8rem;
-        margin-top: 1.4rem;
-        margin-left: 2rem;
-        line-height: 1.2rem;
+        margin: 1.4rem 0 0 2rem;
+    }
+}
+
+/*********************************************************************************/
+/*do 541 px*/
+/*********************************************************************************/
+
+@media (max-width: 541px) {
+    .functionality-more-caption-1 {
+        margin-left: 2.1rem;
     }
 
+    .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
+    .functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7, .functinality-more-text-8 {
+        font-size: 2.5rem;
+        line-height: 2rem;
+    }
+
+    .functinality-more-text-4, .functinality-more-text-7 {
+        margin: 0 0 0 2rem;
+    }
+
+    .functinality-more-text-5 {
+        margin: 0.5rem 0 0 2.2rem;
+    }
+
+    .functinality-more-text-1,.functinality-more-text-2, .functinality-more-text-3,.functinality-more-text-6 {
+        margin: 0.5rem 0 0 2rem;
+    }
+
+    .functinality-more-text-8 {
+        margin: 0.5rem 0 0 2rem;
+    }
 }
 
 /*********************************************************************************/
@@ -951,7 +919,7 @@ input[type=number]::-webkit-outer-spin-button {
         font-size: 1.2rem;
     }
 
-    .carousel-item {
+    .carousel-height {
         height: 700px;
     }
 
@@ -959,74 +927,86 @@ input[type=number]::-webkit-outer-spin-button {
         font-size: 3.25rem;
     }
 
+    .contact .font-special {
+        font-size: 2.5rem;
+    }
+
+    .footer-text p {
+        margin-bottom: .6rem;
+    }
+
+    .footer-text {
+        margin-top: 1.3rem;
+    }
+
+    hr.light-rose {
+        margin-top: 0;
+        margin-bottom: .6rem;
+    }
+
+    hr.dark-green {
+        margin: 3.5rem 0 1.25rem 0;
+    }
+
+    .footer-text .font-special {
+        font-size: 1.8rem;
+    }
+
+    h1.display-3 {
+        font-size: 3rem;
+    }
+
+    .functionality-card-body {
+        height: auto;
+    }
+
     .functionality-card-title {
         font-size: 2rem;
     }
 
     .functionality-button {
-        width: 85%;
+        width: 80%;
     }
 
     .functionality-text-button {
         font-size: 1.5rem;
     }
 
+    .about-icons2 {
+        width: 3.5rem;
+        height: 3.5rem;
+        padding: 1rem;
+    }
+
     .functionality-more-caption-1 {
-        margin-left: 4rem;
+        margin-left: 3.6rem;
+    }
+
+    .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
+    .functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7, .functinality-more-text-8 {
+        font-size: 1.8rem;
     }
 
     .functinality-more-text-1 {
-        font-size: 1.5rem;
-        margin-top: 0rem;
-        margin-left: 2rem;
-        line-height: 1rem;
+        margin: 0 0 0 1.5rem;
+        line-height: 1.7rem;
     }
 
-    .functinality-more-text-2 {
-        font-size: 1.5rem;
-        margin-top: 1rem;
-        margin-left: 2rem;
+    .functinality-more-text-2, .functinality-more-text-5,   .functinality-more-text-3,.functinality-more-text-6, .functinality-more-text-8 {
+        margin: 1rem 0 0 2rem;
         line-height: 1rem;
     }
 
     .functinality-more-text-4 {
-        font-size: 1.5rem;
-        margin-top: 0.2rem;
-        margin-left: 2rem;
-        line-height: 1rem;
-    }
-    .functinality-more-text-5 {
-
-        font-size: 1.5rem;
-        margin-top: 1rem;
-        margin-left: 2rem;
-        line-height: 1rem;
-    }
-
-    .functinality-more-text-3,.functinality-more-text-6 {
-        font-size: 1.5rem;
-        margin-top: 1rem;
-        margin-left: 2rem;
-        line-height: 1rem;
+        margin: 0.2rem 0 0 2rem ;
+        line-height: 1.8rem;
     }
 
     .functinality-more-text-7 {
-        font-size: 1.5rem;
-        margin-top: 0.4rem;
-        margin-left: 2rem;
-        line-height: 1rem;
+        margin: 0 0 0 2rem;
+        line-height: 1.8rem;
     }
-
-    .functinality-more-text-8 {
-        font-size: 1.5rem;
-        margin-top: 1rem;
-        margin-left: 2rem;
-        line-height: 1rem;
-    }
-
 }
-
-
 
 /*********************************************************************************/
 /*320px do 350 px - extra small smartphone*/
@@ -1059,7 +1039,7 @@ input[type=number]::-webkit-outer-spin-button {
         font-size: 1.2rem;
     }
 
-    .carousel-item {
+    .carousel-height {
         height: 600px;
     }
 
@@ -1067,65 +1047,117 @@ input[type=number]::-webkit-outer-spin-button {
         font-size: 2.75rem;
     }
 
+    .contact .font-special {
+        font-size: 2.25rem;
+    }
+
+    .footer-text p {
+        margin-bottom: .5rem;
+    }
+
+    .footer-text {
+        margin-top: 1rem;
+    }
+
+    hr.light-rose {
+        margin-top: 0;
+        margin-bottom: .5rem;
+    }
+
+    .footer-text .font-special {
+        font-size: 1.6rem;
+    }
+
+    hr.dark-green {
+        margin: 3rem 0 1rem 0;
+    }
+
+    .functionality-card-body {
+        height: auto;
+    }
+
+    h1.display-3 {
+        font-size: 2.5rem;
+    }
+
     .functionality-button {
-        width: 85%;
+        width: 80%;
     }
 
     .functionality-text-button {
         font-size: 1.5rem;
     }
 
+    .about-card-title {
+        font-family: 'Amatic SC', cursive;
+        font-size: 2rem;
+    }
+
+    .about-card-body p {
+        font-size: 1.2rem;
+        padding-top: 0.4rem;
+    }
+
+    .about-card-body {
+        height: auto;
+    }
+
+    .about-icons2 {
+        width: 3rem;
+        height: 3rem;
+        padding: 1rem;
+    }
+
+    .about-card-footer img.about-icons2:hover {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+
     .functionality-more-caption-1 {
         margin-left: 4rem;
     }
 
-    .functinality-more-text-1 {
-        font-size: 1.5rem;
-        margin-top: 0rem;
-        margin-left: 0rem;
-        line-height: 0.7rem;
+    .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
+    .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-7, .functinality-more-text-8 {
+        font-size: 1.6rem;
+        line-height: 1.7rem;
     }
 
-    .functinality-more-text-2 {
-        font-size: 1.5rem;
-        margin-top: 0.7rem;
-        margin-left: 2rem;
-        line-height: 0.7rem;
+    .functinality-more-text-1 {
+        margin: 0 0 0 0;
+        line-height: 2rem;
+    }
+
+    .functinality-more-text-2,.functinality-more-text-5, .functinality-more-text-3,.functinality-more-text-6, .functinality-more-text-8 {
+        margin: 0rem 0 0 2rem;
     }
 
     .functinality-more-text-4 {
-        font-size: 1.5rem;
-        margin-top: 0rem;
-        margin-left: 1.6rem;
-        line-height: 0.7rem;
-    }
-    .functinality-more-text-5 {
-
-        font-size: 1.5rem;
-        margin-top: 0.7rem;
-        margin-left: 2rem;
-        line-height: 0.7rem;
-    }
-
-    .functinality-more-text-3,.functinality-more-text-6 {
-        font-size: 1.5rem;
-        margin-top: 0.7rem;
-        margin-left: 2rem;
-        line-height: 0.7rem;
+        margin: 0 0 0 1.6rem;
     }
 
     .functinality-more-text-7 {
-        font-size: 1.5rem;
-        margin-top: 0rem;
-        margin-left: 1.4rem;
-        line-height: 0.7rem;
+        margin: 0 0 0 1.4rem;
     }
-
-    .functinality-more-text-8 {
-        font-size: 1.5rem;
-        margin-top: 0.5rem;
-        margin-left: 2rem;
-        line-height: 0.7rem;
-    }
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
