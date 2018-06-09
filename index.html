@@ -9,52 +9,72 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600,800" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700 subset=latin-ext" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,600,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,600,800" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
           integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 </head>
 <body>
-<!--
 
-<nav class="nav_bar">
-    <div class="logo"></div>
-    <ul class="nav_list">
-        <li>Introduction</li>
-        <li>Functionality</li>
-        <li>Form</li>
-        <li>About</li>
-    </ul>
+<nav class="navbar fixed-top container-fluid navbar-expand-md navbar-light bg-light">
+    <div class="container col-12 col-sm-12 col-md-10 col-lg-10">
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#introduction">Wprowadzenie</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#functionality">Funkcjonalności</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">O nas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Formularz</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </nav>
--->
 
-<div class="introduction">
+<div class="introduction" id="introduction">
     <div id="my-carousel" class="carousel slide carousel-fade" data-ride="carousel">
         <div class="carousel-inner">
-            <div class=".carousel-height active carousel-item-1">
+            <div class="carousel-item active carousel-item-1 carousel-height">
                 <div class="container">
                     <div class="carousel-caption">
                         <h1 class="font-special light-rose">Chcesz</h1>
                         <h1 class="font-special light-rose">schudnąć?</h1>
-                        <button class="main-button"><a class="text-button" href="#contact">CHANGE YOUR LIFE</a></button>
+                        <a href="#contact">
+                            <button class="main-button">CHANGE YOUR LIFE</button>
+                        </a>
                     </div>
                 </div>
             </div>
-            <div class=".carousel-height carousel-item-2">
+            <div class="carousel-item carousel-item-2 carousel-height">
                 <div class="container">
                     <div class="carousel-caption">
                         <h1 class="font-special light-rose">Nie wiesz</h1>
                         <h1 class="font-special light-rose">od czego</h1>
                         <h1 class="font-special light-rose">zacząć?</h1>
-                        <button class="main-button"><a class="text-button" href="#contact">CHANGE YOUR LIFE</a></button>
+                        <a href="#contact">
+                            <button class="main-button">CHANGE YOUR LIFE</button>
+                        </a>
                     </div>
                 </div>
             </div>
-            <div class=".carousel-height carousel-item-3">
+            <div class="carousel-item carousel-item-3 carousel-height">
                 <div class="container">
                     <div class="carousel-caption">
                         <h1 class="font-special light-rose">Let's do <span class="font-special2 orange">IT</span></h1>
                         <h1 class="font-special light-rose">with <span class="font-special2 orange">US!</span></h1>
-                        <button class="main-button"><a class="text-button" href="#contact">CHANGE YOUR LIFE</a></button>
+                        <a href="#contact">
+                            <button class="main-button">CHANGE YOUR LIFE</button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -383,10 +403,7 @@
         </div>
     </div>
 </div>
-
-
-</footer>
-
+<footer></footer>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
