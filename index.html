@@ -88,7 +88,7 @@
     </div>
 </div>
 
-<div class="functionality" id="functionality">
+<div class="functionality container-fluid" id="functionality">
     <header class="functionality-header">
         <h1 class="display-3">Z naszą aplikacją:</h1>
     </header>
@@ -321,7 +321,7 @@
     </div>
 </div>
 
-<div class="functionality-more content-section" id="functionality-more">
+<div class="functionality-more container-fluid content-section" id="functionality-more">
     <div class="container">
         <header class="functionality-more-header">
             <h1 class="display-3">Dowiedz się więcej:</h1>
@@ -508,6 +508,20 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
         integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
         crossorigin="anonymous"></script>
-
-</body>
+<script js>
+    $('.navbar-nav>li>a').on('click', function(){
+        $('.navbar-collapse').collapse('hide');
+    });
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = function() {
+        var currentScrollPos = window.pageYOffset;
+        if (prevScrollpos > currentScrollPos) {
+            document.getElementById("navbar").style.top = "-50px";
+        } else {
+            document.getElementById("navbar").style.top = "-150px";
+        }
+        prevScrollpos = currentScrollPos;
+    }
+</script>
+</body
 </html>

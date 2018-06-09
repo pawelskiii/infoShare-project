@@ -507,8 +507,8 @@ a.phone-action:hover {
 @media (max-width: 991px) {
 
     .navbar-brand{
-        height: 48px;
-        width: 124px;
+        height: 53px;
+        width: 136px;
     }
 
     .nav-link {
@@ -585,18 +585,18 @@ a.phone-action:hover {
 @media (min-width: 768px) and (max-width: 992px){
 
     .navbar-brand{
-        height: 48px;
-        width: 124px;
+        height: 53px;
+        width: 136px;
     }
 
     .nav-link {
         padding: 0 .5rem !important;
-        font-size: 1.09rem;
+        font-size: 1.07rem;
     }
 
     .nav-link:hover {
         padding: 0 .5rem !important;
-        font-size: 1.09rem;
+        font-size: 1.07rem;
     }
 }
 
@@ -634,7 +634,7 @@ a.phone-action:hover {
 @media (max-width: 768px) {
 
 
-    .carousel-item {
+    .carousel-height {
         height: 900px;
     }
 
@@ -901,8 +901,8 @@ a.phone-action:hover {
     }
 
     .navbar-brand{
-        height: 40px;
-        width: 105px;
+        height: 53px;
+        width: 136px;
     }
 
     .nav-item:nth-child(even){
@@ -1021,8 +1021,8 @@ a.phone-action:hover {
     }
 
     .navbar-brand{
-        height: 40px;
-        width: 105px;
+        height: 53px;
+        width: 136px;
     }
 
     .nav-item:nth-child(even){
