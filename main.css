@@ -2,6 +2,7 @@
 
 COLORS:
 
+
 #EFF0F0 - change from #EDEFEF - WHITE / LIGHT GREY
 #FEEDDF - change from #EDEFEF - LIGHT ROSE
 #096C3E - change from #00753F - DARK GREEN
@@ -41,12 +42,14 @@ body {
     margin: 0 auto;
     padding: 0;
 }
-.scrolling-behavior{
-    overflow: scroll;
-    scroll-behavior: smooth;
-}
 
 .main-button {
+    text-transform: uppercase;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    font-size: 1.125rem;
+    color: #FEEDDF;
+    margin-top: 15px;
     width: 210px;
     height: 55px;
     border: none;
@@ -54,22 +57,9 @@ body {
     background: #F57D19;
 }
 
-.text-button {
-    text-transform: uppercase;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 300;
-    font-size: 1.125rem;
-    color: #FEEDDF;
-}
-
 .main-button:hover {
     opacity: 0.8;
     transition: opacity .2s ease-in-out;
-}
-
-.main-button a:hover {
-    color: #FEEDDF;
-    text-decoration: none;
 }
 
 .font-normal {
@@ -116,31 +106,37 @@ body {
     background-color: #F4F4F4;
     box-shadow: 0px -5px 25px 2px rgba(0, 0, 0, 0.75);
 }
-.navbar-brand{
+
+.navbar-brand {
     background-image: url("img/logo.png");
     background-repeat: no-repeat;
     background-size: contain;
-    height:53px;
+    height: 53px;
     width: 136px;
 }
-.navbar-nav{
+
+.navbar-nav {
     padding-top: 0;
 }
+
 .navbar-toggler:not(:disabled):not(.disabled) {
     cursor: pointer;
     margin-right: 5%;
 }
-.navbar-collapse{
+
+.navbar-collapse {
     flex-grow: 0 !important;
 }
-.nav-link{
+
+.nav-link {
     justify-content: center;
     font-family: 'Raleway', sans-serif;
     padding: 0 1rem !important;
     font-size: 1.4rem;
-    transition: color 0.5s ease ;
+    transition: color 0.5s ease;
     color: #FC7700 !important;
 }
+
 .nav-link:hover {
     justify-content: center;
     font-family: 'Raleway', sans-serif;
@@ -148,9 +144,10 @@ body {
     font-size: 1.4rem;
     color: #00753F !important;
 }
+
 /* ############### introduction ############### */
 
-.carousel-item {
+.carousel-height {
     height: 1000px;
 }
 
@@ -203,7 +200,7 @@ body {
     font-family: 'Amatic SC', cursive;
     text-align: center;
     background-color: none;
-    padding-bottom:5rem;
+    padding-bottom: 5rem;
     padding-top: 5rem;
 }
 
@@ -309,8 +306,7 @@ body {
 
 .contact-form input:focus,
 .contact-form textarea:focus,
-.contact-form button:focus
-{
+.contact-form button:focus {
     opacity: 1;
     outline: none;
     font-weight: 900;
@@ -354,6 +350,7 @@ input[type=number]::-webkit-outer-spin-button {
     text-transform: uppercase;
     font-size: 14px;
 }
+
 .section-contact .contact-address-text p:last-child {
     margin-top: 0;
     font-size: 13px;
@@ -365,14 +362,14 @@ input[type=number]::-webkit-outer-spin-button {
     font-family: 'Amatic SC', cursive;
     text-align: center;
     background-color: none;
-    padding-bottom:5rem;
+    padding-bottom: 5rem;
     padding-top: 5rem;
 }
 
 .about-container {
     margin-left: 5%;
     margin-right: 5%;
-    justify-content:space-around;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -455,7 +452,7 @@ input[type=number]::-webkit-outer-spin-button {
     font-family: 'Amatic SC', cursive;
     text-align: center;
     background-color: none;
-    padding-bottom:5rem;
+    padding-bottom: 5rem;
     padding-top: 5rem;
 }
 
@@ -468,6 +465,7 @@ input[type=number]::-webkit-outer-spin-button {
     bottom: 0;
     z-index: 1;
 }
+
 .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4 {
     font-family: 'Amatic SC', cursive;
     font-size: 3rem;
@@ -490,7 +488,7 @@ input[type=number]::-webkit-outer-spin-button {
     line-height: 1.5rem;
 }
 
-.functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7 {
+.functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-7 {
     font-family: 'Amatic SC', cursive;
     font-size: 3rem;
     color: black;
@@ -516,11 +514,9 @@ input[type=number]::-webkit-outer-spin-button {
     margin-top: 3rem;
 }
 
-
 .functionality-more-caption-1 {
     margin-left: 4.9rem;
 }
-
 
 /*############### media ###############*/
 
@@ -539,7 +535,7 @@ input[type=number]::-webkit-outer-spin-button {
     }
 
     .functinality-more-text-1 {
-        font-size: 2r.5em;
+        font-size: 2 r .5em;
         margin-top: 1.2rem;
         margin-left: 2rem;
         line-height: 2rem;
@@ -558,6 +554,7 @@ input[type=number]::-webkit-outer-spin-button {
         margin-left: 2rem;
         line-height: 2rem;
     }
+
     .functinality-more-text-5 {
         font-size: 2.5rem;
         margin-top: 1.5rem;
@@ -565,7 +562,7 @@ input[type=number]::-webkit-outer-spin-button {
         line-height: 2.2rem;
     }
 
-    .functinality-more-text-3,.functinality-more-text-6 {
+    .functinality-more-text-3, .functinality-more-text-6 {
         font-size: 2.5rem;
         margin-top: 1rem;
         margin-left: 2rem;
@@ -587,26 +584,25 @@ input[type=number]::-webkit-outer-spin-button {
     }
 }
 
-
 /*********************************************************************************/
 /*do 992 px - large*/
 /*********************************************************************************/
 
 @media (max-width: 992px) {
 
-    .navbar-brand{
+    .navbar-brand {
         height: 48px;
         width: 124px;
     }
 
     .nav-link {
-        padding: 0 .9rem !important;
-        font-size: 1.3rem;
+        padding: 0 .5rem !important;
+        font-size: 1.09rem;
     }
 
     .nav-link:hover {
-        padding: 0 .9rem !important;
-        font-size: 1.3rem;
+        padding: 0 .5rem !important;
+        font-size: 1.09rem;
     }
 
     .functionality {
@@ -650,6 +646,7 @@ input[type=number]::-webkit-outer-spin-button {
         margin-left: 2rem;
         line-height: 3rem;
     }
+
     .functinality-more-text-5 {
         font-size: 4rem;
         margin-top: 1rem;
@@ -657,7 +654,7 @@ input[type=number]::-webkit-outer-spin-button {
         line-height: 5rem;
     }
 
-    .functinality-more-text-3,.functinality-more-text-6 {
+    .functinality-more-text-3, .functinality-more-text-6 {
         font-size: 4rem;
         margin-top: 1rem;
         margin-left: 2rem;
@@ -679,64 +676,13 @@ input[type=number]::-webkit-outer-spin-button {
     }
 }
 
-
-/*********************************************************************************/
-/*do 768 px - tablet*/
-/*********************************************************************************/
-
-@media (min-width: 768px) and (max-width: 992px){
-
-    .navbar-brand{
-        height: 48px;
-        width: 124px;
-    }
-
-    .nav-link {
-        padding: 0 .5rem !important;
-        font-size: 1.09rem;
-    }
-
-    .nav-link:hover {
-        padding: 0 .5rem !important;
-        font-size: 1.09rem;
-    }
-}
-
-/*********************************************************************************/
-/*do 767 px - tablet*/
-/*********************************************************************************/
-
-@media (max-width: 767px) {
-
-    .navbar-nav{
-        margin-top: 0.5rem;
-        padding-top: 0.7rem;
-        border-top: 1px solid gray;
-    }
-
-    .nav-item:nth-child(even){
-        background-color: #E5E5E5;
-    }
-
-    .nav-link{
-        line-height: 2.3rem;
-        font-size: 1.6rem;
-    }
-
-    .nav-link:hover {
-        line-height: 2.3rem;
-        font-size: 1.6rem;
-    }
-
-}
 /*********************************************************************************/
 /*do 768 px - tablet*/
 /*********************************************************************************/
 
 @media (max-width: 768px) {
 
-
-    .carousel-item {
+    .carousel-height {
         height: 900px;
     }
 
@@ -786,6 +732,7 @@ input[type=number]::-webkit-outer-spin-button {
         margin-left: 2rem;
         line-height: 3rem;
     }
+
     .functinality-more-text-5 {
         font-size: 4rem;
         margin-top: 1rem;
@@ -793,7 +740,7 @@ input[type=number]::-webkit-outer-spin-button {
         line-height: 5rem;
     }
 
-    .functinality-more-text-3,.functinality-more-text-6 {
+    .functinality-more-text-3, .functinality-more-text-6 {
         font-size: 4rem;
         margin-top: 1rem;
         margin-left: 2rem;
@@ -816,22 +763,49 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 /*********************************************************************************/
+/*do 767 px - tablet*/
+/*********************************************************************************/
+
+@media (max-width: 767px) {
+
+    .navbar-nav {
+        margin-top: 0.5rem;
+        padding-top: 0.7rem;
+        border-top: 1px solid gray;
+    }
+
+    .nav-item:nth-child(even) {
+        background-color: #E5E5E5;
+    }
+
+    .nav-link {
+        line-height: 2.3rem;
+        font-size: 1.6rem;
+    }
+
+    .nav-link:hover {
+        line-height: 2.3rem;
+        font-size: 1.6rem;
+    }
+}
+
+/*********************************************************************************/
 /*do 576 px - smartphone*/
 /*********************************************************************************/
 
 @media (max-width: 576px) {
 
-    .navbar-nav{
+    .navbar-nav {
         margin-top: 0.5rem;
         padding-top: 0.6rem;
         border-top: 1px solid gray;
     }
 
-    .nav-item:nth-child(even){
+    .nav-item:nth-child(even) {
         background-color: #E5E5E5;
     }
 
-    .nav-link{
+    .nav-link {
         line-height: 2.1rem;
         font-size: 1.4rem;
     }
@@ -841,7 +815,7 @@ input[type=number]::-webkit-outer-spin-button {
         font-size: 1.4rem;
     }
 
-    .carousel-item {
+    .carousel-height {
         height: 800px;
     }
 
@@ -857,6 +831,7 @@ input[type=number]::-webkit-outer-spin-button {
     .functionality-card-title {
         font-size: 2.5rem;
     }
+
     .functionality-button {
         width: 80%;
     }
@@ -889,6 +864,7 @@ input[type=number]::-webkit-outer-spin-button {
         margin-left: 2rem;
         line-height: 1.2rem;
     }
+
     .functinality-more-text-5 {
 
         font-size: 1.8rem;
@@ -897,7 +873,7 @@ input[type=number]::-webkit-outer-spin-button {
         line-height: 1.4rem;
     }
 
-    .functinality-more-text-3,.functinality-more-text-6 {
+    .functinality-more-text-3, .functinality-more-text-6 {
         font-size: 1.8rem;
         margin-top: 1rem;
         margin-left: 2rem;
@@ -926,22 +902,22 @@ input[type=number]::-webkit-outer-spin-button {
 
 @media (max-width: 400px) {
 
-    .navbar-nav{
+    .navbar-nav {
         margin-top: 0.5rem;
         padding-top: 0.5rem;
         border-top: 1px solid gray;
     }
 
-    .navbar-brand{
+    .navbar-brand {
         height: 40px;
         width: 105px;
     }
 
-    .nav-item:nth-child(even){
+    .nav-item:nth-child(even) {
         background-color: #E5E5E5;
     }
 
-    .nav-link{
+    .nav-link {
         line-height: 2rem;
         font-size: 1.2rem;
     }
@@ -951,7 +927,7 @@ input[type=number]::-webkit-outer-spin-button {
         font-size: 1.2rem;
     }
 
-    .carousel-item {
+    .carousel-height {
         height: 700px;
     }
 
@@ -995,6 +971,7 @@ input[type=number]::-webkit-outer-spin-button {
         margin-left: 2rem;
         line-height: 1rem;
     }
+
     .functinality-more-text-5 {
 
         font-size: 1.5rem;
@@ -1003,7 +980,7 @@ input[type=number]::-webkit-outer-spin-button {
         line-height: 1rem;
     }
 
-    .functinality-more-text-3,.functinality-more-text-6 {
+    .functinality-more-text-3, .functinality-more-text-6 {
         font-size: 1.5rem;
         margin-top: 1rem;
         margin-left: 2rem;
@@ -1026,30 +1003,28 @@ input[type=number]::-webkit-outer-spin-button {
 
 }
 
-
-
 /*********************************************************************************/
 /*320px do 350 px - extra small smartphone*/
 /*********************************************************************************/
 
 @media (max-width: 350px) {
 
-    .navbar-nav{
+    .navbar-nav {
         margin-top: 0.5rem;
         padding-top: 0.5rem;
         border-top: 1px solid gray;
     }
 
-    .navbar-brand{
+    .navbar-brand {
         height: 40px;
         width: 105px;
     }
 
-    .nav-item:nth-child(even){
+    .nav-item:nth-child(even) {
         background-color: #E5E5E5;
     }
 
-    .nav-link{
+    .nav-link {
         line-height: 1.9rem;
         font-size: 1.2rem;
     }
@@ -1059,7 +1034,7 @@ input[type=number]::-webkit-outer-spin-button {
         font-size: 1.2rem;
     }
 
-    .carousel-item {
+    .carousel-height {
         height: 600px;
     }
 
@@ -1099,6 +1074,7 @@ input[type=number]::-webkit-outer-spin-button {
         margin-left: 1.6rem;
         line-height: 0.7rem;
     }
+
     .functinality-more-text-5 {
 
         font-size: 1.5rem;
@@ -1107,7 +1083,7 @@ input[type=number]::-webkit-outer-spin-button {
         line-height: 0.7rem;
     }
 
-    .functinality-more-text-3,.functinality-more-text-6 {
+    .functinality-more-text-3, .functinality-more-text-6 {
         font-size: 1.5rem;
         margin-top: 0.7rem;
         margin-left: 2rem;
@@ -1127,5 +1103,4 @@ input[type=number]::-webkit-outer-spin-button {
         margin-left: 2rem;
         line-height: 0.7rem;
     }
-
 }
