@@ -99,6 +99,18 @@ body {
     color: #F57D19;
 }
 
+.scrolling-box {
+    height: 990px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+@-moz-document url-prefix() {
+    .scrolling-box {
+        height: 982px;
+    }
+}
+
 /* ############### navigation ############### */
 
 .navbar {
@@ -236,6 +248,10 @@ body {
 }
 
 /*############### form ###############*/
+
+.contact.container {
+    padding-top: 25px;
+}
 
 .contact .font-special {
     color: #F57D19;
@@ -1013,6 +1029,10 @@ a.phone-action:hover {
 /*********************************************************************************/
 
 @media (max-width: 350px) {
+
+    .contact.container {
+        padding-top: 5px;
+    }
 
     .navbar-nav{
         margin-top: 0.5rem;
