@@ -112,29 +112,34 @@ body {
     background-color: #F4F4F4;
     box-shadow: 0px -5px 25px 2px rgba(0, 0, 0, 0.75);
 }
-.navbar-brand{
+
+.navbar-brand {
     background-image: url("img/logo.png");
     background-repeat: no-repeat;
     background-size: contain;
-    height:53px;
+    height: 53px;
     width: 136px;
 }
-.navbar-nav{
+
+.navbar-nav {
     padding-top: 0;
 }
+
 .navbar-toggler:not(:disabled):not(.disabled) {
     cursor: pointer;
     margin-right: 5%;
 }
-.navbar-collapse{
+
+.navbar-collapse {
     flex-grow: 0 !important;
 }
-.nav-link{
+
+.nav-link {
     justify-content: center;
     font-family: 'Raleway', sans-serif;
     padding: 0 1rem !important;
     font-size: 1.4rem;
-    transition: color 0.5s ease ;
+    transition: color 0.5s ease;
     color: #FC7700 !important;
 }
 
@@ -145,6 +150,7 @@ body {
     font-size: 1.4rem;
     color: #00753F !important;
 }
+
 /* ############### introduction ############### */
 
 .carousel-height {
@@ -269,9 +275,9 @@ body {
 
 .form-group input:focus,
 .form-group textarea:focus {
-    -webkit-box-shadow: 0px 0px 10px 3px rgba(245,125,25,0.75);
+    -webkit-box-shadow: 0px 0px 10px 3px rgba(245, 125, 25, 0.75);
     -moz-box-shadow: 0px 0px 10px 3px rgba(245, 125, 25, 0.75);
-    box-shadow: 0px 0px 10px 3px rgba(245,125,25,0.75);
+    box-shadow: 0px 0px 10px 3px rgba(245, 125, 25, 0.75);
     border-color: #F57D19;
     color: #096C3E;
 }
@@ -289,16 +295,16 @@ body {
 }
 
 input[type=number] {
-    -moz-appearance:textfield;
+    -moz-appearance: textfield;
 }
 
 .logo-button:hover {
     background: url('img/logo.png') no-repeat center;
     background-size: 60%;
     border: solid 1px #F57D19;
-    -webkit-box-shadow: 0px 0px 10px 3px rgba(245,125,25,0.75);
-    -moz-box-shadow: 0px 0px 10px 3px rgba(245,125,25,0.75);
-    box-shadow: 0px 0px 10px 3px rgba(245,125,25,0.75);
+    -webkit-box-shadow: 0px 0px 10px 3px rgba(245, 125, 25, 0.75);
+    -moz-box-shadow: 0px 0px 10px 3px rgba(245, 125, 25, 0.75);
+    box-shadow: 0px 0px 10px 3px rgba(245, 125, 25, 0.75);
     opacity: 1;
     color: transparent;
     text-transform: none;
@@ -338,7 +344,6 @@ a.phone-action:hover {
 
 /* ############### about ############### */
 
-
 .about-header {
     font-family: 'Amatic SC', cursive;
     text-align: center;
@@ -377,7 +382,7 @@ a.phone-action:hover {
     background-color: #F57D19;
     width: 4.5rem;
     height: 4.5rem;
-    transition:.2s ease-in-out;
+    transition: .2s ease-in-out;
 }
 
 /*#############functionality-more########*/
@@ -404,7 +409,7 @@ a.phone-action:hover {
 }
 
 .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
-.functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7, .functinality-more-text-8 {
+.functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-7, .functinality-more-text-8 {
     font-family: 'Amatic SC', cursive;
     font-size: 3rem;
     margin: 2rem 0 0 2rem;
@@ -422,13 +427,13 @@ a.phone-action:hover {
     line-height: 1.5rem;
 }
 
-.functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7 {
+.functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-7 {
     color: #001401;
     line-height: 1rem;
 }
 
 .caption-content {
-     margin-top: 3rem;
+    margin-top: 3rem;
 }
 
 .functionality-more-caption-1 {
@@ -442,6 +447,30 @@ a.phone-action:hover {
 /*********************************************************************************/
 
 @media (max-width: 1470px) {
+
+    .carousel-item-1 {
+        background: linear-gradient(
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3)
+        ), url(img/intoduction.jpg) no-repeat center center;
+        background-size: cover;
+    }
+
+    .carousel-item-2 {
+        background: linear-gradient(
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3)
+        ), url(img/intoduction2.jpg) no-repeat center center;
+        background-size: cover;
+    }
+
+    .carousel-item-3 {
+        background: linear-gradient(
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3)
+        ), url(img/intoduction3.jpg) no-repeat center center;
+        background-size: cover;
+    }
 
     .about-card-body {
         padding: 2rem 1rem 1.2rem 1rem;
@@ -490,9 +519,10 @@ a.phone-action:hover {
     }
 
     .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
-    .functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7, .functinality-more-text-8 {
+    .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-7, .functinality-more-text-8 {
         font-size: 2.5rem;
     }
+
     .functinality-more-text-1 {
         margin: 1.2rem 0 0 2rem;
         line-height: 2rem;
@@ -508,7 +538,7 @@ a.phone-action:hover {
         line-height: 2.2rem;
     }
 
-    .functinality-more-text-2, .functinality-more-text-3,.functinality-more-text-6, .functinality-more-text-8 {
+    .functinality-more-text-2, .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-8 {
         margin: 1rem 0 0 2rem;
         line-height: 2rem;
     }
@@ -517,50 +547,33 @@ a.phone-action:hover {
         margin: 0.4rem 0 0 2rem;
         line-height: 1.8rem;
     }
+}
 
-
-    /*********************************************************************************/
-    /*do 992 px - tablet*/
-    /*********************************************************************************/
-
-    @media (min-width: 768px) and (max-width: 992px){
-
-        .navbar-brand{
-            height: 53px;
-            width: 136px;
-        }
-
-        .nav-link {
-            padding: 0 .5rem !important;
-            font-size: 1.07rem;
-        }
-
-        .nav-link:hover {
-            padding: 0 .5rem !important;
-            font-size: 1.07rem;
-        }
-    }
-
-    /*********************************************************************************/
-/*do 991 px - large*/
 /*********************************************************************************/
+/*do 992 px - tablet*/
+/*********************************************************************************/
+@media (min-width: 768px) and (max-width: 992px) {
 
-@media (max-width: 991px) {
-
-    .navbar-brand{
+    .navbar-brand {
         height: 53px;
         width: 136px;
     }
 
     .nav-link {
-        padding: 0 .9rem !important;
-        font-size: 1.3rem;
+        padding: 0 .5rem !important;
+        font-size: 1.03rem;
     }
 
     .nav-link:hover {
-        padding: 0 .9rem !important;
-        font-size: 1.3rem;
+        padding: 0 .5rem !important;
+        font-size: 1.03rem;
     }
+}
+
+/*********************************************************************************/
+/*do 991 px - large*/
+/*********************************************************************************/
+@media (max-width: 991px) {
 
     .functionality {
         margin-right: 1%;
@@ -588,9 +601,10 @@ a.phone-action:hover {
     }
 
     .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
-    .functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7, .functinality-more-text-8 {
+    .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-7, .functinality-more-text-8 {
         font-size: 4rem;
     }
+
     .functinality-more-text-1 {
         margin: 2rem 0 0 2rem;
         line-height: 4rem;
@@ -606,13 +620,13 @@ a.phone-action:hover {
         line-height: 5rem;
     }
 
-    .functinality-more-text-2, .functinality-more-text-3,.functinality-more-text-6 {
+    .functinality-more-text-2, .functinality-more-text-3, .functinality-more-text-6 {
         margin: 1rem 0 0 2rem;
         line-height: 3.8rem;
     }
 
     .functinality-more-text-7 {
-        margin: 0.4rem 0 0 2rem ;
+        margin: 0.4rem 0 0 2rem;
         line-height: 3.7rem;
     }
 
@@ -625,9 +639,7 @@ a.phone-action:hover {
 /*********************************************************************************/
 /*do 767 px - tablet*/
 /*********************************************************************************/
-
 @media (max-width: 767px) {
-
 
     .carousel-height {
         height: 900px;
@@ -671,12 +683,12 @@ a.phone-action:hover {
         margin-top: 3rem;
     }
 
-   .functionality-more-caption-1 {
+    .functionality-more-caption-1 {
         margin-left: 5.5rem;
     }
 
     .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
-    .functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7, .functinality-more-text-8 {
+    .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-7, .functinality-more-text-8 {
         font-size: 3rem;
     }
 
@@ -689,12 +701,13 @@ a.phone-action:hover {
         margin: 0.2rem 0 0 2rem;
         line-height: 3rem;
     }
+
     .functinality-more-text-5 {
         margin: 1rem 0 0 3rem;
         line-height: 3rem;
     }
 
-    .functinality-more-text-2, .functinality-more-text-3,.functinality-more-text-6, .functinality-more-text-8  {
+    .functinality-more-text-2, .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-8 {
         margin: 1rem 0 0 2rem;
         line-height: 3rem;
     }
@@ -703,7 +716,6 @@ a.phone-action:hover {
         margin: 0.4rem 0 0 2rem;
         line-height: 3rem;
     }
-
 
     .navbar-nav {
         margin-top: 0.5rem;
@@ -729,20 +741,19 @@ a.phone-action:hover {
 /*********************************************************************************/
 /*do 576 px - smartphone*/
 /*********************************************************************************/
-
 @media (max-width: 576px) {
 
-    .navbar-nav{
+    .navbar-nav {
         margin-top: 0.5rem;
         padding-top: 0.6rem;
         border-top: 1px solid gray;
     }
 
-    .nav-item:nth-child(even){
+    .nav-item:nth-child(even) {
         background-color: #E5E5E5;
     }
 
-    .nav-link{
+    .nav-link {
         line-height: 2.1rem;
         font-size: 1.4rem;
     }
@@ -805,6 +816,7 @@ a.phone-action:hover {
     .functionality-card-title {
         font-size: 2.5rem;
     }
+
     .functionality-button {
         width: 80%;
     }
@@ -817,12 +829,12 @@ a.phone-action:hover {
         margin-top: 3rem;
     }
 
-   .functionality-more-caption-1 {
+    .functionality-more-caption-1 {
         margin-left: 4.2rem;
     }
 
     .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
-    .functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7, .functinality-more-text-8 {
+    .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-7, .functinality-more-text-8 {
         font-size: 3rem;
         line-height: 2rem;
     }
@@ -840,7 +852,7 @@ a.phone-action:hover {
         line-height: 3rem;
     }
 
-    .functinality-more-text-2, .functinality-more-text-3,.functinality-more-text-6 {
+    .functinality-more-text-2, .functinality-more-text-3, .functinality-more-text-6 {
         margin: 1rem 0 0 2rem;
     }
 
@@ -856,7 +868,6 @@ a.phone-action:hover {
 /*********************************************************************************/
 /*do 541 px*/
 /*********************************************************************************/
-
 @media (max-width: 541px) {
 
     .caption-content {
@@ -868,7 +879,7 @@ a.phone-action:hover {
     }
 
     .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
-    .functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7, .functinality-more-text-8 {
+    .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-7, .functinality-more-text-8 {
         font-size: 2.5rem;
         line-height: 2.6rem;
     }
@@ -881,7 +892,7 @@ a.phone-action:hover {
         margin: 0.5rem 0 0 2.2rem;
     }
 
-    .functinality-more-text-1,.functinality-more-text-2, .functinality-more-text-3,.functinality-more-text-6 {
+    .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-3, .functinality-more-text-6 {
         margin: 0.5rem 0 0 2rem;
     }
 
@@ -893,25 +904,24 @@ a.phone-action:hover {
 /*********************************************************************************/
 /*350px do 400 px - small smartphone*/
 /*********************************************************************************/
-
 @media (max-width: 400px) {
 
-    .navbar-nav{
+    .navbar-nav {
         margin-top: 0.5rem;
         padding-top: 0.5rem;
         border-top: 1px solid gray;
     }
 
-    .navbar-brand{
+    .navbar-brand {
         height: 53px;
         width: 136px;
     }
 
-    .nav-item:nth-child(even){
+    .nav-item:nth-child(even) {
         background-color: #E5E5E5;
     }
 
-    .nav-link{
+    .nav-link {
         line-height: 2rem;
         font-size: 1.2rem;
     }
@@ -989,7 +999,7 @@ a.phone-action:hover {
     }
 
     .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
-    .functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7, .functinality-more-text-8 {
+    .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-7, .functinality-more-text-8 {
         font-size: 2rem;
     }
 
@@ -998,13 +1008,13 @@ a.phone-action:hover {
         line-height: 2rem;
     }
 
-    .functinality-more-text-2, .functinality-more-text-5,   .functinality-more-text-3,.functinality-more-text-6, .functinality-more-text-8 {
+    .functinality-more-text-2, .functinality-more-text-5, .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-8 {
         margin: 1rem 0 0 2rem;
         line-height: 1.5rem;
     }
 
     .functinality-more-text-4 {
-        margin: 0.2rem 0 0 2rem ;
+        margin: 0.2rem 0 0 2rem;
         line-height: 1.8rem;
     }
 
@@ -1017,29 +1027,28 @@ a.phone-action:hover {
 /*********************************************************************************/
 /*320px do 350 px - extra small smartphone*/
 /*********************************************************************************/
-
 @media (max-width: 350px) {
 
-        .contact.container {
-            padding-top: 5px;
-        }
+    .contact.container {
+        padding-top: 5px;
+    }
 
-        .navbar-nav {
-            margin-top: 0.5rem;
-            padding-top: 0.5rem;
-            border-top: 1px solid gray;
-        }
+    .navbar-nav {
+        margin-top: 0.5rem;
+        padding-top: 0.5rem;
+        border-top: 1px solid gray;
+    }
 
-    .navbar-brand{
+    .navbar-brand {
         height: 53px;
         width: 136px;
     }
 
-    .nav-item:nth-child(even){
+    .nav-item:nth-child(even) {
         background-color: #E5E5E5;
     }
 
-    .nav-link{
+    .nav-link {
         line-height: 1.9rem;
         font-size: 1.2rem;
     }
@@ -1142,7 +1151,7 @@ a.phone-action:hover {
         line-height: 2rem;
     }
 
-    .functinality-more-text-2,.functinality-more-text-5, .functinality-more-text-3,.functinality-more-text-6, .functinality-more-text-8 {
+    .functinality-more-text-2, .functinality-more-text-5, .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-8 {
         margin: 0rem 0 0 2rem;
     }
 
