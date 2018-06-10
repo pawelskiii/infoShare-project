@@ -112,45 +112,39 @@ body {
     background-color: #F4F4F4;
     box-shadow: 0px -5px 25px 2px rgba(0, 0, 0, 0.75);
 }
-
-.navbar-brand {
+.navbar-brand{
     background-image: url("img/logo.png");
     background-repeat: no-repeat;
     background-size: contain;
-    height: 53px;
+    height:53px;
     width: 136px;
 }
-
-.navbar-nav {
+.navbar-nav{
     padding-top: 0;
 }
-
 .navbar-toggler:not(:disabled):not(.disabled) {
     cursor: pointer;
     margin-right: 5%;
 }
-
-.navbar-collapse {
+.navbar-collapse{
     flex-grow: 0 !important;
 }
-
-.nav-link {
+.nav-link{
     justify-content: center;
     font-family: 'Raleway', sans-serif;
     padding: 0 1rem !important;
     font-size: 1.4rem;
-    transition: color 0.5s ease;
+    transition: color 0.5s ease ;
     color: #FC7700 !important;
 }
 
 .nav-link:hover {
     justify-content: center;
     font-family: 'Raleway', sans-serif;
-    padding: 0 1.1rem !important;
+    padding: 0 1rem !important;
     font-size: 1.4rem;
     color: #00753F !important;
 }
-
 /* ############### introduction ############### */
 
 .carousel-height {
@@ -197,7 +191,7 @@ body {
 
 /*############### functionality ###############*/
 
-.functionality {
+.functionality-container-fluid {
     margin-right: 5%;
     margin-left: 5%;
 }
@@ -275,9 +269,9 @@ body {
 
 .form-group input:focus,
 .form-group textarea:focus {
-    -webkit-box-shadow: 0px 0px 10px 3px rgba(245, 125, 25, 0.75);
+    -webkit-box-shadow: 0px 0px 10px 3px rgba(245,125,25,0.75);
     -moz-box-shadow: 0px 0px 10px 3px rgba(245, 125, 25, 0.75);
-    box-shadow: 0px 0px 10px 3px rgba(245, 125, 25, 0.75);
+    box-shadow: 0px 0px 10px 3px rgba(245,125,25,0.75);
     border-color: #F57D19;
     color: #096C3E;
 }
@@ -295,16 +289,16 @@ body {
 }
 
 input[type=number] {
-    -moz-appearance: textfield;
+    -moz-appearance:textfield;
 }
 
 .logo-button:hover {
     background: url('img/logo.png') no-repeat center;
     background-size: 60%;
     border: solid 1px #F57D19;
-    -webkit-box-shadow: 0px 0px 10px 3px rgba(245, 125, 25, 0.75);
-    -moz-box-shadow: 0px 0px 10px 3px rgba(245, 125, 25, 0.75);
-    box-shadow: 0px 0px 10px 3px rgba(245, 125, 25, 0.75);
+    -webkit-box-shadow: 0px 0px 10px 3px rgba(245,125,25,0.75);
+    -moz-box-shadow: 0px 0px 10px 3px rgba(245,125,25,0.75);
+    box-shadow: 0px 0px 10px 3px rgba(245,125,25,0.75);
     opacity: 1;
     color: transparent;
     text-transform: none;
@@ -344,6 +338,7 @@ a.phone-action:hover {
 
 /* ############### about ############### */
 
+
 .about-header {
     font-family: 'Amatic SC', cursive;
     text-align: center;
@@ -382,7 +377,7 @@ a.phone-action:hover {
     background-color: #F57D19;
     width: 4.5rem;
     height: 4.5rem;
-    transition: .2s ease-in-out;
+    transition:.2s ease-in-out;
 }
 
 /*#############functionality-more########*/
@@ -409,7 +404,7 @@ a.phone-action:hover {
 }
 
 .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
-.functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-7, .functinality-more-text-8 {
+.functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7, .functinality-more-text-8 {
     font-family: 'Amatic SC', cursive;
     font-size: 3rem;
     margin: 2rem 0 0 2rem;
@@ -427,13 +422,13 @@ a.phone-action:hover {
     line-height: 1.5rem;
 }
 
-.functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-7 {
+.functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7 {
     color: #001401;
     line-height: 1rem;
 }
 
 .caption-content {
-    margin-top: 3rem;
+     margin-top: 3rem;
 }
 
 .functionality-more-caption-1 {
@@ -466,6 +461,10 @@ a.phone-action:hover {
         width: 3.5rem;
         height: 3.5rem;
     }
+
+    .caption-content {
+        margin-top: 3rem;
+    }
 }
 
 /*********************************************************************************/
@@ -482,15 +481,18 @@ a.phone-action:hover {
         width: 45%;
     }
 
+    .caption-content {
+        margin-top: 3rem;
+    }
+
     .functionality-more-caption-1 {
         margin-left: 3.5rem;
     }
 
     .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
-    .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-7, .functinality-more-text-8 {
+    .functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7, .functinality-more-text-8 {
         font-size: 2.5rem;
     }
-
     .functinality-more-text-1 {
         margin: 1.2rem 0 0 2rem;
         line-height: 2rem;
@@ -506,7 +508,7 @@ a.phone-action:hover {
         line-height: 2.2rem;
     }
 
-    .functinality-more-text-2, .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-8 {
+    .functinality-more-text-2, .functinality-more-text-3,.functinality-more-text-6, .functinality-more-text-8 {
         margin: 1rem 0 0 2rem;
         line-height: 2rem;
     }
@@ -516,90 +518,14 @@ a.phone-action:hover {
         line-height: 1.8rem;
     }
 
-    /*********************************************************************************/
-    /*do 991 px - large*/
-    /*********************************************************************************/
-    @media (max-width: 991px) {
-
-        .navbar-brand {
-            height: 53px;
-            width: 136px;
-        }
-
-        .nav-link {
-            padding: 0 .9rem !important;
-            font-size: 1.3rem;
-        }
-
-        .nav-link:hover {
-            padding: 0 .9rem !important;
-            font-size: 1.3rem;
-        }
-
-        .functionality {
-            margin-right: 1%;
-            margin-left: 0%;
-        }
-
-        .functionality-card-title {
-            font-size: 4rem;
-        }
-
-        .functionality-button {
-            width: 60%;
-        }
-
-        .functionality-text-button {
-            font-size: 1.7rem;
-        }
-
-        .functionality-more-caption-1 {
-            margin-left: 6.5rem;
-        }
-
-        .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
-        .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-7, .functinality-more-text-8 {
-            font-size: 4rem;
-        }
-
-        .functinality-more-text-1 {
-            margin: 2rem 0 0 2rem;
-            line-height: 4rem;
-        }
-
-        .functinality-more-text-4 {
-            margin: 0.4rem 0 0 2rem;
-            line-height: 4rem;
-        }
-
-        .functinality-more-text-5 {
-            margin: 1rem 0 0 3rem;
-            line-height: 5rem;
-        }
-
-        .functinality-more-text-2, .functinality-more-text-3, .functinality-more-text-6 {
-            margin: 1rem 0 0 2rem;
-            line-height: 3.8rem;
-        }
-
-        .functinality-more-text-7 {
-            margin: 0.4rem 0 0 2rem;
-            line-height: 3.7rem;
-        }
-
-        .functinality-more-text-8 {
-            margin: 1.4rem 0 0 2rem;
-            line-height: 4rem;
-        }
-    }
-
 
     /*********************************************************************************/
-    /*do 768 px - tablet*/
+    /*do 992 px - tablet*/
     /*********************************************************************************/
-    @media (min-width: 768px) and (max-width: 992px) {
 
-        .navbar-brand {
+    @media (min-width: 768px) and (max-width: 992px){
+
+        .navbar-brand{
             height: 53px;
             width: 136px;
         }
@@ -616,412 +542,483 @@ a.phone-action:hover {
     }
 
     /*********************************************************************************/
-    /*do 767 px - tablet*/
-    /*********************************************************************************/
-    @media (max-width: 767px) {
+/*do 991 px - large*/
+/*********************************************************************************/
 
-        .navbar-nav {
-            margin-top: 0.5rem;
-            padding-top: 0.7rem;
-            border-top: 1px solid gray;
-        }
+@media (max-width: 991px) {
 
-        .nav-item:nth-child(even) {
-            background-color: #E5E5E5;
-        }
-
-        .nav-link {
-            line-height: 2.3rem;
-            font-size: 1.6rem;
-        }
-
-        .nav-link:hover {
-            line-height: 2.3rem;
-            font-size: 1.6rem;
-        }
-
-    }
-    /*********************************************************************************/
-    /*do 768 px - tablet*/
-    /*********************************************************************************/
-    @media (max-width: 768px) {
-
-        .carousel-height {
-            height: 900px;
-        }
-
-        .font-special {
-            font-size: 4rem;
-            line-height: 1.1;
-        }
-
-        .form-field {
-            margin-bottom: 50px;
-        }
-
-        .functionality-card-body {
-            height: auto;
-        }
-
-        .functionality-card-title {
-            font-size: 4rem;
-        }
-
-        .functionality-button {
-            width: 60%;
-        }
-
-        .functionality-text-button {
-            font-size: 1.7rem;
-        }
-
-        .about-title {
-            font-size: 1rem;
-            padding: 0.5rem 0 0.5rem 0;
-        }
-
-        .about-text p {
-            padding: 0.3rem 0.3rem 0 0.3rem;
-        }
-
-        .functionality-more-caption-1 {
-            margin-left: 4rem;
-        }
-
-        .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
-        .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-7, .functinality-more-text-8 {
-            font-size: 3rem;
-        }
-
-        .functinality-more-text-1 {
-            margin: 1rem 0 0 2rem;
-            line-height: 2rem;
-        }
-
-        .functinality-more-text-4 {
-            margin: 0.2rem 0 0 2rem;
-            line-height: 2.4rem;
-        }
-
-        .functinality-more-text-5 {
-            margin: 1rem 0 0 3rem;
-            line-height: 4rem;
-        }
-
-        .functinality-more-text-2, .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-8 {
-            margin: 1rem 0 0 2rem;
-            line-height: 3rem;
-        }
-
-        .functinality-more-text-7 {
-            margin: 0.4rem 0 0 2rem;
-            line-height: 2.4rem;
-        }
+    .navbar-brand{
+        height: 53px;
+        width: 136px;
     }
 
-    /*********************************************************************************/
-    /*do 767 px - tablet*/
-    /*********************************************************************************/
-    @media (max-width: 767px) {
-
-        .navbar-nav {
-            margin-top: 0.5rem;
-            padding-top: 0.7rem;
-            border-top: 1px solid gray;
-        }
-
-        .nav-item:nth-child(even) {
-            background-color: #E5E5E5;
-        }
-
-        .nav-link {
-            line-height: 2.3rem;
-            font-size: 1.6rem;
-        }
-
-        .nav-link:hover {
-            line-height: 2.3rem;
-            font-size: 1.6rem;
-        }
+    .nav-link {
+        padding: 0 .9rem !important;
+        font-size: 1.3rem;
     }
 
-    /*********************************************************************************/
-    /*do 576 px - smartphone*/
-    /*********************************************************************************/
-    @media (max-width: 576px) {
-
-        .navbar-nav {
-            margin-top: 0.5rem;
-            padding-top: 0.6rem;
-            border-top: 1px solid gray;
-        }
-
-        .nav-item:nth-child(even) {
-            background-color: #E5E5E5;
-        }
-
-        .nav-link {
-            line-height: 2.1rem;
-            font-size: 1.4rem;
-        }
-
-        .nav-link:hover {
-            line-height: 2.1rem;
-            font-size: 1.4rem;
-        }
-
-        .carousel-height {
-            height: 800px;
-        }
-
-        .carousel-caption {
-            top: 35%;
-        }
-
-        .font-special {
-            font-size: 3.75rem;
-            line-height: 1;
-        }
-
-        .contact .font-special {
-            font-size: 2.75rem;
-        }
-
-        .footer-text p {
-            margin-bottom: .7rem;
-        }
-
-        .footer-text {
-            margin-top: 1.2rem;
-        }
-
-        hr.light-rose {
-            margin-top: 0;
-            margin-bottom: .7rem;
-        }
-
-        .footer-text .font-special {
-            font-size: 1.8rem;
-        }
-
-        footer {
-            padding-top: .4rem;
-        }
-
-        hr.dark-green {
-            margin: 4rem 0 1.5rem 0;
-        }
-
-        h1.display-3 {
-            font-size: 4rem;
-        }
-
-        .functionality-card-body {
-            height: auto;
-        }
-
-        .functionality-card-title {
-            font-size: 2.5rem;
-        }
-
-        .functionality-button {
-            width: 80%;
-        }
-
-        .functionality-text-button {
-            font-size: 1.7rem;
-        }
-
-        .functionality-more-caption-1 {
-            margin-left: 4.2rem;
-        }
-
-        .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
-        .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-7, .functinality-more-text-8 {
-            font-size: 3rem;
-            line-height: 2rem;
-        }
-
-        .functinality-more-text-1 {
-            margin: 1rem 0 0 2rem;
-        }
-
-        .functinality-more-text-4 {
-            margin: 0.4rem 0 0 2rem;
-        }
-
-        .functinality-more-text-5 {
-            margin: 1rem 0 0 2.2rem;
-            line-height: 3rem;
-        }
-
-        .functinality-more-text-2, .functinality-more-text-3, .functinality-more-text-6 {
-            margin: 1rem 0 0 2rem;
-        }
-
-        .functinality-more-text-7 {
-            margin: 0.4rem 0 0 2rem;
-        }
-
-        .functinality-more-text-8 {
-            margin: 1.4rem 0 0 2rem;
-        }
+    .nav-link:hover {
+        padding: 0 .9rem !important;
+        font-size: 1.3rem;
     }
 
-    /*********************************************************************************/
-    /*do 541 px*/
-    /*********************************************************************************/
-    @media (max-width: 541px) {
-        .functionality-more-caption-1 {
-            margin-left: 2.1rem;
-        }
-
-        .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
-        .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-7, .functinality-more-text-8 {
-            font-size: 2.5rem;
-            line-height: 2rem;
-        }
-
-        .functinality-more-text-4, .functinality-more-text-7 {
-            margin: 0 0 0 2rem;
-        }
-
-        .functinality-more-text-5 {
-            margin: 0.5rem 0 0 2.2rem;
-        }
-
-        .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-3, .functinality-more-text-6 {
-            margin: 0.5rem 0 0 2rem;
-        }
-
-        .functinality-more-text-8 {
-            margin: 0.5rem 0 0 2rem;
-        }
+    .functionality {
+        margin-right: 1%;
+        margin-left: 0%;
     }
 
-    /*********************************************************************************/
-    /*350px do 400 px - small smartphone*/
-    /*********************************************************************************/
-    @media (max-width: 400px) {
-
-        .navbar-nav {
-            margin-top: 0.5rem;
-            padding-top: 0.5rem;
-            border-top: 1px solid gray;
-        }
-
-        .navbar-brand {
-            height: 53px;
-            width: 136px;
-        }
-
-        .nav-item:nth-child(even) {
-            background-color: #E5E5E5;
-        }
-
-        .nav-link {
-            line-height: 2rem;
-            font-size: 1.2rem;
-        }
-
-        .nav-link:hover {
-            line-height: 2rem;
-            font-size: 1.2rem;
-        }
-
-        .carousel-height {
-            height: 700px;
-        }
-
-        .font-special {
-            font-size: 3.25rem;
-        }
-
-        .contact .font-special {
-            font-size: 2.5rem;
-        }
-
-        .footer-text p {
-            margin-bottom: .6rem;
-        }
-
-        .footer-text {
-            margin-top: 1.3rem;
-        }
-
-        hr.light-rose {
-            margin-top: 0;
-            margin-bottom: .6rem;
-        }
-
-        hr.dark-green {
-            margin: 3.5rem 0 1.25rem 0;
-        }
-
-        .footer-text .font-special {
-            font-size: 1.8rem;
-        }
-
-        h1.display-3 {
-            font-size: 3rem;
-        }
-
-        .functionality-card-body {
-            height: auto;
-        }
-
-        .functionality-card-title {
-            font-size: 2rem;
-        }
-
-        .functionality-button {
-            width: 80%;
-        }
-
-        .functionality-text-button {
-            font-size: 1.5rem;
-        }
-
-        .about-icons2 {
-            width: 3.5rem;
-            height: 3.5rem;
-            padding: 1rem;
-        }
-
-        .functionality-more-caption-1 {
-            margin-left: 3.6rem;
-        }
-
-        .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
-        .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-7, .functinality-more-text-8 {
-            font-size: 1.8rem;
-        }
-
-        .functinality-more-text-1 {
-            margin: 0 0 0 1.5rem;
-            line-height: 1.7rem;
-        }
-
-        .functinality-more-text-2, .functinality-more-text-5, .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-8 {
-            margin: 1rem 0 0 2rem;
-            line-height: 1rem;
-        }
-
-        .functinality-more-text-4 {
-            margin: 0.2rem 0 0 2rem;
-            line-height: 1.8rem;
-        }
-
-        .functinality-more-text-7 {
-            margin: 0 0 0 2rem;
-            line-height: 1.8rem;
-        }
+    .functionality-card-title {
+        font-size: 4rem;
     }
 
-    /*********************************************************************************/
-    /*320px do 350 px - extra small smartphone*/
-    /*********************************************************************************/
-    @media (max-width: 350px) {
+    .functionality-button {
+        width: 60%;
+    }
+
+    .functionality-text-button {
+        font-size: 1.7rem;
+    }
+
+    .caption-content {
+        margin-top: 3rem;
+    }
+
+    .functionality-more-caption-1 {
+        margin-left: 6.5rem;
+    }
+
+    .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
+    .functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7, .functinality-more-text-8 {
+        font-size: 4rem;
+    }
+    .functinality-more-text-1 {
+        margin: 2rem 0 0 2rem;
+        line-height: 4rem;
+    }
+
+    .functinality-more-text-4 {
+        margin: 0.4rem 0 0 2rem;
+        line-height: 4rem;
+    }
+
+    .functinality-more-text-5 {
+        margin: 1rem 0 0 3rem;
+        line-height: 5rem;
+    }
+
+    .functinality-more-text-2, .functinality-more-text-3,.functinality-more-text-6 {
+        margin: 1rem 0 0 2rem;
+        line-height: 3.8rem;
+    }
+
+    .functinality-more-text-7 {
+        margin: 0.4rem 0 0 2rem ;
+        line-height: 3.7rem;
+    }
+
+    .functinality-more-text-8 {
+        margin: 1.4rem 0 0 2rem;
+        line-height: 4rem;
+    }
+}
+
+/*********************************************************************************/
+/*do 767 px - tablet*/
+/*********************************************************************************/
+
+@media (max-width: 767px) {
+
+
+    .carousel-height {
+        height: 900px;
+    }
+
+    .font-special {
+        font-size: 4rem;
+        line-height: 1.1;
+    }
+
+    .form-field {
+        margin-bottom: 50px;
+    }
+
+    .functionality-card-body {
+        height: auto;
+    }
+
+    .functionality-card-title {
+        font-size: 4rem;
+    }
+
+    .functionality-button {
+        width: 60%;
+    }
+
+    .functionality-text-button {
+        font-size: 1.7rem;
+    }
+
+    .about-title {
+        font-size: 1rem;
+        padding: 0.5rem 0 0.5rem 0;
+    }
+
+    .about-text p {
+        padding: 0.3rem 0.3rem 0 0.3rem;
+    }
+
+    .caption-content {
+        margin-top: 3rem;
+    }
+
+   .functionality-more-caption-1 {
+        margin-left: 5.5rem;
+    }
+
+    .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
+    .functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7, .functinality-more-text-8 {
+        font-size: 3rem;
+    }
+
+    .functinality-more-text-1 {
+        margin: 1rem 0 0 2rem;
+        line-height: 3rem;
+    }
+
+    .functinality-more-text-4 {
+        margin: 0.2rem 0 0 2rem;
+        line-height: 3rem;
+    }
+    .functinality-more-text-5 {
+        margin: 1rem 0 0 3rem;
+        line-height: 3rem;
+    }
+
+    .functinality-more-text-2, .functinality-more-text-3,.functinality-more-text-6, .functinality-more-text-8  {
+        margin: 1rem 0 0 2rem;
+        line-height: 3rem;
+    }
+
+    .functinality-more-text-7 {
+        margin: 0.4rem 0 0 2rem;
+        line-height: 3rem;
+    }
+
+
+    .navbar-nav {
+        margin-top: 0.5rem;
+        padding-top: 0.7rem;
+        border-top: 1px solid gray;
+    }
+
+    .nav-item:nth-child(even) {
+        background-color: #E5E5E5;
+    }
+
+    .nav-link {
+        line-height: 2.3rem;
+        font-size: 1.6rem;
+    }
+
+    .nav-link:hover {
+        line-height: 2.3rem;
+        font-size: 1.6rem;
+    }
+}
+
+/*********************************************************************************/
+/*do 576 px - smartphone*/
+/*********************************************************************************/
+
+@media (max-width: 576px) {
+
+    .navbar-nav{
+        margin-top: 0.5rem;
+        padding-top: 0.6rem;
+        border-top: 1px solid gray;
+    }
+
+    .nav-item:nth-child(even){
+        background-color: #E5E5E5;
+    }
+
+    .nav-link{
+        line-height: 2.1rem;
+        font-size: 1.4rem;
+    }
+
+    .nav-link:hover {
+        line-height: 2.1rem;
+        font-size: 1.4rem;
+    }
+
+    .carousel-height {
+        height: 800px;
+    }
+
+    .carousel-caption {
+        top: 35%;
+    }
+
+    .font-special {
+        font-size: 3.75rem;
+        line-height: 1;
+    }
+
+    .contact .font-special {
+        font-size: 2.75rem;
+    }
+
+    .footer-text p {
+        margin-bottom: .7rem;
+    }
+
+    .footer-text {
+        margin-top: 1.2rem;
+    }
+
+    hr.light-rose {
+        margin-top: 0;
+        margin-bottom: .7rem;
+    }
+
+    .footer-text .font-special {
+        font-size: 1.8rem;
+    }
+
+    footer {
+        padding-top: .4rem;
+    }
+
+    hr.dark-green {
+        margin: 4rem 0 1.5rem 0;
+    }
+
+    h1.display-3 {
+        font-size: 4rem;
+    }
+
+    .functionality-card-body {
+        height: auto;
+    }
+
+    .functionality-card-title {
+        font-size: 2.5rem;
+    }
+    .functionality-button {
+        width: 80%;
+    }
+
+    .functionality-text-button {
+        font-size: 1.7rem;
+    }
+
+    .caption-content {
+        margin-top: 3rem;
+    }
+
+   .functionality-more-caption-1 {
+        margin-left: 4.2rem;
+    }
+
+    .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
+    .functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7, .functinality-more-text-8 {
+        font-size: 3rem;
+        line-height: 2rem;
+    }
+
+    .functinality-more-text-1 {
+        margin: 1rem 0 0 2rem;
+    }
+
+    .functinality-more-text-4 {
+        margin: 0.4rem 0 0 2rem;
+    }
+
+    .functinality-more-text-5 {
+        margin: 1rem 0 0 2.2rem;
+        line-height: 3rem;
+    }
+
+    .functinality-more-text-2, .functinality-more-text-3,.functinality-more-text-6 {
+        margin: 1rem 0 0 2rem;
+    }
+
+    .functinality-more-text-7 {
+        margin: 0.4rem 0 0 2rem;
+    }
+
+    .functinality-more-text-8 {
+        margin: 1.4rem 0 0 2rem;
+    }
+}
+
+/*********************************************************************************/
+/*do 541 px*/
+/*********************************************************************************/
+
+@media (max-width: 541px) {
+
+    .caption-content {
+        margin-top: 1rem;
+    }
+
+    .functionality-more-caption-1 {
+        margin-left: 3rem;
+    }
+
+    .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
+    .functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7, .functinality-more-text-8 {
+        font-size: 2.5rem;
+        line-height: 2.6rem;
+    }
+
+    .functinality-more-text-4, .functinality-more-text-7 {
+        margin: 0 0 0 2rem;
+    }
+
+    .functinality-more-text-5 {
+        margin: 0.5rem 0 0 2.2rem;
+    }
+
+    .functinality-more-text-1,.functinality-more-text-2, .functinality-more-text-3,.functinality-more-text-6 {
+        margin: 0.5rem 0 0 2rem;
+    }
+
+    .functinality-more-text-8 {
+        margin: 0.5rem 0 0 2rem;
+    }
+}
+
+/*********************************************************************************/
+/*350px do 400 px - small smartphone*/
+/*********************************************************************************/
+
+@media (max-width: 400px) {
+
+    .navbar-nav{
+        margin-top: 0.5rem;
+        padding-top: 0.5rem;
+        border-top: 1px solid gray;
+    }
+
+    .navbar-brand{
+        height: 53px;
+        width: 136px;
+    }
+
+    .nav-item:nth-child(even){
+        background-color: #E5E5E5;
+    }
+
+    .nav-link{
+        line-height: 2rem;
+        font-size: 1.2rem;
+    }
+
+    .nav-link:hover {
+        line-height: 2rem;
+        font-size: 1.2rem;
+    }
+
+    .carousel-height {
+        height: 700px;
+    }
+
+    .font-special {
+        font-size: 3.25rem;
+    }
+
+    .contact .font-special {
+        font-size: 2.5rem;
+    }
+
+    .footer-text p {
+        margin-bottom: .6rem;
+    }
+
+    .footer-text {
+        margin-top: 1.3rem;
+    }
+
+    hr.light-rose {
+        margin-top: 0;
+        margin-bottom: .6rem;
+    }
+
+    hr.dark-green {
+        margin: 3.5rem 0 1.25rem 0;
+    }
+
+    .footer-text .font-special {
+        font-size: 1.8rem;
+    }
+
+    h1.display-3 {
+        font-size: 3rem;
+    }
+
+    .functionality-card-body {
+        height: auto;
+    }
+
+    .functionality-card-title {
+        font-size: 2rem;
+    }
+
+    .functionality-button {
+        width: 80%;
+    }
+
+    .functionality-text-button {
+        font-size: 1.5rem;
+    }
+
+    .about-icons2 {
+        width: 3.5rem;
+        height: 3.5rem;
+        padding: 1rem;
+    }
+
+    .caption-content {
+        margin-top: 1.2rem;
+    }
+
+    .functionality-more-caption-1 {
+        margin-left: 2rem;
+    }
+
+    .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
+    .functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7, .functinality-more-text-8 {
+        font-size: 2rem;
+    }
+
+    .functinality-more-text-1 {
+        margin: 0 0 0 1.5rem;
+        line-height: 2rem;
+    }
+
+    .functinality-more-text-2, .functinality-more-text-5,   .functinality-more-text-3,.functinality-more-text-6, .functinality-more-text-8 {
+        margin: 1rem 0 0 2rem;
+        line-height: 1.5rem;
+    }
+
+    .functinality-more-text-4 {
+        margin: 0.2rem 0 0 2rem ;
+        line-height: 1.8rem;
+    }
+
+    .functinality-more-text-7 {
+        margin: 0 0 0 2rem;
+        line-height: 2.2rem;
+    }
+}
+
+/*********************************************************************************/
+/*320px do 350 px - extra small smartphone*/
+/*********************************************************************************/
+
+@media (max-width: 350px) {
 
         .contact.container {
             padding-top: 5px;
@@ -1033,126 +1030,130 @@ a.phone-action:hover {
             border-top: 1px solid gray;
         }
 
-        .navbar-brand {
-            height: 53px;
-            width: 136px;
-        }
-
-        .nav-item:nth-child(even) {
-            background-color: #E5E5E5;
-        }
-
-        .nav-link {
-            line-height: 1.9rem;
-            font-size: 1.2rem;
-        }
-
-        .nav-link:hover {
-            line-height: 1.9rem;
-            font-size: 1.2rem;
-        }
-
-        .carousel-height {
-            height: 600px;
-        }
-
-        .font-special {
-            font-size: 2.75rem;
-        }
-
-        .contact .font-special {
-            font-size: 2.25rem;
-        }
-
-        .footer-text p {
-            margin-bottom: .5rem;
-        }
-
-        .footer-text {
-            margin-top: 1rem;
-        }
-
-        hr.light-rose {
-            margin-top: 0;
-            margin-bottom: .5rem;
-        }
-
-        .footer-text .font-special {
-            font-size: 1.6rem;
-        }
-
-        hr.dark-green {
-            margin: 3rem 0 1rem 0;
-        }
-
-        .functionality-card-body {
-            height: auto;
-        }
-
-        h1.display-3 {
-            font-size: 2.5rem;
-        }
-
-        .functionality-button {
-            width: 80%;
-        }
-
-        .functionality-text-button {
-            font-size: 1.5rem;
-        }
-
-        .about-card-title {
-            font-family: 'Amatic SC', cursive;
-            font-size: 2rem;
-        }
-
-        .about-card-body p {
-            font-size: 1.2rem;
-            padding-top: 0.4rem;
-        }
-
-        .about-card-body {
-            height: auto;
-        }
-
-        .about-icons2 {
-            width: 3rem;
-            height: 3rem;
-            padding: 1rem;
-        }
-
-        .about-card-footer img.about-icons2:hover {
-            width: 3.5rem;
-            height: 3.5rem;
-        }
-
-        .functionality-more-caption-1 {
-            margin-left: 4rem;
-        }
-
-        .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
-        .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-7, .functinality-more-text-8 {
-            font-size: 1.6rem;
-            line-height: 1.7rem;
-        }
-
-        .functinality-more-text-1 {
-            margin: 0 0 0 0;
-            line-height: 2rem;
-        }
-
-        .functinality-more-text-2, .functinality-more-text-5, .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-8 {
-            margin: 0rem 0 0 2rem;
-        }
-
-        .functinality-more-text-4 {
-            margin: 0 0 0 1.6rem;
-        }
-
-        .functinality-more-text-7 {
-            margin: 0 0 0 1.4rem;
-        }
+    .navbar-brand{
+        height: 53px;
+        width: 136px;
     }
+
+    .nav-item:nth-child(even){
+        background-color: #E5E5E5;
+    }
+
+    .nav-link{
+        line-height: 1.9rem;
+        font-size: 1.2rem;
+    }
+
+    .nav-link:hover {
+        line-height: 1.9rem;
+        font-size: 1.2rem;
+    }
+
+    .carousel-height {
+        height: 600px;
+    }
+
+    .font-special {
+        font-size: 2.75rem;
+    }
+
+    .contact .font-special {
+        font-size: 2.25rem;
+    }
+
+    .footer-text p {
+        margin-bottom: .5rem;
+    }
+
+    .footer-text {
+        margin-top: 1rem;
+    }
+
+    hr.light-rose {
+        margin-top: 0;
+        margin-bottom: .5rem;
+    }
+
+    .footer-text .font-special {
+        font-size: 1.6rem;
+    }
+
+    hr.dark-green {
+        margin: 3rem 0 1rem 0;
+    }
+
+    .functionality-card-body {
+        height: auto;
+    }
+
+    h1.display-3 {
+        font-size: 2.5rem;
+    }
+
+    .functionality-button {
+        width: 80%;
+    }
+
+    .functionality-text-button {
+        font-size: 1.5rem;
+    }
+
+    .about-card-title {
+        font-family: 'Amatic SC', cursive;
+        font-size: 2rem;
+    }
+
+    .about-card-body p {
+        font-size: 1.2rem;
+        padding-top: 0.4rem;
+    }
+
+    .about-card-body {
+        height: auto;
+    }
+
+    .about-icons2 {
+        width: 3rem;
+        height: 3rem;
+        padding: 1rem;
+    }
+
+    .about-card-footer img.about-icons2:hover {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+
+    .caption-content {
+        margin-top: 1.5rem;
+    }
+
+    .functionality-more-caption-1 {
+        margin-left: 4rem;
+    }
+
+    .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
+    .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-7, .functinality-more-text-8 {
+        font-size: 1.6rem;
+        line-height: 1.8rem;
+    }
+
+    .functinality-more-text-1 {
+        margin: 0 0 0 0;
+        line-height: 2rem;
+    }
+
+    .functinality-more-text-2,.functinality-more-text-5, .functinality-more-text-3,.functinality-more-text-6, .functinality-more-text-8 {
+        margin: 0rem 0 0 2rem;
+    }
+
+    .functinality-more-text-4 {
+        margin: 0 0 0 1.6rem;
+    }
+
+    .functinality-more-text-7 {
+        margin: 0 0 0 1.4rem;
+    }
+}
 
 
 
