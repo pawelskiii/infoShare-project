@@ -135,7 +135,7 @@ body {
 .nav-link:hover {
     justify-content: center;
     font-family: 'Raleway', sans-serif;
-    padding: 0 1.1rem !important;
+    padding: 0 1rem !important;
     font-size: 1.4rem;
     color: #00753F !important;
 }
@@ -185,7 +185,7 @@ body {
 
 /*############### functionality ###############*/
 
-.functionality {
+.functionality-container-fluid {
     margin-right: 5%;
     margin-left: 5%;
 }
@@ -451,6 +451,10 @@ a.phone-action:hover {
         width: 3.5rem;
         height: 3.5rem;
     }
+
+    .caption-content {
+        margin-top: 3rem;
+    }
 }
 
 /*********************************************************************************/
@@ -465,6 +469,10 @@ a.phone-action:hover {
 
     .functionality-button {
         width: 45%;
+    }
+
+    .caption-content {
+        margin-top: 3rem;
     }
 
     .functionality-more-caption-1 {
@@ -500,7 +508,30 @@ a.phone-action:hover {
         line-height: 1.8rem;
     }
 
-/*********************************************************************************/
+
+    /*********************************************************************************/
+    /*do 992 px - tablet*/
+    /*********************************************************************************/
+
+    @media (min-width: 768px) and (max-width: 992px){
+
+        .navbar-brand{
+            height: 53px;
+            width: 136px;
+        }
+
+        .nav-link {
+            padding: 0 .5rem !important;
+            font-size: 1.07rem;
+        }
+
+        .nav-link:hover {
+            padding: 0 .5rem !important;
+            font-size: 1.07rem;
+        }
+    }
+
+    /*********************************************************************************/
 /*do 991 px - large*/
 /*********************************************************************************/
 
@@ -536,6 +567,10 @@ a.phone-action:hover {
 
     .functionality-text-button {
         font-size: 1.7rem;
+    }
+
+    .caption-content {
+        margin-top: 3rem;
     }
 
     .functionality-more-caption-1 {
@@ -577,61 +612,11 @@ a.phone-action:hover {
     }
 }
 
-
-/*********************************************************************************/
-/*do 768 px - tablet*/
-/*********************************************************************************/
-
-@media (min-width: 768px) and (max-width: 992px){
-
-    .navbar-brand{
-        height: 53px;
-        width: 136px;
-    }
-
-    .nav-link {
-        padding: 0 .5rem !important;
-        font-size: 1.07rem;
-    }
-
-    .nav-link:hover {
-        padding: 0 .5rem !important;
-        font-size: 1.07rem;
-    }
-}
-
 /*********************************************************************************/
 /*do 767 px - tablet*/
 /*********************************************************************************/
 
 @media (max-width: 767px) {
-
-    .navbar-nav{
-        margin-top: 0.5rem;
-        padding-top: 0.7rem;
-        border-top: 1px solid gray;
-    }
-
-    .nav-item:nth-child(even){
-        background-color: #E5E5E5;
-    }
-
-    .nav-link{
-        line-height: 2.3rem;
-        font-size: 1.6rem;
-    }
-
-    .nav-link:hover {
-        line-height: 2.3rem;
-        font-size: 1.6rem;
-    }
-
-}
-/*********************************************************************************/
-/*do 768 px - tablet*/
-/*********************************************************************************/
-
-@media (max-width: 768px) {
 
 
     .carousel-height {
@@ -672,8 +657,12 @@ a.phone-action:hover {
         padding: 0.3rem 0.3rem 0 0.3rem;
     }
 
+    .caption-content {
+        margin-top: 3rem;
+    }
+
    .functionality-more-caption-1 {
-        margin-left: 4rem;
+        margin-left: 5.5rem;
     }
 
     .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
@@ -683,16 +672,16 @@ a.phone-action:hover {
 
     .functinality-more-text-1 {
         margin: 1rem 0 0 2rem;
-        line-height: 2rem;
+        line-height: 3rem;
     }
 
     .functinality-more-text-4 {
         margin: 0.2rem 0 0 2rem;
-        line-height: 2.4rem;
+        line-height: 3rem;
     }
     .functinality-more-text-5 {
         margin: 1rem 0 0 3rem;
-        line-height: 4rem;
+        line-height: 3rem;
     }
 
     .functinality-more-text-2, .functinality-more-text-3,.functinality-more-text-6, .functinality-more-text-8  {
@@ -702,15 +691,9 @@ a.phone-action:hover {
 
     .functinality-more-text-7 {
         margin: 0.4rem 0 0 2rem;
-        line-height: 2.4rem;
+        line-height: 3rem;
     }
-}
 
-/*********************************************************************************/
-/*do 767 px - tablet*/
-/*********************************************************************************/
-
-@media (max-width: 767px) {
 
     .navbar-nav {
         margin-top: 0.5rem;
@@ -820,6 +803,10 @@ a.phone-action:hover {
         font-size: 1.7rem;
     }
 
+    .caption-content {
+        margin-top: 3rem;
+    }
+
    .functionality-more-caption-1 {
         margin-left: 4.2rem;
     }
@@ -861,14 +848,19 @@ a.phone-action:hover {
 /*********************************************************************************/
 
 @media (max-width: 541px) {
+
+    .caption-content {
+        margin-top: 1rem;
+    }
+
     .functionality-more-caption-1 {
-        margin-left: 2.1rem;
+        margin-left: 3rem;
     }
 
     .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
     .functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7, .functinality-more-text-8 {
         font-size: 2.5rem;
-        line-height: 2rem;
+        line-height: 2.6rem;
     }
 
     .functinality-more-text-4, .functinality-more-text-7 {
@@ -978,23 +970,27 @@ a.phone-action:hover {
         padding: 1rem;
     }
 
+    .caption-content {
+        margin-top: 1.2rem;
+    }
+
     .functionality-more-caption-1 {
-        margin-left: 3.6rem;
+        margin-left: 2rem;
     }
 
     .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
     .functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7, .functinality-more-text-8 {
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
 
     .functinality-more-text-1 {
         margin: 0 0 0 1.5rem;
-        line-height: 1.7rem;
+        line-height: 2rem;
     }
 
     .functinality-more-text-2, .functinality-more-text-5,   .functinality-more-text-3,.functinality-more-text-6, .functinality-more-text-8 {
         margin: 1rem 0 0 2rem;
-        line-height: 1rem;
+        line-height: 1.5rem;
     }
 
     .functinality-more-text-4 {
@@ -1004,7 +1000,7 @@ a.phone-action:hover {
 
     .functinality-more-text-7 {
         margin: 0 0 0 2rem;
-        line-height: 1.8rem;
+        line-height: 2.2rem;
     }
 }
 
@@ -1113,6 +1109,10 @@ a.phone-action:hover {
         height: 3.5rem;
     }
 
+    .caption-content {
+        margin-top: 1.5rem;
+    }
+
     .functionality-more-caption-1 {
         margin-left: 4rem;
     }
@@ -1120,7 +1120,7 @@ a.phone-action:hover {
     .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
     .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-7, .functinality-more-text-8 {
         font-size: 1.6rem;
-        line-height: 1.7rem;
+        line-height: 1.8rem;
     }
 
     .functinality-more-text-1 {
