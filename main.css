@@ -100,15 +100,9 @@ body {
 }
 
 .scrolling-box {
-    height: 990px;
+    height: 100vh;
     overflow-y: scroll;
     scroll-behavior: smooth;
-}
-
-@-moz-document url-prefix() {
-    .scrolling-box {
-        height: 982px;
-    }
 }
 
 /* ############### navigation ############### */
