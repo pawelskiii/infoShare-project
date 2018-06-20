@@ -150,25 +150,9 @@ body {
     font-size: 1.4rem;
     color: #00753F !important;
 }
-
-.dropdown-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'Raleway', sans-serif;
-    padding: 0 1rem !important;
-    font-size: 1.2rem;
-    transition: color 0.5s ease;
-    color: #FC7700 !important;
-}
-
-.dropdown-item:hover {
-    padding: 0 1rem !important;
-    color: #00753F !important;
-}
-
-.dropdown-item img {
-
+.lang-button {
+    margin-left: 1rem;
+    cursor: pointer;
 }
 
 /* ############### introduction ############### */
