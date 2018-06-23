@@ -315,6 +315,11 @@ input[type=number] {
     transition: background .25s ease-out;
 }
 
+#contact h1::last-word {
+    font-family: 'Fredericka the Great', cursive;
+    letter-spacing: 0.2rem;
+}
+
 footer {
     margin-top: 3rem;
     padding: 1.5rem 0;
