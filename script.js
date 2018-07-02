@@ -17,10 +17,15 @@ function changeDataLang() {
         }
     }
     for (let j = 0; j < changeLang.length; j++) {
-        swapLangItem1 = changeLang[j].innerText;
-        swapLangItem2 = changeLang[j].getAttribute('data-lang');
-        changeLang[j].setAttribute('data-lang', swapLangItem1);
-        changeLang[j].innerText = swapLangItem2;
+        if (changeLang[j].childNodes[1]) {
+            swapLangItem1 = changeLang[j].childNodes[0].nodeValue;
+            changeLang[j].childNodes[0].nodeValue = changeLang[j].getAttribute('data-lang');
+            changeLang[j].setAttribute('data-lang', swapLangItem1);
+        } else {
+            swapLangItem1 = changeLang[j].innerText;
+            changeLang[j].innerText = changeLang[j].getAttribute('data-lang');
+            changeLang[j].setAttribute('data-lang', swapLangItem1);
+        }
     }
     for (let l = 0; l < changeLangFormPlaceholder.length; l++) {
         swapLangItem3 = changeLangFormPlaceholder[l].getAttribute('placeholder');
