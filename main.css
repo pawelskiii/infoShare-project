@@ -99,6 +99,8 @@ body {
     color: #F57D19;
 }
 
+/*TODO usunąłem scroll smootha*/
+
 /* ############### navigation ############### */
 
 .navbar {
@@ -136,7 +138,7 @@ body {
     transition: color 0.5s ease;
     color: #FC7700 !important;
 }
-
+/*TODO powtarzające się zbędne stylowania w css'ach na przyklad w pseudoklasach tak jak w nav-linku, moze po zmianie kolejnosci css'a z bootstrapem w headzie w indexie bedzie normalnie dzialalo i ograniczy sie te importanty. poza tym zawsze mozna zwiekszyc sile selektora jezeli bootsrap bedzie mimo wszystko wygrywal ;)*/
 .nav-link:hover {
     justify-content: center;
     font-family: 'Raleway', sans-serif;
@@ -410,6 +412,8 @@ a.phone-action:hover {
     bottom: 0;
     z-index: 1;
 }
+
+/*TODO proponuje zmniejszenie liczby klas do funkcjonalnosci. dla wszystkich jedna i ta sama dotyczaca polozenia (np. zeby bylo wszystko z lewej strony) a wszelkie drobne dewiacje jako dodatkowa klasa nadpisujaca. do tego polozenie zamiast w remach to w %. ograniczy to bardzo mocno nam te media queries*/
 
 .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
 .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-7, .functinality-more-text-8 {
