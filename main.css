@@ -101,6 +101,30 @@ body {
 
 /*TODO usunąłem scroll smootha*/
 
+/* ############### go to top button ############### */
+
+.go-to-top-button {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background-color: #FC7700;
+    text-align: center;
+    position: fixed;
+    bottom: 50px;
+    right: 25px;
+    z-index: 1;
+    transition: background-color .3s,
+    opacity .5s, visibility .5s;
+}
+
+.go-to-top-button::after {
+    content: '\f062';
+    font-family: FontAwesome;
+    font-size: 40px;
+    line-height: 65px;
+    color: #FEEDDF;
+}
+
 /* ############### navigation ############### */
 
 .navbar {
