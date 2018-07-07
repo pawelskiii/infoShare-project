@@ -99,6 +99,10 @@ body {
     color: #F57D19;
 }
 
+.green {
+    color: #096C3E;
+}
+
 /*TODO usunąłem scroll smootha*/
 
 /* ############### navigation ############### */
@@ -254,12 +258,21 @@ body {
 }
 
 .contact .font-special {
-    color: #F57D19;
     font-size: 3rem;
 }
 
-.contact .font-special2 {
-    color: #096C3E;
+div.form-group {
+    margin: 1rem 0;
+    position: relative;
+}
+
+div.font-special.form-reminder-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    position: absolute;
+    z-index: 1;
+    right: 0%;
+    bottom: .4rem;
 }
 
 .form-group input, .form-group textarea {
@@ -309,11 +322,6 @@ input[type=number] {
     color: transparent;
     text-transform: none;
     transition: background .25s ease-out;
-}
-
-#contact h1::last-word {
-    font-family: 'Fredericka the Great', cursive;
-    letter-spacing: 0.2rem;
 }
 
 footer {
@@ -877,6 +885,11 @@ a.phone-action:hover {
 /*********************************************************************************/
 @media (max-width: 541px) {
 
+
+    div.font-special.form-reminder {
+        font-size: 1.2rem;
+    }
+
     .caption-content {
         margin-top: 1rem;
     }
@@ -1038,6 +1051,11 @@ a.phone-action:hover {
 
     .contact.container {
         padding-top: 5px;
+    }
+
+    div.font-special.form-reminder {
+        font-size: 1rem;
+        width: 60%;
     }
 
     .navbar-nav {

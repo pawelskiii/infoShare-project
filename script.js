@@ -1,12 +1,9 @@
-/*function changeDataLang() {
-    for (let j = 0; j < changeLang.length; j++) {
-        if (changeLang[j].style.display === 'block') {
-            changeLang[j].style.display = 'none'
-        } else {
-            changeLang[j].style.display = 'block'
-        }
-    }
-}*/
+const langButton = document.querySelectorAll('.lang-button');
+const changeLang = document.querySelectorAll('[data-lang]');
+const changeLangFormPlaceholder = document.querySelectorAll('[data-langplaceholder]');
+const changeLangFormTitle = document.querySelectorAll('[data-langtitle]');
+
+
 
 function changeDataLang() {
     for (let k = 0; k < langButton.length; k++) {
@@ -47,11 +44,6 @@ function changeDataLang() {
     }
 }
 
-const langButton = document.querySelectorAll('.lang-button');
-const changeLang = document.querySelectorAll('[data-lang]');
-const changeLangFormPlaceholder = document.querySelectorAll('[data-langplaceholder]');
-const changeLangFormTitle = document.querySelectorAll('[data-langtitle]');
-
 for (let i = 0; i < langButton.length; i++) {
     langButton[i].addEventListener('click', changeDataLang);
 }
@@ -60,3 +52,11 @@ if (localStorage.language === 'english') {
     changeDataLang();
     localStorage.setItem('language', 'english');
 }
+
+$('.form-mail').focus(function() {
+    if (document.getElementsByClassName('form-name')[0].value = ' ') {
+        $('.form-reminder-name').show();
+    } else {
+        $('.form-reminder-name').hide();
+    }
+})
