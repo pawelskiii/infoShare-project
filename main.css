@@ -104,6 +104,7 @@ body {
 /* ############### go to top button ############### */
 
 .go-to-top-button {
+    cursor: pointer;
     width: 65px;
     height: 65px;
     border-radius: 50%;
@@ -113,16 +114,30 @@ body {
     bottom: 50px;
     right: 25px;
     z-index: 1;
-    transition: background-color .3s,
-    opacity .5s, visibility .5s;
+    transition: background-color .5s, opacity 1s;
+    opacity: 0;
+    visibility: hidden;
 }
 
 .go-to-top-button::after {
-    content: '\f062';
     font-family: FontAwesome;
+    content: '\f062';
     font-size: 40px;
     line-height: 65px;
     color: #FEEDDF;
+}
+
+.go-to-top-button:hover {
+    background-color: #001401;
+}
+
+.go-to-top-button:active {
+    background-color: #FEEDDF;
+}
+
+.go-to-top-button.show {
+    opacity: 1;
+    visibility: visible;
 }
 
 /* ############### navigation ############### */
