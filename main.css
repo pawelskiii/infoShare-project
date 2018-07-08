@@ -314,7 +314,7 @@ input[type=number] {
     letter-spacing: 0.2rem;
 }
 
-/*TODO propozycja przesunięcia footera w osobną sekcję, przed media*/
+/*TODO propozycja przesunięcia footera w osobną sekcję, pod koniec, przed media*/
 
 footer {
     margin-top: 3rem;
