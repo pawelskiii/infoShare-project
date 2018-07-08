@@ -99,47 +99,6 @@ body {
     color: #F57D19;
 }
 
-/*TODO usunąłem scroll smootha*/
-
-/* ############### go to top button ############### */
-
-.go-to-top-button {
-    cursor: pointer;
-    width: 65px;
-    height: 65px;
-    border-radius: 50%;
-    background-color: #FC7700;
-    text-align: center;
-    position: fixed;
-    bottom: 50px;
-    right: 25px;
-    z-index: 1;
-    transition: background-color .5s, opacity 1.5s, visibility .8s;
-    opacity: 0;
-    visibility: hidden;
-}
-
-.go-to-top-button::after {
-    font-family: FontAwesome;
-    content: '\f062';
-    font-size: 40px;
-    line-height: 65px;
-    color: #FEEDDF;
-}
-
-.go-to-top-button:hover {
-    background-color: #001401;
-}
-
-.go-to-top-button:active {
-    background-color: #FEEDDF;
-}
-
-.go-to-top-button.show {
-    opacity: 1;
-    visibility: visible;
-}
-
 /* ############### navigation ############### */
 
 .navbar {
@@ -355,6 +314,8 @@ input[type=number] {
     letter-spacing: 0.2rem;
 }
 
+/*TODO propozycja przesunięcia footera w osobną sekcję, przed media*/
+
 footer {
     margin-top: 3rem;
     padding: 1.5rem 0;
@@ -486,6 +447,48 @@ a.phone-action:hover {
     margin-left: 4.9rem;
 }
 
+/* ############### go to top button ############### */
+
+.go-to-top-button {
+    cursor: pointer;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background-color: #FC7700;
+    text-align: center;
+    position: fixed;
+    bottom: 50px;
+    right: 25px;
+    z-index: 1;
+    transition: background-color .8s, opacity 2s, visibility 1.5s;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.go-to-top-button::after {
+    font-family: FontAwesome;
+    content: '\f062';
+    font-size: 40px;
+    line-height: 65px;
+    color: #FEEDDF;
+}
+
+.go-to-top-button:hover {
+    background-color: #001401;
+    text-decoration: none;
+}
+
+.go-to-top-button:active {
+    background-color: #FEEDDF;
+}
+
+.go-to-top-button.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+
 /*############### media ###############*/
 
 /*********************************************************************************/
@@ -613,6 +616,10 @@ a.phone-action:hover {
     .nav-link:hover {
         padding: 0 .5rem !important;
         font-size: 1.03rem;
+    }
+
+    .go-to-top-button {
+        bottom: 25px;
     }
 }
 
@@ -1068,6 +1075,11 @@ a.phone-action:hover {
         margin: 0 0 0 2rem;
         line-height: 2.2rem;
     }
+
+    .go-to-top-button {
+        bottom: 20px;
+        right: 20px;
+    }
 }
 
 /*********************************************************************************/
@@ -1207,6 +1219,11 @@ a.phone-action:hover {
 
     .functinality-more-text-7 {
         margin: 0 0 0 1.4rem;
+    }
+
+    .go-to-top-button {
+        bottom: 15px;
+        right: 15px;
     }
 }
 

@@ -1,10 +1,11 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
+    let topButton = $('.go-to-top-button');
     $(window).scroll(function() {
         if ($(window).scrollTop() > 500) {
-            $('.go-to-top-button').addClass('show');
+            topButton.addClass('show');
         } else {
-            $('.go-to-top-button').removeClass('show');
+            topButton.removeClass('show');
         }
     });
 });
