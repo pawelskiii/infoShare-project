@@ -3,7 +3,7 @@
 // });
 
 // $(document).ready(function () {
-//     $('a[href^="#"]').on('click', function () {
+//     $('a[href^="#"]').click(function () {
 //         let target = $($(this).attr('href'));
 //         if (target.length) {
 //             $('html').animate({scrollTop: target.offset().top}, 1000);
