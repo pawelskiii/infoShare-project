@@ -1,15 +1,3 @@
-/*function changeDataLang() {
-    for (let j = 0; j < changeLang.length; j++) {
-        if (changeLang[j].style.display === 'block') {
-            changeLang[j].style.display = 'none'
-        } else {
-            changeLang[j].style.display = 'block'
-        }
-    }
-}*/
-
-
-
 $('.navbar-nav>li>a').on('click', function () {
     $('.navbar-collapse').collapse('hide');
 });

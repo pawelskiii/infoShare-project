@@ -458,33 +458,35 @@
     <hr class="dark-green">
     <div class="row">
         <div class="col">
-            <h1 class="font-special" data-lang="Do you want to eat <span
-                    class='font-special2'>SMARTER?</span>">Chcesz jeść <span
-                    class="font-special2">SMARTER?</span></h1>
-            <h1 class="font-special" data-lang="Leave us your email*">Zostaw nam swojego maila*!</h1>
+            <h1 class="font-special orange" data-lang="Do you want to eat <span
+                    class='font-special2 green'>SMARTER?</span>">Chcesz jeść <span
+                    class="font-special2 green">SMARTER?</span></h1>
+            <h1 class="font-special orange" data-lang="Leave us your email*">Zostaw nam swojego maila*!</h1>
         </div>
     </div>
     <div class="row">
         <div class="col-md-8">
             <form class="form-field">
                 <div class="form-group">
-                    <input type="text" class="form-control font-normal" placeholder="Twoje imię..."
+                    <input type="text" class="form-control form-name font-normal" placeholder="Twoje imię..."
                            data-langplaceholder="Your name..." required
                            pattern="[A-Za-z]{2,30}"
                            title="Dopuszczalne tylko litery - od 2 do 30 znaków"
                            data-langtitle="Only letters - 2 to 30 signs">
+                    <div class="font-special form-reminder-name green" style="display: none;" data-lang="<- we need this ;)"><- tego potrzebujemy ;)</div>
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control font-normal" placeholder="Twój e-mail...."
+                    <input type="email" class="form-control form-mail font-normal" placeholder="Twój e-mail...."
                            data-langplaceholder="Your e-mail..." required>
+                    <div class="font-special form-reminder-mail green" style="display: none;" data-lang="<- we need this ;)"><- tego potrzebujemy ;)</div>
                 </div>
                 <div class="form-group">
-                    <input type="number" class="form-control font-normal"
+                    <input type="number" class="form-control form-phone font-normal"
                            placeholder="Twój numer telefonu (opcjonalnie)..."
                            data-langplaceholder="Your phone number (optional)...">
                 </div>
                 <div class="form-group">
-                <textarea rows=3 class="form-control font-normal"
+                <textarea rows=3 class="form-control form-message font-normal"
                           placeholder="Twoja wiadomość (opcjonalnie)..."
                           data-langplaceholder="Your message (optional)..."></textarea>
                 </div>
@@ -543,6 +545,7 @@
 
     <script src="js/script.js"></script>
     <script src="js/language.js"></script>
+    <script src="js/form-reminder.js"></script>
     <script src="js/smooth-scroll.js"></script>
     <script src="js/go-to-top-button.js"></script>
 </body>
