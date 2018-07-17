@@ -99,18 +99,19 @@ body {
     color: #F57D19;
 }
 
-.green {
-    color: #096C3E;
-}
-
-/*TODO usunąłem scroll smootha*/
-
 /* ############### navigation ############### */
 
 .navbar {
-    z-index: 1;
+    z-index: 2;
     background-color: #F4F4F4;
     box-shadow: 0px -5px 25px 2px rgba(0, 0, 0, 0.75);
+    transition: ease 1s;
+
+}
+.navbar.expanded {
+    padding: 1.3rem 1rem;
+    transition: ease 1s;
+
 }
 
 .navbar-brand {
@@ -131,24 +132,22 @@ body {
 }
 
 .navbar-collapse {
-    flex-grow: 0 !important;
+    flex-grow: 0;
 }
 
-.nav-link {
+#link.nav-link.active {
+    color: #00753F;
+}
+#link.nav-link {
     justify-content: center;
     font-family: 'Raleway', sans-serif;
-    padding: 0 1rem !important;
+    padding: 0 1rem;
     font-size: 1.4rem;
     transition: color 0.5s ease;
-    color: #FC7700 !important;
+    color: #FC7700;
 }
-/*TODO powtarzające się zbędne stylowania w css'ach na przyklad w pseudoklasach tak jak w nav-linku, moze po zmianie kolejnosci css'a z bootstrapem w headzie w indexie bedzie normalnie dzialalo i ograniczy sie te importanty. poza tym zawsze mozna zwiekszyc sile selektora jezeli bootsrap bedzie mimo wszystko wygrywal ;)*/
-.nav-link:hover {
-    justify-content: center;
-    font-family: 'Raleway', sans-serif;
-    padding: 0 1rem !important;
-    font-size: 1.4rem;
-    color: #00753F !important;
+#link.nav-link:hover {
+    color: #00753F;
 }
 .lang-button {
     margin-left: 1rem;
@@ -258,21 +257,12 @@ body {
 }
 
 .contact .font-special {
+    color: #F57D19;
     font-size: 3rem;
 }
 
-div.form-group {
-    margin: 1rem 0;
-    position: relative;
-}
-
-div.font-special.form-reminder-name {
-    font-size: 1.5rem;
-    font-weight: 700;
-    position: absolute;
-    z-index: 1;
-    right: 0%;
-    bottom: .4rem;
+.contact .font-special2 {
+    color: #096C3E;
 }
 
 .form-group input, .form-group textarea {
@@ -323,6 +313,13 @@ input[type=number] {
     text-transform: none;
     transition: background .25s ease-out;
 }
+
+#contact h1::last-word {
+    font-family: 'Fredericka the Great', cursive;
+    letter-spacing: 0.2rem;
+}
+
+/*TODO propozycja przesunięcia footera w osobną sekcję, pod koniec, przed media*/
 
 footer {
     margin-top: 3rem;
@@ -455,6 +452,48 @@ a.phone-action:hover {
     margin-left: 4.9rem;
 }
 
+/* ############### go to top button ############### */
+
+.go-to-top-button {
+    cursor: pointer;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background-color: #FC7700;
+    text-align: center;
+    position: fixed;
+    bottom: 50px;
+    right: 25px;
+    z-index: 1;
+    transition: background-color .8s, opacity 2s, visibility 1.5s;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.go-to-top-button::after {
+    font-family: FontAwesome;
+    content: '\f062';
+    font-size: 40px;
+    line-height: 65px;
+    color: #FEEDDF;
+}
+
+.go-to-top-button:hover {
+    background-color: #001401;
+    text-decoration: none;
+}
+
+.go-to-top-button:active {
+    background-color: #FEEDDF;
+}
+
+.go-to-top-button.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+
 /*############### media ###############*/
 
 /*********************************************************************************/
@@ -582,6 +621,10 @@ a.phone-action:hover {
     .nav-link:hover {
         padding: 0 .5rem !important;
         font-size: 1.03rem;
+    }
+
+    .go-to-top-button {
+        bottom: 25px;
     }
 }
 
@@ -885,11 +928,6 @@ a.phone-action:hover {
 /*********************************************************************************/
 @media (max-width: 541px) {
 
-
-    div.font-special.form-reminder {
-        font-size: 1.2rem;
-    }
-
     .caption-content {
         margin-top: 1rem;
     }
@@ -1042,6 +1080,11 @@ a.phone-action:hover {
         margin: 0 0 0 2rem;
         line-height: 2.2rem;
     }
+
+    .go-to-top-button {
+        bottom: 20px;
+        right: 20px;
+    }
 }
 
 /*********************************************************************************/
@@ -1051,11 +1094,6 @@ a.phone-action:hover {
 
     .contact.container {
         padding-top: 5px;
-    }
-
-    div.font-special.form-reminder {
-        font-size: 1rem;
-        width: 60%;
     }
 
     .navbar-nav {
@@ -1186,6 +1224,11 @@ a.phone-action:hover {
 
     .functinality-more-text-7 {
         margin: 0 0 0 1.4rem;
+    }
+
+    .go-to-top-button {
+        bottom: 15px;
+        right: 15px;
     }
 }
 
