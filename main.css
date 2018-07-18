@@ -99,6 +99,10 @@ body {
     color: #F57D19;
 }
 
+.green {
+    color: #096C3E;
+}
+
 /* ############### navigation ############### */
 
 .navbar {
@@ -257,13 +261,9 @@ body {
 }
 
 .contact .font-special {
-    color: #F57D19;
     font-size: 3rem;
 }
 
-.contact .font-special2 {
-    color: #096C3E;
-}
 
 .form-group input, .form-group textarea {
     border-radius: 0;
@@ -314,42 +314,18 @@ input[type=number] {
     transition: background .25s ease-out;
 }
 
-#contact h1::last-word {
-    font-family: 'Fredericka the Great', cursive;
-    letter-spacing: 0.2rem;
+.form-group {
+    position: relative;
 }
 
-/*TODO propozycja przesunięcia footera w osobną sekcję, pod koniec, przed media*/
-
-footer {
-    margin-top: 3rem;
-    padding: 1.5rem 0;
-    background-color: #001401;
-}
-
-.footer-text {
-    text-align: center;
-}
-
-.footer-text .font-special {
-    font-size: 2rem;
-}
-
-hr.light-rose {
-    border-top: 1px solid #FEEDDF;
-    width: 60%;
-    margin-top: .2rem;
-    margin-bottom: 1rem;
-}
-
-hr.dark-green {
-    border-color: #096C3E;
-    width: 100%;
-    margin: 5rem 0 2rem 0;
-}
-
-a.phone-action:hover {
-    color: #FEEDDF;
+.form-group div.font-special {
+    position: absolute;
+    z-index: 1;
+    font-size: 1.4rem;
+    font-weight: 900;
+    bottom: .35rem;
+    letter-spacing: .25rem;
+    right: 0;
 }
 
 /* ############### about ############### */
@@ -492,7 +468,38 @@ a.phone-action:hover {
     visibility: visible;
 }
 
+/*############### footer ###############*/
 
+footer {
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+    background-color: #001401;
+}
+
+.footer-text {
+    text-align: center;
+}
+
+.footer-text .font-special {
+    font-size: 2rem;
+}
+
+hr.light-rose {
+    border-top: 1px solid #FEEDDF;
+    width: 60%;
+    margin-top: .2rem;
+    margin-bottom: 1rem;
+}
+
+hr.dark-green {
+    border-color: #096C3E;
+    width: 100%;
+    margin: 5rem 0 2rem 0;
+}
+
+a.phone-action:hover {
+    color: #FEEDDF;
+}
 
 /*############### media ###############*/
 
@@ -524,6 +531,13 @@ a.phone-action:hover {
     .caption-content {
         margin-top: 3rem;
     }
+
+    .form-group div.font-special {
+        font-size: 1.4rem;
+        bottom: .35rem;
+        letter-spacing: .2rem;
+    }
+
 }
 
 /*********************************************************************************/
@@ -600,6 +614,12 @@ a.phone-action:hover {
     .functinality-more-text-7 {
         margin: 0.4rem 0 0 2rem;
         line-height: 1.8rem;
+    }
+
+    .form-group div.font-special {
+        font-size: 1.35rem;
+        bottom: .4rem;
+        letter-spacing: .2rem;
     }
 }
 
@@ -838,6 +858,16 @@ a.phone-action:hover {
         font-size: 2.75rem;
     }
 
+    .form-control {
+        font-size: .9rem;
+    }
+
+    .form-group div.font-special {
+        font-size: 1.2rem;
+        bottom: .55rem;
+        letter-spacing: .2rem;
+    }
+
     .footer-text p {
         margin-bottom: .7rem;
     }
@@ -1001,6 +1031,16 @@ a.phone-action:hover {
         font-size: 2.5rem;
     }
 
+    .form-control {
+        font-size: .9rem;
+    }
+
+    .form-group div.font-special {
+        font-size: 1.2rem;
+        bottom: .55rem;
+        letter-spacing: .2rem;
+    }
+
     .footer-text p {
         margin-bottom: .6rem;
     }
@@ -1131,6 +1171,16 @@ a.phone-action:hover {
 
     .contact .font-special {
         font-size: 2.25rem;
+    }
+
+    .form-control {
+        font-size: .8rem;
+    }
+
+    .form-group div.font-special {
+        font-size: 1rem;
+        bottom: .55rem;
+        letter-spacing: .2rem;
     }
 
     .footer-text p {

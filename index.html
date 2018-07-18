@@ -41,8 +41,7 @@
                     <a  id="link" id="lastMenuItem" class="nav-link" href="#contact" data-lang="Form">Formularz</a>
                 </li>
                 <li class="nav-item">
-                    <div class="lang-button" style="display: block;"><img src="img/uk-flag32.png" height="32" width="32"/></div>
-                    <div class="lang-button" style="display: none;"><img src="img/pl-flag32.png" height="32" width="32"/></div>
+                    <div class="lang-button" data-lang="<img src='img/pl-flag32.png' height='32' width='32'/>"><img src='img/uk-flag32.png' height='32' width='32'/></div>
                 </li>
             </ul>
         </div>
@@ -459,32 +458,35 @@
     <hr class="dark-green">
     <div class="row">
         <div class="col">
-            <h1 class="font-special" data-lang="Do you want to eat ">Chcesz jeść <span
-                    class="font-special2">SMARTER?</span></h1>
-            <h1 class="font-special" data-lang="Leave us your email*">Zostaw nam swojego maila*!</h1>
+            <h1 class="font-special orange" data-lang="Do you want to eat <span
+                    class='font-special2 green'>SMARTER?</span>">Chcesz jeść <span
+                    class="font-special2 green">SMARTER?</span></h1>
+            <h1 class="font-special orange" data-lang="Leave us your email*">Zostaw nam swojego maila*!</h1>
         </div>
     </div>
     <div class="row">
         <div class="col-md-8">
             <form class="form-field">
                 <div class="form-group">
-                    <input type="text" class="form-control font-normal" placeholder="Twoje imię..."
+                    <input type="text" class="form-control form-name font-normal" placeholder="Twoje imię..."
                            data-langplaceholder="Your name..." required
                            pattern="[A-Za-z]{2,30}"
                            title="Dopuszczalne tylko litery - od 2 do 30 znaków"
                            data-langtitle="Only letters - 2 to 30 signs">
+                    <div class="font-special form-reminder-name green" style="display: none;" data-lang="<- we need this ;)"><- tego potrzebujemy ;)</div>
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control font-normal" placeholder="Twój e-mail...."
+                    <input type="email" class="form-control form-mail font-normal" placeholder="Twój e-mail...."
                            data-langplaceholder="Your e-mail..." required>
+                    <div class="font-special form-reminder-mail green" style="display: none;" data-lang="<- we need this ;)"><- tego potrzebujemy ;)</div>
                 </div>
                 <div class="form-group">
-                    <input type="number" class="form-control font-normal"
+                    <input type="number" class="form-control form-phone font-normal"
                            placeholder="Twój numer telefonu (opcjonalnie)..."
                            data-langplaceholder="Your phone number (optional)...">
                 </div>
                 <div class="form-group">
-                <textarea rows=3 class="form-control font-normal"
+                <textarea rows=3 class="form-control form-message font-normal"
                           placeholder="Twoja wiadomość (opcjonalnie)..."
                           data-langplaceholder="Your message (optional)..."></textarea>
                 </div>
@@ -541,8 +543,9 @@
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js"></script>-->
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-localScroll/2.0.0/jquery.localScroll.min.js"></script>-->
 
-    <!--TODO rozdzielenie w pliku js na osobne ficzery? - do dogadania-->
     <script src="js/script.js"></script>
+    <script src="js/language.js"></script>
+    <script src="js/form-reminder.js"></script>
     <script src="js/smooth-scroll.js"></script>
     <script src="js/go-to-top-button.js"></script>
 </body>
