@@ -1,17 +1,15 @@
-#map {
-
+.map {
     background-color: darkgray;
     display:flex;
+    width: 7000px;
+    height: 350px;
 }
 .obstacle {
     position: absolute;
     background-color: white;
-    height: 50px;
     width: 80px;
     align-self: flex-end;
 }
-
-
 
 /*####################PONIŻEJ LINIE POMOCNICZE ######################*/
 .odnosnik {
