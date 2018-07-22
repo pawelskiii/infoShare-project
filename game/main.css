@@ -1,13 +1,32 @@
 .map {
-    background-color: darkgrey;
+    background:linear-gradient(rgb(133, 164, 204) 0, rgb(208, 229, 242) 100%);
     display:flex;
     width: 7000px;
     height: 350px;
 }
 .sky {
-    width: 7000px;
+    position: relative;
+    width: 7500px;
     height: 350px;
-    background:linear-gradient(rgb(133,165,204) 0, rgb(208,228,242) 100%);
+    background:linear-gradient(rgb(133, 164, 204) 0, rgb(208, 229, 242) 100%);
+    -webkit-animation: move 50s infinite linear;
+    -moz-animation: move 50s infinite linear;
+    /*-ms-animation: move 20s infinite linear;*/
+}
+
+@-webkit-keyframes move {
+    0% {left: -500px;}
+    49% {left: 495px;}
+    50% {left: 500px;}
+    51% {left: 495px;}
+    100% {left: -500px;}
+}
+@-moz-keyframes move {
+    0% {left: -500px;}
+    49% {left: 495px;}
+    50% {left: 500px;}
+    51% {left: 495px;}
+    100% {left: -500px;}
 }
 .cloud {
     position: absolute;
