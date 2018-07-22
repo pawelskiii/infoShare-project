@@ -1,7 +1,7 @@
 .map {
     background-color: darkgray;
     display:flex;
-    /*width: 7000px;*/
+    width: 7000px;
     height: 350px;
 }
 .obstacle {
