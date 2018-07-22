@@ -99,14 +99,23 @@ body {
     color: #F57D19;
 }
 
-/*TODO usunąłem scroll smootha*/
+.green {
+    color: #096C3E;
+}
 
 /* ############### navigation ############### */
 
 .navbar {
-    z-index: 1;
+    z-index: 2;
     background-color: #F4F4F4;
     box-shadow: 0px -5px 25px 2px rgba(0, 0, 0, 0.75);
+    transition: ease 1s;
+
+}
+.navbar.expanded {
+    padding: 1.3rem 1rem;
+    transition: ease 1s;
+
 }
 
 .navbar-brand {
@@ -127,24 +136,22 @@ body {
 }
 
 .navbar-collapse {
-    flex-grow: 0 !important;
+    flex-grow: 0;
 }
 
-.nav-link {
+#link.nav-link.active {
+    color: #00753F;
+}
+#link.nav-link {
     justify-content: center;
     font-family: 'Raleway', sans-serif;
-    padding: 0 1rem !important;
+    padding: 0 1rem;
     font-size: 1.4rem;
     transition: color 0.5s ease;
-    color: #FC7700 !important;
+    color: #FC7700;
 }
-/*TODO powtarzające się zbędne stylowania w css'ach na przyklad w pseudoklasach tak jak w nav-linku, moze po zmianie kolejnosci css'a z bootstrapem w headzie w indexie bedzie normalnie dzialalo i ograniczy sie te importanty. poza tym zawsze mozna zwiekszyc sile selektora jezeli bootsrap bedzie mimo wszystko wygrywal ;)*/
-.nav-link:hover {
-    justify-content: center;
-    font-family: 'Raleway', sans-serif;
-    padding: 0 1rem !important;
-    font-size: 1.4rem;
-    color: #00753F !important;
+#link.nav-link:hover {
+    color: #00753F;
 }
 .lang-button {
     margin-left: 1rem;
@@ -254,13 +261,9 @@ body {
 }
 
 .contact .font-special {
-    color: #F57D19;
     font-size: 3rem;
 }
 
-.contact .font-special2 {
-    color: #096C3E;
-}
 
 .form-group input, .form-group textarea {
     border-radius: 0;
@@ -311,40 +314,18 @@ input[type=number] {
     transition: background .25s ease-out;
 }
 
-#contact h1::last-word {
-    font-family: 'Fredericka the Great', cursive;
-    letter-spacing: 0.2rem;
+.form-group {
+    position: relative;
 }
 
-footer {
-    margin-top: 3rem;
-    padding: 1.5rem 0;
-    background-color: #001401;
-}
-
-.footer-text {
-    text-align: center;
-}
-
-.footer-text .font-special {
-    font-size: 2rem;
-}
-
-hr.light-rose {
-    border-top: 1px solid #FEEDDF;
-    width: 60%;
-    margin-top: .2rem;
-    margin-bottom: 1rem;
-}
-
-hr.dark-green {
-    border-color: #096C3E;
-    width: 100%;
-    margin: 5rem 0 2rem 0;
-}
-
-a.phone-action:hover {
-    color: #FEEDDF;
+.form-group div.font-special {
+    position: absolute;
+    z-index: 1;
+    font-size: 1.4rem;
+    font-weight: 900;
+    bottom: .35rem;
+    letter-spacing: .25rem;
+    right: 0;
 }
 
 /* ############### about ############### */
@@ -447,7 +428,78 @@ a.phone-action:hover {
     margin-left: 4.9rem;
 }
 
+/* ############### go to top button ############### */
 
+.go-to-top-button {
+    cursor: pointer;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background-color: #FC7700;
+    text-align: center;
+    position: fixed;
+    bottom: 50px;
+    right: 25px;
+    z-index: 1;
+    transition: background-color .8s, opacity 2s, visibility 1.5s;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.go-to-top-button::after {
+    font-family: FontAwesome;
+    content: '\f062';
+    font-size: 40px;
+    line-height: 65px;
+    color: #FEEDDF;
+}
+
+.go-to-top-button:hover {
+    background-color: #001401;
+    text-decoration: none;
+}
+
+.go-to-top-button:active {
+    background-color: #FEEDDF;
+}
+
+.go-to-top-button.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/*############### footer ###############*/
+
+footer {
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+    background-color: #001401;
+}
+
+.footer-text {
+    text-align: center;
+}
+
+.footer-text .font-special {
+    font-size: 2rem;
+}
+
+hr.light-rose {
+    border-top: 1px solid #FEEDDF;
+    width: 60%;
+    margin-top: .2rem;
+    margin-bottom: 1rem;
+}
+
+hr.dark-green {
+    border-color: #096C3E;
+    width: 100%;
+    margin: 5rem 0 2rem 0;
+}
+
+a.phone-action:hover {
+    color: #FEEDDF;
+}
 
 /*############### media ###############*/
 
@@ -479,6 +531,13 @@ a.phone-action:hover {
     .caption-content {
         margin-top: 3rem;
     }
+
+    .form-group div.font-special {
+        font-size: 1.4rem;
+        bottom: .35rem;
+        letter-spacing: .2rem;
+    }
+
 }
 
 /*********************************************************************************/
@@ -556,6 +615,12 @@ a.phone-action:hover {
         margin: 0.4rem 0 0 2rem;
         line-height: 1.8rem;
     }
+
+    .form-group div.font-special {
+        font-size: 1.35rem;
+        bottom: .4rem;
+        letter-spacing: .2rem;
+    }
 }
 
 /*********************************************************************************/
@@ -576,6 +641,10 @@ a.phone-action:hover {
     .nav-link:hover {
         padding: 0 .5rem !important;
         font-size: 1.03rem;
+    }
+
+    .go-to-top-button {
+        bottom: 25px;
     }
 }
 
@@ -789,6 +858,16 @@ a.phone-action:hover {
         font-size: 2.75rem;
     }
 
+    .form-control {
+        font-size: .9rem;
+    }
+
+    .form-group div.font-special {
+        font-size: 1.2rem;
+        bottom: .55rem;
+        letter-spacing: .2rem;
+    }
+
     .footer-text p {
         margin-bottom: .7rem;
     }
@@ -952,6 +1031,16 @@ a.phone-action:hover {
         font-size: 2.5rem;
     }
 
+    .form-control {
+        font-size: .9rem;
+    }
+
+    .form-group div.font-special {
+        font-size: 1.2rem;
+        bottom: .55rem;
+        letter-spacing: .2rem;
+    }
+
     .footer-text p {
         margin-bottom: .6rem;
     }
@@ -1031,6 +1120,11 @@ a.phone-action:hover {
         margin: 0 0 0 2rem;
         line-height: 2.2rem;
     }
+
+    .go-to-top-button {
+        bottom: 20px;
+        right: 20px;
+    }
 }
 
 /*********************************************************************************/
@@ -1077,6 +1171,16 @@ a.phone-action:hover {
 
     .contact .font-special {
         font-size: 2.25rem;
+    }
+
+    .form-control {
+        font-size: .8rem;
+    }
+
+    .form-group div.font-special {
+        font-size: 1rem;
+        bottom: .55rem;
+        letter-spacing: .2rem;
     }
 
     .footer-text p {
@@ -1170,6 +1274,11 @@ a.phone-action:hover {
 
     .functinality-more-text-7 {
         margin: 0 0 0 1.4rem;
+    }
+
+    .go-to-top-button {
+        bottom: 15px;
+        right: 15px;
     }
 }
 
