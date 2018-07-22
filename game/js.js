@@ -42,20 +42,17 @@ mapObjectTable = Array
 
 (function () {
 const cloudMinWidth = 20;
-const cloudRandomizer = .3;
+const cloudRandomizer = .2;
 let mapCloudTable;
 const $sky = $('.sky');
-// $sky.prepend($('<div>').addClass('cloud-extra-small'));
-// $sky.prepend($('<div>').addClass('cloud-small'));
-// $sky.prepend($('<div>').addClass('cloud-medium'));
-// $sky.prepend($('<div>').addClass('cloud-large'));
-// $sky.prepend($('<div>').addClass('cloud-extra-large'));
 
 mapCloudTable = Array
     .from({length: $numberOfSections}, (cloud, index) => {
             return {
                 position: index * sectionWidth + Math.floor(Math.random() * sectionWidth),
                 width: Math.ceil(Math.random()*10)*cloudMinWidth,
+                marginTop: Math.ceil(Math.random()*10)*cloudMinWidth,
+                zIndex: Math.ceil(Math.random()*10),
             }
     })
     .filter(cloud => Math.random() > cloudRandomizer)
@@ -64,12 +61,12 @@ mapCloudTable = Array
             .append($('<div>')
                 .addClass('cloud')
                 .css('margin-left', cloud.position)
-                .css('margin-top', Math.ceil(Math.random()*10)*cloudMinWidth)
+                .css('margin-top', cloud.marginTop)
                 .css('width', cloud.width)
-                .css('height', cloud.width*.4)
+                .css('height', cloud.width*.44)
+                .css('z-index', cloud.zIndex)
             )
     });
-
 console.log(mapCloudTable);
 
 })();
