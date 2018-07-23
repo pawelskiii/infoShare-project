@@ -33,6 +33,43 @@
         });
 
 
+const player = document.getElementById('player')
+
+function Y(id, countPx)
+{
+    player.style.top = player.style.top.substr(0, player.style.top.length - 2) * 1 + countPx + 'px';
+
+}
+function X(id, countPX)
+{
+    player.style.left = player.style.left.substr(0, player.style.left.length - 2) * 1 + countPX + 'px';
+}
+
+
+window.addEventListener('keydown', function(event) {
+
+    switch (event.keyCode) {
+        case 37: // Left
+            event.preventDefault();
+            X('player', -15);
+            break;
+
+        case 38: // Up
+            event.preventDefault();
+            Y('player', -15);
+            break;
+
+        case 39: // Right
+            event.preventDefault();
+            X('player', 15);
+            break;
+
+        case 40://Down
+            event.preventDefault();
+            Y('player', 15);
+            break;
+    }
+}, false);
 // })();
 
 

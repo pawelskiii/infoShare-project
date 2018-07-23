@@ -11,6 +11,15 @@
     align-self: flex-end;
 }
 
+#player {
+    width: 50px;
+    height: 60px;
+    background: red;
+    align-self: flex-end;
+    z-index: 200;
+    position: relative;
+}
+
 /*####################PONIŻEJ LINIE POMOCNICZE ######################*/
 .odnosnik {
     background-color: black;
