@@ -3,6 +3,7 @@
     display: flex;
     width: 7000px;
     height: 350px;
+    position: relative;
 }
 
 .sky {
@@ -44,12 +45,12 @@
 }
 
 #player {
-    width: 50px;
-    height: 60px;
+    width: 64px;
+    height: 64px;
     background: red;
     align-self: flex-end;
     z-index: 200;
-    position: relative;
+    position: absolute;
 }
 
 /*####################PONIŻEJ LINIE POMOCNICZE ######################*/
