@@ -1,14 +1,46 @@
 .map {
-    background-color: darkgray;
-    display:flex;
+    background: linear-gradient(rgb(133, 164, 204) 0, rgb(208, 229, 242) 100%);
+    display: flex;
     width: 7000px;
     height: 350px;
 }
+
+.sky {
+    position: relative;
+    width: 7000px;
+    height: 350px;
+    background: linear-gradient(rgb(133, 164, 204) 0, rgb(208, 229, 242) 100%);
+    -webkit-animation: move 50s infinite linear;
+    -moz-animation: move 50s infinite linear;
+}
+
+/*@-webkit-keyframes move {*/
+/*0% {left: -500px;}*/
+/*49% {left: 495px;}*/
+/*50% {left: 500px;}*/
+/*51% {left: 495px;}*/
+/*100% {left: -500px;}*/
+/*}*/
+/*@-moz-keyframes move {*/
+/*0% {left: -500px;}*/
+/*49% {left: 495px;}*/
+/*50% {left: 500px;}*/
+/*51% {left: 495px;}*/
+/*100% {left: -500px;}*/
+/*}*/
+
+.cloud {
+    position: absolute;
+    background: url(img/cloud1.png);
+    background-size: cover;
+}
+
 .obstacle {
     position: absolute;
     background-color: white;
     width: 80px;
     align-self: flex-end;
+    z-index: 20;
 }
 
 #player {
@@ -26,6 +58,7 @@
     height: 100px;
     width: 7000px;
 }
+
 .linia {
     margin-left: 198px;
     height: 50px;
