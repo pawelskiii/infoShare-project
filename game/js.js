@@ -1,6 +1,5 @@
 const sectionWidth = 200;
 const $map = $('.map');
-const $numberOfObstacle = parseInt($map.css('width')) / 200; // do usunięcia i zamiany na number of sections ??
 const $numberOfSections = parseInt($map.css('width')) / sectionWidth;
 
 
@@ -16,7 +15,7 @@ const $numberOfSections = parseInt($map.css('width')) / sectionWidth;
     $('body').append($('<div>').addClass('odnosnik'));
 
     mapObjectTable = Array
-        .from({length: $numberOfObstacle}, (obstacle, index) => {
+        .from({length: $numberOfSections}, (obstacle, index) => {
             if (index !== 0) {
                 return {
                     position: index * sectionWidth + Math.floor(Math.random() * (sectionWidth - obstacleWidth)),
@@ -120,11 +119,11 @@ function update() {
     switch (jumpKeyPressed) {
 
         case 'ArrowUp':
-            playerSpeedY = playerSpeedY + (jumpKeyPressed === 'ArrowUp' ? 1 : -1) * playerAcceleration * dTime;
+            playerSpeedY = (playerPositionY >= 0) ? playerSpeedY + playerAcceleration * dTime : playerPositionY = 0;
             break;
 
         case 'jumpReleased':
-            playerSpeedY = playerSpeedY - playerAcceleration * dTime;
+            playerSpeedY = (playerPositionY > 0) ? playerSpeedY - playerAcceleration * dTime : playerPositionY = 0;
             break;
 
         default:
@@ -132,9 +131,7 @@ function update() {
 
     }
 
-    if (playerPositionY < 0.01) {
-        playerPositionY = 0;
-    }
+
 
 
     player.style.left = playerPositionX + 'px';
