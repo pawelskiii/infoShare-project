@@ -45,9 +45,11 @@
 }
 
 #player {
-    width: 64px;
-    height: 64px;
-    background: red;
+    width: 75px;
+    height: 105px;
+    background: url("img/prawa_PA.png") no-repeat;
+    background-size: cover;
+    background-position-y: 5px;
     align-self: flex-end;
     z-index: 200;
     position: absolute;
