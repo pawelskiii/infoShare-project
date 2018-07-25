@@ -10,7 +10,7 @@ const obstacleMinHeight = 60;
 const randomizer = .4;
 let mapObjectTable;
 
-$('body').append($('<div>').addClass('odnosnik'));
+$('.map').append($('<div>').addClass('odnosnik'));
 
 mapObjectTable = Array
     .from({length: $numberOfObstacle}, (obstacle, index) => {
@@ -28,46 +28,60 @@ mapObjectTable = Array
         $map
             .append($('<div>')
                 .addClass('obstacle')
-                .css('margin-left', obstacle.position)
-                .css('height', obstacle.height)
+                .css({
+                        'margin-left': obstacle.position,
+                        'height': obstacle.height
+                })
             )
     });
 
 
 const player = document.getElementById('player')
 
-function Y(id, countPx) {
-    player.style.top = player.style.top.substr(0, player.style.top.length - 2) * 1 + countPx + 'px';
-
+function verticalMove (id, verticalStep) {
+    $topMarginOfPlayer = parseInt($('#player').css('top'));
+    $('#player').css('top', $topMarginOfPlayer + verticalStep + "px")
 }
 
-function X(id, countPX) {
-    player.style.left = player.style.left.substr(0, player.style.left.length - 2) * 1 + countPX + 'px';
-}
+function horizontalMove (id, horizontalStep, $windowWidth) {
 
+    $windowWidth = parseInt($('.window').css('width'));
+    $leftMarginOfPlayer = parseInt($('#player').css('margin-left'));
+
+         if ($leftMarginOfPlayer < $windowWidth/2 && horizontalStep > 0){
+             $('#player').css({
+                                 'margin-left': $leftMarginOfPlayer + horizontalStep + "px"
+                                })
+            } else if ($leftMarginOfPlayer > $windowWidth/4 && horizontalStep < 0) {
+                  $('#player').css({
+                                      'margin-left': $leftMarginOfPlayer + horizontalStep + "px"
+                                     })
+                 }
+    }
 
 window.addEventListener('keydown', function (event) {
 
     switch (event.keyCode) {
         case 37: // Left
             event.preventDefault();
-            X('player', -15);
+            horizontalMove('player', -15, 1100)
             break;
 
         case 38: // Up
             event.preventDefault();
-            Y('player', -15);
+            verticalMove('player', -15);
             break;
 
         case 39: // Right
             event.preventDefault();
-            X('player', 15);
+            $('.obstacle').css('margin-left', '-=15')
+            horizontalMove('player', 15, 1100);
             break;
 
-        case 40://Down
+  /*      case 40://Down
             event.preventDefault();
             Y('player', 15);
-            break;
+            break;*/
     }
 }, false);
 // })();
@@ -95,15 +109,16 @@ window.addEventListener('keydown', function (event) {
             $sky
                 .append($('<div>')
                     .addClass('cloud')
-                    .css('margin-left', cloud.position)
-                    .css('margin-top', cloud.marginTop)
-                    .css('width', cloud.width)
-                    .css('height', cloud.width * .44)
-                    .css('z-index', cloud.zIndex)
+                    .css({
+                            'margin-left': cloud.position,
+                            'margin-top': cloud.marginTop,
+                            'width': cloud.width,
+                            'height': cloud.width * .44,
+                            'z-index': cloud.zIndex
+                         })
                 )
         });
     console.log(mapCloudTable);
-
 })();
 
 
