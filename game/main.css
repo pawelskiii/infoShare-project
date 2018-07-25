@@ -7,7 +7,7 @@
 }
 
 .sky {
-    position: relative;
+    position: absolute;
     width: 7000px;
     height: 350px;
     background: linear-gradient(rgb(133, 164, 204) 0, rgb(208, 229, 242) 100%);

@@ -30,12 +30,14 @@ const $numberOfSections = parseInt($map.css('width')) / sectionWidth;
             $map
                 .append($('<div>')
                     .addClass('obstacle')
-                    .css('margin-left', obstacle.position)
+                    .css('left', obstacle.position)
                     .css('height', obstacle.height)
                 )
         });
 
 })();
+
+// player.style.left = playerPositionX + 'px';
 
 //***************PLAYER***************
 
@@ -163,8 +165,8 @@ const $numberOfSections = parseInt($map.css('width')) / sectionWidth;
             $sky
                 .append($('<div>')
                     .addClass('cloud')
-                    .css('margin-left', cloud.position)
-                    .css('margin-top', cloud.marginTop)
+                    .css('left', cloud.position)
+                    .css('top', cloud.marginTop)
                     .css('width', cloud.width)
                     .css('height', cloud.width * .44)
                     .css('z-index', cloud.zIndex)
