@@ -71,7 +71,7 @@ const $numberOfSections = parseInt($map.css('width')) / sectionWidth;
     });
 
     window.addEventListener('keydown', function (event) {
-        if (event.code === 'ArrowUp') {
+        if (event.code === 'ArrowUp' && jumpKeyPressed !== 'jumpReleased') {
             event.preventDefault();
             jumpKeyPressed = event.code;
         }
@@ -133,6 +133,14 @@ const $numberOfSections = parseInt($map.css('width')) / sectionWidth;
             default:
                 playerSpeedY = 0;
 
+        }
+
+        if (jumpKeyPressed === 'ArrowUp' && playerSpeedY > 0.3) {
+            jumpKeyPressed = 'jumpReleased'
+        }
+
+        if (jumpKeyPressed === 'jumpReleased' && playerPositionY === 0) {
+            jumpKeyPressed = '';
         }
 
         player.style.left = playerPositionX + 'px';
