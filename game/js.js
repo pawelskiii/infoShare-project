@@ -12,7 +12,7 @@ const $numberOfSections = parseInt($map.css('width')) / sectionWidth;
     const randomizer = .4;
     let mapObjectTable;
 
-    $('body').append($('<div>').addClass('odnosnik'));
+
 
     mapObjectTable = Array
         .from({length: $numberOfSections}, (obstacle, index) => {
@@ -173,11 +173,13 @@ const $numberOfSections = parseInt($map.css('width')) / sectionWidth;
             $sky
                 .append($('<div>')
                     .addClass('cloud')
-                    .css('left', cloud.position)
-                    .css('top', cloud.marginTop)
-                    .css('width', cloud.width)
-                    .css('height', cloud.width * .44)
-                    .css('z-index', cloud.zIndex)
+                    .css({
+                            'margin-left': cloud.position,
+                            'margin-top': cloud.marginTop,
+                            'width': cloud.width,
+                            'height': cloud.width * .44,
+                            'z-index': cloud.zIndex
+                         })
                 )
         });
 })();
