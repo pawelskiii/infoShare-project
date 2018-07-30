@@ -2,7 +2,7 @@ const sectionWidth = 200;
 const $map = $('.map');
 const $numberOfSections = parseInt($map.css('width')) / sectionWidth;
 const $windowWidth = parseInt($('.window').css('width'));
-const $mapPositionX = Math.abs(parseInt($('.map').css('left')));
+
 
 //***************MAP GENERATOR***************
 
@@ -143,11 +143,11 @@ const $mapPositionX = Math.abs(parseInt($('.map').css('left')));
             jumpKeyPressed = '';
         }
 
-
+        const $mapPositionX = Math.abs(parseInt($('.map').css('left')));
 
         if (playerPositionX > $windowWidth/2 + $mapPositionX) {
             $('.map').css('left',  -playerPositionX + $windowWidth/2 )
-        } else if (playerPositionX <= 0 || playerPositionX < $mapPositionX) {
+        } else if (playerPositionX < 0 || playerPositionX < $mapPositionX) {
             playerPositionX = $mapPositionX
         }
 
