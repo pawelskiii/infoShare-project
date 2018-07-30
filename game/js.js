@@ -1,90 +1,154 @@
 const sectionWidth = 200;
 const $map = $('.map');
-const $numberOfObstacle = parseInt($map.css('width')) / 200; // do usunięcia i zamiany na number of sections ??
 const $numberOfSections = parseInt($map.css('width')) / sectionWidth;
 
-// (function () {
 
-const obstacleWidth = 80;
-const obstacleMinHeight = 60;
-const randomizer = .4;
-let mapObjectTable;
+//***************MAP GENERATOR***************
 
-$('.map').append($('<div>').addClass('odnosnik'));
+(function () {
 
-mapObjectTable = Array
-    .from({length: $numberOfObstacle}, (obstacle, index) => {
-        if (index !== 0) {
-            return {
-                position: index * sectionWidth + Math.floor(Math.random() * (sectionWidth - obstacleWidth)),
-                height: Math.floor((Math.random() * 2 + 1)) * obstacleMinHeight
+    const obstacleWidth = 80;
+    const obstacleMinHeight = 60;
+    const randomizer = .4;
+    let mapObjectTable;
+
+
+
+    mapObjectTable = Array
+        .from({length: $numberOfSections}, (obstacle, index) => {
+            if (index !== 0) {
+                return {
+                    position: index * sectionWidth + Math.floor(Math.random() * (sectionWidth - obstacleWidth)),
+                    height: Math.floor((Math.random() * 2 + 1)) * obstacleMinHeight
+                }
             }
+        })
+        .filter(obstacle => {
+            return (obstacle !== undefined && Math.random() > randomizer)
+        })
+        .forEach(obstacle => {
+            $map
+                .append($('<div>')
+                    .addClass('obstacle')
+                    .css('left', obstacle.position)
+                    .css('height', obstacle.height)
+                )
+        });
+
+})();
+
+// player.style.left = playerPositionX + 'px';
+
+//***************PLAYER***************
+
+(function () {
+
+    const player = document.querySelector('#player');
+
+    let playerPositionX = 0;
+    let playerPositionY = 0;
+    let playerSpeedX = 0;
+    let playerSpeedY = 0;
+    let playerAcceleration = 0.0005;
+    let keyPressed = '';
+    let jumpKeyPressed = '';
+    let time = Date.now();
+
+    update();
+
+    window.addEventListener('keydown', function (event) {
+        if (event.code === 'ArrowRight' || event.code === 'ArrowLeft') {
+            event.preventDefault();
+            keyPressed = event.code;
         }
-    })
-    .filter(obstacle => {
-        return (obstacle !== undefined && Math.random() > randomizer)
-    })
-    .forEach(obstacle => {
-        $map
-            .append($('<div>')
-                .addClass('obstacle')
-                .css({
-                        'margin-left': obstacle.position,
-                        'height': obstacle.height
-                })
-            )
     });
 
+    window.addEventListener('keyup', function (event) {
+        if (event.code === 'ArrowRight' || event.code === 'ArrowLeft') {
+            event.preventDefault();
+            keyPressed = '';
+        }
+    });
 
-const player = document.getElementById('player')
+    window.addEventListener('keydown', function (event) {
+        if (event.code === 'ArrowUp' && jumpKeyPressed !== 'jumpReleased') {
+            event.preventDefault();
+            jumpKeyPressed = event.code;
+        }
+    });
 
-function verticalMove (id, verticalStep) {
-    $topMarginOfPlayer = parseInt($('#player').css('top'));
-    $('#player').css('top', $topMarginOfPlayer + verticalStep + "px")
-}
+    window.addEventListener('keyup', function (event) {
+        if (event.code === 'ArrowUp') {
+            event.preventDefault();
+            jumpKeyPressed = 'jumpReleased';
+        }
+    });
 
-function horizontalMove (id, horizontalStep, $windowWidth) {
+    function update() {
 
-    $windowWidth = parseInt($('.window').css('width'));
-    $leftMarginOfPlayer = parseInt($('#player').css('margin-left'));
+        const dTime = Date.now() - time;
+        time = Date.now();
 
-         if ($leftMarginOfPlayer < $windowWidth/2 && horizontalStep > 0){
-             $('#player').css({
-                                 'margin-left': $leftMarginOfPlayer + horizontalStep + "px"
-                                })
-            } else if ($leftMarginOfPlayer > $windowWidth/4 && horizontalStep < 0) {
-                  $('#player').css({
-                                      'margin-left': $leftMarginOfPlayer + horizontalStep + "px"
-                                     })
-                 }
+        playerPositionX += playerSpeedX * dTime;
+        playerPositionY += playerSpeedY * dTime;
+
+
+        switch (keyPressed) {
+
+            case 'ArrowRight':
+                playerSpeedX = Math.min(
+                    Math.max(
+                        0,
+                        playerSpeedX + playerAcceleration * dTime
+                    ),
+                    0.4
+                );
+                break;
+
+            case 'ArrowLeft':
+                playerSpeedX = Math.max(
+                    Math.min(
+                        0,
+                        playerSpeedX - playerAcceleration * dTime
+                    ),
+                    -0.4
+                );
+                break;
+
+            default:
+                playerSpeedX = 0;
+
+        }
+
+        switch (jumpKeyPressed) {
+
+            case 'ArrowUp':
+                playerSpeedY = (playerPositionY >= 0) ? playerSpeedY + playerAcceleration * dTime : playerPositionY = 0;
+                break;
+
+            case 'jumpReleased':
+                playerSpeedY = (playerPositionY > 0) ? playerSpeedY - playerAcceleration * dTime : playerPositionY = 0;
+                break;
+
+            default:
+                playerSpeedY = 0;
+
+        }
+
+        if (jumpKeyPressed === 'ArrowUp' && playerSpeedY > 0.3) {
+            jumpKeyPressed = 'jumpReleased'
+        }
+
+        if (jumpKeyPressed === 'jumpReleased' && playerPositionY === 0) {
+            jumpKeyPressed = '';
+        }
+
+        player.style.left = playerPositionX + 'px';
+        player.style.bottom = playerPositionY + 'px';
+        requestAnimationFrame(update);
+
     }
-
-window.addEventListener('keydown', function (event) {
-
-    switch (event.keyCode) {
-        case 37: // Left
-            event.preventDefault();
-            horizontalMove('player', -15, 1100)
-            break;
-
-        case 38: // Up
-            event.preventDefault();
-            verticalMove('player', -15);
-            break;
-
-        case 39: // Right
-            event.preventDefault();
-            $('.obstacle').css('margin-left', '-=15')
-            horizontalMove('player', 15, 1100);
-            break;
-
-  /*      case 40://Down
-            event.preventDefault();
-            Y('player', 15);
-            break;*/
-    }
-}, false);
-// })();
+})();
 
 
 //***************CLOUDS***************
@@ -118,43 +182,4 @@ window.addEventListener('keydown', function (event) {
                          })
                 )
         });
-    console.log(mapCloudTable);
 })();
-
-
-/*
-(function () {
-
-    const obstacleWidth = 80;
-    const obstacleMinHeight = 60;
-    const mapWidth = 7000;
-    const mapHeight = 350;
-    const numberOfObstacle = mapWidth / 100;
-    const sectionWidth = 200;
-
-    $('#map').css({
-        width: mapWidth,
-        height: mapHeight
-    });
-
-    $('body').append($('<div>').addClass('odnosnik'));
-
-    const mapObjectTable = [];
-    for (let i = 0; i < numberOfObstacle; i++) {
-
-        mapObjectTable.push({
-            position: Math.floor(Math.random() * obstacleWidth),
-            height: Math.floor((Math.random() * 2 + 1)) * obstacleMinHeight
-        });
-
-        $('#map').append($('<div>')
-            .addClass('obstacle')
-            .css('margin-left', i * sectionWidth + mapObjectTable[i].position)
-            .css('height', mapObjectTable[i].height));
-
-        $('.odnosnik').append($('<div>').addClass('linia'))
-
-    }
-
-})();
-*/

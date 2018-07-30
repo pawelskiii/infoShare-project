@@ -3,33 +3,17 @@
     display: flex;
     width: 7000px;
     height: 350px;
+    position: relative;
     border-bottom: 100px solid black;
 }
 
 .sky {
-    position: relative;
+    position: absolute;
     width: 7000px;
     height: 350px;
     background: linear-gradient(rgb(133, 164, 204) 0, rgb(208, 229, 242) 100%);
-    -webkit-animation: move 50s infinite linear;
-    -moz-animation: move 50s infinite linear;
 }
-/*
-@-webkit-keyframes move {
-0% {left: -500px;}
-49% {left: 495px;}
-50% {left: 500px;}
-51% {left: 495px;}
-100% {left: -500px;}
-}
-@-moz-keyframes move {
-0% {left: -500px;}
-49% {left: 495px;}
-50% {left: 500px;}
-51% {left: 495px;}
-100% {left: -500px;}
-}
-*/
+
 
 .cloud {
     position: absolute;
@@ -46,12 +30,14 @@
 }
 
 #player {
-    width: 50px;
-    height: 60px;
-    background: red;
+    width: 75px;
+    height: 105px;
+    background: url("img/prawa_PA.png") no-repeat;
+    background-size: cover;
+    background-position-y: 5px;
     align-self: flex-end;
     z-index: 200;
-    position: relative;
+    position: absolute;
 }
 
 /*####################PONIŻEJ LINIE POMOCNICZE ######################*/
