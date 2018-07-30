@@ -1,7 +1,8 @@
 const sectionWidth = 200;
 const $map = $('.map');
 const $numberOfSections = parseInt($map.css('width')) / sectionWidth;
-
+const $windowWidth = parseInt($('.window').css('width'));
+const $mapPositionX = Math.abs(parseInt($('.map').css('left')));
 
 //***************MAP GENERATOR***************
 
@@ -92,7 +93,6 @@ const $numberOfSections = parseInt($map.css('width')) / sectionWidth;
         playerPositionX += playerSpeedX * dTime;
         playerPositionY += playerSpeedY * dTime;
 
-
         switch (keyPressed) {
 
             case 'ArrowRight':
@@ -141,6 +141,14 @@ const $numberOfSections = parseInt($map.css('width')) / sectionWidth;
 
         if (jumpKeyPressed === 'jumpReleased' && playerPositionY === 0) {
             jumpKeyPressed = '';
+        }
+
+
+
+        if (playerPositionX > $windowWidth/2 + $mapPositionX) {
+            $('.map').css('left',  -playerPositionX + $windowWidth/2 )
+        } else if (playerPositionX <= 0 || playerPositionX < $mapPositionX) {
+            playerPositionX = $mapPositionX
         }
 
         player.style.left = playerPositionX + 'px';
