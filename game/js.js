@@ -50,7 +50,8 @@ const $windowWidth = parseInt($('.window').css('width'));
     let playerPositionY = 0;
     let playerSpeedX = 0;
     let playerSpeedY = 0;
-    let playerAcceleration = 0.0005;
+    let playerAccelerationX = 0.0005;
+    let playerAccelerationY = 0.0015;
     let keyPressed = '';
     let jumpKeyPressed = '';
     let time = Date.now();
@@ -99,7 +100,7 @@ const $windowWidth = parseInt($('.window').css('width'));
                 playerSpeedX = Math.min(
                     Math.max(
                         0,
-                        playerSpeedX + playerAcceleration * dTime
+                        playerSpeedX + playerAccelerationX * dTime
                     ),
                     0.4
                 );
@@ -109,7 +110,7 @@ const $windowWidth = parseInt($('.window').css('width'));
                 playerSpeedX = Math.max(
                     Math.min(
                         0,
-                        playerSpeedX - playerAcceleration * dTime
+                        playerSpeedX - playerAccelerationX * dTime
                     ),
                     -0.4
                 );
@@ -123,11 +124,11 @@ const $windowWidth = parseInt($('.window').css('width'));
         switch (jumpKeyPressed) {
 
             case 'ArrowUp':
-                playerSpeedY = (playerPositionY >= 0) ? playerSpeedY + playerAcceleration * dTime : playerPositionY = 0;
+                playerSpeedY = (playerPositionY >= 0) ? playerSpeedY + playerAccelerationY * dTime : playerPositionY = 0;
                 break;
 
             case 'jumpReleased':
-                playerSpeedY = (playerPositionY > 0) ? playerSpeedY - playerAcceleration * dTime : playerPositionY = 0;
+                playerSpeedY = (playerPositionY > 0) ? playerSpeedY - playerAccelerationY * dTime : playerPositionY = 0;
                 break;
 
             default:
@@ -135,7 +136,8 @@ const $windowWidth = parseInt($('.window').css('width'));
 
         }
 
-        if (jumpKeyPressed === 'ArrowUp' && playerSpeedY > 0.3) {
+
+        if (jumpKeyPressed === 'ArrowUp' && playerPositionY > 80) {
             jumpKeyPressed = 'jumpReleased'
         }
 
