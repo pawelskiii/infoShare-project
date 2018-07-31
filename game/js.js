@@ -2,7 +2,7 @@ const sectionWidth = 200;
 const $map = $('.map');
 const $numberOfSections = parseInt($map.css('width')) / sectionWidth;
 const $windowWidth = parseInt($('.window').css('width'));
-
+const $windowHeight = parseInt($('.map').css('height'));
 
 //***************MAP GENERATOR***************
 
@@ -82,6 +82,22 @@ const $windowWidth = parseInt($('.window').css('width'));
         if (event.code === 'ArrowUp') {
             event.preventDefault();
             jumpKeyPressed = 'jumpReleased';
+        }
+    });
+
+    $(window).keydown(function(key) {
+        if (key.which === 32) {
+            console.log('wcinieto spacje')
+            console.log(Date.now())
+           /* $('.game-information').append($('<div>').addClass('bullet'));*/
+            $('.map').append($('<div>').addClass('shot').css({
+                                                              "left":  playerPositionX+75,
+                                                              "top": ($windowHeight - (parseInt($('#player').css('height'))/2 + parseInt($('#player').css('bottom'))))
+            }))
+            $('.shot').css('left', function (position) {
+
+            });
+
         }
     });
 
