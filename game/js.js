@@ -179,9 +179,11 @@ const $windowWidth = parseInt($('.window').css('width'));
 
     mapCloudTable.forEach((cloud, index) => {
         cloud.timeShift = Math.ceil(1 / cloud.width * Math.pow(10, 7));
+        let classes = ['cloud1', 'cloud2', 'cloud3', 'cloud4', 'cloud5'];
+        let randomNumber = Math.floor(Math.random()*classes.length);
         $sky
             .append($('<div>')
-                .addClass('cloud')
+                .addClass(classes[randomNumber])
                 .attr('cloud-index', index)
                 .css({
                     'left': cloud.position,
