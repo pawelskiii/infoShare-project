@@ -15,18 +15,42 @@
 }
 
 
-.cloud {
+.cloud1 {
     position: absolute;
     background: url(img/cloud1.png);
     background-size: cover;
 }
 
+.cloud2 {
+    position: absolute;
+    background: url(img/cloud2.png);
+    background-size: cover;
+}
+
+.cloud2 {
+    position: absolute;
+    background: url(img/cloud3.png);
+    background-size: cover;
+}
+
+.cloud4 {
+    position: absolute;
+    background: url(img/cloud4.png);
+    background-size: cover;
+}
+
+.cloud5 {
+    position: absolute;
+    background: url(img/cloud5.png);
+    background-size: cover;
+}
+
 .obstacle {
     position: absolute;
-    background-color: white;
+    background: url(img/brick.png);
     width: 80px;
     align-self: flex-end;
-    z-index: 20;
+    z-index: 50;
 }
 
 #player {
