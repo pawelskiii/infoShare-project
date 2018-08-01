@@ -13,7 +13,6 @@ const $numberOfSections = parseInt($map.css('width')) / sectionWidth;
     let mapObjectTable;
 
 
-
     mapObjectTable = Array
         .from({length: $numberOfSections}, (obstacle, index) => {
             if (index !== 0) {
@@ -25,15 +24,16 @@ const $numberOfSections = parseInt($map.css('width')) / sectionWidth;
         })
         .filter(obstacle => {
             return (obstacle !== undefined && Math.random() > randomizer)
-        })
-        .forEach(obstacle => {
-            $map
-                .append($('<div>')
-                    .addClass('obstacle')
-                    .css('left', obstacle.position)
-                    .css('height', obstacle.height)
-                )
         });
+
+    mapObjectTable.forEach(obstacle => {
+        $map
+            .append($('<div>')
+                .addClass('obstacle')
+                .css('left', obstacle.position)
+                .css('height', obstacle.height)
+            )
+    });
 
 })();
 
@@ -154,8 +154,8 @@ const $numberOfSections = parseInt($map.css('width')) / sectionWidth;
 //***************CLOUDS***************
 
 (function () {
-    const cloudMinWidth = 20;
-    const cloudRandomizer = .2;
+    const cloudMinWidth = 50;
+    const cloudAmountRandomizer = .2;
     let mapCloudTable;
     const $sky = $('.sky');
 
@@ -163,23 +163,48 @@ const $numberOfSections = parseInt($map.css('width')) / sectionWidth;
         .from({length: $numberOfSections}, (cloud, index) => {
             return {
                 position: index * sectionWidth + Math.floor(Math.random() * sectionWidth),
-                width: Math.ceil(Math.random() * 10) * cloudMinWidth,
-                marginTop: Math.ceil(Math.random() * 10) * cloudMinWidth,
-                zIndex: Math.ceil(Math.random() * 10),
-            }
+                width: Math.ceil(Math.random() * 5) * cloudMinWidth,
+                marginTop: Math.ceil(Math.random() * 3) * cloudMinWidth,
+            };
         })
-        .filter(cloud => Math.random() > cloudRandomizer)
-        .forEach(cloud => {
-            $sky
-                .append($('<div>')
-                    .addClass('cloud')
-                    .css({
-                            'margin-left': cloud.position,
-                            'margin-top': cloud.marginTop,
-                            'width': cloud.width,
-                            'height': cloud.width * .44,
-                            'z-index': cloud.zIndex
-                         })
-                )
-        });
+        .filter(cloud => Math.random() > cloudAmountRandomizer);
+
+    mapCloudTable.forEach((cloud, index) => {
+        cloud.timeShift = Math.ceil(1 / cloud.width * Math.pow(10, 7));
+        $sky
+            .append($('<div>')
+                .addClass('cloud')
+                .attr('cloud-index', index)
+                .css({
+                    'left': cloud.position,
+                    'top': cloud.marginTop,
+                    'width': cloud.width,
+                    'height': cloud.width * .44,
+                    'z-index': cloud.width / 10,
+                })
+            )
+    });
+
+    mapCloudTable.forEach((cloud,index) => {
+
+        if (Math.random() < .5) {
+            function moveRight() {
+                $("[cloud-index="+index+"]").animate({left: "+=2500"}, cloud.timeShift, "linear" ,moveLeft())
+            }
+
+            function moveLeft() {
+                $("[cloud-index="+index+"]").animate({left: "-=2500"}, cloud.timeShift, "linear" ,moveRight)
+            }
+            moveRight();
+        } else {
+            function moveLeft() {
+                $("[cloud-index="+index+"]").animate({left: "-=2500"}, cloud.timeShift, "linear" ,moveRight())
+            }
+
+            function moveRight() {
+                $("[cloud-index="+index+"]").animate({left: "+=2500"}, cloud.timeShift, "linear" ,moveLeft)
+            }
+            moveLeft();
+        }
+    });
 })();

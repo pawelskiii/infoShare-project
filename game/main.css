@@ -26,7 +26,7 @@
     background-color: white;
     width: 80px;
     align-self: flex-end;
-    z-index: 20;
+    z-index: 50;
 }
 
 #player {
