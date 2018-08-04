@@ -47,6 +47,7 @@ const $playerHeight = parseInt($('#player').css('height'));
 (function () {
 
     const player = document.querySelector('#player');
+
     let playerPositionX = 0;
     let shotPositionX = 0;
     let playerPositionY = 0;
@@ -97,7 +98,8 @@ const $playerHeight = parseInt($('#player').css('height'));
             shotNumber++;
             shotArray.push({
                 shotIndex: shotNumber,
-                shotTime: Date.now()
+                shotTime: Date.now(),
+                shotPosition: $playerWidth +  parseInt($('#player').css('left'))
             });
             $('.map').append($('<div>')
                         .addClass('shot')
@@ -112,6 +114,7 @@ const $playerHeight = parseInt($('#player').css('height'));
 
     function update() {
 
+        const $mapPositionX = Math.abs(parseInt($('.map').css('left')));
         const dTime = Date.now() - time;
         time = Date.now();
 
@@ -179,7 +182,6 @@ const $playerHeight = parseInt($('#player').css('height'));
             jumpKeyPressed = '';
         }
 
-        const $mapPositionX = Math.abs(parseInt($('.map').css('left')));
 
         if (playerPositionX > $windowWidth/2 + $mapPositionX) {
             $('.map').css('left',  -playerPositionX + $windowWidth/2 )
@@ -187,10 +189,15 @@ const $playerHeight = parseInt($('#player').css('height'));
             playerPositionX = $mapPositionX
         };
 
-        shotArray.forEach((position, index) => {
-            let timeOfShooting = time - position.shotTime;
-            shotPositionX = playerPositionX + $playerWidth + shotSpeedX+ timeOfShooting*shotAcceleration + 'px';
+        shotArray.forEach((el, index) => {
+            let timeOfShooting = time - el.shotTime;
+            shotPositionX = el.shotPosition + shotSpeedX+ timeOfShooting*shotAcceleration + 'px';
             document.getElementsByClassName('shot')[index].style.left = shotPositionX;
+
+            if (parseInt(shotPositionX) > playerPositionX + $windowWidth) {
+                shotArray.splice(index,1);
+                document.getElementsByClassName('shot')[index].remove();
+            }
         });
 
         player.style.left = playerPositionX + 'px';
