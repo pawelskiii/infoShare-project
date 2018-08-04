@@ -164,24 +164,30 @@ const $windowWidth = parseInt($('.window').css('width'));
     let spriteSize = 105, width = spriteSize;
     let spriteAllSize = 630;
     let interval;
+    let stopRunning = true;
 
     function animatePlayer() {
-        interval = setInterval(() => {
-            document.getElementById("player").style.backgroundPosition = `-${spriteSize}px 0px`;
-            spriteSize<spriteAllSize ? spriteSize = spriteSize+width : spriteSize = width;
-        }, 100);
+        if (stopRunning) {
+            stopRunning = false;
+            interval = setInterval(() => {
+                console.log(interval);
+                document.getElementById("player").style.backgroundPosition = `-${spriteSize}px 0px`;
+                spriteSize<spriteAllSize ? spriteSize = spriteSize+width : spriteSize = width;
+            }, 100);
+        }
     }
 
     function stopAnimate() {
         clearInterval(interval);
-        document.getElementById("player").style.backgroundPosition = `0px 0px`;
+        stopRunning = true;
+        // document.getElementById("player").style.backgroundPosition = `0px 0px`;
     }
 
     window.addEventListener('keydown', function (event) {
         if (event.code === 'ArrowRight') {
             animatePlayer();
         }
-    }, {once: true});
+    });
 
     window.addEventListener('keyup', function (event) {
         if (event.code === 'ArrowRight') {
