@@ -14,7 +14,6 @@
     background: linear-gradient(rgb(133, 164, 204) 0, rgb(208, 229, 242) 100%);
 }
 
-
 .cloud1 {
     position: absolute;
     background: url(img/cloud1.png);
@@ -54,11 +53,14 @@
 }
 
 #player {
-    width: 75px;
+    width: 105px;
     height: 105px;
-    background: url("img/prawa_PA.png") no-repeat;
-    background-size: cover;
-    background-position-y: 5px;
+    /*width: 75px;*/
+    /*height: 105px;*/
+    /*background: url("img/prawa_PA.png") no-repeat;*/
+    background: url('img/spritestrip.png');
+    /*background-size: cover;*/
+    /*background-position-y: 5px;*/
     align-self: flex-end;
     z-index: 200;
     position: absolute;
