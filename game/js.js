@@ -1,5 +1,4 @@
-
-const sectionWidth = 200;
+const sectionWidth = 350;
 const $map = $('.map');
 const $numberOfSections = parseInt($map.css('width')) / sectionWidth;
 const $windowWidth = parseInt($('.window').css('width'));
@@ -8,11 +7,9 @@ const $playerWidth = parseInt($('#player').css('width'));
 
 //***************MAP GENERATOR***************
 
-// (function () {
-
 const obstacleWidth = 80;
 const obstacleMinHeight = 60;
-const randomizer = 0.4;
+const randomizer = 0.3;
 let mapObjectTable;
 const obstaclePositions = [];
 
@@ -21,7 +18,7 @@ mapObjectTable = Array
     .from({length: $numberOfSections}, (obstacle, index) => {
         if (index !== 0) {
             return {
-                position: index * sectionWidth + Math.floor(Math.random() * (sectionWidth - obstacleWidth)),
+                position: index * sectionWidth + Math.floor(Math.random() * (sectionWidth - obstacleWidth))*.8,
                 height: Math.floor((Math.random() * 2 + 1)) * obstacleMinHeight
             }
         }
@@ -40,12 +37,8 @@ mapObjectTable.forEach((obstacle, index) => {
     obstaclePositions[index] = [obstacle.position, obstacle.height];
 });
 
-
-// })();
-
 //***************PLAYER***************
 
-// (function () {
 
 const player = document.querySelector('#player');
 const moveRight = 'ArrowRight';
@@ -62,12 +55,7 @@ let playerAccelerationY = 0.0015;
 let keyPressed = '';
 let keyPressedJump = '';
 let time = Date.now();
-let collisionHeight = 0;
 let stillFalling = false;
-let obstacleCollision = false;
-let collisionOnRight = false;
-let collisionOnLeft = false;
-let currentObstaclePosiion = 0;
 let curObsHei = 0;
 let curObsPos = 0;
 
@@ -123,19 +111,12 @@ function update() {
     let verticalCollision = false;
     let oldPlayerPositionX = playerPositionX;
 
-    /*    oldPlayerPositionY = playerPositionY;
-        obstacleCollision = false;
-        collisionOnLeft = false;
-        collisionOnRight = false;*/
-
-    // obstacleCollision = mapObjectTable.some(collision);
     function checkCollision() {
         obstaclePositions.forEach(obsPos => {
             if (playerPositionX + $playerWidth >= obsPos[0] && playerPositionX <= obsPos[0] + obstacleWidth) {
                 horizontalCollision = true;
                 curObsPos = obsPos[0];
                 curObsHei = obsPos[1];
-                console.log(curObsPos, curObsHei);
                 if (playerPositionY < obsPos[1]) {
                     verticalCollision = true;
                 }
@@ -186,11 +167,6 @@ function update() {
                     stillFalling = false;
                     keyPressedJump = '';
                 }
-                /*if (playerPositionY <= curObsHei) {
-                    playerPositionY = curObsHei;
-                    stillFalling = false;
-                    keyPressedJump = '';
-                }*/
             }
             break;
         case fall:
@@ -228,15 +204,7 @@ function update() {
             break;
     }
 
-    /*playerPositionY = playerPositionY + playerSpeedY * dTime;
-    if (playerPositionY < curObsHei) {
-        playerPositionY = curObsHei;
-    }*/
-    console.log('horKOL', horizontalCollision);
-
-    console.log('speed x', playerSpeedX, 'speed y', playerSpeedY, 'jumpKey', keyPressedJump, 'curObsHei', curObsHei, 'horCol', horizontalCollision, 'verCol', verticalCollision);
-
-    const $mapPositionX = Math.abs(parseInt($('.map').css('left')));
+    const $mapPositionX = Math.abs(parseInt($map.css('left')));
 
     if (playerPositionX > $windowWidth / 2 + $mapPositionX) {
         $('.map').css('left', -playerPositionX + $windowWidth / 2)
