@@ -1,5 +1,6 @@
 const sectionWidth = 200;
 const $map = $('.map');
+const $player = $('#player');
 const $numberOfSections = parseInt($map.css('width')) / sectionWidth;
 const $windowWidth = parseInt($('.window').css('width'));
 
@@ -185,7 +186,7 @@ const $windowWidth = parseInt($('.window').css('width'));
 
     window.addEventListener('keydown', function (event) {
         if (event.code === 'ArrowRight') {
-            $('#player').removeClass('scaleXrotate');
+            $player.removeClass('scaleXrotate');
             animatePlayer();
         }
     });
@@ -198,7 +199,7 @@ const $windowWidth = parseInt($('.window').css('width'));
 
     window.addEventListener('keydown', function (event) {
         if (event.code === 'ArrowLeft') {
-            $('#player').addClass('scaleXrotate');
+            $player.addClass('scaleXrotate');
             animatePlayer();
         }
     });

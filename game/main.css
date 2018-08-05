@@ -55,12 +55,7 @@
 #player {
     width: 105px;
     height: 105px;
-    /*width: 75px;*/
-    /*height: 105px;*/
-    /*background: url("img/prawa_PA.png") no-repeat;*/
     background: url('img/spritestrip.png');
-    /*background-size: cover;*/
-    /*background-position-y: 5px;*/
     align-self: flex-end;
     z-index: 200;
     position: absolute;
