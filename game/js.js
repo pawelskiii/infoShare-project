@@ -185,6 +185,7 @@ const $windowWidth = parseInt($('.window').css('width'));
 
     window.addEventListener('keydown', function (event) {
         if (event.code === 'ArrowRight') {
+            $('#player').removeClass('scaleXrotate');
             animatePlayer();
         }
     });
@@ -194,9 +195,20 @@ const $windowWidth = parseInt($('.window').css('width'));
             stopAnimate();
         }
     });
+
+    window.addEventListener('keydown', function (event) {
+        if (event.code === 'ArrowLeft') {
+            $('#player').addClass('scaleXrotate');
+            animatePlayer();
+        }
+    });
+
+    window.addEventListener('keyup', function (event) {
+        if (event.code === 'ArrowLeft') {
+            stopAnimate();
+        }
+    });
 })();
-
-
 
 //***************CLOUDS***************
 

@@ -66,6 +66,10 @@
     position: absolute;
 }
 
+.scaleXrotate {
+    transform: scaleX(-1);
+}
+
 /*####################PONIŻEJ LINIE POMOCNICZE ######################*/
 
 .window {
