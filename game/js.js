@@ -1,5 +1,6 @@
 const sectionWidth = 200;
 const $map = $('.map');
+const $player = $('#player');
 const $numberOfSections = parseInt($map.css('width')) / sectionWidth;
 const $windowWidth = parseInt($('.window').css('width'));
 const $windowHeight = parseInt($('.map').css('height'));
@@ -16,7 +17,6 @@ const $playerHeight = parseInt($('#player').css('height'));
     let mapObjectTable;
 
 
-
     mapObjectTable = Array
         .from({length: $numberOfSections}, (obstacle, index) => {
             if (index !== 0) {
@@ -28,15 +28,16 @@ const $playerHeight = parseInt($('#player').css('height'));
         })
         .filter(obstacle => {
             return (obstacle !== undefined && Math.random() > randomizer)
-        })
-        .forEach(obstacle => {
-            $map
-                .append($('<div>')
-                    .addClass('obstacle')
-                    .css('left', obstacle.position)
-                    .css('height', obstacle.height)
-                )
         });
+
+    mapObjectTable.forEach(obstacle => {
+        $map
+            .append($('<div>')
+                .addClass('obstacle')
+                .css('left', obstacle.position)
+                .css('height', obstacle.height)
+            )
+    });
 
 })();
 
@@ -192,8 +193,8 @@ const $playerHeight = parseInt($('#player').css('height'));
         }
 
 
-        if (playerPositionX > $windowWidth/2 + $mapPositionX) {
-            $('.map').css('left',  -playerPositionX + $windowWidth/2 )
+        if (playerPositionX > $windowWidth / 2 + $mapPositionX) {
+            $('.map').css('left', -playerPositionX + $windowWidth / 2)
         } else if (playerPositionX < 0 || playerPositionX < $mapPositionX) {
             playerPositionX = $mapPositionX
         };
@@ -218,12 +219,62 @@ const $playerHeight = parseInt($('#player').css('height'));
     }
 })();
 
+//***************PLAYER ANIMATE SPRITE***************
+
+(function () {
+    let spriteSize = 105, width = spriteSize;
+    let spriteAllSize = 630;
+    let interval;
+    let stopRunning = true;
+
+    function animatePlayer() {
+        if (stopRunning) {
+            stopRunning = false;
+            interval = setInterval(() => {
+                console.log(interval);
+                document.getElementById("player").style.backgroundPosition = `-${spriteSize}px 0px`;
+                spriteSize < spriteAllSize ? spriteSize = spriteSize + width : spriteSize = width;
+            }, 100);
+        }
+    }
+
+    function stopAnimate() {
+        clearInterval(interval);
+        stopRunning = true;
+    }
+
+    window.addEventListener('keydown', function (event) {
+        if (event.code === 'ArrowRight') {
+            $player.removeClass('scaleXrotate');
+            animatePlayer();
+        }
+    });
+
+    window.addEventListener('keyup', function (event) {
+        if (event.code === 'ArrowRight') {
+            stopAnimate();
+        }
+    });
+
+    window.addEventListener('keydown', function (event) {
+        if (event.code === 'ArrowLeft') {
+            $player.addClass('scaleXrotate');
+            animatePlayer();
+        }
+    });
+
+    window.addEventListener('keyup', function (event) {
+        if (event.code === 'ArrowLeft') {
+            stopAnimate();
+        }
+    });
+})();
 
 //***************CLOUDS***************
 
 (function () {
-    const cloudMinWidth = 20;
-    const cloudRandomizer = .2;
+    const cloudMinWidth = 50;
+    const cloudAmountRandomizer = .2;
     let mapCloudTable;
     const $sky = $('.sky');
 
@@ -231,23 +282,52 @@ const $playerHeight = parseInt($('#player').css('height'));
         .from({length: $numberOfSections}, (cloud, index) => {
             return {
                 position: index * sectionWidth + Math.floor(Math.random() * sectionWidth),
-                width: Math.ceil(Math.random() * 10) * cloudMinWidth,
-                marginTop: Math.ceil(Math.random() * 10) * cloudMinWidth,
-                zIndex: Math.ceil(Math.random() * 10),
-            }
+                width: Math.ceil(Math.random() * 5) * cloudMinWidth,
+                marginTop: Math.ceil(Math.random() * 3) * cloudMinWidth,
+            };
         })
-        .filter(cloud => Math.random() > cloudRandomizer)
-        .forEach(cloud => {
-            $sky
-                .append($('<div>')
-                    .addClass('cloud')
-                    .css({
-                            'margin-left': cloud.position,
-                            'margin-top': cloud.marginTop,
-                            'width': cloud.width,
-                            'height': cloud.width * .44,
-                            'z-index': cloud.zIndex
-                         })
-                )
-        });
+        .filter(() => Math.random() > cloudAmountRandomizer);
+
+    mapCloudTable.forEach((cloud, index) => {
+        cloud.timeShift = Math.ceil(1 / cloud.width * Math.pow(10, 7));
+        let classes = ['cloud1', 'cloud2', 'cloud3', 'cloud4', 'cloud5'];
+        let randomNumber = Math.floor(Math.random() * classes.length);
+        $sky
+            .append($('<div>')
+                .addClass(classes[randomNumber])
+                .attr('cloud-index', index)
+                .css({
+                    'left': cloud.position,
+                    'top': cloud.marginTop,
+                    'width': cloud.width,
+                    'height': cloud.width * .44,
+                    'z-index': cloud.width / 10,
+                })
+            )
+    });
+
+    mapCloudTable.forEach((cloud, index) => {
+
+        if (Math.random() < .5) {
+            function moveRight() {
+                $("[cloud-index=" + index + "]").animate({left: "+=2500"}, cloud.timeShift, "linear", moveLeft())
+            }
+
+            function moveLeft() {
+                $("[cloud-index=" + index + "]").animate({left: "-=2500"}, cloud.timeShift, "linear", moveRight)
+            }
+
+            moveRight();
+        } else {
+            function moveLeft() {
+                $("[cloud-index=" + index + "]").animate({left: "-=2500"}, cloud.timeShift, "linear", moveRight())
+            }
+
+            function moveRight() {
+                $("[cloud-index=" + index + "]").animate({left: "+=2500"}, cloud.timeShift, "linear", moveLeft)
+            }
+
+            moveLeft();
+        }
+    });
 })();
