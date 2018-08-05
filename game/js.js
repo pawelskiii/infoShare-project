@@ -1,5 +1,6 @@
 const sectionWidth = 200;
 const $map = $('.map');
+const $player = $('#player');
 const $numberOfSections = parseInt($map.css('width')) / sectionWidth;
 const $windowWidth = parseInt($('.window').css('width'));
 
@@ -145,8 +146,8 @@ const $windowWidth = parseInt($('.window').css('width'));
 
         const $mapPositionX = Math.abs(parseInt($('.map').css('left')));
 
-        if (playerPositionX > $windowWidth/2 + $mapPositionX) {
-            $('.map').css('left',  -playerPositionX + $windowWidth/2 )
+        if (playerPositionX > $windowWidth / 2 + $mapPositionX) {
+            $('.map').css('left', -playerPositionX + $windowWidth / 2)
         } else if (playerPositionX < 0 || playerPositionX < $mapPositionX) {
             playerPositionX = $mapPositionX
         }
@@ -158,6 +159,56 @@ const $windowWidth = parseInt($('.window').css('width'));
     }
 })();
 
+//***************PLAYER ANIMATE SPRITE***************
+
+(function () {
+    let spriteSize = 105, width = spriteSize;
+    let spriteAllSize = 630;
+    let interval;
+    let stopRunning = true;
+
+    function animatePlayer() {
+        if (stopRunning) {
+            stopRunning = false;
+            interval = setInterval(() => {
+                console.log(interval);
+                document.getElementById("player").style.backgroundPosition = `-${spriteSize}px 0px`;
+                spriteSize < spriteAllSize ? spriteSize = spriteSize + width : spriteSize = width;
+            }, 100);
+        }
+    }
+
+    function stopAnimate() {
+        clearInterval(interval);
+        stopRunning = true;
+    }
+
+    window.addEventListener('keydown', function (event) {
+        if (event.code === 'ArrowRight') {
+            $player.removeClass('scaleXrotate');
+            animatePlayer();
+        }
+    });
+
+    window.addEventListener('keyup', function (event) {
+        if (event.code === 'ArrowRight') {
+            stopAnimate();
+        }
+    });
+
+    window.addEventListener('keydown', function (event) {
+        if (event.code === 'ArrowLeft') {
+            $player.addClass('scaleXrotate');
+            animatePlayer();
+        }
+    });
+
+    window.addEventListener('keyup', function (event) {
+        if (event.code === 'ArrowLeft') {
+            stopAnimate();
+        }
+    });
+})();
 
 //***************CLOUDS***************
 
@@ -175,12 +226,12 @@ const $windowWidth = parseInt($('.window').css('width'));
                 marginTop: Math.ceil(Math.random() * 3) * cloudMinWidth,
             };
         })
-        .filter(cloud => Math.random() > cloudAmountRandomizer);
+        .filter(() => Math.random() > cloudAmountRandomizer);
 
     mapCloudTable.forEach((cloud, index) => {
         cloud.timeShift = Math.ceil(1 / cloud.width * Math.pow(10, 7));
         let classes = ['cloud1', 'cloud2', 'cloud3', 'cloud4', 'cloud5'];
-        let randomNumber = Math.floor(Math.random()*classes.length);
+        let randomNumber = Math.floor(Math.random() * classes.length);
         $sky
             .append($('<div>')
                 .addClass(classes[randomNumber])
@@ -195,25 +246,27 @@ const $windowWidth = parseInt($('.window').css('width'));
             )
     });
 
-    mapCloudTable.forEach((cloud,index) => {
+    mapCloudTable.forEach((cloud, index) => {
 
         if (Math.random() < .5) {
             function moveRight() {
-                $("[cloud-index="+index+"]").animate({left: "+=2500"}, cloud.timeShift, "linear" ,moveLeft())
+                $("[cloud-index=" + index + "]").animate({left: "+=2500"}, cloud.timeShift, "linear", moveLeft())
             }
 
             function moveLeft() {
-                $("[cloud-index="+index+"]").animate({left: "-=2500"}, cloud.timeShift, "linear" ,moveRight)
+                $("[cloud-index=" + index + "]").animate({left: "-=2500"}, cloud.timeShift, "linear", moveRight)
             }
+
             moveRight();
         } else {
             function moveLeft() {
-                $("[cloud-index="+index+"]").animate({left: "-=2500"}, cloud.timeShift, "linear" ,moveRight())
+                $("[cloud-index=" + index + "]").animate({left: "-=2500"}, cloud.timeShift, "linear", moveRight())
             }
 
             function moveRight() {
-                $("[cloud-index="+index+"]").animate({left: "+=2500"}, cloud.timeShift, "linear" ,moveLeft)
+                $("[cloud-index=" + index + "]").animate({left: "+=2500"}, cloud.timeShift, "linear", moveLeft)
             }
+
             moveLeft();
         }
     });
