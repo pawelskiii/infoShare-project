@@ -50,7 +50,6 @@ const $playerHeight = parseInt($('#player').css('height'));
 
     let playerPositionX = 0;
     let shotPositionX = 0;
-    let shotPositionY = 0;
     let playerPositionY = 0;
     let playerSpeedX = 0;
     let shotSpeedX = 0.4;
@@ -63,13 +62,11 @@ const $playerHeight = parseInt($('#player').css('height'));
     let time = Date.now();
     let shotArray = [];
     let shotNumber = 0;
-    let shotAmount = 10;
+    let shotAmount = 30;
 
     update();
 
-
     for (let i = 1; i<= shotAmount ; i ++) {
-        console.log(i)
         $('.game-information').append($('<div>').addClass('bullet').attr('shotNumber', i));
     }
 
@@ -102,28 +99,26 @@ const $playerHeight = parseInt($('#player').css('height'));
     });
 
     window.addEventListener('keydown', function (key) {
-        if (key.code === 'Space') {
+        if (key.code === 'Space' && shotAmount > 0) {
             shotNumber++;
             shotArray.push({
                 amount: shotAmount,
                 shotIndex: shotNumber,
                 shotTime: Date.now(),
-                shotPosition: $playerWidth +  parseInt($('#player').css('left'))
+                shotPosition: $playerWidth + parseInt($('#player').css('left'))
             });
-            $('.game-information div:last').fadeOut(700, function() {
-                                                                        $(this).remove();
-                                                                    });
-            console.log(shotAmount)
-            shotAmount --;
+                $('.game-information div:last').remove();
+                shotAmount--;
 
-            $('.map').append($('<div>')
-                        .addClass('shot')
-                        .attr('shotNumber', shotNumber)
-                        .css({
-                                "left":  playerPositionX+75,
-                                "top": ($windowHeight - ($playerHeight/2 + parseInt($('#player').css('bottom'))))
-            }))
-        }
+
+                $('.map').append($('<div>')
+                    .addClass('shot')
+                    .attr('shotNumber', shotNumber)
+                    .css({
+                        "left": playerPositionX + 75,
+                        "top": ($windowHeight - ($playerHeight / 2 + parseInt($('#player').css('bottom'))))
+                    }))
+            }
     });
 
     function update() {
@@ -208,10 +203,12 @@ const $playerHeight = parseInt($('#player').css('height'));
             shotPositionX = el.shotPosition + shotSpeedX+ timeOfShooting*shotAcceleration + 'px';
             document.getElementsByClassName('shot')[index].style.left = shotPositionX;
 
+            console.log(Math.sin(parseInt(shotPositionX))*70 +40);
             if (parseInt(shotPositionX) > playerPositionX + $windowWidth) {
+        /*        document.getElementsByClassName('shot')[index].classList.add('explosion');*/
                 shotArray.splice(index,1);
                 document.getElementsByClassName('shot')[index].remove();
-            }
+            };
         });
 
         player.style.left = playerPositionX + 'px';

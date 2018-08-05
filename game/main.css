@@ -53,11 +53,11 @@
     display: flex;
     padding: 8px 0 0 8px ;
     z-index: 350;
-    width: 100%;
+    width: max-content;
     height: 65px;
 }
 .ammo {
-    background: url("img/bascet-of-carrots.png");
+    background: url("img/basket-of-carrots.png");
     background-size: cover;
     z-index: 300;
     height: 56px;
@@ -76,5 +76,12 @@
     background: url("img/carrot-shot.png") no-repeat;
     width: 50px;
     height: 16px;
-    
+    z-index: 200;
+}
+.explosion {
+    position: absolute;
+    background: url("img/shot-explosion.png") no-repeat;
+    width: 25px;
+    height: 30px;
+    z-index: 200;
 }
