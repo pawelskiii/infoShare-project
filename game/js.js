@@ -12,7 +12,7 @@ const $playerWidth = parseInt($('#player').css('width'));
 
 const obstacleWidth = 80;
 const obstacleMinHeight = 60;
-const randomizer = .4;
+const randomizer = 0.4;
 let mapObjectTable;
 const obstaclePositions = [];
 
@@ -108,10 +108,12 @@ function moveBwd(dTime) {
 
 function moveUp(dTime) {
     playerSpeedY = playerSpeedY + playerAccelerationY * dTime;
+    playerPositionY = playerPositionY + playerSpeedY * dTime;
 }
 
 function fallDown(dTime) {
     playerSpeedY = playerSpeedY - playerAccelerationY * dTime;
+    playerPositionY = playerPositionY + playerSpeedY * dTime;
 }
 
 function update() {
@@ -119,6 +121,7 @@ function update() {
     time = Date.now();
     let horizontalCollision = false;
     let verticalCollision = false;
+    let oldPlayerPositionX = playerPositionX;
 
     /*    oldPlayerPositionY = playerPositionY;
         obstacleCollision = false;
@@ -183,6 +186,11 @@ function update() {
                     stillFalling = false;
                     keyPressedJump = '';
                 }
+                /*if (playerPositionY <= curObsHei) {
+                    playerPositionY = curObsHei;
+                    stillFalling = false;
+                    keyPressedJump = '';
+                }*/
             }
             break;
         case fall:
@@ -192,12 +200,26 @@ function update() {
                 checkCollision();
                 if ((playerPositionY + playerSpeedY * dTime) < curObsHei) {
                     playerPositionY = curObsHei;
+                    playerSpeedY = 0;
                 }
+
             }
             if (playerPositionY <= curObsHei) {
-                playerPositionY = curObsHei;
-                stillFalling = false;
-                keyPressedJump = '';
+                if ((!horizontalCollision && curObsHei > 0) || (keyPressed === moveRight && curObsHei > 0 && playerPositionY < curObsHei)) {
+                    fallDown(dTime);
+                    playerPositionX = oldPlayerPositionX;
+                    stillFalling = true;
+                    if (playerPositionY < 0) {
+                        playerPositionY = 0;
+                        stillFalling = false;
+                        keyPressedJump = '';
+                    }
+                } else {
+                    playerPositionY = curObsHei;
+                    stillFalling = false;
+                    keyPressedJump = '';
+                }
+
             }
             break;
 
@@ -206,12 +228,13 @@ function update() {
             break;
     }
 
-    playerPositionY = playerPositionY + playerSpeedY * dTime;
+    /*playerPositionY = playerPositionY + playerSpeedY * dTime;
     if (playerPositionY < curObsHei) {
         playerPositionY = curObsHei;
-    }
+    }*/
+    console.log('horKOL', horizontalCollision);
 
-    console.log('speed x', playerSpeedX, 'speed y', playerSpeedY, 'jumpKey', keyPressedJump, 'collisionHeight', curObsHei, 'horCol', horizontalCollision, 'verCol', verticalCollision);
+    console.log('speed x', playerSpeedX, 'speed y', playerSpeedY, 'jumpKey', keyPressedJump, 'curObsHei', curObsHei, 'horCol', horizontalCollision, 'verCol', verticalCollision);
 
     const $mapPositionX = Math.abs(parseInt($('.map').css('left')));
 
