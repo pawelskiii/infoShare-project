@@ -3,7 +3,9 @@ const $map = $('.map');
 const $player = $('#player');
 const $numberOfSections = parseInt($map.css('width')) / sectionWidth;
 const $windowWidth = parseInt($('.window').css('width'));
-
+const $windowHeight = parseInt($('.map').css('height'));
+const $playerWidth = parseInt($('#player').css('width'));
+const $playerHeight = parseInt($('#player').css('height'));
 
 //***************MAP GENERATOR***************
 
@@ -48,15 +50,26 @@ const $windowWidth = parseInt($('.window').css('width'));
     const player = document.querySelector('#player');
 
     let playerPositionX = 0;
+    let shotPositionX = 0;
     let playerPositionY = 0;
     let playerSpeedX = 0;
+    let shotSpeedX = 0.4;
     let playerSpeedY = 0;
     let playerAcceleration = 0.0005;
+    let shotAcceleration = 0.8;
     let keyPressed = '';
+    let shotPressed = '';
     let jumpKeyPressed = '';
     let time = Date.now();
+    let shotArray = [];
+    let shotNumber = 0;
+    let shotAmount = 30;
 
     update();
+
+    for (let i = 1; i<= shotAmount ; i ++) {
+        $('.game-information').append($('<div>').addClass('bullet').attr('shotNumber', i));
+    }
 
     window.addEventListener('keydown', function (event) {
         if (event.code === 'ArrowRight' || event.code === 'ArrowLeft') {
@@ -86,8 +99,32 @@ const $windowWidth = parseInt($('.window').css('width'));
         }
     });
 
+    window.addEventListener('keydown', function (key) {
+        if (key.code === 'Space' && shotAmount > 0) {
+            shotNumber++;
+            shotArray.push({
+                amount: shotAmount,
+                shotIndex: shotNumber,
+                shotTime: Date.now(),
+                shotPosition: $playerWidth + parseInt($('#player').css('left'))
+            });
+                $('.game-information div:last').remove();
+                shotAmount--;
+
+
+                $('.map').append($('<div>')
+                    .addClass('shot')
+                    .attr('shotNumber', shotNumber)
+                    .css({
+                        "left": playerPositionX + 75,
+                        "top": ($windowHeight - ($playerHeight / 2 + parseInt($('#player').css('bottom'))))
+                    }))
+            }
+    });
+
     function update() {
 
+        const $mapPositionX = Math.abs(parseInt($('.map').css('left')));
         const dTime = Date.now() - time;
         time = Date.now();
 
@@ -121,6 +158,17 @@ const $windowWidth = parseInt($('.window').css('width'));
 
         }
 
+        switch (shotPressed) {
+
+            case 'Space':
+                shotSpeedX = 0.4;
+                break;
+
+            default:
+                shotSpeedX = 0.4;
+
+        }
+
         switch (jumpKeyPressed) {
 
             case 'ArrowUp':
@@ -144,13 +192,25 @@ const $windowWidth = parseInt($('.window').css('width'));
             jumpKeyPressed = '';
         }
 
-        const $mapPositionX = Math.abs(parseInt($('.map').css('left')));
 
         if (playerPositionX > $windowWidth / 2 + $mapPositionX) {
             $('.map').css('left', -playerPositionX + $windowWidth / 2)
         } else if (playerPositionX < 0 || playerPositionX < $mapPositionX) {
             playerPositionX = $mapPositionX
-        }
+        };
+
+        shotArray.forEach((el, index) => {
+            let timeOfShooting = time - el.shotTime;
+            shotPositionX = el.shotPosition + shotSpeedX+ timeOfShooting*shotAcceleration + 'px';
+            document.getElementsByClassName('shot')[index].style.left = shotPositionX;
+
+            console.log(Math.sin(parseInt(shotPositionX))*70 +40);
+            if (parseInt(shotPositionX) > playerPositionX + $windowWidth) {
+        /*        document.getElementsByClassName('shot')[index].classList.add('explosion');*/
+                shotArray.splice(index,1);
+                document.getElementsByClassName('shot')[index].remove();
+            };
+        });
 
         player.style.left = playerPositionX + 'px';
         player.style.bottom = playerPositionY + 'px';
