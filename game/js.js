@@ -1,3 +1,4 @@
+
 const sectionWidth = 200;
 const $map = $('.map');
 const $numberOfSections = parseInt($map.css('width')) / sectionWidth;
@@ -13,6 +14,7 @@ const obstacleWidth = 80;
 const obstacleMinHeight = 60;
 const randomizer = .4;
 let mapObjectTable;
+const obstaclePositions = [];
 
 
 mapObjectTable = Array
@@ -28,18 +30,18 @@ mapObjectTable = Array
         return (obstacle !== undefined && Math.random() > randomizer)
     })
 
-mapObjectTable.forEach(obstacle => {
+mapObjectTable.forEach((obstacle, index) => {
     $map
         .append($('<div>')
             .addClass('obstacle')
             .css('left', obstacle.position)
             .css('height', obstacle.height)
         )
+    obstaclePositions[index] = [obstacle.position, obstacle.height];
 });
 
-// })();
 
-// player.style.left = playerPositionX + 'px';
+// })();
 
 //***************PLAYER***************
 
@@ -63,6 +65,11 @@ let time = Date.now();
 let collisionHeight = 0;
 let stillFalling = false;
 let obstacleCollision = false;
+let collisionOnRight = false;
+let collisionOnLeft = false;
+let currentObstaclePosiion = 0;
+let curObsHei = 0;
+let curObsPos = 0;
 
 update();
 
@@ -89,52 +96,6 @@ window.addEventListener('keyup', function (event) {
     }
 });
 
-function horizontalCollision(obstacle) {
-    return (
-        ((playerPositionX + $playerWidth) > obstacle.position)
-        && (playerPositionX < obstacle.position + obstacleWidth)
-    )
-}
-
-function verticalCollision(obstacle) {
-    return (
-        (playerPositionY < obstacle.height)
-    )
-}
-
-function collision(obstacle) {
-    collisionHeight = 0;
-    if (
-        ((playerPositionX + $playerWidth) > obstacle.position)
-        && (playerPositionX < obstacle.position + obstacleWidth)
-        && (playerPositionY < obstacle.height)
-    ) {
-        collisionHeight = obstacle.height
-    }
-    return (
-        ((playerPositionX + $playerWidth) > obstacle.position)
-        && (playerPositionX < obstacle.position + obstacleWidth)
-        && (playerPositionY < obstacle.height)
-    )
-}
-
-
-
-/*function moveUpDown(dTime) {
-
-
-
-    if (playerSpeedY < .5) {
-        playerSpeedY = playerSpeedY + playerAccelerationY * dTime;
-    } else if (playerSpeedY >= .5) {
-        playerSpeedY = playerSpeedY + playerAccelerationY * dTime;
-    }
-
-
-
-    playerPositionY = playerPositionY + playerSpeedY * dTime;
-}*/
-
 function moveFwd(dTime) {
     playerSpeedX = Math.min(Math.max(0, playerSpeedX + playerAccelerationX * dTime), 0.4);
     playerPositionX +=  playerSpeedX * dTime;
@@ -156,314 +117,103 @@ function fallDown(dTime) {
 function update() {
     const dTime = Date.now() - time;
     time = Date.now();
-    oldPlayerPositionX = playerPositionX;
+    let horizontalCollision = false;
+    let verticalCollision = false;
     oldPlayerPositionY = playerPositionY;
-    obstacleCollision = false;
 
-    obstacleCollision = mapObjectTable.some(collision);
+    /*    oldPlayerPositionY = playerPositionY;
+        obstacleCollision = false;
+        collisionOnLeft = false;
+        collisionOnRight = false;*/
+
+    // obstacleCollision = mapObjectTable.some(collision);
+    function checkCollision() {
+        obstaclePositions.forEach(obsPos => {
+            if (playerPositionX + $playerWidth >= obsPos[0] && playerPositionX <= obsPos[0] + obstacleWidth) {
+                horizontalCollision = true;
+                curObsPos = obsPos[0];
+                curObsHei = obsPos[1];
+                console.log(curObsPos, curObsHei);
+                if (playerPositionY < obsPos[1]) {
+                    verticalCollision = true;
+                }
+            }
+        })
+    }
 
     switch (keyPressed) {
 
         case moveRight:
-            if (!obstacleCollision) {
-                moveFwd(dTime);
+            moveFwd(dTime);
+            checkCollision();
+            if (horizontalCollision && verticalCollision && !stillFalling) {
+                playerPositionX = curObsPos - $playerWidth - 1;
             }
-            if (playerPositionY > collisionHeight && keyPressedJump !== jump) {
-                stillFalling = true;
+            if (!horizontalCollision && curObsHei !== 0) {
+                curObsHei = 0;
                 keyPressedJump = fall;
             }
             break;
-
         case moveLeft:
-            if (!obstacleCollision) {
-                moveBwd(dTime);
+            moveBwd(dTime);
+            checkCollision();
+            if (horizontalCollision && verticalCollision) {
+                playerPositionX = curObsPos + obstacleWidth + 1;
             }
-            if (playerPositionY > collisionHeight && keyPressedJump !== jump) {
-                stillFalling = true;
+            if (!horizontalCollision && curObsHei !== 0) {
+                curObsHei = 0;
                 keyPressedJump = fall;
             }
-
             break;
-
         default:
             playerSpeedX = 0;
             break;
     }
 
     switch (keyPressedJump) {
-
         case jump:
-            (playerSpeedY < .5 && !stillFalling) ? moveUp(dTime) : (keyPressedJump = fall, stillFalling = true, fallDown(dTime));
-                // : (stillFalling = false, playerPositionY = collisionHeight, keyPressedJump = '');
+            if (playerSpeedY < .5 && !stillFalling) {
+                moveUp(dTime);
+            } else {
+                keyPressedJump = fall;
+                stillFalling = true;
+                fallDown(dTime);
+                checkCollision();
+                if ((playerPositionY + playerSpeedY * dTime) < curObsHei) {
+                    playerPositionY = curObsHei;
+                    stillFalling = false;
+                    keyPressedJump = '';
+                }
+            }
             break;
-
         case fall:
-            (stillFalling === true && playerPositionY > collisionHeight)
-                ? fallDown(dTime)
-                : (keyPressedJump = '', stillFalling = false, playerPositionY = collisionHeight, playerSpeedY = 0);
+            if (playerPositionY > curObsHei) {
+                fallDown(dTime);
+                stillFalling = true;
+                checkCollision();
+                if ((playerPositionY + playerSpeedY * dTime) < curObsHei) {
+                    playerPositionY = curObsHei;
+                }
+            }
+            if (playerPositionY <= curObsHei) {
+                playerPositionY = curObsHei;
+                stillFalling = false;
+                keyPressedJump = '';
+            }
+
             break;
 
         default:
             playerSpeedY = 0;
             break;
-
     }
 
     playerPositionY = playerPositionY + playerSpeedY * dTime;
-
-
-    console.log('speed x', playerSpeedX, 'speed y', playerSpeedY, 'jumpKey', keyPressedJump, 'collisionHeight', collisionHeight, 'collision', obstacleCollision);
-
-    player.style.left = playerPositionX + 'px';
-    player.style.bottom = playerPositionY + 'px';
-    requestAnimationFrame(update);
-
-}
-/*
-
-function update() {
-    const dTime = Date.now() - time;
-    time = Date.now();
-    oldPlayerPositionX = playerPositionX;
-    oldPlayerPositionY = playerPositionY;
-
-    switch (keyPressed) {
-
-        case moveRight:
-            if (!mapObjectTable.some(horizontalCollision)) {
-                moveFwd(dTime);
-            } else {
-                playerPositionX = oldPlayerPositionX;
-            }
-            console.log(playerPositionX);
-            break;
-
-        case moveLeft:
-            console.log('zxcz');
-            if (!mapObjectTable.some(horizontalCollision)) {
-                moveBwd(dTime);
-            } else {
-                playerPositionX = oldPlayerPositionX;
-            }
-            break;
-
-        default:
-            playerSpeedX = 0;
-            break;
+    if (playerPositionY < curObsHei) {
+        playerPositionY = curObsHei;
     }
 
-    /!*switch (keyPressedJump) {
-
-        case jump:
-            moveUpDown(dTime);
-            break;
-
-        case fall:
-            moveUpDown(dTime);
-            break;
-
-        default:
-            playerSpeedY = 0;
-            break;
-
-    }*!/
-
-    player.style.left = playerPositionX + 'px';
-    player.style.bottom = playerPositionY + 'px';
-    requestAnimationFrame(update);
-
-}
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-update();
-
-function checkCollisionHorizontal(obstacle, index) {
-    /!*
-        collisionHeight = 0;
-        if (
-            ((playerPositionX + $playerWidth) > obstacle.position)
-            && (playerPositionX < (obstacle.position + obstacleWidth))
-        ) {
-            collisionHeight = mapObjectTable[index].height;
-        }*!/
-
-
-    if (keyPressed === 'ArrowRight') {
-        if (
-            ((playerPositionX + $playerWidth) > obstacle.position)
-            && (playerPositionX < (obstacle.position + obstacleWidth))
-            && (playerPositionY < obstacle.height)
-        ) {
-            collisionHeight = mapObjectTable[index].height
-        }
-        return (
-            ((playerPositionX + $playerWidth) > obstacle.position)
-            && (playerPositionX < (obstacle.position + obstacleWidth))
-            && (playerPositionY < obstacle.height)
-        );
-    }
-    if (keyPressed === 'ArrowLeft') {
-        if (
-            (playerPositionX < (obstacle.position + obstacleWidth))
-            && (playerPositionX > obstacle.position)
-            && (playerPositionY < obstacle.height)
-        ) {
-            collisionHeight = mapObjectTable[index].height
-        }
-        return (
-            (playerPositionX < (obstacle.position + obstacleWidth))
-            && (playerPositionX > obstacle.position)
-            && (playerPositionY < obstacle.height)
-        );
-    }
-    collisionHeight = 0;
-}
-
-function fallDown(dTime) {
-    if (playerPositionY > collisionHeight) {
-        playerSpeedY = playerSpeedY - playerAccelerationY * dTime;
-        playerPositionY = playerPositionY + playerSpeedY * dTime;
-    }
-}
-
-
-window.addEventListener('keydown', function (event) {
-    if (event.code === 'ArrowRight' || event.code === 'ArrowLeft') {
-        event.preventDefault();
-        keyPressed = event.code;
-    }
-});
-
-window.addEventListener('keyup', function (event) {
-    if (event.code === 'ArrowRight' || event.code === 'ArrowLeft') {
-        event.preventDefault();
-        keyPressed = '';
-    }
-});
-
-window.addEventListener('keydown', function (event) {
-    if (event.code === 'ArrowUp' && jumpKeyPressed !== 'jumpReleased') {
-        event.preventDefault();
-        jumpKeyPressed = event.code;
-    }
-});
-
-window.addEventListener('keyup', function (event) {
-    if (event.code === 'ArrowUp') {
-        event.preventDefault();
-        jumpKeyPressed = 'jumpReleased';
-    }
-});
-
-function update() {
-
-    const dTime = Date.now() - time;
-    time = Date.now();
-    oldPlayerPositionX = playerPositionX;
-    oldPlayerPositionY = playerPositionY;
-
-    // playerPositionY += playerSpeedY * dTime;
-
-    mapObjectTable.some(checkCollisionHorizontal) ? playerPositionX = oldPlayerPositionX : playerPositionX += playerSpeedX * dTime;
-
-
-    switch (keyPressed) {
-
-        case 'ArrowRight':
-            playerSpeedX = Math.min(
-                Math.max(
-                    0,
-                    playerSpeedX + playerAccelerationX * dTime
-                ),
-                0.4
-            );
-            if (playerPositionY > collisionHeight) {
-                jumpKeyPressed = 'jumpReleased';
-            }
-
-
-            break;
-
-        case 'ArrowLeft':
-            playerSpeedX = Math.max(
-                Math.min(
-                    0,
-                    playerSpeedX - playerAccelerationX * dTime
-                ),
-                -0.4
-            );
-
-
-            break;
-
-        default:
-            playerSpeedX = 0;
-
-    }
-
-
-    switch (jumpKeyPressed) {
-
-        case 'ArrowUp':
-
-            if (playerPositionY >= collisionHeight && playerSpeedY <= .65) {
-                playerSpeedY = playerSpeedY + playerAccelerationY * dTime;
-                playerPositionY = playerPositionY + playerSpeedY * dTime;
-            } else {
-                jumpKeyPressed = 'jumpReleased';
-                playerSpeedY = 0;
-            }
-            // playerSpeedY = (playerPositionY >= collisionHeight) ? playerSpeedY + playerAccelerationY * dTime : playerPositionY = collisionHeight;
-            break;
-
-        case 'jumpReleased':
-
-
-            if (playerPositionY > collisionHeight) {
-                playerSpeedY = playerSpeedY - playerAccelerationY * dTime;
-                playerPositionY = playerPositionY + playerSpeedY * dTime;
-            }
-            if (playerPositionY <= collisionHeight) {
-                playerPositionY = collisionHeight;
-                jumpKeyPressed = '';
-            }
-
-
-
-            // playerSpeedY = (playerPositionY > collisionHeight) ? playerSpeedY - playerAccelerationY * dTime : playerPositionY = collisionHeight;
-            break;
-
-        default:
-            playerSpeedY = 0;
-
-
-    }
-
-
-
-    /!*if (jumpKeyPressed === 'ArrowUp' && playerSpeedY > .5) {
-        jumpKeyPressed = 'jumpReleased'
-    }
-
-    if (jumpKeyPressed === 'jumpReleased' && playerPositionY === 0) {
-        jumpKeyPressed = '';
-    }*!/
+    console.log('speed x', playerSpeedX, 'speed y', playerSpeedY, 'jumpKey', keyPressedJump, 'collisionHeight', curObsHei, 'horCol', horizontalCollision, 'verCol', verticalCollision);
 
     const $mapPositionX = Math.abs(parseInt($('.map').css('left')));
 
@@ -476,11 +226,7 @@ function update() {
     player.style.left = playerPositionX + 'px';
     player.style.bottom = playerPositionY + 'px';
     requestAnimationFrame(update);
-
-}*/
-
-// })();
-
+}
 
 //***************CLOUDS***************
 
