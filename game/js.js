@@ -18,7 +18,7 @@ mapObjectTable = Array
     .from({length: $numberOfSections}, (obstacle, index) => {
         if (index !== 0) {
             return {
-                position: index * sectionWidth + Math.floor(Math.random() * (sectionWidth - obstacleWidth))*.8,
+                position: index * sectionWidth + Math.floor(Math.random() * (sectionWidth - obstacleWidth)) * .8,
                 height: Math.floor((Math.random() * 2 + 1)) * obstacleMinHeight
             }
         }
@@ -45,13 +45,17 @@ const moveRight = 'ArrowRight';
 const moveLeft = 'ArrowLeft';
 const jump = 'ArrowUp';
 const fall = 'jumpReleased';
+const nitro = 'ControlLeft';
 
 let playerPositionX = 0;
 let playerPositionY = 0;
 let playerSpeedX = 0;
+let maxPlayerSpeedX = 0.4;
 let playerSpeedY = 0;
 let playerAccelerationX = 0.0005;
 let playerAccelerationY = 0.0015;
+let nitroMultiplication = 1.4;
+let nitroPressed = false;
 let keyPressed = '';
 let keyPressedJump = '';
 let time = Date.now();
@@ -70,7 +74,13 @@ window.addEventListener('keydown', function (event) {
         event.preventDefault();
         keyPressedJump = event.code;
     }
-
+    if (event.code === nitro) {
+        if (!nitroPressed) {
+            maxPlayerSpeedX *= nitroMultiplication;
+            playerAccelerationX *= nitroMultiplication;
+            nitroPressed = true;
+        }
+    }
 });
 
 window.addEventListener('keyup', function (event) {
@@ -82,16 +92,22 @@ window.addEventListener('keyup', function (event) {
         event.preventDefault();
         keyPressedJump = fall;
     }
+    if (event.code === nitro) {
+        maxPlayerSpeedX /= nitroMultiplication;
+        playerAccelerationX /= nitroMultiplication;
+        nitroPressed = false;
+    }
 });
 
+
 function moveFwd(dTime) {
-    playerSpeedX = Math.min(Math.max(0, playerSpeedX + playerAccelerationX * dTime), 0.4);
-    playerPositionX +=  playerSpeedX * dTime;
+    playerSpeedX = Math.min(Math.max(0, playerSpeedX + playerAccelerationX * dTime), maxPlayerSpeedX);
+    playerPositionX += playerSpeedX * dTime;
 }
 
 function moveBwd(dTime) {
-    playerSpeedX = Math.max(Math.min(0, playerSpeedX - playerAccelerationX * dTime), -0.4);
-    playerPositionX +=  playerSpeedX * dTime;
+    playerSpeedX = Math.max(Math.min(0, playerSpeedX - playerAccelerationX * dTime), -maxPlayerSpeedX);
+    playerPositionX += playerSpeedX * dTime;
 }
 
 function moveUp(dTime) {
