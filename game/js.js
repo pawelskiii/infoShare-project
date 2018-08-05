@@ -28,7 +28,7 @@ mapObjectTable = Array
     })
     .filter(obstacle => {
         return (obstacle !== undefined && Math.random() > randomizer)
-    })
+    });
 
 mapObjectTable.forEach((obstacle, index) => {
     $map
@@ -36,7 +36,7 @@ mapObjectTable.forEach((obstacle, index) => {
             .addClass('obstacle')
             .css('left', obstacle.position)
             .css('height', obstacle.height)
-        )
+        );
     obstaclePositions[index] = [obstacle.position, obstacle.height];
 });
 
@@ -51,7 +51,7 @@ const player = document.querySelector('#player');
 const moveRight = 'ArrowRight';
 const moveLeft = 'ArrowLeft';
 const jump = 'ArrowUp';
-const fall = 'jumpReleased'
+const fall = 'jumpReleased';
 
 let playerPositionX = 0;
 let playerPositionY = 0;
@@ -119,7 +119,6 @@ function update() {
     time = Date.now();
     let horizontalCollision = false;
     let verticalCollision = false;
-    oldPlayerPositionY = playerPositionY;
 
     /*    oldPlayerPositionY = playerPositionY;
         obstacleCollision = false;
@@ -200,7 +199,6 @@ function update() {
                 stillFalling = false;
                 keyPressedJump = '';
             }
-
             break;
 
         default:
