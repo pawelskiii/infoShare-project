@@ -145,7 +145,6 @@ const $playerHeight = parseInt($player.css('height'));
             $('.game-information div:last').remove();
             shotAmount--;
 
-
             $('.map').append($('<div>')
                 .addClass('shot')
                 .attr('shotNumber', shotNumber)
@@ -159,6 +158,7 @@ const $playerHeight = parseInt($player.css('height'));
     for (let i = 1; i <= shotAmount; i++) {
         $('.game-information').append($('<div>').addClass('bullet').attr('shotNumber', i));
     }
+
 
     //ANIMATIONS
     function update() {
@@ -282,16 +282,19 @@ const $playerHeight = parseInt($player.css('height'));
         }
 
 
+
         shotArray.forEach((el, index) => {
             let timeOfShooting = time - el.shotTime;
             shotPositionX = el.shotPosition + shotSpeedX + timeOfShooting * shotAcceleration + 'px';
             document.getElementsByClassName('shot')[index].style.left = shotPositionX;
 
-            if (parseInt(shotPositionX) > playerPositionX + $windowWidth) {
+
+            if (parseInt(shotPositionX) > playerPositionX + $windowWidth || shotPositionX > $('.monster').css('left') ) {
+                document.getElementById( 'progress').value-=5;
                 shotArray.splice(index, 1);
                 document.getElementsByClassName('shot')[index].remove();
             }
-
+            console.log($('shot').length == 0)
         });
 
         player.style.left = playerPositionX + 'px';
