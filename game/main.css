@@ -4,7 +4,7 @@
     width: 7000px;
     height: 350px;
     position: relative;
-    border-bottom: 100px solid black;
+    border-bottom: 100px solid mediumseagreen;
 }
 
 .sky {
@@ -50,6 +50,16 @@
     width: 80px;
     align-self: flex-end;
     z-index: 50;
+}
+
+.minimonster {
+    position: absolute;
+    background: url("img/dragon/frame-1.png") no-repeat center;
+    background-size: contain;
+    width: 75px;
+    height: 75px;
+    align-self: flex-end;
+    z-index: 100;
 }
 
 #player {

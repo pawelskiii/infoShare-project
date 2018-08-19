@@ -55,7 +55,8 @@ const $playerHeight = parseInt($player.css('height'));
             if (index !== 0) {
                 return {
                     position: index * sectionWidth + Math.floor(Math.random() * (sectionWidth - obstacleWidth)) * .8,
-                    height: Math.floor((Math.random() * 2 + 1)) * obstacleMinHeight
+                    height: Math.floor((Math.random() * 2 + 1)) * obstacleMinHeight,
+                    hasMiniMonster: Math.floor(Math.random() * 2)
                 }
             }
         })
@@ -72,8 +73,23 @@ const $playerHeight = parseInt($player.css('height'));
                         'height': obstacle.height
                 })
             );
+        if (obstacle.hasMiniMonster) {
+            $map
+                .append($('<div>')
+                    .addClass('minimonster')
+                    .css({
+                        'left': obstacle.position,
+                        'bottom': obstacle.height + 20 + Math.floor(Math.random() * 100)
+                    })
+                )
+        }
         obstaclePositions[index] = [obstacle.position, obstacle.height];
     });
+
+    //MINI_MONSTERS
+
+
+
     
     update();
     
@@ -299,6 +315,44 @@ const $playerHeight = parseInt($player.css('height'));
         requestAnimationFrame(update);
     }
 })();
+
+//***************MINI MONSTER***************
+
+(function () {
+    let frames = [
+        'frame-1.png',
+        'frame-2.png',
+        'frame-3.png',
+        'frame-4.png'
+    ];
+    let miniMonsterIndex = 0;
+    let wingsSpriteDirection = -1;
+
+    let miniMonsterArray = document.getElementsByClassName('minimonster');
+    let miniMonsterArrayLength = miniMonsterArray.length;
+
+    setInterval(() => {
+        for (i = 0; i <= miniMonsterArrayLength-1; i++) {
+            miniMonsterArray[i].style.background = 'url("img/dragon/' + frames[miniMonsterIndex] + '") center center / contain no-repeat';
+            // miniMonsterArray[i].style.backgroundSize = 'contain';
+            if (miniMonsterIndex === 0 || miniMonsterIndex === 3) {
+                wingsSpriteDirection *= -1;
+            }
+            miniMonsterIndex += wingsSpriteDirection;
+        }
+    }, 75);
+    let xyz = 0;
+    setInterval(() => {
+        if (xyz === 0) {
+            $('.minimonster').animate({left: "-=300"}, 2000, "swing").addClass('scaleXrotate');
+            xyz = 1;
+        } else {
+            $('.minimonster').animate({left: "+=300"}, 2000, "swing").removeClass('scaleXrotate');
+            xyz = 0;
+        }
+    }, 2200)
+})();
+
 
 //***************PLAYER ANIMATE SPRITE***************
 
