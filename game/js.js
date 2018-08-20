@@ -10,6 +10,8 @@ const $playerHeight = parseInt($player.css('height'));
 
 //***************MAP GENERATOR + PLAYER********************
 (function () {
+    let isRunning = true;
+
     //MAP
     const obstacleWidth = 80;
     const obstacleMinHeight = 60;
@@ -86,13 +88,9 @@ const $playerHeight = parseInt($player.css('height'));
         obstaclePositions[index] = [obstacle.position, obstacle.height];
     });
 
-    //MINI_MONSTERS
-
-
-
-    
     update();
-    
+
+
     //PLAYER
     window.addEventListener('keydown', function (event) {
         if (event.code === moveRight || event.code === moveLeft) {
@@ -111,7 +109,7 @@ const $playerHeight = parseInt($player.css('height'));
             }
         }
     });
-    
+
     window.addEventListener('keyup', function (event) {
         if (event.code === moveRight || event.code === moveLeft) {
             event.preventDefault();
@@ -127,7 +125,7 @@ const $playerHeight = parseInt($player.css('height'));
             nitroPressed = false;
         }
     });
-    
+
     function moveFwd(dTime) {
         playerSpeedX = Math.min(Math.max(0, playerSpeedX + playerAccelerationX * dTime), maxPlayerSpeedX);
         playerPositionX += playerSpeedX * dTime;
@@ -150,7 +148,7 @@ const $playerHeight = parseInt($player.css('height'));
 
     //SHOT
     window.addEventListener('keydown', function (key) {
-        if (key.code === 'Space' && shotAmount > 0) {
+        if (key.code === 'Space' && shotAmount > 0 && isRunning) {
             shotNumber++;
             shotArray.push({
                 amount: shotAmount,
@@ -175,6 +173,66 @@ const $playerHeight = parseInt($player.css('height'));
     for (let i = 1; i <= shotAmount; i++) {
         $('.game-information').append($('<div>').addClass('bullet').attr('shotNumber', i));
     }
+
+
+    // PAUSE
+    function togglePause() {
+        isRunning = !isRunning;
+
+        if (isRunning) {
+            update();
+
+        }
+    }
+
+    document.querySelector('.pause').addEventListener(('click'), function() {
+        togglePause();
+        miniMonstersAnimation();
+    });
+
+    //***************MINI MONSTER***************
+
+    function miniMonstersAnimation() {
+        let frames = [
+            'frame-1.png',
+            'frame-2.png',
+            'frame-3.png',
+            'frame-4.png'
+        ];
+        let miniMonsterIndex = 0;
+        let wingsSpriteDirection = -1;
+        let monsterDirection = true;
+        let $miniMonsters = $('.minimonster');
+
+        let miniMonsterArray = document.getElementsByClassName('minimonster');
+        let miniMonsterArrayLength = miniMonsterArray.length;
+
+        if (isRunning) {
+            wingsAnimation = setInterval(() => {
+                for (i = 0; i <= miniMonsterArrayLength-1; i++) {
+                    miniMonsterArray[i].style.background = 'url("img/dragon/' + frames[miniMonsterIndex] + '") center center / contain no-repeat';
+                    if (miniMonsterIndex === 0 || miniMonsterIndex === 3) {
+                        wingsSpriteDirection *= -1;
+                    }
+                    miniMonsterIndex += wingsSpriteDirection;
+                }
+            }, 75);
+            flyAnimation = setInterval(() => {
+                if (monsterDirection) {
+                    $miniMonsters.animate({left: "-=300"}, 2000, "swing").addClass('scaleXrotate');
+                    monsterDirection = false;
+                } else {
+                    $miniMonsters.animate({left: "+=300"}, 2000, "swing").removeClass('scaleXrotate');
+                    monsterDirection = true;
+                }
+            }, 2200)
+        } else {
+            clearInterval(wingsAnimation);
+            clearInterval(flyAnimation);
+        }
+
+    };
+    miniMonstersAnimation();
 
     //ANIMATIONS
     function update() {
@@ -312,45 +370,15 @@ const $playerHeight = parseInt($player.css('height'));
 
         player.style.left = playerPositionX + 'px';
         player.style.bottom = playerPositionY + 'px';
-        requestAnimationFrame(update);
+
+
+
+
+
+        if (isRunning) {
+            requestAnimationFrame(update);
+        }
     }
-})();
-
-//***************MINI MONSTER***************
-
-(function () {
-    let frames = [
-        'frame-1.png',
-        'frame-2.png',
-        'frame-3.png',
-        'frame-4.png'
-    ];
-    let miniMonsterIndex = 0;
-    let wingsSpriteDirection = -1;
-
-    let miniMonsterArray = document.getElementsByClassName('minimonster');
-    let miniMonsterArrayLength = miniMonsterArray.length;
-
-    setInterval(() => {
-        for (i = 0; i <= miniMonsterArrayLength-1; i++) {
-            miniMonsterArray[i].style.background = 'url("img/dragon/' + frames[miniMonsterIndex] + '") center center / contain no-repeat';
-            // miniMonsterArray[i].style.backgroundSize = 'contain';
-            if (miniMonsterIndex === 0 || miniMonsterIndex === 3) {
-                wingsSpriteDirection *= -1;
-            }
-            miniMonsterIndex += wingsSpriteDirection;
-        }
-    }, 75);
-    let xyz = 0;
-    setInterval(() => {
-        if (xyz === 0) {
-            $('.minimonster').animate({left: "-=300"}, 2000, "swing").addClass('scaleXrotate');
-            xyz = 1;
-        } else {
-            $('.minimonster').animate({left: "+=300"}, 2000, "swing").removeClass('scaleXrotate');
-            xyz = 0;
-        }
-    }, 2200)
 })();
 
 
