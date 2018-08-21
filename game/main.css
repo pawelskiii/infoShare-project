@@ -141,7 +141,7 @@
     border-radius: 50px;
     cursor: pointer;
     top: 65%;
-    left: 50%;
+    left: 75%;
     transform: translate(-50%, -50%);
     transition: all .5s cubic-bezier(.4, 0, 0, 1.4);
     overflow: hidden;
