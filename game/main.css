@@ -132,6 +132,21 @@
     z-index: 1000;
 }
 
+.start-button {
+    position: absolute;
+    background-color: #FDFDFD;
+    border: 1px solid #DDD;
+    border-radius: 50px;
+    width: 200px;
+    height: 75px;
+    box-shadow: 0 5px 10px rgba(0, 0, 40, 0.03);
+    overflow: hidden;
+    cursor: pointer;
+    top: 65%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+}
+
 .instruction-button {
     position: absolute;
     background-color: #FCFCFC;
