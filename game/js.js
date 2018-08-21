@@ -71,8 +71,8 @@ const $playerHeight = parseInt($player.css('height'));
             .append($('<div>')
                 .addClass('obstacle')
                 .css({
-                        'left': obstacle.position,
-                        'height': obstacle.height
+                    'left': obstacle.position,
+                    'height': obstacle.height
                 })
             );
         if (obstacle.hasMiniMonster) {
@@ -243,6 +243,7 @@ const $playerHeight = parseInt($player.css('height'));
         let horizontalCollision = false;
         let verticalCollision = false;
         let oldPlayerPositionX = playerPositionX;
+
 
 
         function checkPlayerCollision() {
