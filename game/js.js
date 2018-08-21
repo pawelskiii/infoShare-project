@@ -28,6 +28,7 @@ const $playerHeight = parseInt($player.css('height'));
     const fall = 'jumpReleased';
     const nitro = 'ControlLeft';
     let playerPositionX = 0;
+    let monsterPositionX = parseInt($('.monster').css('left'));
     let playerPositionY = 0;
     let playerSpeedX = 0;
     let maxPlayerSpeedX = 0.4;
@@ -43,11 +44,14 @@ const $playerHeight = parseInt($player.css('height'));
     let shotPressed = '';
     let stillFalling = false;
     let shotPositionX = 0;
+    let monsterShotPositionX = 0;
     let shotSpeedX = 0.4;
     let shotAcceleration = 0.8;
     let shotArray = [];
+    let monsterShotArray = [];
     let shotNumber = 0;
     let shotAmount = 30;
+    let isFiring = false;
 
     //MAP
     mapObjectTable = Array
@@ -136,6 +140,8 @@ const $playerHeight = parseInt($player.css('height'));
     window.addEventListener('keydown', function (key) {
         if (key.code === 'Space' && shotAmount > 0) {
             shotNumber++;
+
+
             shotArray.push({
                 amount: shotAmount,
                 shotIndex: shotNumber,
@@ -152,6 +158,7 @@ const $playerHeight = parseInt($player.css('height'));
                     "left": playerPositionX + 75,
                     "top": ($windowHeight - ($playerHeight / 2 + parseInt($('#player').css('bottom'))))
                 }))
+
         }
     });
 
@@ -282,20 +289,52 @@ const $playerHeight = parseInt($player.css('height'));
         }
 
 
+        monsterShotArray.forEach((el, index) => {
+            let timeOfMonsterShooting = time - el.shotTime;
+            monsterShotPositionX = el.shotPosition - shotSpeedX - timeOfMonsterShooting * shotAcceleration + 'px';
+            document.getElementsByClassName('monster__shot')[index].style.left = monsterShotPositionX;
+
+                if (parseInt(monsterShotPositionX) < parseInt(playerPositionX)) {
+                    document.getElementById('player__life').value-=5;
+                    monsterShotArray.splice(index, 1);
+                    document.getElementsByClassName('monster__shot')[index].remove()
+                }
+        })
 
         shotArray.forEach((el, index) => {
             let timeOfShooting = time - el.shotTime;
             shotPositionX = el.shotPosition + shotSpeedX + timeOfShooting * shotAcceleration + 'px';
             document.getElementsByClassName('shot')[index].style.left = shotPositionX;
 
+            if (parseInt(shotPositionX) > parseInt($('.monster').css('left')) ) {
+                document.getElementById('monster__life').value-=5;
+                shotArray.splice(index, 1);
+                document.getElementsByClassName('shot')[index].remove()
+            }
 
-            if (parseInt(shotPositionX) > playerPositionX + $windowWidth || shotPositionX > $('.monster').css('left') ) {
-                document.getElementById( 'progress').value-=5;
+            if (parseInt(shotPositionX) > playerPositionX + $windowWidth) {
                 shotArray.splice(index, 1);
                 document.getElementsByClassName('shot')[index].remove();
             }
-            console.log($('shot').length == 0)
         });
+
+        if ( playerPositionX > monsterPositionX - $windowWidth/2 && isFiring == false) {
+                setInterval(() => {
+                    monsterShotArray.push({
+                        shotTime: Date.now(),
+                        shotPosition: parseInt($('.monster').css('left')),
+                        shotTopPosition: parseInt($('.monster').css('top')) + parseInt($('.monster').css('height'))/2
+                    });
+                    $('.map').append($('<div>')
+                        .addClass('monster__shot')
+                        .css({
+                            "left": parseInt($('.monster').css('left')) - monsterShotPositionX,
+                            "top": parseInt($('.monster').css('top')) + parseInt($('.monster').css('height'))/2
+                        }))
+                }, 1000);
+                isFiring = true;
+        }
+
 
         player.style.left = playerPositionX + 'px';
         player.style.bottom = playerPositionY + 'px';

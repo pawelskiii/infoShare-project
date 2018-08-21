@@ -115,7 +115,7 @@
     display: flex;
     align-self: flex-end;
     flex-wrap: wrap;
-    left: 550px;
+    left: 1500px;
     position: absolute;
     width: 50px;
     height: 115px;
@@ -127,4 +127,11 @@
     width: 50px;
     height: 85px;
     background-color: darkred;
+}
+.monster__shot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: black;
+    z-index: 200;
 }
