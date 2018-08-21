@@ -411,3 +411,17 @@ const $playerHeight = parseInt($player.css('height'));
         }
     });
 })();
+
+
+//***************GAME INSTRUCTIONS***************
+
+(function () {
+    $('.instruction-button').click(function () {
+        $(this).addClass("clicked");
+    });
+
+    $('.close').click(function (e) {
+        $('.clicked').removeClass('clicked');
+        e.stopPropagation();
+    });
+})();
