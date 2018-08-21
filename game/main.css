@@ -187,5 +187,54 @@
 
 .instruction-button.clicked .close {
     opacity: 1;
-    transform: rotate(0deg);
+    transform: rotate(0);
+}
+
+.instruction-button .player-movement {
+    width: 75%;
+    padding-left: 0;
+    list-style-type: none;
+    margin: 75px auto 0 auto;
+}
+
+.instruction-button .player-movement li {
+    color: #85A4CC;
+    padding-bottom: 15px;
+    transform: scale(0.3) translate(50px, -50px);
+    transition: all .3s ease-in-out;
+    opacity: 0;
+}
+
+.instruction-button .player-movement img {
+    height: 20px;
+    width: 20px;
+}
+
+.instruction-button .player-movement span {
+    color: #284678;
+}
+
+.instruction-button .player-movement .float-right {
+    float: right;
+}
+
+.instruction-button.clicked .player-movement li {
+    transform: scale(1) translate(0, 0);
+    opacity: 1;
+}
+
+.instruction-button.clicked .player-movement li:nth-child(1) {
+    transition-delay: .05s;
+}
+
+.instruction-button.clicked .player-movement li:nth-child(2) {
+    transition-delay: .1s;
+}
+
+.instruction-button.clicked .player-movement li:nth-child(3) {
+    transition-delay: .15s;
+}
+
+.instruction-button.clicked .player-movement li:nth-child(4) {
+    transition-delay: .20s;
 }
