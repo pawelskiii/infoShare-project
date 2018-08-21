@@ -132,6 +132,48 @@
     z-index: 1000;
 }
 
+.text-label {
+    position: absolute;
+    color: #F57D19;
+    text-transform: uppercase;
+    font-family: 'Amatic SC', cursive;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.2rem;
+    top: 30px;
+    left: 60px;
+}
+
+.text-input {
+    position: absolute;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    font-family: 'Amatic SC', cursive;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 0.05rem;
+    background-color: #FCFCFC;
+    color: #B2B5BC;
+    border: 1px solid #DDD;
+    border-radius: 20px;
+    width: 150px;
+    height: 40px;
+    top: 0;
+    left: 150px;
+    padding-left: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 40, 0.03);
+    overflow: hidden;
+}
+
+.text-input::placeholder {
+    color: #DDD;
+}
+
+.text-input:focus {
+    background-color: #F7F7F7;
+    outline: none;
+}
+
 .starting-menu-buttons {
     position: absolute;
     background-color: #FCFCFC;
