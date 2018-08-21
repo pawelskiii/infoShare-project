@@ -128,7 +128,8 @@
     box-shadow: 0 5px 10px rgba(0, 0, 40, 0.03);
     top: 43%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: scale(1) translate(-50%, -50%);
+    transition: all .25s ease-in-out;
     z-index: 1000;
 }
 
@@ -190,6 +191,7 @@
 
 .start-button {
     left: 25%;
+    transition: all .5s cubic-bezier(.4, 0, 0, 1.4);
 }
 
 .instruction-button {
@@ -300,3 +302,21 @@
 .instruction-button.clicked .player-instructions li:nth-child(7) {
     transition-delay: .35s;
 }
+
+/*#################### GAME START ######################*/
+
+.game-start {
+    opacity: 0;
+    transform: scale(0);
+    transition-delay: .25s;
+}
+
+.start-clicked {
+    width: 150px;
+    height: 55px;
+}
+
+
+
+
+
