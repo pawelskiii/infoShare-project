@@ -132,14 +132,17 @@
     z-index: 1000;
 }
 
-.text-label {
-    position: absolute;
-    color: #F57D19;
-    text-transform: uppercase;
+.special-font {
     font-family: 'Amatic SC', cursive;
+    text-transform: uppercase;
+    color: #F57D19;
     font-size: 2rem;
     font-weight: 700;
     letter-spacing: 0.2rem;
+}
+
+.text-label {
+    position: absolute;
     top: 30px;
     left: 60px;
 }
@@ -147,10 +150,7 @@
 .text-input {
     position: absolute;
     box-sizing: border-box;
-    text-transform: uppercase;
-    font-family: 'Amatic SC', cursive;
     font-size: 1.3rem;
-    font-weight: 700;
     letter-spacing: 0.05rem;
     background-color: #FCFCFC;
     color: #B2B5BC;
@@ -199,12 +199,6 @@
 
 .text-in-button {
     position: absolute;
-    color: #F57D19;
-    text-transform: uppercase;
-    font-family: 'Amatic SC', cursive;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 0.2rem;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
