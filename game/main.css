@@ -113,25 +113,28 @@
 
 .monster {
     display: flex;
-    align-self: flex-end;
+    align-self: center;
     flex-wrap: wrap;
     left: 1500px;
     position: absolute;
-    width: 50px;
-    height: 115px;
+    width: 116px;
+    height: 105px;
     z-index: 200;
 }
 .monster__icon {
     display: flex;
     align-self: flex-end;
-    width: 50px;
+    width: 116px;
     height: 85px;
-    background-color: darkred;
+    background: url("img/monster.png") no-repeat;
 }
 .monster__shot {
     position: absolute;
-    width: 10px;
-    height: 10px;
-    background-color: black;
+    width: 18px;
+    height: 18px;
+    background: url("img/burger-shot.png") no-repeat;
     z-index: 200;
+}
+#player__life, #monster__life {
+    width: 100px;
 }
