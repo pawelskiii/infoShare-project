@@ -23,7 +23,7 @@
             <label><input type="radio" name="level" value="hard" class="radio-button">Trudny</label>
         </form>
 
-        <div class="starting-menu-buttons start-button">
+        <div id="start-button" class="starting-menu-buttons start-button">
             <span class="special-font text-in-button">Start</span>
         </div>
 
@@ -49,15 +49,18 @@
 
         </div>
     </div>
-
     <div class="map">
         <div id="player"></div>
         <div class="sky"></div>
+    </div>
+    <div class="timer-container">
+        <p class="description">Time:</p>
+        <div id="timer"></div>
+        <button id="startPause">Pause</button>
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="js.js"></script>
 </body>
 </html>
-
 

@@ -9,6 +9,51 @@ function gameStart() {
     const $playerHeight = parseInt($player.css('height'));
 
 
+//***************TIMER********************
+
+
+    (function() {
+        let time = 0;
+        let runningTime = 1;
+
+
+        document.getElementById('startPause').onclick = function startPause() {
+            if (runningTime === 1) {
+                runningTime = 0;
+                incrementTime();
+                document.getElementById("startPause").innerHTML = "Resume";
+            }
+           else {
+                runningTime = 1;
+                incrementTime();
+                document.getElementById("startPause").innerHTML = "Pause";
+            };
+        };
+
+        function incrementTime() {
+            if (runningTime === 1) {
+                setTimeout(function () {
+                    time++;
+                    let minutes = Math.floor(time / 10 / 60);
+                    let seconds = Math.floor(time / 10 % 60);
+                    let tenths = time % 10;
+
+                    if (minutes < 10) {
+                        minutes = "0" + minutes;
+                    }
+                    if (seconds < 10) {
+                        seconds = "0" + seconds;
+                    }
+                    document.getElementById("timer").innerHTML = minutes + ":" + seconds + ":" + "0" + tenths;
+                    incrementTime();
+                }, 100);
+            };
+        };
+
+        incrementTime();
+
+    })();
+
 //***************MAP GENERATOR + PLAYER********************
     (function () {
         //MAP
