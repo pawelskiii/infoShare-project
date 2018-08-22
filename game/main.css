@@ -135,6 +135,11 @@
     background: url("img/burger-shot.png") no-repeat;
     z-index: 200;
 }
-#player__life, #monster__life {
+#monster__life {
     width: 100px;
+    background-color: green;
+}
+#player__life {
+    width: 100px;
+    background-color: green;
 }
