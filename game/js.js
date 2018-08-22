@@ -7,6 +7,44 @@ const $windowHeight = parseInt($map.css('height'));
 const $playerWidth = parseInt($player.css('width'));
 const $playerHeight = parseInt($player.css('height'));
 
+//***************TIMER********************
+
+ let time = 0;
+ let runningTime = 0;
+
+ function startPause() {
+    if(runningTime === 0) {
+        runningTime = 1;
+        incrementTime();
+        document.getElementById("startPause").innerHTML = "Pause";
+    }
+    else {
+        runningTime = 0;
+        document.getElementById("startPause").innerHTML = "Resume";
+    }
+};
+
+ function incrementTime() {
+    if (runningTime === 1) {
+        setTimeout(function () {
+            time++;
+            let minutes = Math.floor(time/10/60);
+            let seconds = Math.floor(time/10 % 60);
+            let tenths = time % 10;
+
+            if (minutes < 10) {
+                minutes = "0" + minutes;
+            }
+            if (seconds < 10) {
+                seconds = "0" + seconds;
+            }
+            document.getElementById("timer").innerHTML = minutes + ":" + seconds + ":" + "0" + tenths;
+            incrementTime();
+        }, 100);
+    };
+};
+
+
 
 //***************MAP GENERATOR + PLAYER********************
 (function () {
