@@ -2,14 +2,49 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>The Best Game You've Ever Played</title>
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700 subset=latin-ext" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
 <div class="window">
     <div class="game-information">
         <div class="ammo"></div>
+    </div>
 
+    <div class="starting-box">
+        <form action="" class="nick-input">
+            <label class="special-font text-label">Twój nick:
+                <input type="text" placeholder="Wpisz swój nick" class="special-font text-input">
+            </label>
+        </form>
+
+        <div id="start-button" class="starting-menu-buttons start-button">
+            <span class="special-font text-in-button">Start</span>
+        </div>
+
+        <div class="starting-menu-buttons instruction-button">
+            <div class="special-font text-in-button">Instrukcja</div>
+            <div class="close">X</div>
+            <ul class="player-instructions">
+                <li>Poruszanie postacią<img class="float-right" src="img/switch.png"/></li>
+                <li>Skok<img class="float-right" src="img/slim-up.png"/></li>
+                <li>Strzał<span class="float-right">Spacja</span></li>
+                <li>Nitro<span class="float-right">Ctrl</span></li>
+                <li>Poprowadź naszego <span>Magicznego Królikensa</span> w otchłań walki o przetrwanie.
+                    Przeskakuj przez mury obronne, zbierając <span>Super Marchewki</span>.
+                </li>
+                <li>Uciekaj przed krwiożerczymi zielonymi smokami - sługusami <span>Wielkiego Hamburgerosa</span>.
+                    Nie zawachaj się użyć <span>Super Marchewek</span> do wystrzelania ich wszystkich w pień.
+                </li>
+                <li>Na koniec walcz z <span>Wielkim Bossem Hamburgerosem</span>. Pokonanie go sprawi Ci wielką
+                    satysfakcję i uratuje krainę <span>Magicznych Królikensów</span> przed rozsadzeniem od niezdrowego
+                    jedzenia, które nawiedziło tą krainę.
+                </li>
+            </ul>
+
+        </div>
     </div>
     <div class="map">
         <div id="player"></div>
@@ -18,7 +53,7 @@
     <div class="timer-container">
         <p class="description">Time:</p>
         <div id="timer"></div>
-        <button id="startPause" onclick="startPause()">Start</button>
+        <button id="startPause">Pause</button>
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
