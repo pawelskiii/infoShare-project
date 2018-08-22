@@ -165,7 +165,7 @@ const $playerHeight = parseInt($player.css('height'));
                 .attr('shotNumber', shotNumber)
                 .css({
                     "left": playerPositionX + 75,
-                    "top": ($windowHeight - ($playerHeight / 2 + parseInt($('#player').css('bottom'))))
+                    "bottom": ($playerHeight / 2 + parseInt($('#player').css('bottom')))
                 }))
         }
     });
@@ -243,6 +243,10 @@ const $playerHeight = parseInt($player.css('height'));
         let horizontalCollision = false;
         let verticalCollision = false;
         let oldPlayerPositionX = playerPositionX;
+
+        let miniMonsterArray = Array.from(document.getElementsByClassName('minimonster'));
+
+
 
 
 
@@ -360,7 +364,27 @@ const $playerHeight = parseInt($player.css('height'));
         shotArray.forEach((el, index) => {
             let timeOfShooting = time - el.shotTime;
             shotPositionX = el.shotPosition + shotSpeedX + timeOfShooting * shotAcceleration + 'px';
+            let chwilowaZmiennaDoWywaleniaShot = parseInt(shotPositionX);
+            let chwilowaZmiennaDoWywaleniaShotVertical = parseInt(document.getElementsByClassName('shot')[index].style.bottom);
             document.getElementsByClassName('shot')[index].style.left = shotPositionX;
+            miniMonsterArray.forEach((miniMonster, miniMonsterIndex)=>{
+
+                let chwilowaZmiennaDoWywaleniaMonster = parseInt(miniMonster.style.left);
+                let chwilowaZmiennaDoWywaleniaMonsterVertical = parseInt(miniMonster.style.bottom);
+
+                if ((chwilowaZmiennaDoWywaleniaShot + 50 >= chwilowaZmiennaDoWywaleniaMonster)
+                    && (chwilowaZmiennaDoWywaleniaShot <= chwilowaZmiennaDoWywaleniaMonster + 50)
+                    && (chwilowaZmiennaDoWywaleniaShotVertical + 50 >= chwilowaZmiennaDoWywaleniaMonsterVertical)
+                    && (chwilowaZmiennaDoWywaleniaShotVertical <= chwilowaZmiennaDoWywaleniaMonsterVertical + 50)) {
+                    shotArray.splice(index, 1);
+                    document.getElementsByClassName('shot')[index].remove();
+                    document.getElementsByClassName('minimonster')[miniMonsterIndex].remove();
+                    clearInterval(wingsAnimation);
+                    clearInterval(flyAnimation);
+                    miniMonstersAnimation();
+
+                }
+            });
 
             if (parseInt(shotPositionX) > playerPositionX + $windowWidth) {
                 shotArray.splice(index, 1);
