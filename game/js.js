@@ -372,9 +372,9 @@ const $playerHeight = parseInt($player.css('height'));
                 let chwilowaZmiennaDoWywaleniaMonster = parseInt(miniMonster.style.left);
                 let chwilowaZmiennaDoWywaleniaMonsterVertical = parseInt(miniMonster.style.bottom);
 
-                if ((chwilowaZmiennaDoWywaleniaShot + 50 >= chwilowaZmiennaDoWywaleniaMonster)
+                if ((chwilowaZmiennaDoWywaleniaShot + 30 >= chwilowaZmiennaDoWywaleniaMonster)
                     && (chwilowaZmiennaDoWywaleniaShot <= chwilowaZmiennaDoWywaleniaMonster + 50)
-                    && (chwilowaZmiennaDoWywaleniaShotVertical + 50 >= chwilowaZmiennaDoWywaleniaMonsterVertical)
+                    && (chwilowaZmiennaDoWywaleniaShotVertical + 20 >= chwilowaZmiennaDoWywaleniaMonsterVertical)
                     && (chwilowaZmiennaDoWywaleniaShotVertical <= chwilowaZmiennaDoWywaleniaMonsterVertical + 50)) {
                     shotArray.splice(index, 1);
                     document.getElementsByClassName('shot')[index].remove();
