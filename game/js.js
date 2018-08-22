@@ -400,14 +400,14 @@ function gameStart() {
 
     (function () {
         const cloudMinWidth = 50;
-        const cloudAmountRandomizer = .2;
+        const cloudAmountRandomizer = .1;
         let mapCloudTable;
         const $sky = $('.sky');
 
         mapCloudTable = Array
-            .from({length: $numberOfSections}, (cloud, index) => {
+            .from({length: $numberOfSections*2}, (cloud, index) => {
                 return {
-                    position: index * sectionWidth + Math.floor(Math.random() * sectionWidth),
+                    position: index * sectionWidth/2 + Math.floor(Math.random() * sectionWidth/2),
                     width: Math.ceil(Math.random() * 5) * cloudMinWidth,
                     marginTop: Math.ceil(Math.random() * 3) * cloudMinWidth,
                 };
@@ -426,7 +426,7 @@ function gameStart() {
                         'left': cloud.position,
                         'top': cloud.marginTop,
                         'width': cloud.width,
-                        'height': cloud.width * .44,
+                        'height': cloud.width * .445,
                         'z-index': cloud.width / 10,
                     })
                 )
