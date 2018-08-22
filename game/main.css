@@ -128,11 +128,54 @@
     box-shadow: 0 5px 10px rgba(0, 0, 40, 0.03);
     top: 43%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: scale(1) translate(-50%, -50%);
+    transition: all .25s ease-in-out;
     z-index: 1000;
 }
 
-.instruction-button {
+.special-font {
+    font-family: 'Amatic SC', cursive;
+    text-transform: uppercase;
+    color: #F57D19;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.2rem;
+}
+
+.text-label {
+    position: absolute;
+    top: 30px;
+    left: 60px;
+}
+
+.text-input {
+    position: absolute;
+    box-sizing: border-box;
+    font-size: 1.3rem;
+    letter-spacing: 0.05rem;
+    background-color: #FCFCFC;
+    color: #B2B5BC;
+    border: 1px solid #DDD;
+    border-radius: 20px;
+    width: 150px;
+    height: 40px;
+    top: 0;
+    left: 150px;
+    padding-left: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 40, 0.03);
+    overflow: hidden;
+}
+
+.text-input::placeholder {
+    color: #DDD;
+}
+
+.text-input:focus {
+    background-color: #F7F7F7;
+    outline: none;
+}
+
+.starting-menu-buttons {
     position: absolute;
     background-color: #FCFCFC;
     width: 200px;
@@ -140,21 +183,24 @@
     border: 1px solid #DDD;
     border-radius: 50px;
     cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0, 0, 40, 0.03);
     top: 65%;
-    left: 75%;
     transform: translate(-50%, -50%);
-    transition: all .5s cubic-bezier(.4, 0, 0, 1.4);
     overflow: hidden;
+}
+
+.start-button {
+    left: 25%;
+    transition: all .5s cubic-bezier(.4, 0, 0, 1.4);
+}
+
+.instruction-button {
+    left: 75%;
+    transition: all .5s cubic-bezier(.4, 0, 0, 1.4);
 }
 
 .text-in-button {
     position: absolute;
-    color: #F57D19;
-    text-transform: uppercase;
-    font-family: 'Amatic SC', cursive;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 0.2rem;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -256,3 +302,21 @@
 .instruction-button.clicked .player-instructions li:nth-child(7) {
     transition-delay: .35s;
 }
+
+/*#################### GAME START ######################*/
+
+.game-start {
+    opacity: 0;
+    transform: scale(0);
+    transition-delay: .25s;
+}
+
+.start-clicked {
+    width: 150px;
+    height: 55px;
+}
+
+
+
+
+
