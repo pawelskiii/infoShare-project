@@ -20,7 +20,7 @@
             </label>
         </form>
 
-        <div class="starting-menu-buttons start-button">
+        <div id="start-button" class="starting-menu-buttons start-button">
             <span class="special-font text-in-button">Start</span>
         </div>
 
@@ -28,7 +28,7 @@
             <div class="special-font text-in-button">Instrukcja</div>
             <div class="close">X</div>
             <ul class="player-instructions">
-                <li>Poruszanie potacią<img class="float-right" src="img/switch.png"/></li>
+                <li>Poruszanie postacią<img class="float-right" src="img/switch.png"/></li>
                 <li>Skok<img class="float-right" src="img/slim-up.png"/></li>
                 <li>Strzał<span class="float-right">Spacja</span></li>
                 <li>Nitro<span class="float-right">Ctrl</span></li>
@@ -46,15 +46,18 @@
 
         </div>
     </div>
-
     <div class="map">
         <div id="player"></div>
         <div class="sky"></div>
+    </div>
+    <div class="timer-container">
+        <p class="description">Time:</p>
+        <div id="timer"></div>
+        <button id="startPause">Pause</button>
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="js.js"></script>
 </body>
 </html>
-
 
