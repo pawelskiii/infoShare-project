@@ -349,8 +349,8 @@ function gameStart() {
 //***************PLAYER ANIMATE SPRITE***************
 
     (function () {
-        let spriteSize = 105, width = spriteSize;
-        let spriteAllSize = 630;
+        let spriteSize = 125, width = spriteSize;
+        let spriteAllSize = 500;
         let interval;
         let stopRunning = true;
 
