@@ -12,7 +12,7 @@ function gameStart() {
 //***************TIMER********************
 
 
-    (function() {
+    (function () {
         let time = 0;
         let runningTime = 1;
 
@@ -23,11 +23,12 @@ function gameStart() {
                 incrementTime();
                 document.getElementById("startPause").innerHTML = "Resume";
             }
-           else {
+            else {
                 runningTime = 1;
                 incrementTime();
                 document.getElementById("startPause").innerHTML = "Pause";
-            };
+            }
+            ;
         };
 
         function incrementTime() {
@@ -47,7 +48,8 @@ function gameStart() {
                     document.getElementById("timer").innerHTML = minutes + ":" + seconds + ":" + "0" + tenths;
                     incrementTime();
                 }, 100);
-            };
+            }
+            ;
         };
 
         incrementTime();
@@ -352,9 +354,12 @@ function gameStart() {
         let spriteSize = 125, width = spriteSize;
         let spriteAllSize = 500;
         let interval;
+        let intervalStanding;
         let stopRunning = true;
+        let stopStanding = true;
 
         function animatePlayer() {
+            document.getElementById("player").style.backgroundImage = "url('img/bunny_run.png')";
             if (stopRunning) {
                 stopRunning = false;
                 interval = setInterval(() => {
@@ -364,14 +369,32 @@ function gameStart() {
             }
         }
 
+        function animateStandingPlayer() {
+            let spriteAllSize = 750;
+            document.getElementById("player").style.backgroundImage = "url('img/bunny_stand.png')";
+            if (stopStanding) {
+                stopStanding = false;
+                intervalStanding = setInterval(() => {
+                    document.getElementById("player").style.backgroundPosition = `-${spriteSize}px 0px`;
+                    spriteSize < spriteAllSize ? spriteSize = spriteSize + width : spriteSize = width;
+                }, 250);
+            }
+        }
+
         function stopAnimate() {
             clearInterval(interval);
             stopRunning = true;
         }
 
+        function stopAnimateStanding() {
+            clearInterval(intervalStanding);
+            stopStanding = true;
+        }
+
         window.addEventListener('keydown', function (event) {
             if (event.code === 'ArrowRight') {
                 $player.removeClass('scaleXrotate');
+                stopAnimateStanding();
                 animatePlayer();
             }
         });
@@ -379,12 +402,14 @@ function gameStart() {
         window.addEventListener('keyup', function (event) {
             if (event.code === 'ArrowRight') {
                 stopAnimate();
+                animateStandingPlayer()
             }
         });
 
         window.addEventListener('keydown', function (event) {
             if (event.code === 'ArrowLeft') {
                 $player.addClass('scaleXrotate');
+                stopAnimateStanding();
                 animatePlayer();
             }
         });
@@ -392,6 +417,7 @@ function gameStart() {
         window.addEventListener('keyup', function (event) {
             if (event.code === 'ArrowLeft') {
                 stopAnimate();
+                animateStandingPlayer()
             }
         });
     })();
@@ -405,9 +431,9 @@ function gameStart() {
         const $sky = $('.sky');
 
         mapCloudTable = Array
-            .from({length: $numberOfSections*2}, (cloud, index) => {
+            .from({length: $numberOfSections * 2}, (cloud, index) => {
                 return {
-                    position: index * sectionWidth/2 + Math.floor(Math.random() * sectionWidth/2),
+                    position: index * sectionWidth / 2 + Math.floor(Math.random() * sectionWidth / 2),
                     width: Math.ceil(Math.random() * 5) * cloudMinWidth,
                     marginTop: Math.ceil(Math.random() * 3) * cloudMinWidth,
                 };

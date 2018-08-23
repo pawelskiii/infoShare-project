@@ -55,7 +55,7 @@
 #player {
     width: 125px;
     height: 105px;
-    background: url('img/bunny_run.png');
+    background: url('img/bunny_stand.png');
     align-self: flex-end;
     z-index: 200;
     position: absolute;
