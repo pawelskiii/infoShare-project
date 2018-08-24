@@ -352,25 +352,11 @@ function gameStart() {
 
     (function () {
         let spriteSize = 125, width = spriteSize;
-        let spriteAllSize = 500;
-        let interval;
+        let spriteAllSize = 750;
         let intervalStanding;
-        let stopRunning = true;
         let stopStanding = true;
 
-        function animatePlayer() {
-            document.getElementById("player").style.backgroundImage = "url('img/bunny_run.png')";
-            if (stopRunning) {
-                stopRunning = false;
-                interval = setInterval(() => {
-                    document.getElementById("player").style.backgroundPosition = `-${spriteSize}px 0px`;
-                    spriteSize < spriteAllSize ? spriteSize = spriteSize + width : spriteSize = width;
-                }, 100);
-            }
-        }
-
         function animateStandingPlayer() {
-            let spriteAllSize = 750;
             document.getElementById("player").style.backgroundImage = "url('img/bunny_stand.png')";
             if (stopStanding) {
                 stopStanding = false;
@@ -380,47 +366,66 @@ function gameStart() {
                 }, 250);
             }
         }
+        animateStandingPlayer();
 
-        function stopAnimate() {
-            clearInterval(interval);
-            stopRunning = true;
-        }
+        (function () {
+            let spriteAllSize = 500;
+            let interval;
+            let stopRunning = true;
 
-        function stopAnimateStanding() {
-            clearInterval(intervalStanding);
-            stopStanding = true;
-        }
-
-        window.addEventListener('keydown', function (event) {
-            if (event.code === 'ArrowRight') {
-                $player.removeClass('scaleXrotate');
-                stopAnimateStanding();
-                animatePlayer();
+            function animatePlayer() {
+                document.getElementById("player").style.backgroundImage = "url('img/bunny_run.png')";
+                if (stopRunning) {
+                    stopRunning = false;
+                    interval = setInterval(() => {
+                        document.getElementById("player").style.backgroundPosition = `-${spriteSize}px 0px`;
+                        spriteSize < spriteAllSize ? spriteSize = spriteSize + width : spriteSize = width;
+                    }, 100);
+                }
             }
-        });
 
-        window.addEventListener('keyup', function (event) {
-            if (event.code === 'ArrowRight') {
-                stopAnimate();
-                animateStandingPlayer()
+            function stopAnimate() {
+                clearInterval(interval);
+                stopRunning = true;
             }
-        });
 
-        window.addEventListener('keydown', function (event) {
-            if (event.code === 'ArrowLeft') {
-                $player.addClass('scaleXrotate');
-                stopAnimateStanding();
-                animatePlayer();
+            function stopAnimateStanding() {
+                clearInterval(intervalStanding);
+                stopStanding = true;
             }
-        });
 
-        window.addEventListener('keyup', function (event) {
-            if (event.code === 'ArrowLeft') {
-                stopAnimate();
-                animateStandingPlayer()
-            }
-        });
+            window.addEventListener('keydown', function (event) {
+                if (event.code === 'ArrowRight') {
+                    $player.removeClass('scaleXrotate');
+                    stopAnimateStanding();
+                    animatePlayer();
+                }
+            });
+
+            window.addEventListener('keyup', function (event) {
+                if (event.code === 'ArrowRight') {
+                    stopAnimate();
+                    animateStandingPlayer()
+                }
+            });
+
+            window.addEventListener('keydown', function (event) {
+                if (event.code === 'ArrowLeft') {
+                    $player.addClass('scaleXrotate');
+                    stopAnimateStanding();
+                    animatePlayer();
+                }
+            });
+
+            window.addEventListener('keyup', function (event) {
+                if (event.code === 'ArrowLeft') {
+                    stopAnimate();
+                    animateStandingPlayer()
+                }
+            });
+        })();
     })();
+
 
 //***************CLOUDS***************
 
