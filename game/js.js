@@ -374,13 +374,13 @@ function gameStart() {
             let interval;
             let nitroInterval;
             let stopRunning = true;
+            let stopNitro = true;
             let arrow = {
                 left: 37,
                 up: 38,
                 right: 39,
                 down: 40
             };
-            let ctrl = 17;
 
             function animatePlayer() {
                 document.getElementById("player").style.backgroundImage = "url('img/bunny_run.png')";
@@ -395,8 +395,8 @@ function gameStart() {
 
             function animateNitroPlayer() {
                 document.getElementById("player").style.backgroundImage = "url('img/bunny_run.png')";
-                if (stopRunning) {
-                    stopRunning = false;
+                if (stopNitro) {
+                    stopNitro = false;
                     nitroInterval = setInterval(() => {
                         document.getElementById("player").style.backgroundPosition = `-${spriteSize}px 0px`;
                         spriteSize < spriteAllSize ? spriteSize = spriteSize + width : spriteSize = width;
@@ -406,8 +406,12 @@ function gameStart() {
 
             function stopAnimate() {
                 clearInterval(interval);
-                clearInterval(nitroInterval);
                 stopRunning = true;
+            }
+
+            function stopNitroAnimate() {
+                clearInterval(nitroInterval);
+                stopNitro = true;
             }
 
             function stopAnimateStanding() {
@@ -422,9 +426,9 @@ function gameStart() {
                     stopAnimate();
                     animateNitroPlayer();
                     console.log("Ctrl + arrow right.");
-                }
-                else if (event.which === arrow.right) {
+                } else if (event.which === arrow.right) {
                     stopAnimateStanding();
+                    stopNitroAnimate();
                     animatePlayer();
                 }
 
@@ -462,8 +466,7 @@ function gameStart() {
 
             window.addEventListener('keyup', function (event) {
                 if (event.code === 'ControlLeft') {
-                    stopAnimate();
-                    // animatePlayer();
+                    stopNitroAnimate();
                 }
             });
 
