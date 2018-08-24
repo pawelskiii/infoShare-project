@@ -366,11 +366,13 @@ function gameStart() {
                 }, 250);
             }
         }
+
         animateStandingPlayer();
 
         (function () {
             let spriteAllSize = 500;
             let interval;
+            let nitroInterval;
             let stopRunning = true;
 
             function animatePlayer() {
@@ -384,8 +386,20 @@ function gameStart() {
                 }
             }
 
+            function animateNitroPlayer() {
+                document.getElementById("player").style.backgroundImage = "url('img/bunny_run.png')";
+                if (stopRunning) {
+                    stopRunning = false;
+                    nitroInterval = setInterval(() => {
+                        document.getElementById("player").style.backgroundPosition = `-${spriteSize}px 0px`;
+                        spriteSize < spriteAllSize ? spriteSize = spriteSize + width : spriteSize = width;
+                    }, 10);
+                }
+            }
+
             function stopAnimate() {
                 clearInterval(interval);
+                clearInterval(nitroInterval);
                 stopRunning = true;
             }
 
@@ -395,21 +409,57 @@ function gameStart() {
             }
 
             window.addEventListener('keydown', function (event) {
+                $player.removeClass('scaleXrotate');
                 if (event.code === 'ArrowRight') {
-                    $player.removeClass('scaleXrotate');
                     stopAnimateStanding();
                     animatePlayer();
+                } else if (event.code === 'ControlLeft') {
+                    stopAnimateStanding();
+                    animateNitroPlayer();
                 }
+
+                // if (event.code === nitro) {
+                //     if (!nitroPressed) {
+                //         maxPlayerSpeedX *= nitroMultiplication;
+                //         playerAccelerationX *= nitroMultiplication;
+                //         nitroPressed = true;
+                //     }
+                // }
+
+
+                // if (event.code === 'ArrowRight') {
+                //     $player.removeClass('scaleXrotate');
+                //     if (event.code === 'ControlLeft') {
+                //         stopAnimateStanding();
+                //         animateNitroPlayer();
+                //     } else {
+                //         stopAnimateStanding();
+                //         animatePlayer();
+                //     }
+                // }
             });
 
+
+            // if (event.code === 'ArrowRight') {
+            //     $player.removeClass('scaleXrotate');
+            //     stopAnimateStanding();
+            //     if () {
+            //         animateNitroPlayer();
+            //     } else {
+            //         animatePlayer();
+            //     }
+            // }
+
             window.addEventListener('keyup', function (event) {
-                if (event.code === 'ArrowRight') {
+
+                if (event.code === 'ArrowRight' || event.code === 'ControlLeft') {
                     stopAnimate();
-                    animateStandingPlayer()
+                    animateStandingPlayer();
                 }
             });
 
             window.addEventListener('keydown', function (event) {
+
                 if (event.code === 'ArrowLeft') {
                     $player.addClass('scaleXrotate');
                     stopAnimateStanding();
@@ -418,9 +468,10 @@ function gameStart() {
             });
 
             window.addEventListener('keyup', function (event) {
+
                 if (event.code === 'ArrowLeft') {
                     stopAnimate();
-                    animateStandingPlayer()
+                    animateStandingPlayer();
                 }
             });
         })();
