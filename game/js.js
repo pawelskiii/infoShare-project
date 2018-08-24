@@ -34,13 +34,12 @@ const $playerHeight = parseInt($player.css('height'));
     let playerPositionX = 0;
     let playerPositionY = 0;
     let playerSpeedX = 0;
-    let maxPlayerSpeedX = 0.15;
+    let maxPlayerSpeedX = 0.4;
     let playerSpeedY = 0;
     let playerAccelerationX = 0.0005;
     let playerAccelerationY = 0.0015;
-    let nitroMultiplication = 2.5;
-    let runModePressed = false;
-    let runMode = false;
+    let nitroMultiplication = 1.4;
+    let nitroPressed = false;
     let keyPressed = '';
     let keyPressedJump = '';
 
@@ -105,16 +104,10 @@ const $playerHeight = parseInt($player.css('height'));
             keyPressedJump = event.code;
         }
         if (event.code === nitro) {
-            if (!runModePressed) {
-                if (!runMode) {
-                    maxPlayerSpeedX *= nitroMultiplication;
-                    playerAccelerationX *= nitroMultiplication;
-                } else {
-                    maxPlayerSpeedX /= nitroMultiplication;
-                    playerAccelerationX /= nitroMultiplication;
-                }
-
-                runModePressed = true;
+            if (!nitroPressed) {
+                maxPlayerSpeedX *= nitroMultiplication;
+                playerAccelerationX *= nitroMultiplication;
+                nitroPressed = true;
             }
         }
     });
@@ -129,8 +122,9 @@ const $playerHeight = parseInt($player.css('height'));
             keyPressedJump = fall;
         }
         if (event.code === nitro) {
-            runMode = !runMode;
-            runModePressed = false;
+            maxPlayerSpeedX /= nitroMultiplication;
+            playerAccelerationX /= nitroMultiplication;
+            nitroPressed = false;
         }
     });
 
