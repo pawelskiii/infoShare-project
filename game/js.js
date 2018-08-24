@@ -52,6 +52,8 @@ const $playerHeight = parseInt($player.css('height'));
     let shotArray = [];
     let shotNumber = 0;
     let shotAmount = 30;
+    let shottoCarrottoArray = [];
+
 
     //MAP
     mapObjectTable = Array
@@ -236,6 +238,7 @@ const $playerHeight = parseInt($player.css('height'));
     };
     miniMonstersAnimation();
 
+
     //ANIMATIONS
     function update() {
         const $mapPositionX = Math.abs(parseInt($('.map').css('left')));
@@ -383,10 +386,16 @@ const $playerHeight = parseInt($player.css('height'));
                     document.getElementsByClassName('minimonster')[miniMonsterIndex].remove();
                     $('.map').append($('<div>')
                         .addClass('shottoCarrotto rotating')
+                        .attr('shotto-Carrotto-Secret-Position', miniMonsterRemovalX)
                         .css({
                             "left": miniMonsterRemovalX,
                             "bottom": miniMonsterRemovalY
-                        }))
+                        }));
+                    shottoCarrottoArray.push({
+                        positionX: miniMonsterRemovalX,
+                        positionY: miniMonsterRemovalY
+                    });
+                    console.log(shottoCarrottoArray);
                     clearInterval(wingsAnimation);
                     clearInterval(flyAnimation);
                     miniMonstersAnimation();
@@ -421,8 +430,19 @@ const $playerHeight = parseInt($player.css('height'));
 
 
             }
-        })
+        });
 
+        shottoCarrottoArray.forEach((shottoCarrotto, shottoCarrottoIndex) => {
+            if ((playerPositionX + $playerWidth >= shottoCarrotto.positionX)
+                && (playerPositionX <= shottoCarrotto.positionX + 30)
+                && (playerPositionY + $playerHeight - 30 >= shottoCarrotto.positionY)
+                && (playerPositionY <= shottoCarrotto.positionY + 30)) {
+                shottoCarrottoArray.splice(shottoCarrottoIndex, 1);
+                $('.game-information').append($('<div>').addClass('bullet'));
+                $('[shotto-carrotto-secret-position=' + shottoCarrotto.positionX + ']').remove();
+                shotAmount++;
+            }
+        });
 
 
         if (isRunning) {
