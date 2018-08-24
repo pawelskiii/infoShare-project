@@ -21,6 +21,8 @@ const $playerHeight = parseInt($player.css('height'));
     let currentObstacleHeight = 0;
     let currentObstaclePosition = 0;
     let time = Date.now();
+    let bulletTime = Date.now();
+
 
     //PLAYER
     const player = document.querySelector('#player');
@@ -402,7 +404,24 @@ const $playerHeight = parseInt($player.css('height'));
         player.style.left = playerPositionX + 'px';
         player.style.bottom = playerPositionY + 'px';
 
+        miniMonsterArray.forEach((miniMonster, miniMonsterIndex) => {
+            let chwilowaZmiennaDoWywaleniaMonster = parseInt(miniMonster.style.left);
+            let chwilowaZmiennaDoWywaleniaMonsterVertical = parseInt(miniMonster.style.bottom);
+            if ((playerPositionX + $playerWidth >= chwilowaZmiennaDoWywaleniaMonster)
+                && (playerPositionX <= chwilowaZmiennaDoWywaleniaMonster + 70)
+                && (playerPositionY + $playerHeight - 30 >= chwilowaZmiennaDoWywaleniaMonsterVertical)
+                && (playerPositionY <= chwilowaZmiennaDoWywaleniaMonsterVertical + 70)) {
 
+                if (time - bulletTime >= 500 && document.getElementsByClassName('bullet').length !== 0) {
+                    console.log(document.getElementsByClassName('bullet'));
+                    document.getElementsByClassName('bullet')[0].remove();
+                    shotAmount--;
+                    bulletTime = Date.now();
+                }
+
+
+            }
+        })
 
 
 
