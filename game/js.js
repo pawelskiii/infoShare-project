@@ -374,6 +374,13 @@ function gameStart() {
             let interval;
             let nitroInterval;
             let stopRunning = true;
+            let arrow = {
+                left: 37,
+                up: 38,
+                right: 39,
+                down: 40
+            };
+            let ctrl = 17;
 
             function animatePlayer() {
                 document.getElementById("player").style.backgroundImage = "url('img/bunny_run.png')";
@@ -410,12 +417,15 @@ function gameStart() {
 
             window.addEventListener('keydown', function (event) {
                 $player.removeClass('scaleXrotate');
-                if (event.code === 'ArrowRight') {
+                if (event.ctrlKey && event.which === arrow.right) {
+                    stopAnimateStanding();
+                    stopAnimate();
+                    animateNitroPlayer();
+                    console.log("Ctrl + arrow right.");
+                }
+                else if (event.which === arrow.right) {
                     stopAnimateStanding();
                     animatePlayer();
-                } else if (event.code === 'ControlLeft') {
-                    stopAnimateStanding();
-                    animateNitroPlayer();
                 }
 
                 // if (event.code === nitro) {
@@ -451,27 +461,24 @@ function gameStart() {
             // }
 
             window.addEventListener('keyup', function (event) {
+                if (event.code === 'ControlLeft') {
+                    stopAnimate();
+                    // animatePlayer();
+                }
+            });
 
-                if (event.code === 'ArrowRight' || event.code === 'ControlLeft') {
+            window.addEventListener('keyup', function (event) {
+                if (event.code === 'ArrowLeft' || event.code === 'ArrowRight') {
                     stopAnimate();
                     animateStandingPlayer();
                 }
             });
 
             window.addEventListener('keydown', function (event) {
-
                 if (event.code === 'ArrowLeft') {
                     $player.addClass('scaleXrotate');
                     stopAnimateStanding();
                     animatePlayer();
-                }
-            });
-
-            window.addEventListener('keyup', function (event) {
-
-                if (event.code === 'ArrowLeft') {
-                    stopAnimate();
-                    animateStandingPlayer();
                 }
             });
         })();
