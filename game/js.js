@@ -366,21 +366,27 @@ const $playerHeight = parseInt($player.css('height'));
         shotArray.forEach((el, index) => {
             let timeOfShooting = time - el.shotTime;
             shotPositionX = el.shotPosition + shotSpeedX + timeOfShooting * shotAcceleration + 'px';
-            let chwilowaZmiennaDoWywaleniaShot = parseInt(shotPositionX);
-            let chwilowaZmiennaDoWywaleniaShotVertical = parseInt(document.getElementsByClassName('shot')[index].style.bottom);
+            let shotRemovalX = parseInt(shotPositionX);
+            let shotRemovalY = parseInt(document.getElementsByClassName('shot')[index].style.bottom);
             document.getElementsByClassName('shot')[index].style.left = shotPositionX;
             miniMonsterArray.forEach((miniMonster, miniMonsterIndex)=>{
 
-                let chwilowaZmiennaDoWywaleniaMonster = parseInt(miniMonster.style.left);
-                let chwilowaZmiennaDoWywaleniaMonsterVertical = parseInt(miniMonster.style.bottom);
+                let miniMonsterRemovalX = parseInt(miniMonster.style.left);
+                let miniMonsterRemovalY = parseInt(miniMonster.style.bottom);
 
-                if ((chwilowaZmiennaDoWywaleniaShot + 30 >= chwilowaZmiennaDoWywaleniaMonster)
-                    && (chwilowaZmiennaDoWywaleniaShot <= chwilowaZmiennaDoWywaleniaMonster + 50)
-                    && (chwilowaZmiennaDoWywaleniaShotVertical + 20 >= chwilowaZmiennaDoWywaleniaMonsterVertical)
-                    && (chwilowaZmiennaDoWywaleniaShotVertical <= chwilowaZmiennaDoWywaleniaMonsterVertical + 50)) {
+                if ((shotRemovalX + 30 >= miniMonsterRemovalX)
+                    && (shotRemovalX <= miniMonsterRemovalX + 50)
+                    && (shotRemovalY + 20 >= miniMonsterRemovalY)
+                    && (shotRemovalY <= miniMonsterRemovalY + 50)) {
                     shotArray.splice(index, 1);
                     document.getElementsByClassName('shot')[index].remove();
                     document.getElementsByClassName('minimonster')[miniMonsterIndex].remove();
+                    $('.map').append($('<div>')
+                        .addClass('shottoCarrotto rotating')
+                        .css({
+                            "left": miniMonsterRemovalX,
+                            "bottom": miniMonsterRemovalY
+                        }))
                     clearInterval(wingsAnimation);
                     clearInterval(flyAnimation);
                     miniMonstersAnimation();
@@ -399,15 +405,15 @@ const $playerHeight = parseInt($player.css('height'));
         player.style.bottom = playerPositionY + 'px';
 
         miniMonsterArray.forEach((miniMonster, miniMonsterIndex) => {
-            let chwilowaZmiennaDoWywaleniaMonster = parseInt(miniMonster.style.left);
-            let chwilowaZmiennaDoWywaleniaMonsterVertical = parseInt(miniMonster.style.bottom);
-            if ((playerPositionX + $playerWidth >= chwilowaZmiennaDoWywaleniaMonster)
-                && (playerPositionX <= chwilowaZmiennaDoWywaleniaMonster + 70)
-                && (playerPositionY + $playerHeight - 30 >= chwilowaZmiennaDoWywaleniaMonsterVertical)
-                && (playerPositionY <= chwilowaZmiennaDoWywaleniaMonsterVertical + 70)) {
+            let miniMonsterRemovalX = parseInt(miniMonster.style.left);
+            let miniMonsterRemovalY = parseInt(miniMonster.style.bottom);
+            if ((playerPositionX + $playerWidth >= miniMonsterRemovalX)
+                && (playerPositionX <= miniMonsterRemovalX + 70)
+                && (playerPositionY + $playerHeight - 30 >= miniMonsterRemovalY)
+                && (playerPositionY <= miniMonsterRemovalY + 70)) {
 
                 if (time - bulletTime >= 500 && document.getElementsByClassName('bullet').length !== 0) {
-                    console.log(document.getElementsByClassName('bullet'));
+                    // console.log(document.getElementsByClassName('bullet'));
                     document.getElementsByClassName('bullet')[0].remove();
                     shotAmount--;
                     bulletTime = Date.now();
