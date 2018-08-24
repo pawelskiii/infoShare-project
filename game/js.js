@@ -97,6 +97,114 @@ function gameStart() {
         let shotNumber = 0;
         let shotAmount = 30;
 
+        let spriteSize = 125, width = spriteSize;
+        let spriteAllSizeStanding = 750;
+        let intervalStanding;
+        let stopStanding = true;
+
+        function animateStandingPlayer() {
+            document.getElementById("player").style.backgroundImage = "url('img/bunny_stand.png')";
+            if (stopStanding) {
+                stopStanding = false;
+                intervalStanding = setInterval(() => {
+                    document.getElementById("player").style.backgroundPosition = `-${spriteSize}px 0px`;
+                    spriteSize < spriteAllSizeStanding ? spriteSize = spriteSize + width : spriteSize = width;
+                }, 250);
+            }
+        }
+
+        animateStandingPlayer();
+
+        let spriteAllSize = 500;
+        let interval;
+        let nitroInterval;
+        let stopRunning = true;
+        let arrow = {
+            left: 37,
+            up: 38,
+            right: 39,
+            down: 40
+        };
+        let ctrl = 17;
+        let superZmiennaPomocnicza = true;
+
+        function animatePlayer() {
+            document.getElementById("player").style.backgroundImage = "url('img/bunny_run.png')";
+            if (stopRunning) {
+                stopRunning = false;
+                interval = setInterval(() => {
+                    document.getElementById("player").style.backgroundPosition = `-${spriteSize}px 0px`;
+                    spriteSize < spriteAllSize ? spriteSize = spriteSize + width : spriteSize = width;
+                }, 100);
+            }
+        }
+
+        function animateNitroPlayer() {
+            document.getElementById("player").style.backgroundImage = "url('img/bunny_run.png')";
+            if (stopRunning) {
+                stopRunning = false;
+                nitroInterval = setInterval(() => {
+                    document.getElementById("player").style.backgroundPosition = `-${spriteSize}px 0px`;
+                    spriteSize < spriteAllSize ? spriteSize = spriteSize + width : spriteSize = width;
+                }, 10);
+            }
+        }
+
+        function stopAnimate() {
+            clearInterval(interval);
+            clearInterval(nitroInterval);
+            stopRunning = true;
+        }
+
+        function stopAnimateStanding() {
+            clearInterval(intervalStanding);
+            stopStanding = true;
+        }
+
+        /*window.addEventListener('keydown', function (event) {
+            $player.removeClass('scaleXrotate');
+            if (event.ctrlKey && event.which === arrow.right) {
+                stopAnimateStanding();
+                stopAnimate();
+                animateNitroPlayer();
+                console.log("Ctrl + arrow right.");
+            }
+            else if (event.which === arrow.right) {
+                stopAnimateStanding();
+                animatePlayer();
+            }
+
+        });*/
+
+        window.addEventListener('keyup', function (event) {
+            if (event.code === 'ControlLeft') {
+                stopAnimate();
+                // animatePlayer();
+            }
+        });
+
+        window.addEventListener('keyup', function (event) {
+            if (event.code === 'ArrowLeft' || event.code === 'ArrowRight') {
+                stopAnimate();
+                animateStandingPlayer();
+            }
+        });
+
+        window.addEventListener('keydown', function (event) {
+            if (event.code === 'ArrowLeft') {
+                $player.addClass('scaleXrotate');
+                stopAnimateStanding();
+                animatePlayer();
+            }
+            if (event.code === 'ArrowRight') {
+                $player.removeClass('scaleXrotate');
+                stopAnimateStanding();
+                animatePlayer();
+            }
+        });
+
+
+
         //MAP
         mapObjectTable = Array
             .from({length: $numberOfSections}, (obstacle, index) => {
@@ -136,6 +244,9 @@ function gameStart() {
                 keyPressedJump = event.code;
             }
             if (event.code === nitro) {
+                stopAnimateStanding();
+                stopAnimate();
+                animateNitroPlayer();
                 if (!nitroPressed) {
                     maxPlayerSpeedX *= nitroMultiplication;
                     playerAccelerationX *= nitroMultiplication;
@@ -350,7 +461,7 @@ function gameStart() {
 
 //***************PLAYER ANIMATE SPRITE***************
 
-    (function () {
+    /*(function () {
         let spriteSize = 125, width = spriteSize;
         let spriteAllSize = 750;
         let intervalStanding;
@@ -482,7 +593,7 @@ function gameStart() {
                 }
             });
         })();
-    })();
+    })();*/
 
 
 //***************CLOUDS***************
