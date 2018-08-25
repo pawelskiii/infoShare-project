@@ -489,65 +489,117 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
 //***************PLAYER ANIMATE SPRITE***************
 
     (function () {
-        let spriteSize = 105, width = spriteSize;
-        let spriteAllSize = 630;
-        let interval;
-        let stopRunning = true;
+        let spriteSize = 125, width = spriteSize;
+        let spriteAllSize = 750;
+        let intervalStanding;
+        let stopStanding = true;
 
-        function animatePlayer() {
-            if (stopRunning) {
-                stopRunning = false;
-                interval = setInterval(() => {
+        function animateStandingPlayer() {
+            document.getElementById("player").style.width = "125px";
+            document.getElementById("player").style.backgroundImage = "url('img/bunny_stand.png')";
+            if (stopStanding) {
+                stopStanding = false;
+                intervalStanding = setInterval(() => {
                     document.getElementById("player").style.backgroundPosition = `-${spriteSize}px 0px`;
                     spriteSize < spriteAllSize ? spriteSize = spriteSize + width : spriteSize = width;
-                }, 100);
+                }, 250);
             }
         }
 
-        function stopAnimate() {
-            clearInterval(interval);
-            stopRunning = true;
-        }
+        animateStandingPlayer();
 
-        window.addEventListener('keydown', function (event) {
-            if (event.code === 'ArrowRight') {
-                $player.removeClass('scaleXrotate');
-                animatePlayer();
-            }
-        });
+        (function () {
+            let spriteAllSize = 500;
+            let interval;
+            let nitroInterval;
+            let stopRunning = true;
+            let stopNitro = true;
 
-        window.addEventListener('keyup', function (event) {
-            if (event.code === 'ArrowRight') {
-                stopAnimate();
+            function animatePlayer() {
+                document.getElementById("player").style.width = "125px";
+                document.getElementById("player").style.backgroundImage = "url('img/bunny_run.png')";
+                if (stopRunning) {
+                    stopRunning = false;
+                    interval = setInterval(() => {
+                        document.getElementById("player").style.backgroundPosition = `-${spriteSize}px 0px`;
+                        spriteSize < spriteAllSize ? spriteSize = spriteSize + width : spriteSize = width;
+                    }, 100);
+                }
             }
-        });
 
-        window.addEventListener('keydown', function (event) {
-            if (event.code === 'ArrowLeft') {
-                $player.addClass('scaleXrotate');
-                animatePlayer();
+            function animateNitroPlayer() {
+                let spriteSize = 250, width = spriteSize;
+                let spriteAllSize = 1000;
+                document.getElementById("player").style.width = "250px";
+                document.getElementById("player").style.backgroundImage = "url('img/bunny_nitro.png')";
+                if (stopNitro) {
+                    stopNitro = false;
+                    nitroInterval = setInterval(() => {
+                        document.getElementById("player").style.backgroundPosition = `-${spriteSize}px 0px`;
+                        spriteSize < spriteAllSize ? spriteSize = spriteSize + width : spriteSize = width;
+                    }, 10);
+                }
             }
-        });
 
-        window.addEventListener('keyup', function (event) {
-            if (event.code === 'ArrowLeft') {
-                stopAnimate();
+            function stopAnimateStanding() {
+                clearInterval(intervalStanding);
+                stopStanding = true;
             }
-        });
+
+            function stopAnimate() {
+                clearInterval(interval);
+                stopRunning = true;
+            }
+
+            function stopNitroAnimate() {
+                clearInterval(nitroInterval);
+                stopNitro = true;
+            }
+
+            window.addEventListener('keydown', function (event) {
+                if (event.code === 'ArrowLeft') {
+                    $player.addClass('scaleXrotate');
+                    stopAnimateStanding();
+                    animatePlayer();
+                }
+                else if (event.code === 'ArrowRight') {
+                    $player.removeClass('scaleXrotate');
+                    stopAnimateStanding();
+                    animatePlayer();
+                }
+                else if (event.code === 'ControlLeft') {
+                    stopAnimateStanding();
+                    stopAnimate();
+                    animateNitroPlayer();
+                }
+            });
+
+            window.addEventListener('keyup', function (event) {
+                if (event.code === 'ControlLeft') {
+                    stopNitroAnimate();
+                    animatePlayer();
+                }
+                else if (event.code === 'ArrowLeft' || event.code === 'ArrowRight') {
+                    stopAnimate();
+                    animateStandingPlayer();
+                }
+            });
+        })();
     })();
+
 
 //***************CLOUDS***************
 
     (function () {
         const cloudMinWidth = 50;
-        const cloudAmountRandomizer = .2;
+        const cloudAmountRandomizer = .1;
         let mapCloudTable;
         const $sky = $('.sky');
 
         mapCloudTable = Array
-            .from({length: $numberOfSections}, (cloud, index) => {
+            .from({length: $numberOfSections * 2}, (cloud, index) => {
                 return {
-                    position: index * sectionWidth + Math.floor(Math.random() * sectionWidth),
+                    position: index * sectionWidth / 2 + Math.floor(Math.random() * sectionWidth / 2),
                     width: Math.ceil(Math.random() * 5) * cloudMinWidth,
                     marginTop: Math.ceil(Math.random() * 3) * cloudMinWidth,
                 };
@@ -566,7 +618,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
                         'left': cloud.position,
                         'top': cloud.marginTop,
                         'width': cloud.width,
-                        'height': cloud.width * .44,
+                        'height': cloud.width * .445,
                         'z-index': cloud.width / 10,
                     })
                 )

@@ -63,9 +63,9 @@
 }
 
 #player {
-    width: 105px;
+    width: 125px;
     height: 105px;
-    background: url('img/spritestrip.png');
+    background: url('img/bunny_stand.png');
     align-self: flex-end;
     z-index: 200;
     position: absolute;
