@@ -357,6 +357,7 @@ function gameStart() {
         let stopStanding = true;
 
         function animateStandingPlayer() {
+            document.getElementById("player").style.width = "125px";
             document.getElementById("player").style.backgroundImage = "url('img/bunny_stand.png')";
             if (stopStanding) {
                 stopStanding = false;
@@ -377,6 +378,7 @@ function gameStart() {
             let stopNitro = true;
 
             function animatePlayer() {
+                document.getElementById("player").style.width = "125px";
                 document.getElementById("player").style.backgroundImage = "url('img/bunny_run.png')";
                 if (stopRunning) {
                     stopRunning = false;
@@ -388,7 +390,10 @@ function gameStart() {
             }
 
             function animateNitroPlayer() {
-                document.getElementById("player").style.backgroundImage = "url('img/bunny_run.png')";
+                let spriteSize = 250, width = spriteSize;
+                let spriteAllSize = 1000;
+                document.getElementById("player").style.width = "250px";
+                document.getElementById("player").style.backgroundImage = "url('img/bunny_nitro.png')";
                 if (stopNitro) {
                     stopNitro = false;
                     nitroInterval = setInterval(() => {
@@ -396,6 +401,11 @@ function gameStart() {
                         spriteSize < spriteAllSize ? spriteSize = spriteSize + width : spriteSize = width;
                     }, 10);
                 }
+            }
+
+            function stopAnimateStanding() {
+                clearInterval(intervalStanding);
+                stopStanding = true;
             }
 
             function stopAnimate() {
@@ -408,26 +418,18 @@ function gameStart() {
                 stopNitro = true;
             }
 
-            function stopAnimateStanding() {
-                clearInterval(intervalStanding);
-                stopStanding = true;
-            }
-
             window.addEventListener('keydown', function (event) {
                 if (event.code === 'ArrowLeft') {
                     $player.addClass('scaleXrotate');
                     stopAnimateStanding();
                     animatePlayer();
                 }
-                if (event.code === 'ArrowRight') {
+                else if (event.code === 'ArrowRight') {
                     $player.removeClass('scaleXrotate');
                     stopAnimateStanding();
                     animatePlayer();
                 }
-            });
-
-            window.addEventListener('keydown', function (event) {
-                if (event.ctrlKey) {
+                else if (event.code === 'ControlLeft') {
                     stopAnimateStanding();
                     stopAnimate();
                     animateNitroPlayer();
@@ -437,18 +439,13 @@ function gameStart() {
             window.addEventListener('keyup', function (event) {
                 if (event.code === 'ControlLeft') {
                     stopNitroAnimate();
+                    animatePlayer();
                 }
-            });
-
-            window.addEventListener('keyup', function (event) {
-                if (event.code === 'ArrowLeft' || event.code === 'ArrowRight') {
+                else if (event.code === 'ArrowLeft' || event.code === 'ArrowRight') {
                     stopAnimate();
                     animateStandingPlayer();
                 }
             });
-
-
-
         })();
     })();
 
