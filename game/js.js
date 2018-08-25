@@ -272,6 +272,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
                 clearInterval(flyAnimation);
             }
         }
+
         miniMonstersAnimation();
 
 
@@ -678,12 +679,12 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
         let nitroMultiplication = 1.4;
         let shotAmount = 30;
         let difficulty = 'easy';
-            if (isChecked) {
-                randomizer = .45;
-                maxPlayerSpeedX = .6;
-                nitroMultiplication = 1.7;
-                shotAmount = 20;
-                difficulty = 'hard';
+        if (isChecked) {
+            randomizer = .45;
+            maxPlayerSpeedX = .6;
+            nitroMultiplication = 1.7;
+            shotAmount = 20;
+            difficulty = 'hard';
         }
         $(this).addClass('start-clicked');
         $('.starting-box').addClass('game-start');
