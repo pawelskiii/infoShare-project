@@ -10,45 +10,9 @@ function gameStart() {
 
 //***************TIMER********************
 
-    (function() {
-        let time = 0;
-        let runningTime = 1;
 
+    (function () {
 
-        document.getElementById('startPause').onclick = function startPause() {
-            if (runningTime === 1) {
-                runningTime = 0;
-                incrementTime();
-                document.getElementById("startPause").innerHTML = "Resume";
-            }
-           else {
-                runningTime = 1;
-                incrementTime();
-                document.getElementById("startPause").innerHTML = "Pause";
-            };
-        };
-
-        function incrementTime() {
-            if (runningTime === 1) {
-                setTimeout(function () {
-                    time++;
-                    let minutes = Math.floor(time / 10 / 60);
-                    let seconds = Math.floor(time / 10 % 60);
-                    let tenths = time % 10;
-
-                    if (minutes < 10) {
-                        minutes = "0" + minutes;
-                    }
-                    if (seconds < 10) {
-                        seconds = "0" + seconds;
-                    }
-                    document.getElementById("timer").innerHTML = minutes + ":" + seconds + ":" + "0" + tenths;
-                    incrementTime();
-                }, 100);
-            };
-        };
-
-        incrementTime();
 
     })();
 
@@ -63,6 +27,8 @@ function gameStart() {
         let currentObstacleHeight = 0;
         let currentObstaclePosition = 0;
         let time = Date.now();
+        let bulletTime = Date.now();
+        let isRunning = true;
 
         //PLAYER
         const player = document.querySelector('#player');
@@ -92,6 +58,11 @@ function gameStart() {
         let shotArray = [];
         let shotNumber = 0;
         let shotAmount = 30;
+        let shottoCarrottoArray = [];
+
+        //PAUSE+TIMER
+        let timePause = 0;
+        let runningTime = true;
 
         //MAP
         mapObjectTable = Array
@@ -99,7 +70,8 @@ function gameStart() {
                 if (index !== 0) {
                     return {
                         position: index * sectionWidth + Math.floor(Math.random() * (sectionWidth - obstacleWidth)) * .8,
-                        height: Math.floor((Math.random() * 2 + 1)) * obstacleMinHeight
+                        height: Math.floor((Math.random() * 2 + 1)) * obstacleMinHeight,
+                        hasMiniMonster: Math.floor(Math.random() * 2)
                     }
                 }
             })
@@ -116,10 +88,70 @@ function gameStart() {
                         'height': obstacle.height
                     })
                 );
+            if (obstacle.hasMiniMonster) {
+                $map
+                    .append($('<div>')
+                        .addClass('minimonster')
+                        .css({
+                            'left': obstacle.position,
+                            'bottom': obstacle.height + 20 + Math.floor(Math.random() * 100)
+                        })
+                    )
+            }
             obstaclePositions[index] = [obstacle.position, obstacle.height];
         });
 
         update();
+
+        //TIMER(PAUSE)
+        document.getElementById('startPause').onclick = function startPause() {
+            if (runningTime) {
+                runningTime = false;
+                incrementTime();
+                togglePause();
+                miniMonstersAnimation();
+                document.getElementById("startPause").innerHTML = "Resume";
+            }
+            else {
+                runningTime = true;
+                incrementTime();
+                togglePause();
+                miniMonstersAnimation();
+                document.getElementById("startPause").innerHTML = "Pause";
+            }
+        };
+
+        function incrementTime() {
+            if (runningTime === true) {
+                setTimeout(function () {
+                    timePause++;
+                    let minutes = Math.floor(timePause / 10 / 60);
+                    let seconds = Math.floor(timePause / 10 % 60);
+                    let tenths = timePause % 10;
+
+                    if (minutes < 10) {
+                        minutes = "0" + minutes;
+                    }
+                    if (seconds < 10) {
+                        seconds = "0" + seconds;
+                    }
+                    document.getElementById("timer").innerHTML = minutes + ":" + seconds + ":" + "0" + tenths;
+                    incrementTime();
+                }, 100);
+            }
+        }
+
+        // PAUSE
+        function togglePause() {
+            isRunning = !isRunning;
+
+            if (isRunning) {
+                update();
+
+            }
+        }
+
+        incrementTime();
 
         //PLAYER
         window.addEventListener('keydown', function (event) {
@@ -154,7 +186,14 @@ function gameStart() {
                 playerAccelerationX /= nitroMultiplication;
                 nitroPressed = false;
             }
+            if (event.code === 'KeyP') {
+                togglePause();
+                miniMonstersAnimation();
+                runningTime = !runningTime;
+                incrementTime();
+            }
         });
+
 
         function moveFwd(dTime) {
             playerSpeedX = Math.min(Math.max(0, playerSpeedX + playerAccelerationX * dTime), maxPlayerSpeedX);
@@ -178,7 +217,7 @@ function gameStart() {
 
         //SHOT
         window.addEventListener('keydown', function (key) {
-            if (key.code === 'Space' && shotAmount > 0) {
+            if (key.code === 'Space' && shotAmount > 0 && isRunning) {
                 shotNumber++;
                 shotArray.push({
                     amount: shotAmount,
@@ -195,7 +234,7 @@ function gameStart() {
                     .attr('shotNumber', shotNumber)
                     .css({
                         "left": playerPositionX + 75,
-                        "top": ($windowHeight - ($playerHeight / 2 + parseInt($('#player').css('bottom'))))
+                        "bottom": ($playerHeight / 2 + parseInt($('#player').css('bottom')))
                     }))
             }
         });
@@ -203,6 +242,50 @@ function gameStart() {
         for (let i = 1; i <= shotAmount; i++) {
             $('.game-information').append($('<div>').addClass('bullet').attr('shotNumber', i));
         }
+
+        //***************MINI MONSTER***************
+
+        function miniMonstersAnimation() {
+            let frames = [
+                'frame-1.png',
+                'frame-2.png',
+                'frame-3.png',
+                'frame-4.png'
+            ];
+            let miniMonsterIndex = 0;
+            let wingsSpriteDirection = -1;
+            let monsterDirection = true;
+            let $miniMonsters = $('.minimonster');
+
+            let miniMonsterArray = document.getElementsByClassName('minimonster');
+            let miniMonsterArrayLength = miniMonsterArray.length;
+
+            if (isRunning) {
+                wingsAnimation = setInterval(() => {
+                    for (i = 0; i <= miniMonsterArrayLength - 1; i++) {
+                        miniMonsterArray[i].style.background = 'url("img/dragon/' + frames[miniMonsterIndex] + '") center center / contain no-repeat';
+                        if (miniMonsterIndex === 0 || miniMonsterIndex === 3) {
+                            wingsSpriteDirection *= -1;
+                        }
+                        miniMonsterIndex += wingsSpriteDirection;
+                    }
+                }, 75);
+                flyAnimation = setInterval(() => {
+                    if (monsterDirection) {
+                        $miniMonsters.animate({left: "-=300"}, 2000, "swing").addClass('scaleXrotate');
+                        monsterDirection = false;
+                    } else {
+                        $miniMonsters.animate({left: "+=300"}, 2000, "swing").removeClass('scaleXrotate');
+                        monsterDirection = true;
+                    }
+                }, 2200)
+            } else {
+                clearInterval(wingsAnimation);
+                clearInterval(flyAnimation);
+            }
+        }
+        miniMonstersAnimation();
+
 
         //ANIMATIONS
         function update() {
@@ -213,6 +296,8 @@ function gameStart() {
             let horizontalCollision = false;
             let verticalCollision = false;
             let oldPlayerPositionX = playerPositionX;
+
+            let miniMonsterArray = Array.from(document.getElementsByClassName('minimonster'));
 
 
             function checkPlayerCollision() {
@@ -329,7 +414,39 @@ function gameStart() {
             shotArray.forEach((el, index) => {
                 let timeOfShooting = time - el.shotTime;
                 shotPositionX = el.shotPosition + shotSpeedX + timeOfShooting * shotAcceleration + 'px';
+                let shotRemovalX = parseInt(shotPositionX);
+                let shotRemovalY = parseInt(document.getElementsByClassName('shot')[index].style.bottom);
                 document.getElementsByClassName('shot')[index].style.left = shotPositionX;
+                miniMonsterArray.forEach((miniMonster, miniMonsterIndex) => {
+
+                    let miniMonsterRemovalX = parseInt(miniMonster.style.left);
+                    let miniMonsterRemovalY = parseInt(miniMonster.style.bottom);
+
+                    if ((shotRemovalX + 30 >= miniMonsterRemovalX)
+                        && (shotRemovalX <= miniMonsterRemovalX + 50)
+                        && (shotRemovalY + 20 >= miniMonsterRemovalY)
+                        && (shotRemovalY <= miniMonsterRemovalY + 50)) {
+                        shotArray.splice(index, 1);
+                        document.getElementsByClassName('shot')[index].remove();
+                        document.getElementsByClassName('minimonster')[miniMonsterIndex].remove();
+                        $('.map').append($('<div>')
+                            .addClass('shottoCarrotto rotating')
+                            .attr('shotto-Carrotto-Secret-Position', miniMonsterRemovalX)
+                            .css({
+                                "left": miniMonsterRemovalX,
+                                "bottom": miniMonsterRemovalY
+                            }));
+                        shottoCarrottoArray.push({
+                            positionX: miniMonsterRemovalX,
+                            positionY: miniMonsterRemovalY
+                        });
+                        console.log(shottoCarrottoArray);
+                        clearInterval(wingsAnimation);
+                        clearInterval(flyAnimation);
+                        miniMonstersAnimation();
+
+                    }
+                });
 
                 if (parseInt(shotPositionX) > playerPositionX + $windowWidth) {
                     shotArray.splice(index, 1);
@@ -340,7 +457,42 @@ function gameStart() {
 
             player.style.left = playerPositionX + 'px';
             player.style.bottom = playerPositionY + 'px';
-            requestAnimationFrame(update);
+
+            miniMonsterArray.forEach((miniMonster, miniMonsterIndex) => {
+                let miniMonsterRemovalX = parseInt(miniMonster.style.left);
+                let miniMonsterRemovalY = parseInt(miniMonster.style.bottom);
+                if ((playerPositionX + $playerWidth >= miniMonsterRemovalX)
+                    && (playerPositionX <= miniMonsterRemovalX + 70)
+                    && (playerPositionY + $playerHeight - 30 >= miniMonsterRemovalY)
+                    && (playerPositionY <= miniMonsterRemovalY + 70)) {
+
+                    if (time - bulletTime >= 500 && document.getElementsByClassName('bullet').length !== 0) {
+                        // console.log(document.getElementsByClassName('bullet'));
+                        document.getElementsByClassName('bullet')[0].remove();
+                        shotAmount--;
+                        bulletTime = Date.now();
+                    }
+
+
+                }
+            });
+
+            shottoCarrottoArray.forEach((shottoCarrotto, shottoCarrottoIndex) => {
+                if ((playerPositionX + $playerWidth >= shottoCarrotto.positionX)
+                    && (playerPositionX <= shottoCarrotto.positionX + 30)
+                    && (playerPositionY + $playerHeight - 30 >= shottoCarrotto.positionY)
+                    && (playerPositionY <= shottoCarrotto.positionY + 30)) {
+                    shottoCarrottoArray.splice(shottoCarrottoIndex, 1);
+                    $('.game-information').append($('<div>').addClass('bullet'));
+                    $('[shotto-carrotto-secret-position=' + shottoCarrotto.positionX + ']').remove();
+                    shotAmount++;
+                }
+            });
+
+
+            if (isRunning) {
+                requestAnimationFrame(update);
+            }
         }
     })();
 
