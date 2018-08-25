@@ -8,55 +8,62 @@
     <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
-<div class="window">
-    <div class="game-information">
-        <div class="ammo"></div>
-    </div>
+<div class="center-box">
+    <div class="window">
+        <div class="game-information">
+            <div class="ammo"></div>
+        </div>
+        <div class="starting-box">
+            <form action="" class="special-font nick-select">
+                <label><input type="text" placeholder="Wpisz swój nick" class="special-font text-input">Twój
+                    nick:</label>
+            </form>
 
-    <div class="starting-box">
-        <form action="" class="special-font nick-select">
-            <label><input type="text" placeholder="Wpisz swój nick" class="special-font text-input">Twój nick:</label>
-        </form>
+            <form action="" class="special-font level-select">
+                <label><input type="radio" name="level" value="easy" class="radio-button" checked>Łatwy</label>
+                <label><input type="radio" name="level" value="hard" class="radio-button">Trudny</label>
+            </form>
 
-        <form action="" class="special-font level-select">
-            <label><input type="radio" name="level" value="easy" class="radio-button" checked>Łatwy</label>
-            <label><input type="radio" name="level" value="hard" class="radio-button">Trudny</label>
-        </form>
+            <div id="start-button" class="starting-menu-buttons start-button">
+                <span class="special-font text-in-button">Start</span>
+            </div>
 
-        <div id="start-button" class="starting-menu-buttons start-button">
-            <span class="special-font text-in-button">Start</span>
+            <div class="starting-menu-buttons instruction-button">
+                <div class="special-font text-in-button">Instrukcja</div>
+                <div class="close">X</div>
+                <ul class="player-instructions">
+                    <li>Poruszanie <span>Magicznym Królikensem</span><img class="float-right" src="img/switch.png"/>
+                    </li>
+                    <li>Skok<img class="float-right" src="img/slim-up.png"/></li>
+                    <li>Strzał z <span>Super Marchewki</span><span class="float-right">Spacja</span></li>
+                    <li>Nitro<span class="float-right">Ctrl</span></li>
+                    <li>Poprowadź naszego <span>Magicznego Królikensa</span> w otchłań walki o przetrwanie.
+                        Przeskakuj przez mury obronne, zbierając <span>Super Marchewki</span>.
+                    </li>
+                    <li>Uciekaj przed krwiożerczymi zielonymi smokami - sługusami <span>Wielkiego Hamburgerosa</span>.
+                        Nie zawachaj się użyć <span>Super Marchewek</span> do wystrzelenia ich wszystkich w pień.
+                    </li>
+                    <li>Na koniec walcz z <span>Wielkim Bossem Hamburgerosem</span>. Pokonanie go sprawi Ci wielką
+                        satysfakcję i uratuje krainę <span>Magicznych Królikensów</span> przed rozsadzeniem od
+                        niezdrowego
+                        jedzenia, które nawiedziło tą krainę.
+                    </li>
+                </ul>
+
+            </div>
         </div>
 
-        <div class="starting-menu-buttons instruction-button">
-            <div class="special-font text-in-button">Instrukcja</div>
-            <div class="close">X</div>
-            <ul class="player-instructions">
-                <li>Poruszanie <span>Magicznym Królikensem</span><img class="float-right" src="img/switch.png"/></li>
-                <li>Skok<img class="float-right" src="img/slim-up.png"/></li>
-                <li>Strzał z <span>Super Marchewki</span><span class="float-right">Spacja</span></li>
-                <li>Nitro<span class="float-right">Ctrl</span></li>
-                <li>Poprowadź naszego <span>Magicznego Królikensa</span> w otchłań walki o przetrwanie.
-                    Przeskakuj przez mury obronne, zbierając <span>Super Marchewki</span>.
-                </li>
-                <li>Uciekaj przed krwiożerczymi zielonymi smokami - sługusami <span>Wielkiego Hamburgerosa</span>.
-                    Nie zawachaj się użyć <span>Super Marchewek</span> do wystrzelenia ich wszystkich w pień.
-                </li>
-                <li>Na koniec walcz z <span>Wielkim Bossem Hamburgerosem</span>. Pokonanie go sprawi Ci wielką
-                    satysfakcję i uratuje krainę <span>Magicznych Królikensów</span> przed rozsadzeniem od niezdrowego
-                    jedzenia, które nawiedziło tą krainę.
-                </li>
-            </ul>
-
+        <div class="map">
+            <div id="player"></div>
+            <div class="sky"></div>
+            <div class="grass"></div>
         </div>
-    </div>
-    <div class="map">
-        <div id="player"></div>
-        <div class="sky"></div>
-    </div>
-    <div class="timer-container">
-        <p class="description">Time:</p>
-        <div id="timer"></div>
-        <button id="startPause">Pause</button>
+        <div class="timer-container">
+            <p class="description">Time:</p>
+            <div id="timer"></div>
+            <button id="startPause">Pause</button>
+        </div>
+
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
