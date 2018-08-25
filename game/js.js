@@ -60,6 +60,9 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
         let runningTime = true;
 
         //MAP
+        setInterval(() => {
+
+        }, 1600)
         mapObjectTable = Array
             .from({length: $numberOfSections}, (obstacle, index) => {
                 if (index !== 0) {
@@ -212,7 +215,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
 
     //SHOT
     window.addEventListener('keydown', function (key) {
-        if (key.code === 'Space' && shotAmount > 0) {
+        if (key.code === 'Space' && shotAmount > 0 && playerSpeedX > 0) {
             shotNumber++;
             shotArray.push({
                 amount: shotAmount,
@@ -232,6 +235,27 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
                     "top": ($windowHeight - ($playerHeight / 2 + parseInt($('#player').css('bottom'))))
                 }))
         }
+        let monsterLifePoints = document.getElementById('monster__life').value;
+        console.log(monsterLifePoints)
+        if (monsterLifePoints <100 && monsterLifePoints > 80){
+            document.getElementById('monster__life').style.background= "green"
+            console.log('cos1')
+        } else if (monsterLifePoints <80 && monsterLifePoints > 60){
+            document.getElementById('monster__life').style.background= "greenyellow"
+            console.log('cos2')
+        }else if (monsterLifePoints <60 && monsterLifePoints > 40){
+            document.getElementById('monster__life').style.backgroundColor= "yellow"
+            console.log('cos3')
+        }else if (monsterLifePoints <40 && monsterLifePoints > 30){
+            document.getElementById('monster__life').style.backgroundColor= "red"
+            console.log('cos4')
+        }else if (monsterLifePoints <20 && monsterLifePoints > 10){
+            document.getElementById('monster__life').style.backgroundColor= "black"
+            console.log('cos5')
+        }else if (monsterLifePoints==0) {
+            $('.monster').fadeOut(3000);
+        }
+
     });
 
         for (let i = 1; i <= shotAmount; i++) {
@@ -399,47 +423,35 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
 
             }
 
-            if (playerPositionX > $windowWidth / 2 + $mapPositionX) {
+            if (playerPositionX > $windowWidth / 2 + $mapPositionX && Math.abs(parseInt($map.css('left'))) < (parseInt($map.css('width')) - parseInt($windowWidth))) {
                 $('.map').css('left', -playerPositionX + $windowWidth / 2)
             } else if (playerPositionX < 0 || playerPositionX < $mapPositionX) {
                 playerPositionX = $mapPositionX
+            } else if (playerPositionX > Math.abs(parseInt($map.css('width'))) - $playerWidth  && playerSpeedX > 0) {
+                playerPositionX = Math.abs(parseInt($map.css('width'))) - $playerWidth
             }
 
-
-       /* if (monsterLifePoints <100 && monsterLifePoints > 80){
-            console.log('mniej niz 100')
-        } else if (monsterLifePoints <80 && monsterLifePoints > 60){
-            console.log('mniej niz 80')
-        }else if (monsterLifePoints <60 && monsterLifePoints > 40){
-            console.log('mniej niz 60')
-        }else if (monsterLifePoints <40 && monsterLifePoints > 30){
-            console.log('mniej niz 40')
-        }else if (monsterLifePoints <20 && monsterLifePoints > 10){
-            console.log('mniej niz 20')
-        }*/
-
-        monsterShotArray.forEach((el, index) => {
-            let timeOfMonsterShooting = time - el.shotTime;
-            let positionBottomMegaShotMonster = parseInt(document.getElementsByClassName('monster__shot')[index].style.bottom);
-            monsterShotPositionX = el.shotPosition - shotSpeedX - timeOfMonsterShooting * shotAcceleration + 'px';
-            document.getElementsByClassName('monster__shot')[index].style.left = monsterShotPositionX;
+    monsterShotArray.forEach((el, index) => {
+        let timeOfMonsterShooting = time - el.shotTime;
+        let positionBottomMegaShotMonster = parseInt(document.getElementsByClassName('monster__shot')[index].style.bottom);
+        monsterShotPositionX = el.shotPosition - shotSpeedX - timeOfMonsterShooting * shotAcceleration + 'px';
+        document.getElementsByClassName('monster__shot')[index].style.left = monsterShotPositionX;
 
 
-                if ((parseInt(monsterShotPositionX) < parseInt(playerPositionX)+ $playerWidth)
-                    && (parseInt(monsterShotPositionX)-18 > parseInt(playerPositionX))
-                    && (positionBottomMegaShotMonster < playerPositionY + $playerHeight)
-                    && (positionBottomMegaShotMonster + 18 > playerPositionY )){
-                    document.getElementById('player__life').value-=5;
-                    monsterShotArray.splice(index, 1);
-                    document.getElementsByClassName('monster__shot')[index].remove()
-                }
-            if (parseInt(monsterShotPositionX) < parseInt($('.monster').css('left')) - $windowWidth) {
-                monsterShotArray.splice(index, 1);
-                document.getElementsByClassName('monster__shot')[index].remove();
-            }
-        })
-        let positionBottomMegaMonster = document.getElementsByClassName('monster')[0].getBoundingClientRect().top;
-
+        if ((parseInt(monsterShotPositionX) < parseInt(playerPositionX) + $playerWidth)
+            && (parseInt(monsterShotPositionX) - 18 > parseInt(playerPositionX))
+            && (positionBottomMegaShotMonster < playerPositionY + $playerHeight)
+            && (positionBottomMegaShotMonster + 18 > playerPositionY)) {
+            document.getElementById('player__life').value -= 5;
+            monsterShotArray.splice(index, 1);
+            document.getElementsByClassName('monster__shot')[index].remove()
+        }
+        if (parseInt(monsterShotPositionX) < parseInt($('.monster').css('left')) - $windowWidth) {
+            monsterShotArray.splice(index, 1);
+            document.getElementsByClassName('monster__shot')[index].remove();
+        }
+    })
+    let positionBottomMegaMonster = document.getElementsByClassName('monster')[0].getBoundingClientRect().top;
 
 
         shotArray.forEach((el, index) => {
@@ -484,7 +496,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
                 && (positionBottomMegaShotPlayer < positionBottomMegaMonster + 105)
                 && (positionBottomMegaShotPlayer + 16 > positionBottomMegaMonster))  {
 
-                document.getElementById('monster__life').value-=5;
+                document.getElementById('monster__life').value-=50;
                 shotArray.splice(index, 1);
                 document.getElementsByClassName('shot')[index].remove()
             }
