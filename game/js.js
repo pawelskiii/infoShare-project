@@ -691,3 +691,20 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
         gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount, difficulty);
     });
 })();
+
+//***************EXPLODE***************
+
+// function explode() {
+//     let spriteSize = 125, width = spriteSize;
+//     let spriteAllSize = 750;
+//     let intervalExplode;
+//     document.getElementById("player").style.width = "125px";
+//     document.getElementById("player").style.backgroundImage = "url('img/explode.png')";
+//     intervalExplode = setInterval(() => {
+//         document.getElementById("player").style.backgroundPosition = `-${spriteSize}px 0px`;
+//         spriteSize < spriteAllSize ? spriteSize = spriteSize + width : spriteSize = width;
+//     }, 50);
+//     clearInterval(intervalExplode);
+// }
+//
+// explode();

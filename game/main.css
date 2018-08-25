@@ -1,8 +1,7 @@
 .map {
-    background: linear-gradient(rgb(133, 164, 204) 0, rgb(208, 229, 242) 100%);
     display: flex;
     width: 7000px;
-    height: 350px;
+    height: 450px;
     position: relative;
     border-bottom: 10px solid rgb(208, 229, 242);
 }
@@ -10,7 +9,7 @@
 .sky {
     position: absolute;
     width: 7000px;
-    height: 350px;
+    height: 450px;
     background: linear-gradient(rgb(133, 164, 204) 0, rgb(208, 229, 242) 100%);
 }
 
@@ -50,7 +49,7 @@
     background-size: 8%;
     width: 7000px;
     height: 40px;
-    z-index: 1000;
+    z-index: 900;
     bottom: -11px;
 }
 
@@ -89,11 +88,11 @@
 
 .center-box {
     position: relative;
-    background-color: #CFCFCF;
 }
 
 .window {
     position: absolute;
+    box-sizing: border-box;
     height: 700px;
     width: 1100px;
     border: 2px solid greenyellow;
@@ -153,7 +152,7 @@
     width: 650px;
     height: 200px;
     box-shadow: 0 5px 10px rgba(0, 0, 40, 0.03);
-    top: 28%;
+    top: 29%;
     left: 50%;
     transform: scale(1) translate(-50%, -50%);
     transition: all .25s ease-in-out;
@@ -357,7 +356,8 @@
 }
 
 .timer-container {
-    height: 200px;
+    box-sizing: border-box;
+    height: 236px;
     width: 1100px;
     border: 2px solid black;
     position: relative;
