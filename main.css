@@ -103,6 +103,44 @@ body {
     color: #096C3E;
 }
 
+/*##############Cookie warning ##########################*/
+
+#cookie-warn {
+    position: fixed;
+    bottom:20%;
+    background: url('img/cookies2.jpg') no-repeat center;
+    background-size: cover;
+    padding: 2%;
+    margin: 0 25%;
+    height: 60%;
+    display: none;
+    z-index: 1000;
+}
+
+.cookie-text {
+    color: #EFF0F0;
+}
+
+.cookie-button {
+    background-color: ORANGE;
+    float: left;
+    font-size: 1.3rem;
+    margin-right: 1rem;
+    color: #EFF0F0;
+}
+
+#cookie-warn p {
+    font-size: 1.3rem;
+    color: DARK GREEN;
+}
+
+.symbolX {
+    background-color: ORANGE;
+    text-transform: uppercase;
+    float: right;
+    font-size: 1.3rem;
+}
+
 /* ############### navigation ############### */
 
 .navbar {
@@ -397,8 +435,6 @@ input[type=number] {
     z-index: 1;
 }
 
-/*TODO proponuje zmniejszenie liczby klas do funkcjonalnosci. dla wszystkich jedna i ta sama dotyczaca polozenia (np. zeby bylo wszystko z lewej strony) a wszelkie drobne dewiacje jako dodatkowa klasa nadpisujaca. do tego polozenie zamiast w remach to w %. ograniczy to bardzo mocno nam te media queries*/
-
 .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
 .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-7, .functinality-more-text-8 {
     font-family: 'Amatic SC', cursive;
@@ -550,12 +586,16 @@ a.phone-action:hover {
         padding: 1rem;
     }
 
-    .about-card-body-title {
+    .about-card-title {
         font-size: 2rem;
     }
 
+    .about-card-body-title {
+        font-size: 1.2rem;
+    }
+
     .about-card-body p {
-        padding-top: 0.5rem;
+        padding-top: 0.2rem;
         font-size: 1rem;
     }
 
@@ -572,8 +612,8 @@ a.phone-action:hover {
 
 
     .about-card-footer img.about-icons2:hover {
-        width: 3rem;
-        height: 3rem;
+        width: 2.5rem;
+        height: 2.5rem;
     }
 
     .caption-content {
@@ -894,6 +934,22 @@ a.phone-action:hover {
         line-height: 2.3rem;
         font-size: 1.6rem;
     }
+
+    .cookie-button {
+        background-color: ORANGE;
+        float: left;
+        font-size: 1rem;
+        margin-right: 1rem;
+        color: #EFF0F0;
+    }
+
+    #cookie-warn p {
+        font-size: 1rem;
+    }
+
+    .symbolX {
+        font-size: 1rem;
+    }
 }
 
 /*********************************************************************************/
@@ -1031,6 +1087,22 @@ a.phone-action:hover {
     .functinality-more-text-8 {
         margin: 1.4rem 0 0 2rem;
     }
+
+    .cookie-button {
+        background-color: ORANGE;
+        float: left;
+        font-size: 1rem;
+        margin-right: 1rem;
+        margin-bottom:0.7rem;
+        color: #EFF0F0;
+    }
+    #cookie-warn p {
+        font-size: 1rem;
+    }
+
+    .symbolX {
+        font-size: 1rem;
+    }
 }
 
 /*********************************************************************************/
@@ -1067,6 +1139,20 @@ a.phone-action:hover {
     .functinality-more-text-8 {
         margin: 0.5rem 0 0 2rem;
     }
+
+    .cookie-button {
+        background-color: ORANGE;
+        float: left;
+        font-size: 0.8rem;
+        margin-right: 1rem;
+        margin-bottom:0.7rem;
+        color: #EFF0F0;
+    }
+
+    #cookie-warn p {
+        font-size: 1rem;
+    }
+
 }
 
 /*********************************************************************************/
@@ -1205,6 +1291,20 @@ a.phone-action:hover {
         bottom: 20px;
         right: 20px;
     }
+
+    .cookie-button {
+        background-color: ORANGE;
+        float: left;
+        font-size: 0.8rem;
+        margin-right: 1rem;
+        margin-bottom:0.7rem;
+        color: #EFF0F0;
+    }
+
+    #cookie-warn p {
+        font-size: 0.8rem;
+    }
+
 }
 
 /*********************************************************************************/
@@ -1360,7 +1460,22 @@ a.phone-action:hover {
         bottom: 15px;
         right: 15px;
     }
+
+    .cookie-button {
+        background-color: ORANGE;
+        float: left;
+        font-size: 0.8rem;
+        margin-right: 1rem;
+        margin-bottom:0.7rem;
+        color: #EFF0F0;
+    }
+
+    #cookie-warn p {
+        font-size: 0.8rem;
+    }
+
 }
+
 
 
 
