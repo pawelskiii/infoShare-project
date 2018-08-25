@@ -77,12 +77,19 @@
 
 /*#################### PONIŻEJ LINIE POMOCNICZE ######################*/
 
-.window {
+.center-box {
     position: relative;
+    background-color: #CFCFCF;
+}
+
+.window {
+    position: absolute;
     height: 700px;
     width: 1100px;
     border: 2px solid greenyellow;
     overflow: hidden;
+    left: 50%;
+    transform: translate(-50%, 10%);
 }
 
 .game-information {
