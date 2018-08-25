@@ -428,7 +428,6 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
                             positionX: miniMonsterRemovalX,
                             positionY: miniMonsterRemovalY
                         });
-                        console.log(shottoCarrottoArray);
                         clearInterval(wingsAnimation);
                         clearInterval(flyAnimation);
                         miniMonstersAnimation();
