@@ -79,7 +79,7 @@
 
 .window {
     position: relative;
-    /*height: 700px;*/
+    height: 700px;
     width: 1100px;
     border: 2px solid greenyellow;
     overflow: hidden;

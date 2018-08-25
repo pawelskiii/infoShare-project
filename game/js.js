@@ -514,6 +514,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
             let nitroInterval;
             let stopRunning = true;
             let stopNitro = true;
+            let normalMove = false;
 
             function animatePlayer() {
                 document.getElementById("player").style.width = "125px";
@@ -561,11 +562,13 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
                     $player.addClass('scaleXrotate');
                     stopAnimateStanding();
                     animatePlayer();
+                    normalMove = true;
                 }
                 else if (event.code === 'ArrowRight') {
                     $player.removeClass('scaleXrotate');
                     stopAnimateStanding();
                     animatePlayer();
+                    normalMove = true;
                 }
                 else if (event.code === 'ControlLeft') {
                     stopAnimateStanding();
@@ -577,7 +580,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
             window.addEventListener('keyup', function (event) {
                 if (event.code === 'ControlLeft') {
                     stopNitroAnimate();
-                    animatePlayer();
+                    normalMove ? animatePlayer() : animateStandingPlayer();
                 }
                 else if (event.code === 'ArrowLeft' || event.code === 'ArrowRight') {
                     stopAnimate();
