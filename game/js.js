@@ -1,4 +1,4 @@
-function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount, difficulty) {
+function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount, difficulty, monsterShootingInterval) {
     const sectionWidth = 350;
     const $map = $('.map');
     const $player = $('#player');
@@ -41,11 +41,13 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
         let keyPressed = '';
         let keyPressedJump = '';
 
+        console.log(monsterShootingInterval)
         //SHOT
         let shotPressed = '';
         let stillFalling = false;
         let shotPositionX = 0;
         let monsterShotPositionX = 0;
+
         let shotSpeedX = 0.4;
         let shotAcceleration = 0.8;
         let shotArray = [];
@@ -60,9 +62,16 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
         let runningTime = true;
 
         //MAP
-        setInterval(() => {
 
-        }, 1600)
+        setInterval(() => {
+            $('.monster').animate({
+                top: "-=120px"
+            }, 800);
+            $('.monster').animate({
+                top: "+=120px"
+            }, 800);
+        },1600)
+
         mapObjectTable = Array
             .from({length: $numberOfSections}, (obstacle, index) => {
                 if (index !== 0) {
@@ -215,7 +224,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
 
     //SHOT
     window.addEventListener('keydown', function (key) {
-        if (key.code === 'Space' && shotAmount > 0 && playerSpeedX > 0) {
+        if (key.code === 'Space' && shotAmount > 0 && playerSpeedX >= 0) {
             shotNumber++;
             shotArray.push({
                 amount: shotAmount,
@@ -519,7 +528,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
                             "left": parseInt($('.monster').css('left')) - monsterShotPositionX,
                             "bottom": parseInt($('.monster').css('bottom')) + parseInt($('.monster').css('height'))/2
                         }))
-                }, 1000);
+                }, monsterShootingInterval);
                 isFiring = true;
             }
             player.style.left = playerPositionX + 'px';
@@ -755,15 +764,17 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
         let nitroMultiplication = 1.4;
         let shotAmount = 30;
         let difficulty = 'easy';
+        let monsterShootingInterval = 1000;
             if (isChecked) {
                 randomizer = .45;
                 maxPlayerSpeedX = .6;
                 nitroMultiplication = 1.7;
                 shotAmount = 20;
                 difficulty = 'hard';
+                monsterShootingInterval = 400;
         }
         $(this).addClass('start-clicked');
         $('.starting-box').addClass('game-start');
-        gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount, difficulty);
+        gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount, difficulty, monsterShootingInterval);
     });
 })();
