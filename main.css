@@ -99,50 +99,107 @@ body {
     color: #F57D19;
 }
 
+.green {
+    color: #096C3E;
+}
+
+/*##############Cookie warning ##########################*/
+
+#cookie-warn {
+    position: fixed;
+    bottom:20%;
+    background: url('img/cookies2.jpg') no-repeat center;
+    background-size: cover;
+    padding: 2%;
+    margin: 0 25%;
+    height: 60%;
+    display: none;
+    z-index: 1000;
+}
+
+.cookie-text {
+    color: #EFF0F0;
+}
+
+.cookie-button {
+    background-color: ORANGE;
+    float: left;
+    font-size: 1.3rem;
+    margin-right: 1rem;
+    color: #EFF0F0;
+}
+
+#cookie-warn p {
+    font-size: 1.3rem;
+    color: DARK GREEN;
+}
+
+.symbolX {
+    background-color: ORANGE;
+    text-transform: uppercase;
+    float: right;
+    font-size: 1.3rem;
+}
+
 /* ############### navigation ############### */
 
 .navbar {
-    z-index: 1;
+    z-index: 2;
     background-color: #F4F4F4;
     box-shadow: 0px -5px 25px 2px rgba(0, 0, 0, 0.75);
+    transition: ease 1s;
+
 }
-.navbar-brand{
+.navbar.expanded {
+    padding: 1.3rem 1rem;
+    transition: ease 1s;
+
+}
+
+.navbar-brand {
     background-image: url("img/logo.png");
     background-repeat: no-repeat;
     background-size: contain;
-    height:53px;
+    height: 53px;
     width: 136px;
 }
-.navbar-nav{
+
+.navbar-nav {
     padding-top: 0;
 }
+
 .navbar-toggler:not(:disabled):not(.disabled) {
     cursor: pointer;
     margin-right: 5%;
 }
-.navbar-collapse{
-    flex-grow: 0 !important;
-}
-.nav-link{
-    justify-content: center;
-    font-family: 'Raleway', sans-serif;
-    padding: 0 1rem !important;
-    font-size: 1.4rem;
-    transition: color 0.5s ease ;
-    color: #FC7700 !important;
+
+.navbar-collapse {
+    flex-grow: 0;
 }
 
-.nav-link:hover {
+#link.nav-link.active {
+    color: #00753F;
+}
+#link.nav-link {
     justify-content: center;
     font-family: 'Raleway', sans-serif;
-    padding: 0 1.1rem !important;
+    padding: 0 1rem;
     font-size: 1.4rem;
-    color: #00753F !important;
+    transition: color 0.5s ease;
+    color: #FC7700;
 }
+#link.nav-link:hover {
+    color: #00753F;
+}
+.lang-button {
+    margin-left: 1rem;
+    cursor: pointer;
+}
+
 /* ############### introduction ############### */
 
 .carousel-height {
-    height: 1000px;
+    height: 990px;
 }
 
 .carousel-item-1 {
@@ -185,7 +242,7 @@ body {
 
 /*############### functionality ###############*/
 
-.functionality {
+.functionality-container-fluid {
     margin-right: 5%;
     margin-left: 5%;
 }
@@ -237,14 +294,14 @@ body {
 
 /*############### form ###############*/
 
+.contact.container {
+    padding-top: 25px;
+}
+
 .contact .font-special {
-    color: #F57D19;
     font-size: 3rem;
 }
 
-.contact .font-special2 {
-    color: #096C3E;
-}
 
 .form-group input, .form-group textarea {
     border-radius: 0;
@@ -259,9 +316,9 @@ body {
 
 .form-group input:focus,
 .form-group textarea:focus {
-    -webkit-box-shadow: 0px 0px 10px 3px rgba(245,125,25,0.75);
+    -webkit-box-shadow: 0px 0px 10px 3px rgba(245, 125, 25, 0.75);
     -moz-box-shadow: 0px 0px 10px 3px rgba(245, 125, 25, 0.75);
-    box-shadow: 0px 0px 10px 3px rgba(245,125,25,0.75);
+    box-shadow: 0px 0px 10px 3px rgba(245, 125, 25, 0.75);
     border-color: #F57D19;
     color: #096C3E;
 }
@@ -279,21 +336,178 @@ body {
 }
 
 input[type=number] {
-    -moz-appearance:textfield;
+    -moz-appearance: textfield;
 }
 
 .logo-button:hover {
     background: url('img/logo.png') no-repeat center;
     background-size: 60%;
     border: solid 1px #F57D19;
-    -webkit-box-shadow: 0px 0px 10px 3px rgba(245,125,25,0.75);
-    -moz-box-shadow: 0px 0px 10px 3px rgba(245,125,25,0.75);
-    box-shadow: 0px 0px 10px 3px rgba(245,125,25,0.75);
+    -webkit-box-shadow: 0px 0px 10px 3px rgba(245, 125, 25, 0.75);
+    -moz-box-shadow: 0px 0px 10px 3px rgba(245, 125, 25, 0.75);
+    box-shadow: 0px 0px 10px 3px rgba(245, 125, 25, 0.75);
     opacity: 1;
     color: transparent;
     text-transform: none;
     transition: background .25s ease-out;
 }
+
+.form-group {
+    position: relative;
+}
+
+.form-group div.font-special {
+    position: absolute;
+    z-index: 1;
+    font-size: 1.4rem;
+    font-weight: 900;
+    bottom: .35rem;
+    letter-spacing: .25rem;
+    right: 0;
+}
+
+/* ############### about ############### */
+.about-card {
+    cursor: pointer;
+    width: 420px;
+    height: 420px;
+}
+
+.about-header {
+    font-family: 'Amatic SC', cursive;
+    text-align: center;
+    background-color: transparent;
+    padding: 5rem 0 5rem 0;
+}
+
+.about-container {
+    margin: auto 5% auto 5%;
+}
+
+.about-card-title {
+    font-family: 'Amatic SC', cursive;
+    font-size: 3rem;
+}
+
+.about-card-body p {
+    font-size: 1.5rem;
+    padding-top: 1.2rem;
+}
+
+.about-card-body {
+    background-image: linear-gradient(to top, #d5d4d0 0%, #d5d4d0 1%, #eeeeec 31%, #efeeec 75%, #e9e9e7 100%);
+    padding: 3rem 1rem 1.5rem 1rem;
+}
+
+.about-icons2 {
+    width: 4rem;
+    height: 4rem;
+    padding: 1rem;
+}
+
+.about-card-footer img.about-icons2:hover {
+    background-color: #F57D19;
+    width: 4.5rem;
+    height: 4.5rem;
+    transition: .2s ease-in-out;
+}
+
+/*#############functionality-more########*/
+
+.functionality-more {
+    margin-bottom: 4rem;
+}
+
+.functionality-more-header {
+    font-family: 'Amatic SC', cursive;
+    text-align: center;
+    background-color: transparent;
+    padding: 5rem 0 5rem 0;
+}
+
+.functionality-more-item-1 .caption {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
+.functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-7, .functinality-more-text-8 {
+    font-family: 'Amatic SC', cursive;
+    font-size: 3rem;
+    margin: 2rem 0 0 2rem;
+    text-decoration: solid;
+    text-align: center;
+}
+
+.functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4 {
+    color: #EFF0F0;
+    line-height: 1rem;
+}
+
+.functinality-more-text-5, .functinality-more-text-8 {
+    color: #EFF0F0;
+    line-height: 1.5rem;
+}
+
+.functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-7 {
+    color: #001401;
+    line-height: 1rem;
+}
+
+.caption-content {
+    margin-top: 3rem;
+}
+
+.functionality-more-caption-1 {
+    margin-left: 4.9rem;
+}
+
+/* ############### go to top button ############### */
+
+.go-to-top-button {
+    cursor: pointer;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background-color: #FC7700;
+    text-align: center;
+    position: fixed;
+    bottom: 50px;
+    right: 25px;
+    z-index: 1;
+    transition: background-color .8s, opacity 2s, visibility 1.5s;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.go-to-top-button::after {
+    font-family: FontAwesome;
+    content: '\f062';
+    font-size: 40px;
+    line-height: 65px;
+    color: #FEEDDF;
+}
+
+.go-to-top-button:hover {
+    background-color: #001401;
+    text-decoration: none;
+}
+
+.go-to-top-button:active {
+    background-color: #FEEDDF;
+}
+
+.go-to-top-button.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/*############### footer ###############*/
 
 footer {
     margin-top: 3rem;
@@ -326,106 +540,41 @@ a.phone-action:hover {
     color: #FEEDDF;
 }
 
-/* ############### about ############### */
-
-
-.about-header {
-    font-family: 'Amatic SC', cursive;
-    text-align: center;
-    background-color: transparent;
-    padding: 5rem 0 5rem 0;
-}
-
-.about-container {
-    margin: auto 5% auto 5%;
-}
-
-.about-card-title {
-    font-family: 'Amatic SC', cursive;
-    font-size: 3rem;
-}
-
-.about-card-body p {
-    font-size: 1.5rem;
-    padding-top: 1.2rem;
-}
-
-.about-card-body {
-    opacity: 0.5;
-    background-image: linear-gradient(to top, #d5d4d0 0%, #d5d4d0 1%, #eeeeec 31%, #efeeec 75%, #e9e9e7 100%);
-    padding: 3rem 1rem 1.5rem 1rem;
-    height: 400px;
-}
-
-.about-icons2 {
-    width: 4rem;
-    height: 4rem;
-    padding: 1rem;
-}
-
-.about-card-footer img.about-icons2:hover {
-    background-color: #F57D19;
-    width: 4.5rem;
-    height: 4.5rem;
-    transition:.2s ease-in-out;
-}
-
-/*#############functionality-more########*/
-
-.functionality-more {
-    margin-bottom: 4rem;
-}
-
-.functionality-more-header {
-    font-family: 'Amatic SC', cursive;
-    text-align: center;
-    background-color: transparent;
-    padding: 5rem 0 5rem 0;
-}
-
-.functionality-more-item-1 .caption {
-    display: flex;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    z-index: 1;
-}
-
-.functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
-.functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7, .functinality-more-text-8 {
-    font-family: 'Amatic SC', cursive;
-    font-size: 3rem;
-    margin: 2rem 0 0 2rem;
-    text-decoration: solid;
-    text-align: center;
-}
-
-.functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4 {
-    color: #EFF0F0;
-    line-height: 1rem;
-}
-
-.functinality-more-text-5, .functinality-more-text-8 {
-    color: #EFF0F0;
-    line-height: 1.5rem;
-}
-
-.functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7 {
-    color: #001401;
-    line-height: 1rem;
-}
-
-.caption-content {
-     margin-top: 3rem;
-}
-
-.functionality-more-caption-1 {
-    margin-left: 4.9rem;
-}
-
 /*############### media ###############*/
+
+/*********************************************************************************/
+/*do 1859 px*/
+/*********************************************************************************/
+@media (max-width: 1859px) {
+
+    .about-card {
+        width: 380px;
+        height: 380px;
+    }
+}
+
+/*********************************************************************************/
+/*do 1629 px*/
+/*********************************************************************************/
+@media (max-width: 1629px) {
+
+    .about-card {
+        width: 330px;
+        height: 330px;
+    }
+
+    .about-card-body {
+        padding: 0.5rem;
+    }
+
+    .about-icons2 {
+        width: 2.5rem;
+        height: 2.5rem;
+        padding: 0.2rem;
+    }
+
+
+}
 
 /*********************************************************************************/
 /*do 1470 px*/
@@ -434,23 +583,49 @@ a.phone-action:hover {
 @media (max-width: 1470px) {
 
     .about-card-body {
-        padding: 2rem 1rem 1.2rem 1rem;
+        padding: 1rem;
+    }
+
+    .about-card-title {
+        font-size: 2rem;
+    }
+
+    .about-card-body-title {
+        font-size: 1.2rem;
     }
 
     .about-card-body p {
-        padding-top: 0.5rem;
+        padding-top: 0.2rem;
+        font-size: 1rem;
     }
 
     .about-icons2 {
-        width: 3rem;
-        height: 3rem;
+        width: 2.5rem;
+        height: 2.5rem;
         padding: 0.5rem;
     }
 
-    .about-card-footer img.about-icons2:hover {
-        width: 3.5rem;
-        height: 3.5rem;
+    .about-card {
+        width: 270px;
+        height: 270px;
     }
+
+
+    .about-card-footer img.about-icons2:hover {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .caption-content {
+        margin-top: 3rem;
+    }
+
+    .form-group div.font-special {
+        font-size: 1.4rem;
+        bottom: .35rem;
+        letter-spacing: .2rem;
+    }
+
 }
 
 /*********************************************************************************/
@@ -458,6 +633,30 @@ a.phone-action:hover {
 /*********************************************************************************/
 
 @media (max-width: 1199px) {
+
+    .carousel-item-1 {
+        background: linear-gradient(
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3)
+        ), url(img/intoduction.jpg) no-repeat center center;
+        background-size: cover;
+    }
+
+    .carousel-item-2 {
+        background: linear-gradient(
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3)
+        ), url(img/intoduction2.jpg) no-repeat center center;
+        background-size: cover;
+    }
+
+    .carousel-item-3 {
+        background: linear-gradient(
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3)
+        ), url(img/intoduction3.jpg) no-repeat center center;
+        background-size: cover;
+    }
 
     .functionality-card-body {
         height: auto;
@@ -467,14 +666,41 @@ a.phone-action:hover {
         width: 45%;
     }
 
+    .about-card {
+        width: 450px;
+        height: 450px;
+    }
+
+
+    .about-card-title {
+        font-size: 3rem;
+    }
+
+    .about-card-body p {
+        font-size: 1.5rem;
+        padding-top: 1.2rem;
+    }
+
+
+    .about-icons2 {
+        width: 4rem;
+        height: 4rem;
+        padding: 1rem;
+    }
+
+    .caption-content {
+        margin-top: 3rem;
+    }
+
     .functionality-more-caption-1 {
         margin-left: 3.5rem;
     }
 
     .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
-    .functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7, .functinality-more-text-8 {
+    .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-7, .functinality-more-text-8 {
         font-size: 2.5rem;
     }
+
     .functinality-more-text-1 {
         margin: 1.2rem 0 0 2rem;
         line-height: 2rem;
@@ -490,7 +716,7 @@ a.phone-action:hover {
         line-height: 2.2rem;
     }
 
-    .functinality-more-text-2, .functinality-more-text-3,.functinality-more-text-6, .functinality-more-text-8 {
+    .functinality-more-text-2, .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-8 {
         margin: 1rem 0 0 2rem;
         line-height: 2rem;
     }
@@ -500,26 +726,42 @@ a.phone-action:hover {
         line-height: 1.8rem;
     }
 
-/*********************************************************************************/
-/*do 991 px - large*/
-/*********************************************************************************/
+    .form-group div.font-special {
+        font-size: 1.35rem;
+        bottom: .4rem;
+        letter-spacing: .2rem;
+    }
+}
 
-@media (max-width: 991px) {
+/*********************************************************************************/
+/*do 992 px - tablet*/
+/*********************************************************************************/
+@media (min-width: 768px) and (max-width: 992px) {
 
-    .navbar-brand{
-        height: 48px;
-        width: 124px;
+    .navbar-brand {
+        height: 53px;
+        width: 136px;
     }
 
     .nav-link {
-        padding: 0 .9rem !important;
-        font-size: 1.3rem;
+        padding: 0 .3rem !important;
+        font-size: 1.03rem !important;
     }
 
     .nav-link:hover {
-        padding: 0 .9rem !important;
-        font-size: 1.3rem;
+        padding: 0 .3rem !important;
+        font-size: 1.03rem !important;
     }
+
+    .go-to-top-button {
+        bottom: 25px;
+    }
+}
+
+/*********************************************************************************/
+/*do 991 px - large*/
+/*********************************************************************************/
+@media (max-width: 991px) {
 
     .functionality {
         margin-right: 1%;
@@ -538,14 +780,24 @@ a.phone-action:hover {
         font-size: 1.7rem;
     }
 
+    .caption-content {
+        margin-top: 3rem;
+    }
+
+    .about-card {
+        width: 350px;
+        height: 350px;
+    }
+
     .functionality-more-caption-1 {
         margin-left: 6.5rem;
     }
 
     .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
-    .functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7, .functinality-more-text-8 {
+    .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-7, .functinality-more-text-8 {
         font-size: 4rem;
     }
+
     .functinality-more-text-1 {
         margin: 2rem 0 0 2rem;
         line-height: 4rem;
@@ -561,13 +813,13 @@ a.phone-action:hover {
         line-height: 5rem;
     }
 
-    .functinality-more-text-2, .functinality-more-text-3,.functinality-more-text-6 {
+    .functinality-more-text-2, .functinality-more-text-3, .functinality-more-text-6 {
         margin: 1rem 0 0 2rem;
         line-height: 3.8rem;
     }
 
     .functinality-more-text-7 {
-        margin: 0.4rem 0 0 2rem ;
+        margin: 0.4rem 0 0 2rem;
         line-height: 3.7rem;
     }
 
@@ -577,62 +829,10 @@ a.phone-action:hover {
     }
 }
 
-
-/*********************************************************************************/
-/*do 768 px - tablet*/
-/*********************************************************************************/
-
-@media (min-width: 768px) and (max-width: 992px){
-
-    .navbar-brand{
-        height: 48px;
-        width: 124px;
-    }
-
-    .nav-link {
-        padding: 0 .5rem !important;
-        font-size: 1.09rem;
-    }
-
-    .nav-link:hover {
-        padding: 0 .5rem !important;
-        font-size: 1.09rem;
-    }
-}
-
 /*********************************************************************************/
 /*do 767 px - tablet*/
 /*********************************************************************************/
-
 @media (max-width: 767px) {
-
-    .navbar-nav{
-        margin-top: 0.5rem;
-        padding-top: 0.7rem;
-        border-top: 1px solid gray;
-    }
-
-    .nav-item:nth-child(even){
-        background-color: #E5E5E5;
-    }
-
-    .nav-link{
-        line-height: 2.3rem;
-        font-size: 1.6rem;
-    }
-
-    .nav-link:hover {
-        line-height: 2.3rem;
-        font-size: 1.6rem;
-    }
-
-}
-/*********************************************************************************/
-/*do 768 px - tablet*/
-/*********************************************************************************/
-
-@media (max-width: 768px) {
-
 
     .carousel-height {
         height: 900px;
@@ -645,6 +845,11 @@ a.phone-action:hover {
 
     .form-field {
         margin-bottom: 50px;
+    }
+
+    .about-card {
+        width: 400px;
+        height: 400px;
     }
 
     .functionality-card-body {
@@ -673,48 +878,42 @@ a.phone-action:hover {
     }
 
     .caption-content {
-        margin-top: 6rem;
+        margin-top: 3rem;
     }
 
-   .functionality-more-caption-1 {
-        margin-left: 10rem;
+    .functionality-more-caption-1 {
+        margin-left: 5.5rem;
     }
 
     .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
-    .functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7, .functinality-more-text-8 {
+    .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-7, .functinality-more-text-8 {
         font-size: 3rem;
     }
 
     .functinality-more-text-1 {
         margin: 1rem 0 0 2rem;
-        line-height: 2rem;
+        line-height: 3rem;
     }
 
     .functinality-more-text-4 {
         margin: 0.2rem 0 0 2rem;
-        line-height: 2.4rem;
-    }
-    .functinality-more-text-5 {
-        margin: 1rem 0 0 3rem;
-        line-height: 4rem;
+        line-height: 3rem;
     }
 
-    .functinality-more-text-2, .functinality-more-text-3,.functinality-more-text-6, .functinality-more-text-8  {
+    .functinality-more-text-5 {
+        margin: 1rem 0 0 3rem;
+        line-height: 3rem;
+    }
+
+    .functinality-more-text-2, .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-8 {
         margin: 1rem 0 0 2rem;
         line-height: 3rem;
     }
 
     .functinality-more-text-7 {
         margin: 0.4rem 0 0 2rem;
-        line-height: 2.4rem;
+        line-height: 3rem;
     }
-}
-
-/*********************************************************************************/
-/*do 767 px - tablet*/
-/*********************************************************************************/
-
-@media (max-width: 767px) {
 
     .navbar-nav {
         margin-top: 0.5rem;
@@ -735,25 +934,40 @@ a.phone-action:hover {
         line-height: 2.3rem;
         font-size: 1.6rem;
     }
+
+    .cookie-button {
+        background-color: ORANGE;
+        float: left;
+        font-size: 1rem;
+        margin-right: 1rem;
+        color: #EFF0F0;
+    }
+
+    #cookie-warn p {
+        font-size: 1rem;
+    }
+
+    .symbolX {
+        font-size: 1rem;
+    }
 }
 
 /*********************************************************************************/
 /*do 576 px - smartphone*/
 /*********************************************************************************/
-
 @media (max-width: 576px) {
 
-    .navbar-nav{
+    .navbar-nav {
         margin-top: 0.5rem;
         padding-top: 0.6rem;
         border-top: 1px solid gray;
     }
 
-    .nav-item:nth-child(even){
+    .nav-item:nth-child(even) {
         background-color: #E5E5E5;
     }
 
-    .nav-link{
+    .nav-link {
         line-height: 2.1rem;
         font-size: 1.4rem;
     }
@@ -778,6 +992,16 @@ a.phone-action:hover {
 
     .contact .font-special {
         font-size: 2.75rem;
+    }
+
+    .form-control {
+        font-size: .9rem;
+    }
+
+    .form-group div.font-special {
+        font-size: 1.2rem;
+        bottom: .55rem;
+        letter-spacing: .2rem;
     }
 
     .footer-text p {
@@ -816,6 +1040,7 @@ a.phone-action:hover {
     .functionality-card-title {
         font-size: 2.5rem;
     }
+
     .functionality-button {
         width: 80%;
     }
@@ -824,12 +1049,16 @@ a.phone-action:hover {
         font-size: 1.7rem;
     }
 
-   .functionality-more-caption-1 {
+    .caption-content {
+        margin-top: 3rem;
+    }
+
+    .functionality-more-caption-1 {
         margin-left: 4.2rem;
     }
 
     .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
-    .functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7, .functinality-more-text-8 {
+    .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-7, .functinality-more-text-8 {
         font-size: 3rem;
         line-height: 2rem;
     }
@@ -847,7 +1076,7 @@ a.phone-action:hover {
         line-height: 3rem;
     }
 
-    .functinality-more-text-2, .functinality-more-text-3,.functinality-more-text-6 {
+    .functinality-more-text-2, .functinality-more-text-3, .functinality-more-text-6 {
         margin: 1rem 0 0 2rem;
     }
 
@@ -858,63 +1087,95 @@ a.phone-action:hover {
     .functinality-more-text-8 {
         margin: 1.4rem 0 0 2rem;
     }
+
+    .cookie-button {
+        background-color: ORANGE;
+        float: left;
+        font-size: 1rem;
+        margin-right: 1rem;
+        margin-bottom:0.7rem;
+        color: #EFF0F0;
+    }
+    #cookie-warn p {
+        font-size: 1rem;
+    }
+
+    .symbolX {
+        font-size: 1rem;
+    }
 }
 
 /*********************************************************************************/
 /*do 541 px*/
 /*********************************************************************************/
-
 @media (max-width: 541px) {
+
+    .caption-content {
+        margin-top: 1rem;
+    }
+
     .functionality-more-caption-1 {
-        margin-left: 5rem;
+        margin-left: 3rem;
     }
 
     .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
-    .functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7, .functinality-more-text-8 {
+    .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-7, .functinality-more-text-8 {
         font-size: 2.5rem;
-        line-height: 2rem;
+        line-height: 2.6rem;
     }
 
     .functinality-more-text-4, .functinality-more-text-7 {
         margin: 0 0 0 2rem;
-        line-height: 2.5rem;
     }
 
     .functinality-more-text-5 {
         margin: 0.5rem 0 0 2.2rem;
     }
 
-    .functinality-more-text-1,.functinality-more-text-2, .functinality-more-text-3,.functinality-more-text-6 {
+    .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-3, .functinality-more-text-6 {
         margin: 0.5rem 0 0 2rem;
     }
 
     .functinality-more-text-8 {
         margin: 0.5rem 0 0 2rem;
     }
+
+    .cookie-button {
+        background-color: ORANGE;
+        float: left;
+        font-size: 0.8rem;
+        margin-right: 1rem;
+        margin-bottom:0.7rem;
+        color: #EFF0F0;
+    }
+
+    #cookie-warn p {
+        font-size: 1rem;
+    }
+
 }
 
 /*********************************************************************************/
 /*350px do 400 px - small smartphone*/
 /*********************************************************************************/
-
 @media (max-width: 400px) {
 
-    .navbar-nav{
+    .navbar-nav {
         margin-top: 0.5rem;
         padding-top: 0.5rem;
         border-top: 1px solid gray;
     }
 
-    .navbar-brand{
-        height: 40px;
-        width: 105px;
+    .navbar-brand {
+        height: 53px;
+        width: 136px;
     }
 
-    .nav-item:nth-child(even){
+    .nav-item:nth-child(even) {
         background-color: #E5E5E5;
     }
 
-    .nav-link{
+    .nav-link {
         line-height: 2rem;
         font-size: 1.2rem;
     }
@@ -934,6 +1195,16 @@ a.phone-action:hover {
 
     .contact .font-special {
         font-size: 2.5rem;
+    }
+
+    .form-control {
+        font-size: .9rem;
+    }
+
+    .form-group div.font-special {
+        font-size: 1.2rem;
+        bottom: .55rem;
+        letter-spacing: .2rem;
     }
 
     .footer-text p {
@@ -983,58 +1254,84 @@ a.phone-action:hover {
         padding: 1rem;
     }
 
+    .caption-content {
+        margin-top: 1.2rem;
+    }
+
     .functionality-more-caption-1 {
-        margin-left: 3.6rem;
+        margin-left: 2rem;
     }
 
     .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
-    .functinality-more-text-3,.functinality-more-text-6,.functinality-more-text-7, .functinality-more-text-8 {
-        font-size: 1.8rem;
+    .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-7, .functinality-more-text-8 {
+        font-size: 2rem;
     }
 
     .functinality-more-text-1 {
         margin: 0 0 0 1.5rem;
-        line-height: 1.7rem;
+        line-height: 2rem;
     }
 
-    .functinality-more-text-2, .functinality-more-text-5,   .functinality-more-text-3,.functinality-more-text-6, .functinality-more-text-8 {
+    .functinality-more-text-2, .functinality-more-text-5, .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-8 {
         margin: 1rem 0 0 2rem;
-        line-height: 1rem;
+        line-height: 1.5rem;
     }
 
     .functinality-more-text-4 {
-        margin: 0.2rem 0 0 2rem ;
+        margin: 0.2rem 0 0 2rem;
         line-height: 1.8rem;
     }
 
     .functinality-more-text-7 {
         margin: 0 0 0 2rem;
-        line-height: 1.8rem;
+        line-height: 2.2rem;
     }
+
+    .go-to-top-button {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .cookie-button {
+        background-color: ORANGE;
+        float: left;
+        font-size: 0.8rem;
+        margin-right: 1rem;
+        margin-bottom:0.7rem;
+        color: #EFF0F0;
+    }
+
+    #cookie-warn p {
+        font-size: 0.8rem;
+    }
+
 }
 
 /*********************************************************************************/
 /*320px do 350 px - extra small smartphone*/
 /*********************************************************************************/
-
 @media (max-width: 350px) {
 
-    .navbar-nav{
+    .contact.container {
+        padding-top: 5px;
+    }
+
+    .navbar-nav {
         margin-top: 0.5rem;
         padding-top: 0.5rem;
         border-top: 1px solid gray;
     }
 
-    .navbar-brand{
-        height: 40px;
-        width: 105px;
+    .navbar-brand {
+        height: 53px;
+        width: 136px;
     }
 
-    .nav-item:nth-child(even){
+    .nav-item:nth-child(even) {
         background-color: #E5E5E5;
     }
 
-    .nav-link{
+    .nav-link {
         line-height: 1.9rem;
         font-size: 1.2rem;
     }
@@ -1054,6 +1351,16 @@ a.phone-action:hover {
 
     .contact .font-special {
         font-size: 2.25rem;
+    }
+
+    .form-control {
+        font-size: .8rem;
+    }
+
+    .form-group div.font-special {
+        font-size: 1rem;
+        bottom: .55rem;
+        letter-spacing: .2rem;
     }
 
     .footer-text p {
@@ -1119,17 +1426,17 @@ a.phone-action:hover {
     }
 
     .caption-content {
-        margin-top: 2rem;
+        margin-top: 1.5rem;
     }
 
     .functionality-more-caption-1 {
-        margin-left: 3rem;
+        margin-left: 4rem;
     }
 
     .functinality-more-text-1, .functinality-more-text-2, .functinality-more-text-4, .functinality-more-text-5,
     .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-7, .functinality-more-text-8 {
         font-size: 1.6rem;
-        line-height: 1.7rem;
+        line-height: 1.8rem;
     }
 
     .functinality-more-text-1 {
@@ -1137,7 +1444,7 @@ a.phone-action:hover {
         line-height: 2rem;
     }
 
-    .functinality-more-text-2,.functinality-more-text-5, .functinality-more-text-3,.functinality-more-text-6, .functinality-more-text-8 {
+    .functinality-more-text-2, .functinality-more-text-5, .functinality-more-text-3, .functinality-more-text-6, .functinality-more-text-8 {
         margin: 0rem 0 0 2rem;
     }
 
@@ -1148,7 +1455,27 @@ a.phone-action:hover {
     .functinality-more-text-7 {
         margin: 0 0 0 1.4rem;
     }
+
+    .go-to-top-button {
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .cookie-button {
+        background-color: ORANGE;
+        float: left;
+        font-size: 0.8rem;
+        margin-right: 1rem;
+        margin-bottom:0.7rem;
+        color: #EFF0F0;
+    }
+
+    #cookie-warn p {
+        font-size: 0.8rem;
+    }
+
 }
+
 
 
 
