@@ -8,7 +8,6 @@ function gameStart() {
     const $playerWidth = parseInt($player.css('width'));
     const $playerHeight = parseInt($player.css('height'));
 
-
 //***************TIMER********************
 
 
@@ -63,7 +62,7 @@ function gameStart() {
 
         //PAUSE+TIMER
         let timePause = 0;
-        let runningTime = 1;
+        let runningTime = true;
 
         //MAP
         mapObjectTable = Array
@@ -106,15 +105,15 @@ function gameStart() {
 
         //TIMER(PAUSE)
         document.getElementById('startPause').onclick = function startPause() {
-            if (runningTime === 1) {
-                runningTime = 0;
+            if (runningTime) {
+                runningTime = false;
                 incrementTime();
                 togglePause();
                 miniMonstersAnimation();
                 document.getElementById("startPause").innerHTML = "Resume";
             }
             else {
-                runningTime = 1;
+                runningTime = true;
                 incrementTime();
                 togglePause();
                 miniMonstersAnimation();
@@ -123,7 +122,7 @@ function gameStart() {
         };
 
         function incrementTime() {
-            if (runningTime === 1) {
+            if (runningTime === true) {
                 setTimeout(function () {
                     timePause++;
                     let minutes = Math.floor(timePause / 10 / 60);
@@ -190,6 +189,8 @@ function gameStart() {
             if (event.code === 'KeyP') {
                 togglePause();
                 miniMonstersAnimation();
+                runningTime = !runningTime;
+                incrementTime();
             }
         });
 
