@@ -9,6 +9,8 @@ function gameStart() {
     const $playerHeight = parseInt($player.css('height'));
 
 
+
+
 //***************TIMER********************
 
 
