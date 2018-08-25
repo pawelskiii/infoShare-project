@@ -1,4 +1,4 @@
-function gameStart() {
+function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount, difficulty) {
     const sectionWidth = 350;
     const $map = $('.map');
     const $player = $('#player');
@@ -8,20 +8,11 @@ function gameStart() {
     const $playerWidth = parseInt($player.css('width'));
     const $playerHeight = parseInt($player.css('height'));
 
-//***************TIMER********************
-
-
-    (function () {
-
-
-    })();
-
 //***************MAP GENERATOR + PLAYER********************
     (function () {
         //MAP
         const obstacleWidth = 80;
         const obstacleMinHeight = 60;
-        const randomizer = 0.3;
         const obstaclePositions = [];
         let mapObjectTable;
         let currentObstacleHeight = 0;
@@ -40,11 +31,9 @@ function gameStart() {
         let playerPositionX = 0;
         let playerPositionY = 0;
         let playerSpeedX = 0;
-        let maxPlayerSpeedX = 0.4;
         let playerSpeedY = 0;
         let playerAccelerationX = 0.0005;
         let playerAccelerationY = 0.0015;
-        let nitroMultiplication = 1.4;
         let nitroPressed = false;
         let keyPressed = '';
         let keyPressedJump = '';
@@ -57,7 +46,6 @@ function gameStart() {
         let shotAcceleration = 0.8;
         let shotArray = [];
         let shotNumber = 0;
-        let shotAmount = 30;
         let shottoCarrottoArray = [];
 
         //PAUSE+TIMER
@@ -440,7 +428,6 @@ function gameStart() {
                             positionX: miniMonsterRemovalX,
                             positionY: miniMonsterRemovalY
                         });
-                        console.log(shottoCarrottoArray);
                         clearInterval(wingsAnimation);
                         clearInterval(flyAnimation);
                         miniMonstersAnimation();
@@ -458,7 +445,7 @@ function gameStart() {
             player.style.left = playerPositionX + 'px';
             player.style.bottom = playerPositionY + 'px';
 
-            miniMonsterArray.forEach((miniMonster, miniMonsterIndex) => {
+            miniMonsterArray.forEach((miniMonster) => {
                 let miniMonsterRemovalX = parseInt(miniMonster.style.left);
                 let miniMonsterRemovalY = parseInt(miniMonster.style.bottom);
                 if ((playerPositionX + $playerWidth >= miniMonsterRemovalX)
@@ -467,7 +454,10 @@ function gameStart() {
                     && (playerPositionY <= miniMonsterRemovalY + 70)) {
 
                     if (time - bulletTime >= 500 && document.getElementsByClassName('bullet').length !== 0) {
-                        // console.log(document.getElementsByClassName('bullet'));
+                        if (difficulty = 'hard' && document.getElementsByClassName('bullet').length !== 1) {
+                            document.getElementsByClassName('bullet')[0].remove();
+                            shotAmount--;
+                        }
                         document.getElementsByClassName('bullet')[0].remove();
                         shotAmount--;
                         bulletTime = Date.now();
@@ -627,8 +617,21 @@ function gameStart() {
 
 (function () {
     $('.start-button').click(function () {
+        let isChecked = $('[value="hard"]').is(':checked');
+        let randomizer = .3;
+        let maxPlayerSpeedX = .4;
+        let nitroMultiplication = 1.4;
+        let shotAmount = 30;
+        let difficulty = 'easy';
+            if (isChecked) {
+                randomizer = .45;
+                maxPlayerSpeedX = .6;
+                nitroMultiplication = 1.7;
+                shotAmount = 20;
+                difficulty = 'hard';
+        }
         $(this).addClass('start-clicked');
         $('.starting-box').addClass('game-start');
-        gameStart();
+        gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount, difficulty);
     });
 })();
