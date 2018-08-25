@@ -84,14 +84,14 @@ const $playerHeight = parseInt($player.css('height'));
     update();
 
     //PLAYER
-/*setInterval(() => {
+setInterval(() => {
             $('.monster').animate({
                 top: "-=100px"
             }, 800);
             $('.monster').animate({
-                top: "+=100px"
+                 top: "+=100px"
             }, 800);
-},1600)*/
+},1600)
 
     window.addEventListener('keydown', function (event) {
         if (event.code === moveRight || event.code === moveLeft) {
@@ -156,7 +156,7 @@ const $playerHeight = parseInt($player.css('height'));
                 shotIndex: shotNumber,
                 shotTime: Date.now(),
                 shotPosition: $playerWidth + parseInt($('#player').css('left')),
-                shotTopPosition: parseInt($player.css('top')) + $playerHeight/2
+                shotBottomPosition: parseInt($player.css('bottom')) + $playerHeight/2
             });
             $('.game-information div:last').remove();
             shotAmount--;
@@ -314,13 +314,39 @@ const $playerHeight = parseInt($player.css('height'));
        /* console.log(playerLifePoints)
         console.log(monsterLifePoints)*/
 
+        /*miniMonsterArray.forEach((miniMonster) => {
+            let miniMonsterRemovalX = parseInt(miniMonster.style.left);
+            let miniMonsterRemovalY = parseInt(miniMonster.style.bottom);
+            if ((playerPositionX + $playerWidth >= miniMonsterRemovalX)
+                && (playerPositionX <= miniMonsterRemovalX + 70)
+                && (playerPositionY + $playerHeight - 30 >= miniMonsterRemovalY)
+                && (playerPositionY <= miniMonsterRemovalY + 70)) {
+
+                if (time - bulletTime >= 500 && document.getElementsByClassName('bullet').length !== 0) {
+                    if (difficulty = 'hard' && document.getElementsByClassName('bullet').length !== 1) {
+                        document.getElementsByClassName('bullet')[0].remove();
+                        shotAmount--;
+                    }
+                    document.getElementsByClassName('bullet')[0].remove();
+                    shotAmount--;
+                    bulletTime = Date.now();
+                }
+
+
+            }
+        });*/
+
         monsterShotArray.forEach((el, index) => {
             let timeOfMonsterShooting = time - el.shotTime;
+            let positionBottomMegaShotMonster = parseInt(document.getElementsByClassName('monster__shot')[index].style.bottom);
             monsterShotPositionX = el.shotPosition - shotSpeedX - timeOfMonsterShooting * shotAcceleration + 'px';
             document.getElementsByClassName('monster__shot')[index].style.left = monsterShotPositionX;
 
 
-                if ((parseInt(monsterShotPositionX) < parseInt(playerPositionX)+ $playerWidth) && (parseInt(monsterShotPositionX) > (parseInt(playerPositionX)))  && ($('.monster__shot').css('top')>$player.css('top'))  && (($('.monster__shot').css('top') > ($player.css('top')+$playerHeight)))) {
+                if ((parseInt(monsterShotPositionX) < parseInt(playerPositionX)+ $playerWidth)
+                    && (parseInt(monsterShotPositionX)-18 > parseInt(playerPositionX))
+                    && (positionBottomMegaShotMonster < playerPositionY + $playerHeight)
+                    && (positionBottomMegaShotMonster + 18 > playerPositionY )){
                     document.getElementById('player__life').value-=5;
                     monsterShotArray.splice(index, 1);
                     document.getElementsByClassName('monster__shot')[index].remove()
@@ -330,14 +356,24 @@ const $playerHeight = parseInt($player.css('height'));
                 document.getElementsByClassName('monster__shot')[index].remove();
             }
         })
+        let positionBottomMegaMonster = document.getElementsByClassName('monster')[0].getBoundingClientRect().top;
+
+
 
         shotArray.forEach((el, index) => {
             let timeOfShooting = time - el.shotTime;
+            let positionBottomMegaShotPlayer = parseInt(document.getElementsByClassName('shot')[index].getBoundingClientRect().top);
+
+
             shotPositionX = el.shotPosition + shotSpeedX + timeOfShooting * shotAcceleration + 'px';
             document.getElementsByClassName('shot')[index].style.left = shotPositionX;
 
+// console.log(positionBottomMegaShotPlayer, positionBottomMegaMonster)
+            if ((parseInt(shotPositionX) + 50 > parseInt($('.monster').css('left')))
+                && (parseInt(shotPositionX) < monsterPositionX + 116)
+                && (positionBottomMegaShotPlayer < positionBottomMegaMonster + 105)
+                && (positionBottomMegaShotPlayer + 16 > positionBottomMegaMonster))  {
 
-            if (parseInt(shotPositionX) > parseInt($('.monster').css('left')) && Math.abs(parseInt($('.monster').css('top'))- el.shotTopPosition) < $playerHeight/2)  {
                 document.getElementById('monster__life').value-=5;
                 shotArray.splice(index, 1);
                 document.getElementsByClassName('shot')[index].remove()
@@ -353,13 +389,13 @@ const $playerHeight = parseInt($player.css('height'));
                     monsterShotArray.push({
                         shotTime: Date.now(),
                         shotPosition: parseInt($('.monster').css('left')),
-                        shotTopPosition: parseInt($('.monster').css('top')) + parseInt($('.monster').css('height'))/2
+                        shotBottomPosition: parseInt($('.monster').css('bottom')) + parseInt($('.monster').css('height'))/2
                     });
                     $('.map').append($('<div>')
                         .addClass('monster__shot')
                         .css({
                             "left": parseInt($('.monster').css('left')) - monsterShotPositionX,
-                            "top": parseInt($('.monster').css('top')) + parseInt($('.monster').css('height'))/2
+                            "bottom": parseInt($('.monster').css('bottom')) + parseInt($('.monster').css('height'))/2
                         }))
                 }, 1000);
                 isFiring = true;
