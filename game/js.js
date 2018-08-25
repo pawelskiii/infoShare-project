@@ -8,11 +8,7 @@ function gameStart() {
     const $playerWidth = parseInt($player.css('width'));
     const $playerHeight = parseInt($player.css('height'));
 
-
-
-
 //***************TIMER********************
-
 
     (function() {
         let time = 0;
