@@ -88,17 +88,21 @@
 
 .center-box {
     position: relative;
+    margin: 0 auto;
+    background: url("img/frame.png") 50% 50% no-repeat;
+    background-size: 104.9% 98%;
+    height: 800px;
+    width: 1200px;
 }
 
 .window {
     position: absolute;
+    margin-top: 63px;
+    margin-left: 52px;
     box-sizing: border-box;
     height: 700px;
     width: 1100px;
-    border: 2px solid greenyellow;
     overflow: hidden;
-    left: 50%;
-    transform: translate(-50%, 10%);
 }
 
 .game-information {
@@ -359,7 +363,6 @@
     box-sizing: border-box;
     height: 236px;
     width: 1100px;
-    border: 2px solid black;
     position: relative;
     display: flex;
     z-index: 300;
