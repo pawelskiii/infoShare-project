@@ -120,8 +120,8 @@
 
 .starting-box {
     position: absolute;
-    background-color: #D0E5F2;
-    border: 1px solid #DDD;
+    background-color: #EFF0F0;
+    border: 1px solid #F57D19;
     border-radius: 50px;
     width: 650px;
     height: 200px;
@@ -142,7 +142,7 @@
     letter-spacing: 0.2rem;
 }
 
-.text-label {
+.nick-select {
     position: absolute;
     top: 30px;
     left: 60px;
@@ -173,6 +173,19 @@
 .text-input:focus {
     background-color: #F7F7F7;
     outline: none;
+}
+
+.level-select {
+    position: absolute;
+    top: 30px;
+    left: 380px;
+}
+
+.radio-button {
+    position: relative;
+    top: -2px;
+    width: 30px;
+    height: 20px;
 }
 
 .starting-menu-buttons {
@@ -352,6 +365,7 @@
 
 #timer {
     display: flex;
+    align-items: center;
     width: 130px;
     height: 100px;
     background-color: darkorange;
@@ -361,4 +375,3 @@
     font-weight: 300;
     font-size: 2rem;
 }
-
