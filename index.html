@@ -466,7 +466,7 @@
     </div>
     <div class="row">
         <div class="col-md-8">
-            <form class="form-field">
+            <form class="form-field" action="game/index.html">
                 <div class="form-group">
                     <input type="text" class="form-control form-name font-normal" placeholder="Twoje imię..."
                            data-langplaceholder="Your name..." required
@@ -490,7 +490,7 @@
                           placeholder="Twoja wiadomość (opcjonalnie)..."
                           data-langplaceholder="Your message (optional)..."></textarea>
                 </div>
-                <button class="main-button text-button logo-button" data-lang="SEND">WYŚLIJ</button>
+                <button class="main-button text-button logo-button" data-lang="SEND" type="submit">WYŚLIJ</button>
             </form>
         </div>
         <div class="col-md-4 font-normal">
@@ -533,6 +533,21 @@
     </div>
 </footer>
 
+
+<div  class="cookies-container-fluid">
+    <div class="row">
+        <div id="cookie-warn" class="col-6 cookies">
+                <span>
+                    <button href="javascript:void(0);" class="cookie-warn-not-ok symbolX">X</button>
+                    <p class="cookie-text"><strong>UWAGA!</strong><br>Nasza Witryna i Aplikacja Mobilna korzystają z plików cookie
+                    <br>w celu dostarczania treści i funkcjonalności,<br>
+                    którymi są zainteresowani użytkownicy.<br> Możesz to zmienić w ustawieniach<br> swojej przeglądarki internetowej.</p>
+                    <button href="javascript:void(0);" class="cookie-warn-not-ok cookie-button">Nie teraz</button>
+                    <button href="javascript:void(0);" id="cookie-warn-ok" class="cookie-button">Akceptuję</button>
+                </span>
+        </div>
+    </div>
+</div>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
             integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
@@ -548,5 +563,6 @@
     <script src="js/smooth-scroll.js"></script>
     <script src="js/go-to-top-button.js"></script>
     <script src="js/about-us-animation.js"></script>
+    <script src="js/cookie.js"></script>
 </body>
 </html>
