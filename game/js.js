@@ -708,3 +708,41 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
 // }
 //
 // explode();
+
+
+//***************RANKING********************
+
+(function showBestScore() {
+
+    $("#ranking-container").hide();
+    let nickName = document.getElementById("nick-name").value;
+    let yourTime = document.getElementById('timer').innerHTML;
+
+    $("#startPause").click (function () {
+        let nickName = document.getElementById("nick-name").value;
+        let yourTime = document.getElementById('timer').innerHTML;
+        let timeList = localStorage.getItem('time', yourTime);
+
+        if(localStorage.getItem('Nick') === null || timeList > yourTime) {
+            let nickNamesList = localStorage.setItem('Nick',nickName);
+            let timeList = localStorage.setItem('time', yourTime);
+            $("#ranking-container").show();
+            let newLine = document.createElement("H1");
+            newLine.innerHTML = ('Pobiłeś rekord! Gratulacje!');
+            $('#ranking-container').append(newLine);
+        }
+
+        let timeListCurrent = localStorage.getItem('time', yourTime);
+        let nickNamesList = localStorage.getItem('Nick',nickName);
+        $("#ranking-container").show();
+        let newLine = document.createElement("H1");
+        newLine.innerHTML = ('Najlepszy czas:');
+        let newLine2 = document.createElement("p");
+        newLine2.innerHTML = (nickNamesList + " " + timeListCurrent);
+        $('#ranking-container').append(newLine);
+        $('#ranking-container').append(newLine2);
+    });
+})();
+
+
+
