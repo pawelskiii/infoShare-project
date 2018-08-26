@@ -43,6 +43,20 @@
     background-size: cover;
 }
 
+.tree1 {
+    position: absolute;
+    background: url(img/tree1.png);
+    background-size: cover;
+    opacity: .8;
+}
+
+.tree2 {
+    position: absolute;
+    background: url(img/tree2.png);
+    background-size: cover;
+    opacity: .8;
+}
+
 .grass {
     position: absolute;
     background: url(img/grass_PNG10853.png) repeat-x;
