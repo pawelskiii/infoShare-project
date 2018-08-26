@@ -22,6 +22,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
         let time = Date.now();
         let bulletTime = Date.now();
         let isRunning = true;
+        let bossDead = false;
 
         //PLAYER
         const player = document.querySelector('#player');
@@ -57,6 +58,12 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
         //PAUSE+TIMER
         let timePause = 0;
         let runningTime = true;
+        let newTimeEasy;
+        let newTimeHard;
+        let playerNameEasy;
+        let playerNameHard;
+        let storedTimeEasy;
+        let storedTimeHard;
 
         //MAP
 
@@ -175,7 +182,44 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
         }
 
         document.querySelector('.music-button').addEventListener('click', toggleMusic);
-        // myAudio.pause();
+
+        let highscoresOn = false;
+        let $ranking = $("#ranking-container");
+        document.querySelector('#highscoresButton').addEventListener('click', function() {
+            $ranking.toggle();
+            if (highscoresOn) {
+                document.querySelector('.highscores-button').style.background = 'url("img/btn/records.png") center center / contain no-repeat';
+                highscoresOn = !highscoresOn;
+            } else {
+                document.querySelector('.highscores-button').style.background = 'url("img/btn/records-checked.png") center center / contain no-repeat';
+                highscoresOn = !highscoresOn;
+            }
+        });
+
+        function highscore() {
+            storedTimeEasy = localStorage.getItem('storedTimeEasy');
+            storedTimeHard = localStorage.getItem('storedTimeHard');
+            playerNameEasy = localStorage.getItem('playerNameEasy');
+            playerNameHard = localStorage.getItem('playerNameHard');
+            if (localStorage.getItem('storedTimeEasy')) {
+                if (newTimeEasy <= storedTimeEasy) {
+                    playerNameEasy = playerName;
+                    localStorage.setItem('storedTimeEasy', newTimeEasy);
+                    localStorage.setItem('playerNameEasy', playerNameEasy)
+                }
+                $('.easy-p')[0].innerText = "Łatwy: " + playerNameEasy + ' - ' + storedTimeEasy;
+            }
+            if (localStorage.getItem('storedTimeHard')) {
+                if (newTimeHard <= storedTimeHard) {
+                    playerNameHard = playerName;
+                    localStorage.setItem('storedTimeHard', newTimeHard);
+                    localStorage.setItem('playerNameHard', playerNameHard)
+                }
+                $('.hard-p')[0].innerText = "Trudny: " + playerNameHard + ' - ' + storedTimeHard;
+            }
+        }
+
+        highscore();
 
         incrementTime();
 
@@ -298,7 +342,16 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
             document.getElementById('player__life').classList.remove('hard-hit');
             document.getElementById('player__life').classList.add('crytical-hit');
         } else if (playerLifePoints===0) {
-
+            bossDead = true;
+            $ranking.toggle();
+            togglePause();
+            if (highscoresOn) {
+                document.querySelector('.highscores-button').style.background = 'url("img/btn/records.png") center center / contain no-repeat';
+                highscoresOn = !highscoresOn;
+            } else {
+                document.querySelector('.highscores-button').style.background = 'url("img/btn/records-checked.png") center center / contain no-repeat';
+                highscoresOn = !highscoresOn;
+            }
         }
         let monsterLifePoints =  document.getElementById('monster__life').value
         if (monsterLifePoints <=100 && monsterLifePoints > 90){
@@ -331,7 +384,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
             document.getElementById('monster__life').classList.remove('hard-hit');
             document.getElementById('monster__life').classList.add('crytical-hit');
         } else if (monsterLifePoints===0) {
-            clearInterval(monsterInterval)
+            clearInterval(monsterInterval);
             function explode() {
                 let spriteSize = 125, width = spriteSize;
                 let spriteAllSize = 750;
@@ -347,6 +400,33 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
                 clearInterval(flyAnimation);
             }
             explode();
+
+            if (difficulty === 'easy') {
+                newTimeEasy = document.getElementById('timer').innerText;
+                if (!localStorage.getItem('storedTimeEasy')) {
+                    localStorage.setItem('storedTimeEasy', newTimeEasy);
+                    localStorage.setItem('playerNameEasy', playerName)
+                }
+            } else {
+                newTimeHard = document.getElementById('timer').innerText;
+                if (!localStorage.getItem('storedTimeHard')) {
+                    localStorage.setItem('storedTimeHard', newTimeHard);
+                    localStorage.setItem('playerNameHard', playerName)
+                }
+            }
+            highscore();
+            highscore();
+            highscore();
+            $ranking.toggle();
+            runningTime = false;
+            if (highscoresOn) {
+                document.querySelector('.highscores-button').style.background = 'url("img/btn/records.png") center center / contain no-repeat';
+                highscoresOn = !highscoresOn;
+            } else {
+                document.querySelector('.highscores-button').style.background = 'url("img/btn/records-checked.png") center center / contain no-repeat';
+                highscoresOn = !highscoresOn;
+            }
+            bossDead = true;
 
         }
     });
@@ -654,7 +734,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
             });
 
 
-            if (isRunning) {
+            if (isRunning && !bossDead) {
                 requestAnimationFrame(update);
             }
         }
@@ -870,6 +950,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
 //***************GAME INSTRUCTIONS***************
 
 (function () {
+    $("#ranking-container").hide();
     $('.instruction-button').click(function () {
         $(this).addClass('clicked');
     });
@@ -907,40 +988,3 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
         gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount, difficulty, monsterShootingInterval, lifeEater, playerName);
     });
 })();
-//***************RANKING********************
-
-(function showBestScore() {
-
-    $("#ranking-container").hide();
-    let nickName = document.getElementById("nick-name").value;
-    let yourTime = document.getElementById('timer').innerHTML;
-
-
-    $("#startPause").click (function () {
-        let nickName = document.getElementById("nick-name").value;
-        let yourTime = document.getElementById('timer').innerHTML;
-        let timeList = localStorage.getItem('time', yourTime);
-
-        if(localStorage.getItem('Nick') === null || timeList > yourTime) {
-            let nickNamesList = localStorage.setItem('Nick',nickName);
-            let timeList = localStorage.setItem('time', yourTime);
-            $("#ranking-container").show();
-            let newLine = document.createElement("H1");
-            newLine.innerHTML = ('Pobiłeś rekord! Gratulacje!');
-            $('#ranking-container').append(newLine);
-        }
-
-        let timeListCurrent = localStorage.getItem('time', yourTime);
-        let nickNamesList = localStorage.getItem('Nick',nickName);
-        $("#ranking-container").show();
-        let newLine = document.createElement("H1");
-        newLine.innerHTML = ('Najlepszy czas:');
-        let newLine2 = document.createElement("p");
-        newLine2.innerHTML = (nickNamesList + " " + timeListCurrent);
-        $('#ranking-container').append(newLine);
-        $('#ranking-container').append(newLine2);
-    });
-})();
-
-
-
