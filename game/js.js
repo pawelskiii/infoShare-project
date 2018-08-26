@@ -344,6 +344,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
         } else if (playerLifePoints===0) {
             bossDead = true;
             $ranking.toggle();
+            togglePause();
             if (highscoresOn) {
                 document.querySelector('.highscores-button').style.background = 'url("img/btn/records.png") center center / contain no-repeat';
                 highscoresOn = !highscoresOn;
@@ -414,7 +415,10 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
                 }
             }
             highscore();
+            highscore();
+            highscore();
             $ranking.toggle();
+            runningTime = false;
             if (highscoresOn) {
                 document.querySelector('.highscores-button').style.background = 'url("img/btn/records.png") center center / contain no-repeat';
                 highscoresOn = !highscoresOn;
