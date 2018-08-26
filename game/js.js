@@ -352,49 +352,46 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
                 highscoresOn = !highscoresOn;
             }
         }
+
+        console.log( document.getElementById("monster"));
         let monsterLifePoints =  document.getElementById('monster__life').value
         if (monsterLifePoints <=100 && monsterLifePoints > 90){
             document.getElementById('monster__life').classList.remove('soft-hit');
             document.getElementById('monster__life').classList.remove('medium-hit');
             document.getElementById('monster__life').classList.remove('hard-hit');
             document.getElementById('monster__life').classList.remove('cytical-hit');
-            console.log('cos1')
         } else if (monsterLifePoints <90 && monsterLifePoints >= 80){
             document.getElementById('monster__life').classList.add('soft-hit');
             document.getElementById('monster__life').classList.remove('medium-hit');
             document.getElementById('monster__life').classList.remove('hard-hit');
             document.getElementById('monster__life').classList.remove('cytical-hit');
-            console.log('cos2')
         } else if (monsterLifePoints < 80 && monsterLifePoints >= 40){
             document.getElementById('monster__life').classList.remove('soft-hit');
             document.getElementById('monster__life').classList.add('medium-hit');
             document.getElementById('monster__life').classList.remove('hard-hit');
             document.getElementById('monster__life').classList.remove('cytical-hit');
-            console.log('cos4')
         }else if (monsterLifePoints <40 && monsterLifePoints >=30){
             document.getElementById('monster__life').classList.remove('soft-hit');
             document.getElementById('monster__life').classList.remove('medium-hit');
             document.getElementById('monster__life').classList.add('hard-hit');
             document.getElementById('monster__life').classList.remove('cytical-hit');
-
         }   else if (monsterLifePoints <30 && monsterLifePoints >= 10) {
             document.getElementById('monster__life').classList.remove('soft-hit');
             document.getElementById('monster__life').classList.remove('medium-hit');
             document.getElementById('monster__life').classList.remove('hard-hit');
             document.getElementById('monster__life').classList.add('crytical-hit');
         } else if (monsterLifePoints===0) {
+            let intervalExplode;
             clearInterval(monsterInterval);
             function explode() {
                 let spriteSize = 125, width = spriteSize;
                 let spriteAllSize = 750;
-                let intervalExplode;
-                document.querySelector(".monster").style.width = "125px";
-                document.querySelector(".monster").style.backgroundImage = "url('img/explode.png')";
+                document.getElementById("monster").style.width = "125px";
+                document.getElementById("monster").style.background = "url('img/explode.png')";
                 intervalExplode = setInterval(() => {
-                    document.querySelector(".monster").style.backgroundPosition = `-${spriteSize}px 0px`;
+                    document.getElementById("monster").style.backgroundPosition = `-${spriteSize}px 0px`;
                     spriteSize < spriteAllSize ? spriteSize = spriteSize + width : spriteSize = width;
-                }, 50);
-                clearInterval(intervalExplode);
+                }, 100);
                 clearInterval(wingsAnimation);
                 clearInterval(flyAnimation);
             }
@@ -413,7 +410,18 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
                     localStorage.setItem('playerNameHard', playerName)
                 }
             }
-            highscore();
+
+
+            setTimeout(() => {
+                clearInterval(intervalExplode);
+                document.getElementById("monster").style.display="none";
+                document.getElementById("monster__life").style.display="none";
+            }, 600);
+
+            setTimeout(() => {
+                highscore()
+            }, 2000);
+
             $ranking.toggle();
             if (highscoresOn) {
                 document.querySelector('.highscores-button').style.background = 'url("img/btn/records.png") center center / contain no-repeat';

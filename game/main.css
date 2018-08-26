@@ -171,8 +171,9 @@ html {
     left: 1000px;
     position: absolute;
     width: 116px;
-    height: 105px;
+    height: 125px;
     z-index: 200;
+;
 }
 
 .monster__icon {
@@ -181,7 +182,9 @@ html {
     width: 116px;
     height: 85px;
     background: url("img/monster.png") no-repeat;
+    padding-bottom: 20px;
 }
+
 .monster__shot {
     position: absolute;
     width: 18px;
@@ -195,6 +198,7 @@ html {
     border: 1px solid gray;
     border-radius: 5px;
 }
+
 #monster__life.soft-hit::-webkit-progress-value {
     background: yellowgreen;
 }
