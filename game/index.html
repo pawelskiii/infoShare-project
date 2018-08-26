@@ -52,9 +52,14 @@
 
             </div>
         </div>
-
         <div class="map">
-            <div id="player"></div>
+            <div id="player">
+                <progress min=0 max=100 value=100 name=hel id=player__life></progress>
+            </div>
+            <div class="monster">
+                <progress min=0 max=100 value=100 name=hel id=monster__life></progress>
+                <div class="monster__icon"></div>
+            </div>
             <div class="sky"></div>
             <div class="grass"></div>
         </div>
@@ -75,7 +80,7 @@
         </audio>
 
     </div>
-    <!--<div id="ranking-container"></div>-->
+    <div id="ranking-container"></div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="js.js"></script>
 </body>
