@@ -578,20 +578,25 @@ html {
     box-shadow: 0 5px 10px rgba(0, 0, 40, 0.03);
     top: 28%;
     left: 50%;
-    transform: scale(1) translate(-50%, -50%);
+    transform: scale(1) translate(-50%, -10%);
     transition: all .25s ease-in-out;
     z-index: 1000;
 }
 
-#ranking-container h1 {
+#ranking-container .scores {
+    margin-top: 2rem;
+}
+
+
+#ranking-container h1, #ranking-container div {
     font-family: 'Amatic SC', cursive;
     text-transform: uppercase;
     color: #F57D19;
     font-size: 2rem;
     font-weight: 700;
+    height: 70px;
     letter-spacing: 0.2rem;
     text-align: center;
-    margin-top: 3rem;
 }
 
 #ranking-container p {
@@ -604,40 +609,6 @@ html {
     text-align: center;
 }
 
-/*#################### RANKING ######################*/
-
-#ranking-container {
-    position: absolute;
-    background-color: #EFF0F0;
-    border: 1px solid #F57D19;
-    border-radius: 50px;
-    width: 650px;
-    height: 300px;
-    box-shadow: 0 5px 10px rgba(0, 0, 40, 0.03);
-    top: 28%;
-    left: 50%;
-    transform: scale(1) translate(-50%, -50%);
-    transition: all .25s ease-in-out;
-    z-index: 1000;
-}
-
-#ranking-container h1 {
-    font-family: 'Amatic SC', cursive;
-    text-transform: uppercase;
-    color: #F57D19;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 0.2rem;
-    text-align: center;
-    margin-top: 3rem;
-}
-
-#ranking-container p {
-    font-family: 'Amatic SC', cursive;
-    text-transform: uppercase;
-    color: dimgrey;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 0.2rem;
-    text-align: center;
+.easy-p, .hard-p {
+    display: inline-block;
 }
