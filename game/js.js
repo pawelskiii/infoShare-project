@@ -1,4 +1,4 @@
-function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount, difficulty, monsterShootingInterval) {
+function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount, difficulty, monsterShootingInterval, lifeEater) {
     const sectionWidth = 350;
     const $map = $('.map');
     const $player = $('#player');
@@ -58,7 +58,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
 
         //MAP
 
-        setInterval(() => {
+      let monsterInterval = setInterval(() => {
             $('.monster').animate({
                 top: "-=120px"
             }, 800);
@@ -258,24 +258,26 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
             document.getElementById('monster__life').style.backgroundColor= "black";
             console.log('cos5')
         }else if (monsterLifePoints===0) {
-           /* $('.monster').fadeOut(3000);*/
-
+            clearInterval(monsterInterval)
             function explode() {
                 let spriteSize = 125, width = spriteSize;
                 let spriteAllSize = 750;
                 let intervalExplode;
-                document.getElementById("monster").style.width = "125px";
-                document.getElementById("monster").style.backgroundImage = "url('img/explode.png')";
+                document.querySelector(".monster").style.width = "125px";
+                document.querySelector(".monster").style.backgroundImage = "url('img/explode.png')";
                 intervalExplode = setInterval(() => {
-                    document.getElementById("monster").style.backgroundPosition = `-${spriteSize}px 0px`;
+                    document.querySelector(".monster").style.backgroundPosition = `-${spriteSize}px 0px`;
                     spriteSize < spriteAllSize ? spriteSize = spriteSize + width : spriteSize = width;
                 }, 50);
                 clearInterval(intervalExplode);
+                clearInterval(wingsAnimation);
+                clearInterval(flyAnimation);
+
+
             }
-
             explode();
-        }
 
+        }
     });
 
         for (let i = 1; i <= shotAmount; i++) {
@@ -462,7 +464,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
             && (parseInt(monsterShotPositionX) - 18 > parseInt(playerPositionX))
             && (positionBottomMegaShotMonster < playerPositionY + $playerHeight)
             && (positionBottomMegaShotMonster + 18 > playerPositionY)) {
-            document.getElementById('player__life').value -= 5;
+            document.getElementById('player__life').value -= lifeEater;
             monsterShotArray.splice(index, 1);
             document.getElementsByClassName('monster__shot')[index].remove()
         }
@@ -528,7 +530,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
             });
 
             if ( playerPositionX > monsterPositionX - $windowWidth/2 && isFiring == false) {
-                setInterval(() => {
+               let monsterShotInterval = setInterval(() => {
                     monsterShotArray.push({
                         shotTime: Date.now(),
                         shotPosition: parseInt($('.monster').css('left')),
@@ -780,6 +782,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
         let shotAmount = 30;
         let difficulty = 'easy';
         let monsterShootingInterval = 1000;
+        let lifeEater = 5;
             if (isChecked) {
                 randomizer = .45;
                 maxPlayerSpeedX = .6;
@@ -787,10 +790,11 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
                 shotAmount = 20;
                 difficulty = 'hard';
                 monsterShootingInterval = 400;
+                lifeEater = 10;
         }
         $(this).addClass('start-clicked');
         $('.starting-box').addClass('game-start');
-        gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount, difficulty, monsterShootingInterval);
+        gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount, difficulty, monsterShootingInterval, lifeEater);
     });
 })();
 //***************RANKING********************
@@ -800,6 +804,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
     $("#ranking-container").hide();
     let nickName = document.getElementById("nick-name").value;
     let yourTime = document.getElementById('timer').innerHTML;
+
 
     $("#startPause").click (function () {
         let nickName = document.getElementById("nick-name").value;
