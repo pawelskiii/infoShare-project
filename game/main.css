@@ -1,3 +1,7 @@
+html {
+    background-color: #284678;
+}
+
 .map {
     display: flex;
     width: 7000px;
@@ -41,6 +45,20 @@
     position: absolute;
     background: url(img/cloud5.png);
     background-size: cover;
+}
+
+.tree1 {
+    position: absolute;
+    background: url(img/tree1.png);
+    background-size: cover;
+    opacity: .8;
+}
+
+.tree2 {
+    position: absolute;
+    background: url(img/tree2.png);
+    background-size: cover;
+    opacity: .8;
 }
 
 .grass {
@@ -89,9 +107,9 @@
 .center-box {
     position: relative;
     margin: 0 auto;
-    background: url("img/frame.png") 50% 50% no-repeat;
-    background-size: 104.9% 98%;
-    height: 800px;
+    background: url("img/frame.png") 49% 100% no-repeat;
+    background-size: 104.8% 97%;
+    height: 650px;
     width: 1200px;
 }
 
@@ -100,7 +118,7 @@
     margin-top: 63px;
     margin-left: 52px;
     box-sizing: border-box;
-    height: 700px;
+    height: 600px;
     width: 1100px;
     overflow: hidden;
 }
@@ -217,7 +235,7 @@
     width: 650px;
     height: 200px;
     box-shadow: 0 5px 10px rgba(0, 0, 40, 0.03);
-    top: 29%;
+    top: 26%;
     left: 50%;
     transform: scale(1) translate(-50%, -50%);
     transition: all .25s ease-in-out;
@@ -289,7 +307,7 @@
     cursor: pointer;
     box-shadow: 0 5px 10px rgba(0, 0, 40, 0.03);
     top: 65%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -40%);
     overflow: hidden;
 }
 
@@ -327,7 +345,7 @@
 
 .clicked {
     width: 500px;
-    height: 440px;
+    height: 455px;
     border-radius: 50px;
     cursor: auto;
 }
@@ -420,60 +438,6 @@
     height: 55px;
 }
 
-.timer-container {
-    box-sizing: border-box;
-    height: 236px;
-    width: 1100px;
-    position: relative;
-    display: flex;
-    z-index: 300;
-    flex-direction: column;
-}
-
-.description {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 130px;
-    height: 35px;
-    margin: 5px 0 0 10px;
-    background-color: lightgray;
-    border: solid 1px;
-    font-family: 'Raleway', sans-serif;
-    font-size: 1.4rem;
-}
-
-#startPause {
-    width: 130px;
-    height: 35px;
-    margin: 5px 0 0 10px;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 300;
-    font-size: 1.4rem;
-
-}
-
-#timer {
-    display: flex;
-    align-items: center;
-    width: 130px;
-    height: 100px;
-    background-color: darkorange;
-    border: solid 1px;
-    margin: 5px 0 0 10px;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 300;
-    font-size: 2rem;
-}
-
-.pause {
-    position: absolute;
-    z-index: 1000;
-    background: #FC7700;
-    width: 300px;
-    height: 300px;
-}
-
 .shottoCarrotto {
     position: absolute;
     background: url("img/carrot-shot.png") no-repeat;
@@ -496,6 +460,148 @@
         -moz-transform: rotate(360deg);
         transform: rotate(360deg);
     }
+}
+
+/*########################## BOTTOM BAR ###############################*/
+
+.timer-container {
+    box-sizing: border-box;
+    width: 1100px;
+    height: 100px;
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 300;
+    background-color: #FFF8DC;
+    border-top: solid 5px #BC8F8F;
+}
+
+.timer {
+    background: url("img/btn/time.png") center no-repeat;
+    background-size: contain;
+    width: 250px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.timer-text, .player-text {
+    margin-right: .8rem;
+    font-family: 'Amatic SC', cursive;
+    color: #A0522D;
+    font-size: 2.3rem;
+    font-weight: bolder;
+    letter-spacing: .4rem;
+}
+
+.player-text {
+    margin-right: 1rem;
+}
+
+.pause-button {
+    background: url("img/btn/play.png") center no-repeat;
+    width: 70px;
+    height: 70px;
+    background-size: contain;
+}
+
+.music-button {
+    background: url("img/btn/music.png") center no-repeat;
+    width: 70px;
+    height: 70px;
+    background-size: contain;
+}
+
+.highscores-button {
+    background: url("img/btn/records.png") center no-repeat;
+    width: 70px;
+    height: 70px;
+    background-size: contain;
+}
+
+
+.player-frame {
+    background: url("img/btn/money.png") center no-repeat;
+    background-size: contain;
+    width: 250px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/*#################### RANKING ######################*/
+
+#ranking-container {
+    position: absolute;
+    background-color: #EFF0F0;
+    border: 1px solid #F57D19;
+    border-radius: 50px;
+    width: 650px;
+    height: 300px;
+    box-shadow: 0 5px 10px rgba(0, 0, 40, 0.03);
+    top: 28%;
+    left: 50%;
+    transform: scale(1) translate(-50%, -50%);
+    transition: all .25s ease-in-out;
+    z-index: 1000;
+}
+
+#ranking-container h1 {
+    font-family: 'Amatic SC', cursive;
+    text-transform: uppercase;
+    color: #F57D19;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.2rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+#ranking-container p {
+    font-family: 'Amatic SC', cursive;
+    text-transform: uppercase;
+    color: dimgrey;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.2rem;
+    text-align: center;
+}
+
+/*#################### RANKING ######################*/
+
+#ranking-container {
+    position: absolute;
+    background-color: #EFF0F0;
+    border: 1px solid #F57D19;
+    border-radius: 50px;
+    width: 650px;
+    height: 300px;
+    box-shadow: 0 5px 10px rgba(0, 0, 40, 0.03);
+    top: 28%;
+    left: 50%;
+    transform: scale(1) translate(-50%, -50%);
+    transition: all .25s ease-in-out;
+    z-index: 1000;
+}
+
+#ranking-container h1 {
+    font-family: 'Amatic SC', cursive;
+    text-transform: uppercase;
+    color: #F57D19;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.2rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+#ranking-container p {
+    font-family: 'Amatic SC', cursive;
+    text-transform: uppercase;
+    color: dimgrey;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.2rem;
+    text-align: center;
 }
 
 /*#################### RANKING ######################*/
