@@ -170,7 +170,7 @@
     width: 650px;
     height: 200px;
     box-shadow: 0 5px 10px rgba(0, 0, 40, 0.03);
-    top: 29%;
+    top: 28.7%;
     left: 50%;
     transform: scale(1) translate(-50%, -50%);
     transition: all .25s ease-in-out;
@@ -280,7 +280,7 @@
 
 .clicked {
     width: 500px;
-    height: 440px;
+    height: 455px;
     border-radius: 50px;
     cursor: auto;
 }
