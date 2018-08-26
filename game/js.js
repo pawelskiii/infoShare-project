@@ -1,4 +1,4 @@
-function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount, difficulty) {
+function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount, difficulty, monsterShootingInterval, lifeEater, playerName) {
     const sectionWidth = 350;
     const $map = $('.map');
     const $player = $('#player');
@@ -7,6 +7,8 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
     const $windowHeight = parseInt($map.css('height'));
     const $playerWidth = parseInt($player.css('width'));
     const $playerHeight = parseInt($player.css('height'));
+
+    document.getElementById('player-text').innerHTML = playerName;
 
 //***************MAP GENERATOR + PLAYER********************
     (function () {
@@ -29,6 +31,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
         const fall = 'jumpReleased';
         const nitro = 'ControlLeft';
         let playerPositionX = 0;
+        let monsterPositionX = parseInt($('.monster').css('left'));
         let playerPositionY = 0;
         let playerSpeedX = 0;
         let playerSpeedY = 0;
@@ -42,17 +45,30 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
         let shotPressed = '';
         let stillFalling = false;
         let shotPositionX = 0;
+        let monsterShotPositionX = 0;
         let shotSpeedX = 0.4;
         let shotAcceleration = 0.8;
         let shotArray = [];
+        let monsterShotArray = [];
         let shotNumber = 0;
         let shottoCarrottoArray = [];
+        let isFiring = false;
 
         //PAUSE+TIMER
         let timePause = 0;
         let runningTime = true;
 
         //MAP
+
+      let monsterInterval = setInterval(() => {
+            $('.monster').animate({
+                top: "-=120px"
+            }, 800);
+            $('.monster').animate({
+                top: "+=120px"
+            }, 800);
+        },1600)
+
         mapObjectTable = Array
             .from({length: $numberOfSections}, (obstacle, index) => {
                 if (index !== 0) {
@@ -73,7 +89,8 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
                     .addClass('obstacle')
                     .css({
                         'left': obstacle.position,
-                        'height': obstacle.height
+                        'height': obstacle.height,
+                        'bottom': -10,
                     })
                 );
             if (obstacle.hasMiniMonster) {
@@ -98,14 +115,12 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
                 incrementTime();
                 togglePause();
                 miniMonstersAnimation();
-                document.getElementById("startPause").innerHTML = "Resume";
             }
             else {
                 runningTime = true;
                 incrementTime();
                 togglePause();
                 miniMonstersAnimation();
-                document.getElementById("startPause").innerHTML = "Pause";
             }
         };
 
@@ -123,7 +138,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
                     if (seconds < 10) {
                         seconds = "0" + seconds;
                     }
-                    document.getElementById("timer").innerHTML = minutes + ":" + seconds + ":" + "0" + tenths;
+                    document.getElementById("timer-text").innerHTML = minutes + ":" + seconds + ":0" + tenths;
                     incrementTime();
                 }, 100);
             }
@@ -132,12 +147,35 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
         // PAUSE
         function togglePause() {
             isRunning = !isRunning;
+            if (isRunning) {
+                document.querySelector('.pause-button').style.background = 'url("img/btn/play.png") center center / contain no-repeat';
+            } else {
+                document.querySelector('.pause-button').style.background = 'url("img/btn/play-checked.png") center center / contain no-repeat';
+            }
 
             if (isRunning) {
                 update();
-
             }
         }
+
+        let myAudio = document.querySelector("audio");
+        let audioPlay = true;
+        myAudio.play();
+
+        function toggleMusic() {
+            if (audioPlay) {
+                myAudio.pause();
+                audioPlay = !audioPlay;
+                document.querySelector('.music-button').style.background = 'url("img/btn/music-checked.png") center center / contain no-repeat';
+            } else {
+                myAudio.play();
+                audioPlay = !audioPlay;
+                document.querySelector('.music-button').style.background = 'url("img/btn/music.png") center center / contain no-repeat';
+            }
+        }
+
+        document.querySelector('.music-button').addEventListener('click', toggleMusic);
+        // myAudio.pause();
 
         incrementTime();
 
@@ -180,6 +218,9 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
                 runningTime = !runningTime;
                 incrementTime();
             }
+            if (event.code === 'KeyM') {
+                toggleMusic();
+            }
         });
 
 
@@ -203,29 +244,112 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
             playerPositionY = playerPositionY + playerSpeedY * dTime;
         }
 
-        //SHOT
-        window.addEventListener('keydown', function (key) {
-            if (key.code === 'Space' && shotAmount > 0 && isRunning) {
-                shotNumber++;
-                shotArray.push({
-                    amount: shotAmount,
-                    shotIndex: shotNumber,
-                    shotTime: Date.now(),
-                    shotPosition: $playerWidth + parseInt($('#player').css('left'))
-                });
-                $('.game-information div:last').remove();
-                shotAmount--;
+    //SHOT
+    window.addEventListener('keydown', function (key) {
+        if (key.code === 'Space' && shotAmount > 0 && isRunning && playerSpeedX >= 0) {
+            shotNumber++;
+            shotArray.push({
+                amount: shotAmount,
+                shotIndex: shotNumber,
+                shotTime: Date.now(),
+                shotPosition: $playerWidth + parseInt($('#player').css('left')),
+                shotBottomPosition: parseInt($player.css('bottom')) + $playerHeight/2
+            });
+            $('.game-information div:last').remove();
+            shotAmount--;
 
+            $('.map').append($('<div>')
+                .addClass('shot')
+                .attr('shotNumber', shotNumber)
+                .css({
+                    "left": playerPositionX + 75,
+                    "bottom": ($playerHeight / 2 + parseInt($('#player').css('bottom')))
+                }))
+        }
 
-                $('.map').append($('<div>')
-                    .addClass('shot')
-                    .attr('shotNumber', shotNumber)
-                    .css({
-                        "left": playerPositionX + 75,
-                        "bottom": ($playerHeight / 2 + parseInt($('#player').css('bottom')))
-                    }))
+        let playerLifePoints =  document.getElementById('player__life').value
+        if (playerLifePoints <=100 && playerLifePoints > 90){
+            document.getElementById('player__life').classList.remove('soft-hit');
+            document.getElementById('player__life').classList.remove('medium-hit');
+            document.getElementById('player__life').classList.remove('hard-hit');
+            document.getElementById('player__life').classList.remove('cytical-hit');
+            console.log('cos1')
+        } else if (playerLifePoints <90 && playerLifePoints >= 80){
+            document.getElementById('player__life').classList.add('soft-hit');
+            document.getElementById('player__life').classList.remove('medium-hit');
+            document.getElementById('player__life').classList.remove('hard-hit');
+            document.getElementById('player__life').classList.remove('cytical-hit');
+            console.log('cos2')
+        } else if (playerLifePoints < 80 && playerLifePoints >= 40){
+            document.getElementById('player__life').classList.remove('soft-hit');
+            document.getElementById('player__life').classList.add('medium-hit');
+            document.getElementById('player__life').classList.remove('hard-hit');
+            document.getElementById('player__life').classList.remove('cytical-hit');
+            console.log('cos4')
+        }else if (playerLifePoints <40 && playerLifePoints >=30){
+            document.getElementById('player__life').classList.remove('soft-hit');
+            document.getElementById('player__life').classList.remove('medium-hit');
+            document.getElementById('player__life').classList.add('hard-hit');
+            document.getElementById('player__life').classList.remove('cytical-hit');
+
+        }   else if (playerLifePoints <30 && playerLifePoints >= 10) {
+            document.getElementById('player__life').classList.remove('soft-hit');
+            document.getElementById('player__life').classList.remove('medium-hit');
+            document.getElementById('player__life').classList.remove('hard-hit');
+            document.getElementById('player__life').classList.add('crytical-hit');
+        } else if (playerLifePoints===0) {
+
+        }
+        let monsterLifePoints =  document.getElementById('monster__life').value
+        if (monsterLifePoints <=100 && monsterLifePoints > 90){
+            document.getElementById('monster__life').classList.remove('soft-hit');
+            document.getElementById('monster__life').classList.remove('medium-hit');
+            document.getElementById('monster__life').classList.remove('hard-hit');
+            document.getElementById('monster__life').classList.remove('cytical-hit');
+            console.log('cos1')
+        } else if (monsterLifePoints <90 && monsterLifePoints >= 80){
+            document.getElementById('monster__life').classList.add('soft-hit');
+            document.getElementById('monster__life').classList.remove('medium-hit');
+            document.getElementById('monster__life').classList.remove('hard-hit');
+            document.getElementById('monster__life').classList.remove('cytical-hit');
+            console.log('cos2')
+        } else if (monsterLifePoints < 80 && monsterLifePoints >= 40){
+            document.getElementById('monster__life').classList.remove('soft-hit');
+            document.getElementById('monster__life').classList.add('medium-hit');
+            document.getElementById('monster__life').classList.remove('hard-hit');
+            document.getElementById('monster__life').classList.remove('cytical-hit');
+            console.log('cos4')
+        }else if (monsterLifePoints <40 && monsterLifePoints >=30){
+            document.getElementById('monster__life').classList.remove('soft-hit');
+            document.getElementById('monster__life').classList.remove('medium-hit');
+            document.getElementById('monster__life').classList.add('hard-hit');
+            document.getElementById('monster__life').classList.remove('cytical-hit');
+
+        }   else if (monsterLifePoints <30 && monsterLifePoints >= 10) {
+            document.getElementById('monster__life').classList.remove('soft-hit');
+            document.getElementById('monster__life').classList.remove('medium-hit');
+            document.getElementById('monster__life').classList.remove('hard-hit');
+            document.getElementById('monster__life').classList.add('crytical-hit');
+        } else if (monsterLifePoints===0) {
+            clearInterval(monsterInterval)
+            function explode() {
+                let spriteSize = 125, width = spriteSize;
+                let spriteAllSize = 750;
+                let intervalExplode;
+                document.querySelector(".monster").style.width = "125px";
+                document.querySelector(".monster").style.backgroundImage = "url('img/explode.png')";
+                intervalExplode = setInterval(() => {
+                    document.querySelector(".monster").style.backgroundPosition = `-${spriteSize}px 0px`;
+                    spriteSize < spriteAllSize ? spriteSize = spriteSize + width : spriteSize = width;
+                }, 50);
+                clearInterval(intervalExplode);
+                clearInterval(wingsAnimation);
+                clearInterval(flyAnimation);
             }
-        });
+            explode();
+
+        }
+    });
 
         for (let i = 1; i <= shotAmount; i++) {
             $('.game-information').append($('<div>').addClass('bullet').attr('shotNumber', i));
@@ -392,56 +516,106 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
 
             }
 
-            if (playerPositionX > $windowWidth / 2 + $mapPositionX) {
+            if (playerPositionX > $windowWidth / 2 + $mapPositionX && Math.abs(parseInt($map.css('left'))) < (parseInt($map.css('width')) - parseInt($windowWidth))) {
                 $('.map').css('left', -playerPositionX + $windowWidth / 2)
             } else if (playerPositionX < 0 || playerPositionX < $mapPositionX) {
                 playerPositionX = $mapPositionX
+            } else if (playerPositionX > Math.abs(parseInt($map.css('width'))) - $playerWidth  && playerSpeedX > 0) {
+                playerPositionX = Math.abs(parseInt($map.css('width'))) - $playerWidth
             }
 
+    monsterShotArray.forEach((el, index) => {
+        let timeOfMonsterShooting = time - el.shotTime;
+        let positionBottomMegaShotMonster = parseInt(document.getElementsByClassName('monster__shot')[index].style.bottom);
+        monsterShotPositionX = el.shotPosition - shotSpeedX - timeOfMonsterShooting * shotAcceleration + 'px';
+        document.getElementsByClassName('monster__shot')[index].style.left = monsterShotPositionX;
 
-            shotArray.forEach((el, index) => {
-                let timeOfShooting = time - el.shotTime;
-                shotPositionX = el.shotPosition + shotSpeedX + timeOfShooting * shotAcceleration + 'px';
-                let shotRemovalX = parseInt(shotPositionX);
-                let shotRemovalY = parseInt(document.getElementsByClassName('shot')[index].style.bottom);
-                document.getElementsByClassName('shot')[index].style.left = shotPositionX;
-                miniMonsterArray.forEach((miniMonster, miniMonsterIndex) => {
 
-                    let miniMonsterRemovalX = parseInt(miniMonster.style.left);
-                    let miniMonsterRemovalY = parseInt(miniMonster.style.bottom);
+        if ((parseInt(monsterShotPositionX) < parseInt(playerPositionX) + $playerWidth)
+            && (parseInt(monsterShotPositionX) - 18 > parseInt(playerPositionX))
+            && (positionBottomMegaShotMonster < playerPositionY + $playerHeight)
+            && (positionBottomMegaShotMonster + 18 > playerPositionY)) {
+            document.getElementById('player__life').value -= lifeEater;
+            monsterShotArray.splice(index, 1);
+            document.getElementsByClassName('monster__shot')[index].remove()
+        }
+        if (parseInt(monsterShotPositionX) < parseInt($('.monster').css('left')) - $windowWidth) {
+            monsterShotArray.splice(index, 1);
+            document.getElementsByClassName('monster__shot')[index].remove();
+        }
+    })
 
-                    if ((shotRemovalX + 30 >= miniMonsterRemovalX)
-                        && (shotRemovalX <= miniMonsterRemovalX + 50)
-                        && (shotRemovalY + 20 >= miniMonsterRemovalY)
-                        && (shotRemovalY <= miniMonsterRemovalY + 50)) {
-                        shotArray.splice(index, 1);
-                        document.getElementsByClassName('shot')[index].remove();
-                        document.getElementsByClassName('minimonster')[miniMonsterIndex].remove();
-                        $('.map').append($('<div>')
-                            .addClass('shottoCarrotto rotating')
-                            .attr('shotto-Carrotto-Secret-Position', miniMonsterRemovalX)
-                            .css({
-                                "left": miniMonsterRemovalX,
-                                "bottom": miniMonsterRemovalY
-                            }));
-                        shottoCarrottoArray.push({
-                            positionX: miniMonsterRemovalX,
-                            positionY: miniMonsterRemovalY
-                        });
-                        clearInterval(wingsAnimation);
-                        clearInterval(flyAnimation);
-                        miniMonstersAnimation();
+    let positionBottomMegaMonster = document.getElementsByClassName('monster')[0].getBoundingClientRect().top;
 
-                    }
-                });
 
+        shotArray.forEach((el, index) => {
+            let timeOfShooting = time - el.shotTime;
+            let positionBottomMegaShotPlayer = parseInt(document.getElementsByClassName('shot')[index].getBoundingClientRect().top);
+            shotPositionX = el.shotPosition + shotSpeedX + timeOfShooting * shotAcceleration + 'px';
+            let shotRemovalX = parseInt(shotPositionX);
+            let shotRemovalY = parseInt(document.getElementsByClassName('shot')[index].style.bottom);
+            document.getElementsByClassName('shot')[index].style.left = shotPositionX;
+            miniMonsterArray.forEach((miniMonster, miniMonsterIndex) => {
+
+                let miniMonsterRemovalX = parseInt(miniMonster.style.left);
+                let miniMonsterRemovalY = parseInt(miniMonster.style.bottom);
+
+                if ((shotRemovalX + 30 >= miniMonsterRemovalX)
+                    && (shotRemovalX <= miniMonsterRemovalX + 50)
+                    && (shotRemovalY + 20 >= miniMonsterRemovalY)
+                    && (shotRemovalY <= miniMonsterRemovalY + 50)) {
+                    shotArray.splice(index, 1);
+                    document.getElementsByClassName('shot')[index].remove();
+                    document.getElementsByClassName('minimonster')[miniMonsterIndex].remove();
+                    $('.map').append($('<div>')
+                        .addClass('shottoCarrotto rotating')
+                        .attr('shotto-Carrotto-Secret-Position', miniMonsterRemovalX)
+                        .css({
+                            "left": miniMonsterRemovalX,
+                            "bottom": miniMonsterRemovalY
+                        }));
+                    shottoCarrottoArray.push({
+                        positionX: miniMonsterRemovalX,
+                        positionY: miniMonsterRemovalY
+                    });
+                    clearInterval(wingsAnimation);
+                    clearInterval(flyAnimation);
+                    miniMonstersAnimation();
+
+                }
+            });
+
+            if ((parseInt(shotPositionX) + 50 > parseInt($('.monster').css('left')))
+                && (parseInt(shotPositionX) < monsterPositionX + 116)
+                && (positionBottomMegaShotPlayer < positionBottomMegaMonster + 105)
+                && (positionBottomMegaShotPlayer + 16 > positionBottomMegaMonster))  {
+
+                document.getElementById('monster__life').value-=10;
+                shotArray.splice(index, 1);
+                document.getElementsByClassName('shot')[index].remove()
+            }
                 if (parseInt(shotPositionX) > playerPositionX + $windowWidth) {
                     shotArray.splice(index, 1);
                     document.getElementsByClassName('shot')[index].remove();
                 }
-
             });
 
+            if ( playerPositionX > monsterPositionX - $windowWidth/2 && isFiring == false) {
+             setInterval(() => {
+                    monsterShotArray.push({
+                        shotTime: Date.now(),
+                        shotPosition: parseInt($('.monster').css('left')),
+                        shotBottomPosition: parseInt($('.monster').css('bottom')) + parseInt($('.monster').css('height'))/2
+                    });
+                    $('.map').append($('<div>')
+                        .addClass('monster__shot')
+                        .css({
+                            "left": parseInt($('.monster').css('left')) - monsterShotPositionX,
+                            "bottom": parseInt($('.monster').css('bottom')) + parseInt($('.monster').css('height'))/2
+                        }))
+                }, monsterShootingInterval);
+                isFiring = true;
+            }
             player.style.left = playerPositionX + 'px';
             player.style.bottom = playerPositionY + 'px';
 
@@ -454,7 +628,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
                     && (playerPositionY <= miniMonsterRemovalY + 70)) {
 
                     if (time - bulletTime >= 500 && document.getElementsByClassName('bullet').length !== 0) {
-                        if (difficulty = 'hard' && document.getElementsByClassName('bullet').length !== 1) {
+                        if (difficulty === 'hard' && document.getElementsByClassName('bullet').length !== 1) {
                             document.getElementsByClassName('bullet')[0].remove();
                             shotAmount--;
                         }
@@ -514,6 +688,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
             let nitroInterval;
             let stopRunning = true;
             let stopNitro = true;
+            let normalMove = false;
 
             function animatePlayer() {
                 document.getElementById("player").style.width = "125px";
@@ -561,11 +736,13 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
                     $player.addClass('scaleXrotate');
                     stopAnimateStanding();
                     animatePlayer();
+                    normalMove = true;
                 }
                 else if (event.code === 'ArrowRight') {
                     $player.removeClass('scaleXrotate');
                     stopAnimateStanding();
                     animatePlayer();
+                    normalMove = true;
                 }
                 else if (event.code === 'ControlLeft') {
                     stopAnimateStanding();
@@ -577,7 +754,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
             window.addEventListener('keyup', function (event) {
                 if (event.code === 'ControlLeft') {
                     stopNitroAnimate();
-                    animatePlayer();
+                    normalMove ? animatePlayer() : animateStandingPlayer();
                 }
                 else if (event.code === 'ArrowLeft' || event.code === 'ArrowRight') {
                     stopAnimate();
@@ -604,7 +781,9 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
                     marginTop: Math.ceil(Math.random() * 3) * cloudMinWidth,
                 };
             })
-            .filter(() => Math.random() > cloudAmountRandomizer);
+            .filter((cloud) => {
+                return (cloud !== undefined && Math.random() > cloudAmountRandomizer)
+            });
 
         mapCloudTable.forEach((cloud, index) => {
             cloud.timeShift = Math.ceil(1 / cloud.width * Math.pow(10, 7));
@@ -649,6 +828,42 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
             }
         });
     })();
+
+    //***************TREES***************
+
+    (function () {
+        const treesPlusWidth = 50;
+        const treesAmountRandomizer = .35;
+        let mapTreesTable;
+        const $trees = $('.trees');
+
+        mapTreesTable = Array
+            .from({length: $numberOfSections}, (tree, index) => {
+                return {
+                    position: index * sectionWidth + Math.floor(Math.random() * sectionWidth * 2),
+                    width: Math.ceil(Math.random() * 3) * treesPlusWidth + 200,
+                };
+            })
+            .filter((tree) => {
+                return (tree !== undefined && Math.random() > treesAmountRandomizer)
+            });
+
+        mapTreesTable.forEach(tree => {
+            let classes = ['tree1', 'tree2'];
+            let randomNumber = Math.floor(Math.random() * classes.length);
+            $trees
+                .append($('<div>')
+                    .addClass(classes[randomNumber])
+                    .css({
+                        'left': tree.position,
+                        'bottom': -10,
+                        'width': tree.width,
+                        'height': tree.width * 1,
+                        'z-index': Math.ceil(Math.random() * 4),
+                    })
+                )
+        });
+    })();
 }
 
 
@@ -675,15 +890,57 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
         let nitroMultiplication = 1.4;
         let shotAmount = 30;
         let difficulty = 'easy';
+        let monsterShootingInterval = 1000;
+        let lifeEater = 5;
+        let playerName = $('input[type="text"]')[0].value;
             if (isChecked) {
                 randomizer = .45;
                 maxPlayerSpeedX = .6;
                 nitroMultiplication = 1.7;
                 shotAmount = 20;
                 difficulty = 'hard';
+                monsterShootingInterval = 400;
+                lifeEater = 10;
         }
         $(this).addClass('start-clicked');
         $('.starting-box').addClass('game-start');
-        gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount, difficulty);
+        gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount, difficulty, monsterShootingInterval, lifeEater, playerName);
     });
 })();
+//***************RANKING********************
+
+(function showBestScore() {
+
+    $("#ranking-container").hide();
+    let nickName = document.getElementById("nick-name").value;
+    let yourTime = document.getElementById('timer').innerHTML;
+
+
+    $("#startPause").click (function () {
+        let nickName = document.getElementById("nick-name").value;
+        let yourTime = document.getElementById('timer').innerHTML;
+        let timeList = localStorage.getItem('time', yourTime);
+
+        if(localStorage.getItem('Nick') === null || timeList > yourTime) {
+            let nickNamesList = localStorage.setItem('Nick',nickName);
+            let timeList = localStorage.setItem('time', yourTime);
+            $("#ranking-container").show();
+            let newLine = document.createElement("H1");
+            newLine.innerHTML = ('Pobiłeś rekord! Gratulacje!');
+            $('#ranking-container').append(newLine);
+        }
+
+        let timeListCurrent = localStorage.getItem('time', yourTime);
+        let nickNamesList = localStorage.getItem('Nick',nickName);
+        $("#ranking-container").show();
+        let newLine = document.createElement("H1");
+        newLine.innerHTML = ('Najlepszy czas:');
+        let newLine2 = document.createElement("p");
+        newLine2.innerHTML = (nickNamesList + " " + timeListCurrent);
+        $('#ranking-container').append(newLine);
+        $('#ranking-container').append(newLine2);
+    });
+})();
+
+
+
