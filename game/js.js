@@ -32,29 +32,24 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
         let monsterPositionX = parseInt($('.monster').css('left'));
         let playerPositionY = 0;
         let playerSpeedX = 0;
-        let maxPlayerSpeedX = 0.4;
         let playerSpeedY = 0;
         let playerAccelerationX = 0.0005;
         let playerAccelerationY = 0.0015;
-        let nitroMultiplication = 1.4;
         let nitroPressed = false;
         let keyPressed = '';
         let keyPressedJump = '';
 
-        console.log(monsterShootingInterval)
         //SHOT
         let shotPressed = '';
         let stillFalling = false;
         let shotPositionX = 0;
         let monsterShotPositionX = 0;
-
         let shotSpeedX = 0.4;
         let shotAcceleration = 0.8;
         let shotArray = [];
         let monsterShotArray = [];
         let shotNumber = 0;
         let shottoCarrottoArray = [];
-        let shotAmount = 30;
         let isFiring = false;
 
         //PAUSE+TIMER
@@ -224,7 +219,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
 
     //SHOT
     window.addEventListener('keydown', function (key) {
-        if (key.code === 'Space' && shotAmount > 0 && playerSpeedX >= 0) {
+        if (key.code === 'Space' && shotAmount > 0 && isRunning && playerSpeedX >= 0) {
             shotNumber++;
             shotArray.push({
                 amount: shotAmount,
@@ -241,28 +236,42 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
                 .attr('shotNumber', shotNumber)
                 .css({
                     "left": playerPositionX + 75,
-                    "top": ($windowHeight - ($playerHeight / 2 + parseInt($('#player').css('bottom'))))
+                    "bottom": ($playerHeight / 2 + parseInt($('#player').css('bottom')))
                 }))
         }
-        let monsterLifePoints = document.getElementById('monster__life').value;
-        console.log(monsterLifePoints)
-        if (monsterLifePoints <100 && monsterLifePoints > 80){
-            document.getElementById('monster__life').style.background= "green"
+
+        if (monsterLifePoints <=100 && monsterLifePoints > 80){
+            document.getElementById('monster__life').style.background= "green";
             console.log('cos1')
         } else if (monsterLifePoints <80 && monsterLifePoints > 60){
-            document.getElementById('monster__life').style.background= "greenyellow"
+            document.getElementById('monster__life').style.background= "greenyellow";
             console.log('cos2')
         }else if (monsterLifePoints <60 && monsterLifePoints > 40){
-            document.getElementById('monster__life').style.backgroundColor= "yellow"
+            document.getElementById('monster__life').style.backgroundColor= "yellow";
             console.log('cos3')
         }else if (monsterLifePoints <40 && monsterLifePoints > 30){
-            document.getElementById('monster__life').style.backgroundColor= "red"
+            document.getElementById('monster__life').style.backgroundColor= "red";
             console.log('cos4')
         }else if (monsterLifePoints <20 && monsterLifePoints > 10){
-            document.getElementById('monster__life').style.backgroundColor= "black"
+            document.getElementById('monster__life').style.backgroundColor= "black";
             console.log('cos5')
-        }else if (monsterLifePoints==0) {
-            $('.monster').fadeOut(3000);
+        }else if (monsterLifePoints===0) {
+           /* $('.monster').fadeOut(3000);*/
+
+            function explode() {
+                let spriteSize = 125, width = spriteSize;
+                let spriteAllSize = 750;
+                let intervalExplode;
+                document.getElementById("monster").style.width = "125px";
+                document.getElementById("monster").style.backgroundImage = "url('img/explode.png')";
+                intervalExplode = setInterval(() => {
+                    document.getElementById("monster").style.backgroundPosition = `-${spriteSize}px 0px`;
+                    spriteSize < spriteAllSize ? spriteSize = spriteSize + width : spriteSize = width;
+                }, 50);
+                clearInterval(intervalExplode);
+            }
+
+            explode();
         }
 
     });
@@ -543,9 +552,10 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
                     && (playerPositionY <= miniMonsterRemovalY + 70)) {
 
                     if (time - bulletTime >= 500 && document.getElementsByClassName('bullet').length !== 0) {
-                        if (difficulty = 'hard' && document.getElementsByClassName('bullet').length !== 1) {
+                        if (difficulty === 'hard' && document.getElementsByClassName('bullet').length !== 1) {
                             document.getElementsByClassName('bullet')[0].remove();
                             shotAmount--;
+                            console.log(difficulty);
                         }
                         document.getElementsByClassName('bullet')[0].remove();
                         shotAmount--;

@@ -153,10 +153,14 @@
 }
 #monster__life {
     width: 100px;
+    border: 1px solid gray;
+    border-radius: 5px;
 
 }
 #player__life {
-    width: 100px;
+    width: 150px;
+    border: 1px solid gray;
+    border-radius: 5px;
 }
 /*#################### GAME INSTRUCTIONS ######################*/
 
