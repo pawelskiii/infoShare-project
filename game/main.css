@@ -432,22 +432,22 @@ html {
 
 .pause-button {
     background: url("img/btn/play.png") center no-repeat;
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     background-size: contain;
 }
 
 .music-button {
     background: url("img/btn/music.png") center no-repeat;
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     background-size: contain;
 }
 
 .highscores-button {
     background: url("img/btn/records.png") center no-repeat;
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     background-size: contain;
 }
 
