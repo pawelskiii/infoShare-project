@@ -47,6 +47,20 @@ html {
     background-size: cover;
 }
 
+.tree1 {
+    position: absolute;
+    background: url(img/tree1.png);
+    background-size: cover;
+    opacity: .8;
+}
+
+.tree2 {
+    position: absolute;
+    background: url(img/tree2.png);
+    background-size: cover;
+    opacity: .8;
+}
+
 .grass {
     position: absolute;
     background: url(img/grass_PNG10853.png) repeat-x;
@@ -196,7 +210,7 @@ html {
     width: 650px;
     height: 200px;
     box-shadow: 0 5px 10px rgba(0, 0, 40, 0.03);
-    top: 29%;
+    top: 26%;
     left: 50%;
     transform: scale(1) translate(-50%, -50%);
     transition: all .25s ease-in-out;
@@ -306,7 +320,7 @@ html {
 
 .clicked {
     width: 500px;
-    height: 440px;
+    height: 455px;
     border-radius: 50px;
     cursor: auto;
 }
@@ -487,6 +501,44 @@ html {
     width: 250px;
     display: flex;
     justify-content: flex-end;
+}
+
+/*#################### RANKING ######################*/
+
+#ranking-container {
+    position: absolute;
+    background-color: #EFF0F0;
+    border: 1px solid #F57D19;
+    border-radius: 50px;
+    width: 650px;
+    height: 300px;
+    box-shadow: 0 5px 10px rgba(0, 0, 40, 0.03);
+    top: 28%;
+    left: 50%;
+    transform: scale(1) translate(-50%, -50%);
+    transition: all .25s ease-in-out;
+    z-index: 1000;
+}
+
+#ranking-container h1 {
+    font-family: 'Amatic SC', cursive;
+    text-transform: uppercase;
+    color: #F57D19;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.2rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+#ranking-container p {
+    font-family: 'Amatic SC', cursive;
+    text-transform: uppercase;
+    color: dimgrey;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.2rem;
+    text-align: center;
 }
 
 /*#################### RANKING ######################*/
