@@ -132,12 +132,35 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
         // PAUSE
         function togglePause() {
             isRunning = !isRunning;
+            if (isRunning) {
+                document.querySelector('.pause-button').style.background = 'url("img/btn/play.png") center center / contain no-repeat';
+            } else {
+                document.querySelector('.pause-button').style.background = 'url("img/btn/play-checked.png") center center / contain no-repeat';
+            }
 
             if (isRunning) {
                 update();
-
             }
         }
+
+        let myAudio = document.querySelector("audio");
+        let audioPlay = true;
+        myAudio.play();
+
+        function toggleMusic() {
+            if (audioPlay) {
+                myAudio.pause();
+                audioPlay = !audioPlay;
+                document.querySelector('.music-button').style.background = 'url("img/btn/music-checked.png") center center / contain no-repeat';
+            } else {
+                myAudio.play();
+                audioPlay = !audioPlay;
+                document.querySelector('.music-button').style.background = 'url("img/btn/music.png") center center / contain no-repeat';
+            }
+        }
+
+        document.querySelector('.music-button').addEventListener('click', toggleMusic);
+        // myAudio.pause();
 
         incrementTime();
 
@@ -179,6 +202,9 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
                 miniMonstersAnimation();
                 runningTime = !runningTime;
                 incrementTime();
+            }
+            if (event.code === 'KeyM') {
+                toggleMusic();
             }
         });
 
@@ -709,3 +735,114 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
 // }
 //
 // explode();
+
+
+//***************RANKING********************
+
+/*(function showBestScore() {
+    let nickName;
+    let nickNameList;
+    let yourTime;
+    let timeList;
+
+
+    $("#ranking-container").hide();
+
+    $("#highscoresButton").click (function () {
+        let nickName = document.getElementById("player-text").innerText;
+        let yourTime = document.getElementById('timer').innerHTML;
+        let timeList = localStorage.getItem('time', yourTime);
+
+        if(localStorage.getItem('Nick') === null || timeList > yourTime) {
+            let nickNamesList = localStorage.setItem('Nick',nickName);
+            let timeList = localStorage.setItem('time', yourTime);
+            $("#ranking-container").show();
+            let newLine = document.createElement("H1");
+            newLine.innerHTML = ('Pobiłeś rekord! Gratulacje!');
+            $('#ranking-container').append(newLine);
+        }
+
+        let timeListCurrent = localStorage.getItem('time', yourTime);
+        let nickNamesList = localStorage.getItem('Nick',nickName);
+        $("#ranking-container").toggle();
+        let newLine = document.createElement("H1");
+        newLine.innerHTML = ('Najlepszy czas:');
+        let newLine2 = document.createElement("p");
+        newLine2.innerHTML = (nickNamesList + " " + timeListCurrent);
+        $('#ranking-container').append(newLine);
+        $('#ranking-container').append(newLine2);
+    });
+})();*/
+
+/*(function showBestScore() {
+    $("#ranking-container").hide();
+    let nickName = document.getElementById("player-text").innerText;
+    let yourTime = document.getElementById('timer').innerHTML;
+
+    if (!localStorage.getItem('Nick')) {
+        localStorage.setItem('Nick',nickName);
+    }
+    if (!localStorage.getItem('timer')) {
+        localStorage.setItem('timer', Date());
+    }
+
+
+
+    $("#highscoresButton").click (function () {
+        let nickName = document.getElementById("nick-name").value;
+        let yourTime = document.getElementById('timer').innerHTML;
+        let timeList = localStorage.getItem('time', yourTime);
+
+        if(localStorage.getItem('Nick') === null || timeList > yourTime) {
+            let nickNamesList = localStorage.setItem('Nick',nickName);
+            let timeList = localStorage.setItem('time', yourTime);
+            $("#ranking-container").show();
+            let newLine = document.createElement("H1");
+            newLine.innerHTML = ('Pobiłeś rekord! Gratulacje!');
+            $('#ranking-container').append(newLine);
+        }
+
+        let timeListCurrent = localStorage.getItem('time', yourTime);
+        let nickNamesList = localStorage.getItem('Nick',nickName);
+        $("#ranking-container").toggle();
+        let newLine = document.createElement("H1");
+        newLine.innerHTML = ('Najlepszy czas:');
+        let newLine2 = document.createElement("p");
+        newLine2.innerHTML = (nickNamesList + " " + timeListCurrent);
+        $('#ranking-container').append(newLine);
+        $('#ranking-container').append(newLine2);
+    });
+})();*//*
+(function showBestScore() {
+
+    $("#ranking-container").hide();
+    let nickName = document.getElementById("nick-name").value;
+    let yourTime = document.getElementById('timer').innerHTML;
+
+    $("#startPause").click (function () {
+        let nickName = document.getElementById("nick-name").value;
+        let yourTime = document.getElementById('timer').innerHTML;
+        let timeList = localStorage.getItem('time', yourTime);
+
+        if(localStorage.getItem('Nick') === null || timeList > yourTime) {
+            let nickNamesList = localStorage.setItem('Nick',nickName);
+            let timeList = localStorage.setItem('time', yourTime);
+            $("#ranking-container").show();
+            let newLine = document.createElement("H1");
+            newLine.innerHTML = ('Pobiłeś rekord! Gratulacje!');
+            $('#ranking-container').append(newLine);
+        }
+
+        let timeListCurrent = localStorage.getItem('time', yourTime);
+        let nickNamesList = localStorage.getItem('Nick',nickName);
+        $("#ranking-container").show();
+        let newLine = document.createElement("H1");
+        newLine.innerHTML = ('Najlepszy czas:');
+        let newLine2 = document.createElement("p");
+        newLine2.innerHTML = (nickNamesList + " " + timeListCurrent);
+        $('#ranking-container').append(newLine);
+        $('#ranking-container').append(newLine2);
+    });
+})();*/
+
+
