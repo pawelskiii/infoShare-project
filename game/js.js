@@ -1,4 +1,4 @@
-function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount, difficulty, monsterShootingInterval, playerName) {
+function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount, difficulty, monsterShootingInterval, lifeEater, playerName) {
     const sectionWidth = 350;
     const $map = $('.map');
     const $player = $('#player');
@@ -60,7 +60,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
 
         //MAP
 
-        setInterval(() => {
+      let monsterInterval = setInterval(() => {
             $('.monster').animate({
                 top: "-=120px"
             }, 800);
@@ -267,42 +267,88 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
                 }))
         }
 
-        let monsterLifePoints =  document.getElementById('monster__life').value
-        console.log(monsterLifePoints)
-        if (monsterLifePoints <=100 && monsterLifePoints > 80){
-            document.getElementById('monster__life').style.background= "green";
+        let playerLifePoints =  document.getElementById('player__life').value
+        if (playerLifePoints <=100 && playerLifePoints > 90){
+            document.getElementById('player__life').classList.remove('soft-hit');
+            document.getElementById('player__life').classList.remove('medium-hit');
+            document.getElementById('player__life').classList.remove('hard-hit');
+            document.getElementById('player__life').classList.remove('cytical-hit');
             console.log('cos1')
-        } else if (monsterLifePoints <80 && monsterLifePoints > 60){
-            document.getElementById('monster__life').style.background= "greenyellow";
+        } else if (playerLifePoints <90 && playerLifePoints >= 80){
+            document.getElementById('player__life').classList.add('soft-hit');
+            document.getElementById('player__life').classList.remove('medium-hit');
+            document.getElementById('player__life').classList.remove('hard-hit');
+            document.getElementById('player__life').classList.remove('cytical-hit');
             console.log('cos2')
-        }else if (monsterLifePoints <60 && monsterLifePoints > 40){
-            document.getElementById('monster__life').style.backgroundColor= "yellow";
-            console.log('cos3')
-        }else if (monsterLifePoints <40 && monsterLifePoints > 30){
-            document.getElementById('monster__life').style.backgroundColor= "red";
+        } else if (playerLifePoints < 80 && playerLifePoints >= 40){
+            document.getElementById('player__life').classList.remove('soft-hit');
+            document.getElementById('player__life').classList.add('medium-hit');
+            document.getElementById('player__life').classList.remove('hard-hit');
+            document.getElementById('player__life').classList.remove('cytical-hit');
             console.log('cos4')
-        }else if (monsterLifePoints <20 && monsterLifePoints > 10){
-            document.getElementById('monster__life').style.backgroundColor= "black";
-            console.log('cos5')
-        }else if (monsterLifePoints===0) {
-           /* $('.monster').fadeOut(3000);*/
+        }else if (playerLifePoints <40 && playerLifePoints >=30){
+            document.getElementById('player__life').classList.remove('soft-hit');
+            document.getElementById('player__life').classList.remove('medium-hit');
+            document.getElementById('player__life').classList.add('hard-hit');
+            document.getElementById('player__life').classList.remove('cytical-hit');
 
+        }   else if (playerLifePoints <30 && playerLifePoints >= 10) {
+            document.getElementById('player__life').classList.remove('soft-hit');
+            document.getElementById('player__life').classList.remove('medium-hit');
+            document.getElementById('player__life').classList.remove('hard-hit');
+            document.getElementById('player__life').classList.add('crytical-hit');
+        } else if (playerLifePoints===0) {
+
+        }
+        let monsterLifePoints =  document.getElementById('monster__life').value
+        if (monsterLifePoints <=100 && monsterLifePoints > 90){
+            document.getElementById('monster__life').classList.remove('soft-hit');
+            document.getElementById('monster__life').classList.remove('medium-hit');
+            document.getElementById('monster__life').classList.remove('hard-hit');
+            document.getElementById('monster__life').classList.remove('cytical-hit');
+            console.log('cos1')
+        } else if (monsterLifePoints <90 && monsterLifePoints >= 80){
+            document.getElementById('monster__life').classList.add('soft-hit');
+            document.getElementById('monster__life').classList.remove('medium-hit');
+            document.getElementById('monster__life').classList.remove('hard-hit');
+            document.getElementById('monster__life').classList.remove('cytical-hit');
+            console.log('cos2')
+        } else if (monsterLifePoints < 80 && monsterLifePoints >= 40){
+            document.getElementById('monster__life').classList.remove('soft-hit');
+            document.getElementById('monster__life').classList.add('medium-hit');
+            document.getElementById('monster__life').classList.remove('hard-hit');
+            document.getElementById('monster__life').classList.remove('cytical-hit');
+            console.log('cos4')
+        }else if (monsterLifePoints <40 && monsterLifePoints >=30){
+            document.getElementById('monster__life').classList.remove('soft-hit');
+            document.getElementById('monster__life').classList.remove('medium-hit');
+            document.getElementById('monster__life').classList.add('hard-hit');
+            document.getElementById('monster__life').classList.remove('cytical-hit');
+
+        }   else if (monsterLifePoints <30 && monsterLifePoints >= 10) {
+            document.getElementById('monster__life').classList.remove('soft-hit');
+            document.getElementById('monster__life').classList.remove('medium-hit');
+            document.getElementById('monster__life').classList.remove('hard-hit');
+            document.getElementById('monster__life').classList.add('crytical-hit');
+        } else if (monsterLifePoints===0) {
+            clearInterval(monsterInterval)
             function explode() {
                 let spriteSize = 125, width = spriteSize;
                 let spriteAllSize = 750;
                 let intervalExplode;
-                document.getElementById("monster").style.width = "125px";
-                document.getElementById("monster").style.backgroundImage = "url('img/explode.png')";
+                document.querySelector(".monster").style.width = "125px";
+                document.querySelector(".monster").style.backgroundImage = "url('img/explode.png')";
                 intervalExplode = setInterval(() => {
-                    document.getElementById("monster").style.backgroundPosition = `-${spriteSize}px 0px`;
+                    document.querySelector(".monster").style.backgroundPosition = `-${spriteSize}px 0px`;
                     spriteSize < spriteAllSize ? spriteSize = spriteSize + width : spriteSize = width;
                 }, 50);
                 clearInterval(intervalExplode);
+                clearInterval(wingsAnimation);
+                clearInterval(flyAnimation);
             }
-
             explode();
-        }
 
+        }
     });
 
         for (let i = 1; i <= shotAmount; i++) {
@@ -489,7 +535,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
             && (parseInt(monsterShotPositionX) - 18 > parseInt(playerPositionX))
             && (positionBottomMegaShotMonster < playerPositionY + $playerHeight)
             && (positionBottomMegaShotMonster + 18 > playerPositionY)) {
-            document.getElementById('player__life').value -= 5;
+            document.getElementById('player__life').value -= lifeEater;
             monsterShotArray.splice(index, 1);
             document.getElementsByClassName('monster__shot')[index].remove()
         }
@@ -544,7 +590,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
                 && (positionBottomMegaShotPlayer < positionBottomMegaMonster + 105)
                 && (positionBottomMegaShotPlayer + 16 > positionBottomMegaMonster))  {
 
-                document.getElementById('monster__life').value-=50;
+                document.getElementById('monster__life').value-=10;
                 shotArray.splice(index, 1);
                 document.getElementsByClassName('shot')[index].remove()
             }
@@ -555,7 +601,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
             });
 
             if ( playerPositionX > monsterPositionX - $windowWidth/2 && isFiring == false) {
-                setInterval(() => {
+             setInterval(() => {
                     monsterShotArray.push({
                         shotTime: Date.now(),
                         shotPosition: parseInt($('.monster').css('left')),
@@ -845,18 +891,20 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
         let shotAmount = 30;
         let difficulty = 'easy';
         let monsterShootingInterval = 1000;
+        let lifeEater = 5;
         let playerName = $('input[type="text"]')[0].value;
-        if (isChecked) {
-            randomizer = .45;
-            maxPlayerSpeedX = .6;
-            nitroMultiplication = 1.7;
-            shotAmount = 20;
-            difficulty = 'hard';
-            monsterShootingInterval = 400;
+            if (isChecked) {
+                randomizer = .45;
+                maxPlayerSpeedX = .6;
+                nitroMultiplication = 1.7;
+                shotAmount = 20;
+                difficulty = 'hard';
+                monsterShootingInterval = 400;
+                lifeEater = 10;
         }
         $(this).addClass('start-clicked');
         $('.starting-box').addClass('game-start');
-        gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount, difficulty, monsterShootingInterval, playerName);
+        gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount, difficulty, monsterShootingInterval, lifeEater, playerName);
     });
 })();
 //***************RANKING********************
@@ -866,6 +914,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
     $("#ranking-container").hide();
     let nickName = document.getElementById("nick-name").value;
     let yourTime = document.getElementById('timer').innerHTML;
+
 
     $("#startPause").click (function () {
         let nickName = document.getElementById("nick-name").value;
