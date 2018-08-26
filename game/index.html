@@ -15,7 +15,7 @@
         </div>
         <div class="starting-box">
             <form action="" class="special-font nick-select">
-                <label><input type="text" placeholder="Wpisz swój nick" class="special-font text-input">Twój
+                <label><input type="text" placeholder="Wpisz swój nick" class="special-font text-input" id="nick-name">Twój
                     nick:</label>
             </form>
 
@@ -40,8 +40,7 @@
                     <li>Poprowadź naszego <span>Magicznego Królikensa</span> w otchłań walki o przetrwanie.
                         Przeskakuj przez wielkie mury obronne.
                     </li>
-                    <li>
-                        Uciekaj przed krwiożerczymi zielonymi smokami - sługusami
+                    <li>Uciekaj przed krwiożerczymi zielonymi smokami - sługusami
                         <span>Wielkiego Hamburgerosa</span>. Nie zawachaj się użyć <span>Super Marchewek</span>
                         do wystrzelenia ich wszystkich w pień zbierając z ich truchła nowe <span>Super Marchewki</span>.
                     </li>
@@ -54,9 +53,14 @@
 
             </div>
         </div>
-
         <div class="map">
-            <div id="player"></div>
+            <div id="player">
+                <progress min=0 max=100 value=100 name=hel id=player__life></progress>
+            </div>
+            <div class="monster">
+                <progress min=0 max=100 value=100 name=hel id=monster__life></progress>
+                <div class="monster__icon"></div>
+            </div>
             <div class="sky"></div>
             <div class="grass"></div>
             <div class="trees"></div>
@@ -68,7 +72,7 @@
         </div>
 
     </div>
-</div>
+    <div id="ranking-container"></div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="js.js"></script>
 </body>
