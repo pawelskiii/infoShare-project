@@ -1,4 +1,4 @@
-function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount, difficulty, monsterShootingInterval) {
+function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount, difficulty, monsterShootingInterval, playerName) {
     const sectionWidth = 350;
     const $map = $('.map');
     const $player = $('#player');
@@ -7,6 +7,8 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
     const $windowHeight = parseInt($map.css('height'));
     const $playerWidth = parseInt($player.css('width'));
     const $playerHeight = parseInt($player.css('height'));
+
+    document.getElementById('player-text').innerHTML = playerName;
 
 //***************MAP GENERATOR + PLAYER********************
     (function () {
@@ -113,14 +115,12 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
                 incrementTime();
                 togglePause();
                 miniMonstersAnimation();
-                document.getElementById("startPause").innerHTML = "Resume";
             }
             else {
                 runningTime = true;
                 incrementTime();
                 togglePause();
                 miniMonstersAnimation();
-                document.getElementById("startPause").innerHTML = "Pause";
             }
         };
 
@@ -138,7 +138,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
                     if (seconds < 10) {
                         seconds = "0" + seconds;
                     }
-                    document.getElementById("timer").innerHTML = minutes + ":" + seconds + ":" + "0" + tenths;
+                    document.getElementById("timer-text").innerHTML = minutes + ":" + seconds + ":0" + tenths;
                     incrementTime();
                 }, 100);
             }
@@ -147,12 +147,35 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
         // PAUSE
         function togglePause() {
             isRunning = !isRunning;
+            if (isRunning) {
+                document.querySelector('.pause-button').style.background = 'url("img/btn/play.png") center center / contain no-repeat';
+            } else {
+                document.querySelector('.pause-button').style.background = 'url("img/btn/play-checked.png") center center / contain no-repeat';
+            }
 
             if (isRunning) {
                 update();
-
             }
         }
+
+        let myAudio = document.querySelector("audio");
+        let audioPlay = true;
+        myAudio.play();
+
+        function toggleMusic() {
+            if (audioPlay) {
+                myAudio.pause();
+                audioPlay = !audioPlay;
+                document.querySelector('.music-button').style.background = 'url("img/btn/music-checked.png") center center / contain no-repeat';
+            } else {
+                myAudio.play();
+                audioPlay = !audioPlay;
+                document.querySelector('.music-button').style.background = 'url("img/btn/music.png") center center / contain no-repeat';
+            }
+        }
+
+        document.querySelector('.music-button').addEventListener('click', toggleMusic);
+        // myAudio.pause();
 
         incrementTime();
 
@@ -194,6 +217,9 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
                 miniMonstersAnimation();
                 runningTime = !runningTime;
                 incrementTime();
+            }
+            if (event.code === 'KeyM') {
+                toggleMusic();
             }
         });
 
@@ -819,17 +845,18 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
         let shotAmount = 30;
         let difficulty = 'easy';
         let monsterShootingInterval = 1000;
-            if (isChecked) {
-                randomizer = .45;
-                maxPlayerSpeedX = .6;
-                nitroMultiplication = 1.7;
-                shotAmount = 20;
-                difficulty = 'hard';
-                monsterShootingInterval = 400;
+        let playerName = $('input[type="text"]')[0].value;
+        if (isChecked) {
+            randomizer = .45;
+            maxPlayerSpeedX = .6;
+            nitroMultiplication = 1.7;
+            shotAmount = 20;
+            difficulty = 'hard';
+            monsterShootingInterval = 400;
         }
         $(this).addClass('start-clicked');
         $('.starting-box').addClass('game-start');
-        gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount, difficulty, monsterShootingInterval);
+        gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount, difficulty, monsterShootingInterval, playerName);
     });
 })();
 //***************RANKING********************
