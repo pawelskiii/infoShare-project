@@ -150,7 +150,7 @@
     display: flex;
     align-self: center;
     flex-wrap: wrap;
-    left: 6700px;
+    left: 1000px;
     position: absolute;
     width: 116px;
     height: 105px;
@@ -172,15 +172,40 @@
     z-index: 200;
 }
 #monster__life {
+    background: green;
     width: 100px;
     border: 1px solid gray;
     border-radius: 5px;
-
+}
+#monster__life.soft-hit::-webkit-progress-value {
+    background: yellowgreen;
+}
+#monster__life.medium-hit::-webkit-progress-value {
+    background: yellow;
+}
+#monster__life.hard-hit::-webkit-progress-value {
+    background: red;
+}
+#monster__life.crytical-hit::-webkit-progress-value {
+    background: black;
 }
 #player__life {
+    background: green;
     width: 150px;
     border: 1px solid gray;
     border-radius: 5px;
+}
+#player__life.soft-hit::-webkit-progress-value {
+    background: yellowgreen;
+}
+#player__life.medium-hit::-webkit-progress-value {
+    background: yellow;
+}
+#player__life.hard-hit::-webkit-progress-value {
+    background: red;
+}
+#player__life.crytical-hit::-webkit-progress-value {
+    background: black;
 }
 /*#################### GAME INSTRUCTIONS ######################*/
 
