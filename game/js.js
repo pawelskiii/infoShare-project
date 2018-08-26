@@ -97,7 +97,6 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
                     .css({
                         'left': obstacle.position,
                         'height': obstacle.height,
-                        'bottom': -10,
                     })
                 );
             if (obstacle.hasMiniMonster) {
