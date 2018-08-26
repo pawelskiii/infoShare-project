@@ -210,7 +210,7 @@ html {
     width: 650px;
     height: 200px;
     box-shadow: 0 5px 10px rgba(0, 0, 40, 0.03);
-    top: 28.7%;
+    top: 26%;
     left: 50%;
     transform: scale(1) translate(-50%, -50%);
     transition: all .25s ease-in-out;
