@@ -146,6 +146,42 @@
     z-index: 200;
 }
 
+.monster {
+    display: flex;
+    align-self: center;
+    flex-wrap: wrap;
+    left: 6700px;
+    position: absolute;
+    width: 116px;
+    height: 105px;
+    z-index: 200;
+}
+
+.monster__icon {
+    display: flex;
+    align-self: flex-end;
+    width: 116px;
+    height: 85px;
+    background: url("img/monster.png") no-repeat;
+}
+.monster__shot {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: url("img/burger-shot.png") no-repeat;
+    z-index: 200;
+}
+#monster__life {
+    width: 100px;
+    border: 1px solid gray;
+    border-radius: 5px;
+
+}
+#player__life {
+    width: 150px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
 /*#################### GAME INSTRUCTIONS ######################*/
 
 .starting-box {
