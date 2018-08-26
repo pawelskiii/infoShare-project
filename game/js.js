@@ -22,6 +22,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
         let time = Date.now();
         let bulletTime = Date.now();
         let isRunning = true;
+        let bossDead = false;
 
         //PLAYER
         const player = document.querySelector('#player');
@@ -341,7 +342,15 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
             document.getElementById('player__life').classList.remove('hard-hit');
             document.getElementById('player__life').classList.add('crytical-hit');
         } else if (playerLifePoints===0) {
-
+            bossDead = true;
+            $ranking.toggle();
+            if (highscoresOn) {
+                document.querySelector('.highscores-button').style.background = 'url("img/btn/records.png") center center / contain no-repeat';
+                highscoresOn = !highscoresOn;
+            } else {
+                document.querySelector('.highscores-button').style.background = 'url("img/btn/records-checked.png") center center / contain no-repeat';
+                highscoresOn = !highscoresOn;
+            }
         }
         let monsterLifePoints =  document.getElementById('monster__life').value
         if (monsterLifePoints <=100 && monsterLifePoints > 90){
@@ -405,9 +414,15 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
                 }
             }
             highscore();
-            togglePause();
-            clearInterval(wingsAnimation);
-            clearInterval(flyAnimation);
+            $ranking.toggle();
+            if (highscoresOn) {
+                document.querySelector('.highscores-button').style.background = 'url("img/btn/records.png") center center / contain no-repeat';
+                highscoresOn = !highscoresOn;
+            } else {
+                document.querySelector('.highscores-button').style.background = 'url("img/btn/records-checked.png") center center / contain no-repeat';
+                highscoresOn = !highscoresOn;
+            }
+            bossDead = true;
 
         }
     });
@@ -715,7 +730,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
             });
 
 
-            if (isRunning) {
+            if (isRunning && !bossDead) {
                 requestAnimationFrame(update);
             }
         }
