@@ -1,4 +1,4 @@
-function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount, difficulty) {
+function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount, difficulty, playerName) {
     const sectionWidth = 350;
     const $map = $('.map');
     const $player = $('#player');
@@ -7,6 +7,8 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
     const $windowHeight = parseInt($map.css('height'));
     const $playerWidth = parseInt($player.css('width'));
     const $playerHeight = parseInt($player.css('height'));
+
+    document.getElementById('player-text').innerHTML = playerName;
 
 //***************MAP GENERATOR + PLAYER********************
     (function () {
@@ -98,14 +100,12 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
                 incrementTime();
                 togglePause();
                 miniMonstersAnimation();
-                document.getElementById("startPause").innerHTML = "Resume";
             }
             else {
                 runningTime = true;
                 incrementTime();
                 togglePause();
                 miniMonstersAnimation();
-                document.getElementById("startPause").innerHTML = "Pause";
             }
         };
 
@@ -123,7 +123,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
                     if (seconds < 10) {
                         seconds = "0" + seconds;
                     }
-                    document.getElementById("timer").innerHTML = minutes + ":" + seconds + ":" + "0" + tenths;
+                    document.getElementById("timer-text").innerHTML = minutes + ":" + seconds + ":0" + tenths;
                     incrementTime();
                 }, 100);
             }
@@ -679,6 +679,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
         let nitroMultiplication = 1.4;
         let shotAmount = 30;
         let difficulty = 'easy';
+        let playerName = $('input[type="text"]')[0].value;
         if (isChecked) {
             randomizer = .45;
             maxPlayerSpeedX = .6;
@@ -688,7 +689,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
         }
         $(this).addClass('start-clicked');
         $('.starting-box').addClass('game-start');
-        gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount, difficulty);
+        gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount, difficulty, playerName);
     });
 })();
 
