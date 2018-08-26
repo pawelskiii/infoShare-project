@@ -1,16 +1,15 @@
 .map {
-    background: linear-gradient(rgb(133, 164, 204) 0, rgb(208, 229, 242) 100%);
     display: flex;
     width: 7000px;
-    height: 350px;
+    height: 450px;
     position: relative;
-    border-bottom: 100px solid mediumseagreen;
+    border-bottom: 10px solid rgb(208, 229, 242);
 }
 
 .sky {
     position: absolute;
     width: 7000px;
-    height: 350px;
+    height: 450px;
     background: linear-gradient(rgb(133, 164, 204) 0, rgb(208, 229, 242) 100%);
 }
 
@@ -42,6 +41,16 @@
     position: absolute;
     background: url(img/cloud5.png);
     background-size: cover;
+}
+
+.grass {
+    position: absolute;
+    background: url(img/grass_PNG10853.png) repeat-x;
+    background-size: 8%;
+    width: 7000px;
+    height: 40px;
+    z-index: 900;
+    bottom: -11px;
 }
 
 .obstacle {
@@ -77,11 +86,22 @@
 
 /*#################### PONIŻEJ LINIE POMOCNICZE ######################*/
 
-.window {
+.center-box {
     position: relative;
-    /*height: 700px;*/
+    margin: 0 auto;
+    background: url("img/frame.png") 50% 50% no-repeat;
+    background-size: 104.9% 98%;
+    height: 800px;
+    width: 1200px;
+}
+
+.window {
+    position: absolute;
+    margin-top: 63px;
+    margin-left: 52px;
+    box-sizing: border-box;
+    height: 700px;
     width: 1100px;
-    border: 2px solid greenyellow;
     overflow: hidden;
 }
 
@@ -172,7 +192,7 @@
     width: 650px;
     height: 200px;
     box-shadow: 0 5px 10px rgba(0, 0, 40, 0.03);
-    top: 28%;
+    top: 29%;
     left: 50%;
     transform: scale(1) translate(-50%, -50%);
     transition: all .25s ease-in-out;
@@ -376,10 +396,9 @@
 }
 
 .timer-container {
-    height: 200px;
+    box-sizing: border-box;
+    height: 236px;
     width: 1100px;
-    margin-top: 10px;
-    border: 2px solid black;
     position: relative;
     display: flex;
     z-index: 300;
@@ -416,12 +435,11 @@
     height: 100px;
     background-color: darkorange;
     border: solid 1px;
-    margin:5px 0 0 10px;
+    margin: 5px 0 0 10px;
     font-family: 'Raleway', sans-serif;
     font-weight: 300;
     font-size: 2rem;
 }
-
 
 .pause {
     position: absolute;
@@ -455,3 +473,40 @@
     }
 }
 
+/*#################### RANKING ######################*/
+
+#ranking-container {
+    position: absolute;
+    background-color: #EFF0F0;
+    border: 1px solid #F57D19;
+    border-radius: 50px;
+    width: 650px;
+    height: 300px;
+    box-shadow: 0 5px 10px rgba(0, 0, 40, 0.03);
+    top: 28%;
+    left: 50%;
+    transform: scale(1) translate(-50%, -50%);
+    transition: all .25s ease-in-out;
+    z-index: 1000;
+}
+
+#ranking-container h1 {
+    font-family: 'Amatic SC', cursive;
+    text-transform: uppercase;
+    color: #F57D19;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.2rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+#ranking-container p {
+    font-family: 'Amatic SC', cursive;
+    text-transform: uppercase;
+    color: dimgrey;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.2rem;
+    text-align: center;
+}

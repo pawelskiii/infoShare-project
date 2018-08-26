@@ -240,6 +240,8 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
                 }))
         }
 
+        let monsterLifePoints =  document.getElementById('monster__life').value
+        console.log(monsterLifePoints)
         if (monsterLifePoints <=100 && monsterLifePoints > 80){
             document.getElementById('monster__life').style.background= "green";
             console.log('cos1')
@@ -469,6 +471,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
             document.getElementsByClassName('monster__shot')[index].remove();
         }
     })
+
     let positionBottomMegaMonster = document.getElementsByClassName('monster')[0].getBoundingClientRect().top;
 
 
@@ -555,7 +558,6 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
                         if (difficulty === 'hard' && document.getElementsByClassName('bullet').length !== 1) {
                             document.getElementsByClassName('bullet')[0].remove();
                             shotAmount--;
-                            console.log(difficulty);
                         }
                         document.getElementsByClassName('bullet')[0].remove();
                         shotAmount--;
@@ -613,6 +615,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
             let nitroInterval;
             let stopRunning = true;
             let stopNitro = true;
+            let normalMove = false;
 
             function animatePlayer() {
                 document.getElementById("player").style.width = "125px";
@@ -660,11 +663,13 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
                     $player.addClass('scaleXrotate');
                     stopAnimateStanding();
                     animatePlayer();
+                    normalMove = true;
                 }
                 else if (event.code === 'ArrowRight') {
                     $player.removeClass('scaleXrotate');
                     stopAnimateStanding();
                     animatePlayer();
+                    normalMove = true;
                 }
                 else if (event.code === 'ControlLeft') {
                     stopAnimateStanding();
@@ -676,7 +681,7 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
             window.addEventListener('keyup', function (event) {
                 if (event.code === 'ControlLeft') {
                     stopNitroAnimate();
-                    animatePlayer();
+                    normalMove ? animatePlayer() : animateStandingPlayer();
                 }
                 else if (event.code === 'ArrowLeft' || event.code === 'ArrowRight') {
                     stopAnimate();
@@ -788,3 +793,39 @@ function gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount,
         gameStart(randomizer, maxPlayerSpeedX, nitroMultiplication, shotAmount, difficulty, monsterShootingInterval);
     });
 })();
+//***************RANKING********************
+
+(function showBestScore() {
+
+    $("#ranking-container").hide();
+    let nickName = document.getElementById("nick-name").value;
+    let yourTime = document.getElementById('timer').innerHTML;
+
+    $("#startPause").click (function () {
+        let nickName = document.getElementById("nick-name").value;
+        let yourTime = document.getElementById('timer').innerHTML;
+        let timeList = localStorage.getItem('time', yourTime);
+
+        if(localStorage.getItem('Nick') === null || timeList > yourTime) {
+            let nickNamesList = localStorage.setItem('Nick',nickName);
+            let timeList = localStorage.setItem('time', yourTime);
+            $("#ranking-container").show();
+            let newLine = document.createElement("H1");
+            newLine.innerHTML = ('Pobiłeś rekord! Gratulacje!');
+            $('#ranking-container').append(newLine);
+        }
+
+        let timeListCurrent = localStorage.getItem('time', yourTime);
+        let nickNamesList = localStorage.getItem('Nick',nickName);
+        $("#ranking-container").show();
+        let newLine = document.createElement("H1");
+        newLine.innerHTML = ('Najlepszy czas:');
+        let newLine2 = document.createElement("p");
+        newLine2.innerHTML = (nickNamesList + " " + timeListCurrent);
+        $('#ranking-container').append(newLine);
+        $('#ranking-container').append(newLine2);
+    });
+})();
+
+
+
