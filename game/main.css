@@ -1,0 +1,618 @@
+html {
+    background-color: #284678;
+}
+
+.map {
+    display: flex;
+    width: 7000px;
+    height: 450px;
+    position: relative;
+    border-bottom: 10px solid rgb(208, 229, 242);
+}
+
+.sky {
+    position: absolute;
+    width: 7000px;
+    height: 450px;
+    background: linear-gradient(rgb(133, 164, 204) 0, rgb(208, 229, 242) 100%);
+}
+
+.cloud1 {
+    position: absolute;
+    background: url(img/cloud1.png);
+    background-size: cover;
+}
+
+.cloud2 {
+    position: absolute;
+    background: url(img/cloud2.png);
+    background-size: cover;
+}
+
+.cloud2 {
+    position: absolute;
+    background: url(img/cloud3.png);
+    background-size: cover;
+}
+
+.cloud4 {
+    position: absolute;
+    background: url(img/cloud4.png);
+    background-size: cover;
+}
+
+.cloud5 {
+    position: absolute;
+    background: url(img/cloud5.png);
+    background-size: cover;
+}
+
+.tree1 {
+    position: absolute;
+    background: url(img/tree1.png);
+    background-size: cover;
+    opacity: .8;
+}
+
+.tree2 {
+    position: absolute;
+    background: url(img/tree2.png);
+    background-size: cover;
+    opacity: .8;
+}
+
+.grass {
+    position: absolute;
+    background: url(img/grass_PNG10853.png) repeat-x;
+    background-size: 8%;
+    width: 7000px;
+    height: 40px;
+    z-index: 900;
+    bottom: -11px;
+}
+
+.obstacle {
+    position: absolute;
+    background: url(img/brick.png);
+    width: 80px;
+    align-self: flex-end;
+    z-index: 50;
+}
+
+.minimonster {
+    position: absolute;
+    background: url("img/dragon/frame-1.png") no-repeat center;
+    background-size: contain;
+    width: 75px;
+    height: 75px;
+    align-self: flex-end;
+    z-index: 100;
+}
+
+#player {
+    width: 125px;
+    height: 105px;
+    background: url('img/bunny_stand.png');
+    align-self: flex-end;
+    z-index: 200;
+    position: absolute;
+}
+
+.scaleXrotate {
+    transform: scaleX(-1);
+}
+
+/*#################### PONIŻEJ LINIE POMOCNICZE ######################*/
+
+.center-box {
+    position: relative;
+    margin: 0 auto;
+    background: url("img/frame.png") 49% 100% no-repeat;
+    background-size: 104.8% 97%;
+    height: 650px;
+    width: 1200px;
+}
+
+.window {
+    position: absolute;
+    margin-top: 63px;
+    margin-left: 52px;
+    box-sizing: border-box;
+    height: 600px;
+    width: 1100px;
+    overflow: hidden;
+}
+
+.game-information {
+    position: absolute;
+    display: flex;
+    padding: 8px 0 0 8px;
+    z-index: 350;
+    width: max-content;
+    height: 65px;
+}
+
+.ammo {
+    background: url("img/basket-of-carrots.png");
+    background-size: cover;
+    z-index: 300;
+    height: 56px;
+    width: 48px;
+}
+
+.bullet {
+    left: 10px;
+    background: url("img/carrot-bullet.png") no-repeat;
+    z-index: 300;
+    width: 16px;
+    height: 50px;
+}
+
+.shot {
+    position: absolute;
+    background: url("img/carrot-shot.png") no-repeat;
+    width: 50px;
+    height: 16px;
+    z-index: 200;
+}
+
+.explosion {
+    position: absolute;
+    background: url("img/shot-explosion.png") no-repeat;
+    width: 25px;
+    height: 30px;
+    z-index: 200;
+}
+
+.monster {
+    display: flex;
+    align-self: center;
+    flex-wrap: wrap;
+    left: 6700px;
+    position: absolute;
+    width: 116px;
+    height: 125px;
+    z-index: 200;
+;
+}
+
+.monster__icon {
+    display: flex;
+    align-self: flex-end;
+    width: 116px;
+    height: 85px;
+    background: url("img/monster.png") no-repeat;
+    padding-bottom: 20px;
+}
+
+.monster__shot {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: url("img/burger-shot.png") no-repeat;
+    z-index: 200;
+}
+#monster__life {
+    background: green;
+    width: 100px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+#monster__life.soft-hit::-webkit-progress-value {
+    background: yellowgreen;
+}
+#monster__life.medium-hit::-webkit-progress-value {
+    background: yellow;
+}
+#monster__life.hard-hit::-webkit-progress-value {
+    background: red;
+}
+#monster__life.crytical-hit::-webkit-progress-value {
+    background: black;
+}
+#player__life {
+    background: green;
+    width: 150px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+#player__life.soft-hit::-webkit-progress-value {
+    background: yellowgreen;
+}
+#player__life.medium-hit::-webkit-progress-value {
+    background: yellow;
+}
+#player__life.hard-hit::-webkit-progress-value {
+    background: red;
+}
+#player__life.crytical-hit::-webkit-progress-value {
+    background: black;
+}
+/*#################### GAME INSTRUCTIONS ######################*/
+
+.starting-box {
+    position: absolute;
+    background-color: #EFF0F0;
+    border: 1px solid #F57D19;
+    border-radius: 50px;
+    width: 650px;
+    height: 200px;
+    box-shadow: 0 5px 10px rgba(0, 0, 40, 0.03);
+    top: 26%;
+    left: 50%;
+    transform: scale(1) translate(-50%, -50%);
+    transition: all .25s ease-in-out;
+    z-index: 1000;
+}
+
+.special-font {
+    font-family: 'Amatic SC', cursive;
+    text-transform: uppercase;
+    color: #F57D19;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.2rem;
+}
+
+.nick-select {
+    position: absolute;
+    top: 30px;
+    left: 60px;
+}
+
+.text-input {
+    position: absolute;
+    box-sizing: border-box;
+    font-size: 1.3rem;
+    letter-spacing: 0.05rem;
+    background-color: #FCFCFC;
+    color: #B2B5BC;
+    border: 1px solid #DDD;
+    border-radius: 20px;
+    width: 150px;
+    height: 40px;
+    top: 0;
+    left: 150px;
+    padding-left: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 40, 0.03);
+    overflow: hidden;
+}
+
+.text-input::placeholder {
+    color: #DDD;
+}
+
+.text-input:focus {
+    background-color: #F7F7F7;
+    outline: none;
+}
+
+.level-select {
+    position: absolute;
+    top: 30px;
+    left: 380px;
+}
+
+.radio-button {
+    position: relative;
+    top: -2px;
+    width: 30px;
+    height: 20px;
+}
+
+.starting-menu-buttons {
+    position: absolute;
+    background-color: #FCFCFC;
+    width: 200px;
+    height: 75px;
+    border: 1px solid #DDD;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0, 0, 40, 0.03);
+    top: 65%;
+    transform: translate(-50%, -40%);
+    overflow: hidden;
+}
+
+.start-button {
+    left: 25%;
+    transition: all .5s cubic-bezier(.4, 0, 0, 1.4);
+}
+
+.instruction-button {
+    left: 75%;
+    transition: all .5s cubic-bezier(.4, 0, 0, 1.4);
+}
+
+.text-in-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all .25s ease-in-out;
+}
+
+.instruction-button .close {
+    position: absolute;
+    right: 45px;
+    top: 20px;
+    cursor: pointer;
+    color: #CFCFCF;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    font-weight: 400;
+    opacity: 0;
+    transition: all .8s cubic-bezier(.4, 0, 0, 1.4);
+    transform: rotate(-45deg);
+}
+
+.clicked {
+    width: 500px;
+    height: 455px;
+    border-radius: 50px;
+    cursor: auto;
+}
+
+.instruction-button.clicked .text-in-button {
+    left: 45px;
+    top: 15px;
+    transform: translate(0, 0);
+    color: #CFCFCF;
+}
+
+.instruction-button.clicked .close {
+    opacity: 1;
+    transform: rotate(0);
+}
+
+.instruction-button .player-instructions {
+    width: 75%;
+    padding-left: 0;
+    list-style-type: none;
+    margin: 75px auto 0 auto;
+}
+
+.instruction-button .player-instructions li {
+    color: #85A4CC;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.87rem;
+    padding-bottom: 15px;
+    transform: scale(0.3) translate(50px, -50px);
+    transition: all .3s ease-in-out;
+    opacity: 0;
+}
+
+.instruction-button .player-instructions img {
+    height: 20px;
+    width: 20px;
+}
+
+.instruction-button .player-instructions span {
+    color: #284678;
+}
+
+.instruction-button .player-instructions .float-right {
+    float: right;
+}
+
+.instruction-button.clicked .player-instructions li {
+    transform: scale(1) translate(0, 0);
+    opacity: 1;
+}
+
+.instruction-button.clicked .player-instructions li:nth-child(1) {
+    transition-delay: .05s;
+}
+
+.instruction-button.clicked .player-instructions li:nth-child(2) {
+    transition-delay: .1s;
+}
+
+.instruction-button.clicked .player-instructions li:nth-child(3) {
+    transition-delay: .15s;
+}
+
+.instruction-button.clicked .player-instructions li:nth-child(4) {
+    transition-delay: .20s;
+}
+
+.instruction-button.clicked .player-instructions li:nth-child(5) {
+    transition-delay: .25s;
+}
+
+.instruction-button.clicked .player-instructions li:nth-child(6) {
+    transition-delay: .30s;
+}
+
+.instruction-button.clicked .player-instructions li:nth-child(7) {
+    transition-delay: .35s;
+}
+
+/*#################### GAME START ######################*/
+
+.game-start {
+    opacity: 0;
+    transform: scale(0);
+    transition-delay: .25s;
+}
+
+.start-clicked {
+    width: 150px;
+    height: 55px;
+}
+
+.shottoCarrotto {
+    position: absolute;
+    background: url("img/carrot-shot.png") no-repeat;
+    width: 50px;
+    height: 16px;
+    z-index: 200;
+}
+
+.rotating {
+    -moz-animation: rotating 1s linear infinite;
+    animation: rotating 1s linear infinite;
+}
+
+@keyframes rotating {
+    from {
+        -moz-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -moz-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+/*########################## BOTTOM BAR ###############################*/
+
+.timer-container {
+    box-sizing: border-box;
+    width: 1100px;
+    height: 100px;
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 300;
+    background-color: #FFF8DC;
+    border-top: solid 5px #BC8F8F;
+}
+
+.timer {
+    background: url("img/btn/time.png") center no-repeat;
+    background-size: contain;
+    width: 250px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.timer-text, .player-text {
+    margin-right: .8rem;
+    font-family: 'Amatic SC', cursive;
+    color: #A0522D;
+    font-size: 2.3rem;
+    font-weight: bolder;
+    letter-spacing: .4rem;
+}
+
+.player-text {
+    margin-right: 1rem;
+}
+
+.pause-button {
+    background: url("img/btn/play.png") center no-repeat;
+    width: 70px;
+    height: 70px;
+    background-size: contain;
+}
+
+.music-button {
+    background: url("img/btn/music.png") center no-repeat;
+    width: 70px;
+    height: 70px;
+    background-size: contain;
+}
+
+.highscores-button {
+    background: url("img/btn/records.png") center no-repeat;
+    width: 70px;
+    height: 70px;
+    background-size: contain;
+}
+
+
+.player-frame {
+    background: url("img/btn/money.png") center no-repeat;
+    background-size: contain;
+    width: 250px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/*#################### RANKING ######################*/
+
+#ranking-container {
+    position: absolute;
+    background-color: #EFF0F0;
+    border: 1px solid #F57D19;
+    border-radius: 50px;
+    width: 650px;
+    height: 300px;
+    box-shadow: 0 5px 10px rgba(0, 0, 40, 0.03);
+    top: 28%;
+    left: 50%;
+    transform: scale(1) translate(-50%, -50%);
+    transition: all .25s ease-in-out;
+    z-index: 1000;
+}
+
+#ranking-container h1 {
+    font-family: 'Amatic SC', cursive;
+    text-transform: uppercase;
+    color: #F57D19;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.2rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+#ranking-container p {
+    font-family: 'Amatic SC', cursive;
+    text-transform: uppercase;
+    color: dimgrey;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.2rem;
+    text-align: center;
+}
+
+/*#################### RANKING ######################*/
+
+#ranking-container {
+    position: absolute;
+    background-color: #EFF0F0;
+    border: 1px solid #F57D19;
+    border-radius: 50px;
+    width: 650px;
+    height: 300px;
+    box-shadow: 0 5px 10px rgba(0, 0, 40, 0.03);
+    top: 28%;
+    left: 50%;
+    transform: scale(1) translate(-50%, -10%);
+    transition: all .25s ease-in-out;
+    z-index: 1000;
+}
+
+#ranking-container .scores {
+    margin-top: 2rem;
+}
+
+
+#ranking-container h1, #ranking-container div {
+    font-family: 'Amatic SC', cursive;
+    text-transform: uppercase;
+    color: #F57D19;
+    font-size: 2rem;
+    font-weight: 700;
+    height: 70px;
+    letter-spacing: 0.2rem;
+    text-align: center;
+}
+
+#ranking-container p {
+    font-family: 'Amatic SC', cursive;
+    text-transform: uppercase;
+    color: dimgrey;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.2rem;
+    text-align: center;
+}
+
+.easy-p, .hard-p {
+    display: inline-block;
+}
